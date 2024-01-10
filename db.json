@@ -1,0 +1,25 @@
+{
+"products": [
+{
+"id": 0,
+"name": "Angular Web Application",
+"photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fs3-ap-south-1.amazonaws.com%2Ftrt-blog-ghost%2F2020%2F06%2Fthe-seo-guide-to-angular.png&sp=1704897752T4f2a78ea3185bb511ec73e909a81b2736bea65a7be334d26dedc7cf804361fc2",
+"price": "40000€" ,
+"description": "We built a complete Angular Application for you"
+},
+{
+"id": 1,
+"name": "React Web Application",
+"photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fjslib.dev%2Fwp-content%2Fuploads%2F2022%2F03%2FReactlogo.jpg&sp=1704897830T52db7b114bd2ee6a20113d00780867097574e0c14ef840a926697bcaf529c958",
+"price": "40000€" ,
+"description": "We built a complete React Application for you"
+},
+{
+"id": 2,
+"name": "Kubernetes Infrastructure",
+"photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.sam-solutions.com%2Fblog%2Fwp-content%2Fuploads%2F2020%2F07%2Fkubernetes_photo.png&sp=1704897697T619993886ffb079d263fccdf94333a8a73f6a6143669aa9537d0e86917ef1a0d",
+"price": "10000€",
+"description": "We built a complete Kubernetes Infrastructure for you"
+}
+]
+}
