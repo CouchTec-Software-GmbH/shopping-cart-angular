@@ -34,6 +34,13 @@
 "photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.torsionis.com%2Fwp-content%2Fuploads%2F2022%2F10%2FAzure-Logo.png&sp=1704899997Ta5934c7bfe434822a0859b9dbe72bc576ac63bd45f2ccba9f79f656b8ac54eb2",
 "price": "from 1000€",
 "description": "We configure your Azure environment for you"
+},
+{
+"id": 5,
+"name": "Terraform",
+"photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1638214524004%2FFHbc6fKe6.png%3Fw%3D1600%26h%3D840%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress&sp=1704900235Tf5f43b7252721bef16cf1d57762dd5ba7e88d7d6bd15ea4bd9d786b24b15bd09",
+"price": "from 5000€",
+"description": "We code your Infrastructure in Terraform for you"
 }
 ]
 }
