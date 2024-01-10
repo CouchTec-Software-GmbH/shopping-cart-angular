@@ -4,22 +4,36 @@
 "id": 0,
 "name": "Angular Web Application",
 "photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fs3-ap-south-1.amazonaws.com%2Ftrt-blog-ghost%2F2020%2F06%2Fthe-seo-guide-to-angular.png&sp=1704897752T4f2a78ea3185bb511ec73e909a81b2736bea65a7be334d26dedc7cf804361fc2",
-"price": "40000€" ,
+"price": "from 40000€" ,
 "description": "We built a complete Angular Application for you"
 },
 {
 "id": 1,
 "name": "React Web Application",
 "photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fjslib.dev%2Fwp-content%2Fuploads%2F2022%2F03%2FReactlogo.jpg&sp=1704897830T52db7b114bd2ee6a20113d00780867097574e0c14ef840a926697bcaf529c958",
-"price": "40000€" ,
+"price": "from 40000€" ,
 "description": "We built a complete React Application for you"
 },
 {
 "id": 2,
 "name": "Kubernetes Infrastructure",
 "photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.sam-solutions.com%2Fblog%2Fwp-content%2Fuploads%2F2020%2F07%2Fkubernetes_photo.png&sp=1704897697T619993886ffb079d263fccdf94333a8a73f6a6143669aa9537d0e86917ef1a0d",
-"price": "10000€",
+"price": "from 10000€",
 "description": "We built a complete Kubernetes Infrastructure for you"
+},
+{
+"id": 3,
+"name": "Bitcoin Mining",
+"photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.PPCGfKmfU7vXbMsDgTUxlwHaE5%26pid%3DApi&sp=1704899831Tfbe4dec3e2a89695c87371355f0a7da8c51e5a1084358fe4357c030ad6daaf20",
+"price": "from 1000€",
+"description": "We install bitcoin miners you"
+},
+{
+"id": 4,
+"name": "Azure Services",
+"photo": "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.torsionis.com%2Fwp-content%2Fuploads%2F2022%2F10%2FAzure-Logo.png&sp=1704899997Ta5934c7bfe434822a0859b9dbe72bc576ac63bd45f2ccba9f79f656b8ac54eb2",
+"price": "from 1000€",
+"description": "We configure your Azure environment for you"
 }
 ]
 }
