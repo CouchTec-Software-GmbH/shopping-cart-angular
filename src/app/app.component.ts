@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -11,15 +13,14 @@ import { RouterModule } from '@angular/router';
   ],
   template: `
   <main>
-    <a [routerLink]="['/']">
-      <header class="brand-name">
+    <header class="brand-name">
+      <a [routerLink]="['/']">
         <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
-
-        <button class="cart-button">
+      </a>
+      <button class="cart-button" (click)="onCartClick()">
         <img class="cart-icon" src="/assets/cart.png" alt="cart" aria-hidden="true">
-        </button>
-      </header>
-    </a>
+      </button>
+    </header>
     <section class="content">
       <router-outlet></router-outlet>
     </section>
@@ -29,4 +30,10 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'homes';
+
+  constructor(private router: Router) {}
+
+  onCartClick(): void {
+    this.router.navigate(['/cart']);
+  }
 }
