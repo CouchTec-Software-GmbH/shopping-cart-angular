@@ -15,7 +15,9 @@ import { ProductService } from '../product.service';
      <section>
       <form (submit)="$event.preventDefault()">
         <input type="text" placeholder="Filter by name" #filter (keyup.enter)="filterResults(filter.value)">
-      <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+      <button class="primary" type="button" (click)="filterResults(filter.value)">
+        <img class="search-logo" src="/assets/suche.svg" alt="Search" aria-hidden="true">
+    </button>
     </form>
   </section>
   <section class="results">
