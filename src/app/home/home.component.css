@@ -17,7 +17,8 @@ input[type="text"] {
 }
 
 button {
-  padding: 10px;
+  padding: 4px 10px 5px 10px;
+  margin: 10px 200px 10px 10px;
   border: solid 1px var(--primary-color);
   background: var(--primary-color);
   color: white;
@@ -37,4 +38,11 @@ button {
   .results {
       grid-template-columns: 1fr;
   }
+}
+
+.search-logo {
+  width: auto;  /* Adjust this value as needed */
+  height: 20px; /* This ensures the logo maintains its aspect ratio */
+  padding: 0px 0px 0px 0px;
+  margin: 0;
 }
