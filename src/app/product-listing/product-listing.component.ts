@@ -12,10 +12,13 @@ import { RouterModule } from '@angular/router';
   ],
   template: `
   <section class="listing">
+    <a [routerLink]="['/details', product.id]">
+
     <img class="listing-photo" [src]="product.photo" alt="">
     <h2 class="listing-heading">{{ product.name }}</h2>
     <p class="listing-price">{{ product.price}}</p>
-    <a [routerLink]="['/details', product.id]">Learn More</a>
+    <p class="learn-more">Learn More </p>
+    </a>
   </section>
   `,
   styleUrl: './product-listing.component.css'
