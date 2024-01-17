@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     HomeComponent,
     RouterModule,
+    HttpClientModule,
   ],
   template: `
   <main>
