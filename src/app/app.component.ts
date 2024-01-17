@@ -14,6 +14,10 @@ import { RouterModule } from '@angular/router';
     <a [routerLink]="['/']">
       <header class="brand-name">
         <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
+
+        <button class="cart-button">
+        <img class="cart-icon" src="/assets/cart.png" alt="cart" aria-hidden="true">
+        </button>
       </header>
     </a>
     <section class="content">
