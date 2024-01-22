@@ -43,6 +43,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
         <button type="submit" class="primary">Send</button>
       </form>
+      <button type="button" class="primary" (click)="addToCart()">
+        Add to cart
+      </button>
     </section>
   </article>
   `,
@@ -76,5 +79,23 @@ export class DetailsComponent {
       this.applyForm.value.email ?? '',
       this.applyForm.value.text ?? ''
     );
+  }
+
+  addToCart() {
+    if (!this.product) {
+      console.error('No product to add');
+      return;
+    }
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (cart.includes(this.product.id)) {
+      console.log('Product is already in the cart');
+      console.log(JSON.stringify(cart));
+      return;
+    }
+    cart.push(this.product.id);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log('Product added to cart');
+    console.log(JSON.stringify(cart));
+
   }
 }
