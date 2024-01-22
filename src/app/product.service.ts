@@ -32,8 +32,6 @@ export class ProductService {
         let photoUrl = null;
         if (doc._attachments) {
           photoUrl = await this.getAttachmentUrl(doc._id, Object.keys(doc._attachments)[0]);
-          console.log("Attachment name: ",Object.keys(doc._attachments)[0]);
-          console.log("Attachment url: ", photoUrl);
         } else  {
           photoUrl = null;
         }
@@ -54,11 +52,24 @@ export class ProductService {
   }
   async getProductById(id: string): Promise<Product | undefined> {
     try {
-      const response = await fetch(`${this.url}/${id}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const response = await this.http.get<any>(`${this.url}${id}`, this.httpOptions).toPromise();
+
+      if (!response) {
+        return undefined;
       }
-      return await response.json() ?? {};
+
+      let photoUrl: string| SafeUrl = '';
+      if (response._attachments) {
+        photoUrl = await this.getAttachmentUrl(response._id, Object.keys(response._attachments)[0]);
+      }
+
+      return {
+        id: parseInt(id),
+        name: response.name,
+        price: response.price,
+        photo: photoUrl,
+        description: response.description
+      } as Product;
     } catch (error) {
       console.error("Error fetching product by id: ", error);
       return undefined;
