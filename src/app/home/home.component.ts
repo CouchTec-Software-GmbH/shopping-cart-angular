@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HousingLocationComponent } from '../product-listing/product-listing.component';
+import { ProductListingComponent } from '../product-listing/product-listing.component';
 import { Product } from '../productListing';
 import { ProductService } from '../product.service';
 
@@ -9,7 +9,7 @@ import { ProductService } from '../product.service';
   standalone: true,
   imports: [
     CommonModule,
-    HousingLocationComponent,
+    ProductListingComponent,
 ],
   template: `
      <section>
