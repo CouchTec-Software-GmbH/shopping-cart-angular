@@ -23,6 +23,6 @@ import { RouterModule } from '@angular/router';
   `,
   styleUrl: './product-listing.component.css'
 })
-export class HousingLocationComponent {
+export class ProductListingComponent {
   @Input() product!: Product;
 }
