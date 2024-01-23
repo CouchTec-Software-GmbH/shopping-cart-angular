@@ -47,35 +47,6 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
-    // Initialize the cookie consent popup
-    const cookieConfig: NgcCookieConsentConfig = {
-      cookie: {
-        domain: 'your-domain.com' // Replace with your domain
-      },
-      position: 'bottom-right',
-      theme: 'classic',
-      palette: {
-        popup: {
-          background: '#000000',
-          text: '#ffffff'
-        },
-        button: {
-          background: '#f1d600',
-          text: '#000000'
-        }
-      },
-      type: 'info',
-      content: {
-        message: 'This website uses cookies to ensure you get the best experience on our website.',
-        dismiss: 'Got it!',
-        deny: 'Refuse cookies',
-        link: 'Learn more',
-        href: 'https://cookiesandyou.com'
-      }
-    };
-
-    // Initialize cookie consent
-    this.ccService.init(cookieConfig);
   }
 
   filterResults(text: string) {
