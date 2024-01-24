@@ -97,5 +97,6 @@ export class DetailsComponent {
     console.log('Product added to cart');
     console.log(JSON.stringify(cart));
 
+    alert(`Product added to cart: ${this.product.name}`);
   }
 }
