@@ -8,6 +8,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class ProductService {
   url = 'http://couchdb-app-service.azurewebsites.net/products/';
+  apiUrl = `https://linusweigand.de/api/create-user`;
   private httpOptions: { headers: HttpHeaders };
 
 
@@ -76,8 +77,21 @@ export class ProductService {
     }
   }
 
-  submitApplication(firstName: string, lastName: string, email: string, text: string) {
-    console.log(`Product application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}, text: ${text}.`);
+  async submitApplication(firstName: string, lastName: string, email: string, text: string): Promise<void> {
+    try {
+      const userData = {
+        username: email,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        enabled: true
+      };
+
+      await this.http.post(this.apiUrl, userData, this.httpOptions).toPromise();
+      console.log('User created successfully');
+    } catch (error) {
+      console.error('Error creating user: ', error);
+    }
   }
 
   async getAttachmentUrl(docId: string, attachmentName: string): Promise<SafeUrl> {
