@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductListingComponent } from '../product-listing/product-listing.component';
+import { CartListingComponent } from '../cart-listing/cart-listing.component';
 import { Product } from '../productListing';
 import { ProductService } from '../product.service';
 
@@ -9,7 +9,7 @@ import { ProductService } from '../product.service';
   standalone: true,
   imports: [
     CommonModule,
-    ProductListingComponent,
+    CartListingComponent,
   ],
   template: `
     <h2>Your Cart</h2>
