@@ -1,7 +1,7 @@
 {
-  "name": "angular.io-example",
+  "name": "couchtec-frontend",
   "version": "0.0.0",
-  "description": "Example project from an angular.io guide.",
+  "description": "Couchtec Website Frontend",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
