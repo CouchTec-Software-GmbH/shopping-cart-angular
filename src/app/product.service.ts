@@ -7,8 +7,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class ProductService {
-  url = 'http://couchdb-app-service.azurewebsites.net/products/';
-  apiUrl = `https://linusweigand.de/api/create-user`;
+  url = 'https://couchdb-app-service.azurewebsites.net/products/';
+  apiUrl = `https://couchtec.dev.linusweigand.de/api/create-user`;
   private httpOptions: { headers: HttpHeaders };
 
 
