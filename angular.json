@@ -26,7 +26,7 @@
               "node_modules/cookieconsent/build/cookieconsent.min.css"
             ],
             "scripts": [
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
+              "node_modules/cookieconsent/build/cookieconsent.min.js",
             ]
           },
           "configurations": {
