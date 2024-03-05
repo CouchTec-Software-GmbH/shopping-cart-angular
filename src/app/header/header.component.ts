@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   ],
   template: `
       <header class="brand-name">
-      <a [routerLink]="['/']">
+      <a [routerLink]="['/']" data-bs-toggle="tooltip"  data-bs-html="true" title="Home">
         <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
       </a>
       <button type="button" class="btn btn-secondary" (click)="onCartClick()">
