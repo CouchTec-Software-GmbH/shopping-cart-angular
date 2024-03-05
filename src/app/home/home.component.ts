@@ -4,35 +4,60 @@ import { ProductListingComponent } from '../product-listing/product-listing.comp
 import { Product } from '../productListing';
 import { ProductService } from '../product.service';
 
-import { NgcCookieConsentModule, NgcCookieConsentConfig, NgcCookieConsentService } from 'ngx-cookieconsent';
+import {
+  NgcCookieConsentModule,
+  NgcCookieConsentConfig,
+  NgcCookieConsentService,
+} from 'ngx-cookieconsent';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    CommonModule,
-    ProductListingComponent,
-    NgcCookieConsentModule
-],
+  imports: [CommonModule, ProductListingComponent, NgcCookieConsentModule],
   template: `
-     <section>
-      <form (submit)="$event.preventDefault()">
-        <input type="text" placeholder="Filter by name" #filter (keyup.enter)="filterResults(filter.value)">
-      <button class="primary" type="button" (click)="filterResults(filter.value)">
-        <img class="search-logo" src="/assets/suche.svg" alt="Search" aria-hidden="true">
-    </button>
-    </form>
-  </section>
-  <section class="results">
-    <app-product-listing
-      *ngFor="let product of filteredProductList"
-    [product]="product">
-  </app-product-listing>
-  </section>
+    <div class="row ps-2">
+      <div class="col-auto">
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingInput"
+            type="text"
+            placeholder="Search"
+            #filter
+            (keyup.enter)="filterResults(filter.value)"
+          />
+          <label for="floatingInput">Search</label>
+        </div>
+      </div>
+      <div class="col-auto">
+        <button
+          class="btn btn-secondary"
+          type="button"
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
+          title="Search"
+          (click)="filterResults(filter.value)"
+        >
+          <img
+            class="search-logo"
+            src="/assets/suche.svg"
+            alt="Search"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </div>
+    <section class="results">
+      <app-product-listing
+        *ngFor="let product of filteredProductList"
+        [product]="product"
+      >
+      </app-product-listing>
+    </section>
   `,
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   productList: Product[] = [];
   productService: ProductService = inject(ProductService);
   filteredProductList: Product[] = [];
@@ -46,8 +71,7 @@ export class HomeComponent implements OnInit{
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   filterResults(text: string) {
     if (!text) {
@@ -55,8 +79,8 @@ export class HomeComponent implements OnInit{
       return;
     }
 
-    this.filteredProductList = this.productList.filter(
-      product => product?.name.toLowerCase().includes(text.toLowerCase())
+    this.filteredProductList = this.productList.filter((product) =>
+      product?.name.toLowerCase().includes(text.toLowerCase()),
     );
   }
 }
