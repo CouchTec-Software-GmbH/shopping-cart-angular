@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
       <a [routerLink]="['/']" data-bs-toggle="tooltip"  data-bs-html="true" title="Home">
         <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
       </a>
-      <button type="button" class="btn btn-secondary" (click)="onCartClick()">
+      <button type="button" class="btn btn-secondary" (click)="onCartClick()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Cart">
         <img class="cart-icon" src="/assets/cart.png" alt="cart" aria-hidden="true">
       </button>
     </header>
