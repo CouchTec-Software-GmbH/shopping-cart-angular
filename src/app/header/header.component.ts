@@ -34,7 +34,7 @@ import { RouterModule } from '@angular/router';
             <li><a href="#" class="nav-link px-2 text-white">About</a></li>
           </ul>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" (submit)="$event.preventDefault()">
             <input
               type="text"
               class="form-control form-control-dark text-bg-dark"
@@ -42,6 +42,8 @@ import { RouterModule } from '@angular/router';
               placeholder="Search..."
               aria-label="Search"
               style="color: white"
+              #searchInput
+              (keyup.enter)="onSearch(searchInput.value)"
             />
           </form>
 
