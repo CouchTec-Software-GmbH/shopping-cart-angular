@@ -16,16 +16,6 @@ input[type="text"] {
   width: 30%;
 }
 
-button {
-  padding: 4px 10px 5px 10px;
-  margin: 10px 200px 10px 10px;
-  border: solid 1px var(--primary-color);
-  background: var(--primary-color);
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
 @media (min-width: 500px) and (max-width: 768px) {
   .results {
       grid-template-columns: repeat(2, 1fr);
