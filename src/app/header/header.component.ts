@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-header',
@@ -60,7 +61,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private searchService: SearchService,
+  ) {}
+
+  onSearch(value: string): void {
+    this.searchService.search(value);
+  }
 
   onCartClick(): void {
     this.router.navigate(['/cart']);
