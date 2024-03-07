@@ -4,6 +4,7 @@ import { ProductListingComponent } from '../product-listing/product-listing.comp
 import { Product } from '../productListing';
 import { ProductService } from '../product.service';
 
+
 import {
   NgcCookieConsentModule,
   NgcCookieConsentConfig,
