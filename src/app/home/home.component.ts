@@ -4,15 +4,15 @@ import { ProductListingComponent } from '../product-listing/product-listing.comp
 import { Product } from '../productListing';
 import { ProductService } from '../product.service';
 
-import { NgcCookieConsentModule, NgcCookieConsentConfig, NgcCookieConsentService } from 'ngx-cookieconsent';
+import { Subscription } from 'rxjs';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    ProductListingComponent,
-    NgcCookieConsentModule
+    ProductListingComponent
 ],
   template: `
      <section>
@@ -33,13 +33,13 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig, NgcCookieConsentService
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  productList: Product[] = [];
-  productService: ProductService = inject(ProductService);
+  private productList: Product[] = [];
+  private productService: ProductService = inject(ProductService);
   filteredProductList: Product[] = [];
+  searchSubscription: Subscription = new Subscription();
 
-  private ccService: NgcCookieConsentService = inject(NgcCookieConsentService);
 
-  constructor() {
+  constructor(private searchService: SearchService) {
     this.productService.getAllProducts().then((productList: Product[]) => {
       this.productList = productList;
       this.filteredProductList = productList;
@@ -47,6 +47,19 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
+ this.searchSubscription = this.searchService.searchObservable.subscribe((query: string) => {
+      this.filterResults(query);
+    });
+  }
+
+  ngOnChanges() {
+    this.searchSubscription = this.searchService.searchObservable.subscribe((query: string) => {
+      this.filterResults(query);
+    });
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription.unsubscribe();
   }
 
   filterResults(text: string) {
