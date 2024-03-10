@@ -15,14 +15,6 @@ import { SearchService } from '../search.service';
     ProductListingComponent
 ],
   template: `
-     <section>
-      <form (submit)="$event.preventDefault()">
-        <input type="text" placeholder="Filter by name" #filter (keyup.enter)="filterResults(filter.value)">
-      <button class="primary" type="button" (click)="filterResults(filter.value)">
-        <img class="search-logo" src="/assets/suche.svg" alt="Search" aria-hidden="true">
-    </button>
-    </form>
-  </section>
   <section class="results">
     <app-product-listing
       *ngFor="let product of filteredProductList"

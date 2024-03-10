@@ -7,6 +7,7 @@
   justify-content: space-around;
 }
 
+
 input[type="text"] {
   border: solid 1px var(--primary-color);
   padding: 10px;
@@ -37,3 +38,5 @@ input[type="text"] {
   padding: 0px 0px 0px 0px;
   margin: 0;
 }
+
+
