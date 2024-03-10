@@ -82,6 +82,7 @@
   height: 60px; /* This ensures the logo maintains its aspect ratio */
 }
 .form-control-dark::placeholder {
-  color: #ccc; /* Light grey color; adjust as needed */
+  color: var(--bs-dark); /* Light grey color; adjust as needed */
   opacity: 1; /* Full opacity */
 }
+
