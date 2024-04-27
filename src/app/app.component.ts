@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from '@components/header/header.component';
 import { RouterModule } from '@angular/router';
 
 
@@ -8,7 +7,6 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [
-    HomeComponent,
     HeaderComponent,
     RouterModule,
   ],
@@ -20,7 +18,6 @@ import { RouterModule } from '@angular/router';
     </section>
   </main>
   `,
-  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
 }

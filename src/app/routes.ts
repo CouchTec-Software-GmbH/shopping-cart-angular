@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
-import { DetailsComponent } from './details/details.component';
-import { ConfigureComponent } from './configure/configure.component';
-import { DashboardComponent } from './modules/dashboard/pages/dashboard.component';
-import { ProductsComponent } from './products/products.component';
+import { HomeComponent } from '@pages/home/home.component';
+import { CartComponent } from '@pages/cart/cart.component';
+import { DetailsComponent } from '@pages/details/details.component';
+import { ConfigureComponent } from '@pages/configure/configure.component';
+import { DashboardComponent } from '@pages/dashboard/dashboard.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routeConfig: Routes = [
   {
