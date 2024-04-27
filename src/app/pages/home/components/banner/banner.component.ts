@@ -42,7 +42,6 @@ import { RouterModule } from '@angular/router';
     </section>
 
      `,
-  styleUrl: './banner.component.css',
 })
 export class BannerComponent {
 }

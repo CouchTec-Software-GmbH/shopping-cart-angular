@@ -106,6 +106,5 @@ import { Component } from '@angular/core';
       </div>
     </section>
   `,
-  styleUrl: './section.component.css',
 })
 export class SectionComponent { }
