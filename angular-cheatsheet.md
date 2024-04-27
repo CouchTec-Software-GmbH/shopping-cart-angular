@@ -1,5 +1,5 @@
 # Creating Component
-ng generate component configure --inline-template --skip-tests
+ng generate component section --inline-template --skip-tests
 
 # Interface
 ng generate interface housinglocation

@@ -3,13 +3,19 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { DetailsComponent } from './details/details.component';
 import { ConfigureComponent } from './configure/configure.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './modules/dashboard/pages/dashboard.component';
+import { ProductsComponent } from './products/products.component';
 
 const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Home page'
+  },
+  {
+    path: 'services',
+    component: ProductsComponent,
+    title: 'Services'
   },
   {
     path: 'cart',
