@@ -1,11 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductListingComponent } from '../product-listing/product-listing.component';
-import { Product } from '../productListing';
-import { ProductService } from '../product.service';
-
+import { ProductListingComponent } from '@pages/products/components/product-listing/product-listing.component';
+import { Product } from '@models/productListing';
+import { ProductService } from '@services/product.service';
 import { Subscription } from 'rxjs';
-import { SearchService } from '../search.service';
+import { SearchService } from '@services/search.service';
 
 @Component({
   selector: 'app-products',

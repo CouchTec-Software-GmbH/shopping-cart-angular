@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './productListing';
+import { Product } from '@models/productListing';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 

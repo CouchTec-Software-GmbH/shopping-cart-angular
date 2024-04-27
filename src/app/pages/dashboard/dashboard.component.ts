@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CheckboxSectionComponent } from '../components/checkboxSection.component';
-
-import { RadioButtonSectionComponent } from '../components/radioButtonSection.component';
-import { AccordionCheckboxSectionComponent } from '../components/accordionCheckboxSection.component';
-import { GreenFieldComponent } from '../components/greenfield.component';
+import { CheckboxSectionComponent } from '@pages/dashboard/components/checkbox-section/checkbox-section.component';
+import { RadioButtonSectionComponent } from '@pages/dashboard/components/radio-button-section/radio-button-section.component';
+import { AccordionCheckboxSectionComponent } from '@pages/dashboard/components/accordion-checkbox-section/accordion-checkbox-section.component';
+import { GreenFieldComponent } from '@pages/dashboard/components/greenfield/greenfield.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +25,6 @@ import { GreenFieldComponent } from '../components/greenfield.component';
       <app-greenfield *ngIf="selectedOption === 'GreenFieldProject'"></app-greenfield>
     </div>
   `,
-  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
   projectOptions = [

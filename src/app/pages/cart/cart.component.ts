@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartListingComponent } from '../cart-listing/cart-listing.component';
-import { Product } from '../productListing';
-import { ProductService } from '../product.service';
+import { CartListingComponent } from '@pages/cart/components/cart-listing/cart-listing.component';
+import { Product } from '@models/productListing';
+import { ProductService } from '@services/product.service';
 
 @Component({
   selector: 'app-cart',

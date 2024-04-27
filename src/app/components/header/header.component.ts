@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { SearchService } from '../search.service';
+import { SearchService } from '@services/search.service';
 
 @Component({
   selector: 'app-header',

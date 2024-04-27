@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckboxSectionComponent } from './checkboxSection.component';
+import { CheckboxSectionComponent } from '@pages/dashboard/components/checkbox-section/checkbox-section.component';
 
 @Component({
   selector: 'app-grayfield',

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckboxSectionComponent } from './checkboxSection.component';
+import { CheckboxSectionComponent } from '@pages/dashboard/components/checkbox-section/checkbox-section.component';
 
 @Component({
-  selector: 'app-greenfield',
+  selector: 'app-brownfield',
   standalone: true,
   imports: [CommonModule, CheckboxSectionComponent],
   template: `
@@ -12,7 +12,7 @@ import { CheckboxSectionComponent } from './checkboxSection.component';
     </div>
   `,
 })
-export class GreenFieldComponent {
+export class BrownFieldComponent {
 
   tierOptions = [
     {

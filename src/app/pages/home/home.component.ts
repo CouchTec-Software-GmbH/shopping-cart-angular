@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BannerComponent } from '../banner/banner.component';
-import { SectionComponent } from '../section/section.component';
+import { BannerComponent } from '@pages/home/components/banner/banner.component';
+import { SectionComponent } from '@pages/home/components/section/section.component';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,5 @@ import { SectionComponent } from '../section/section.component';
     <app-banner></app-banner>
     <app-section></app-section>
   `,
-  styleUrl: './home.component.css',
 })
 export class HomeComponent { }
