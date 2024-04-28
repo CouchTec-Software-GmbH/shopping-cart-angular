@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -8,6 +8,7 @@ import { styling } from '@app/data/styling';
 import { backend } from '@app/data/backend';
 import { database } from '@app/data/database';
 import { middlewares } from '@app/data/middleware';
+import { tierOptions } from '@app/data/tier-options';
 
 @Component({
   selector: 'app-tech-stack',
@@ -23,8 +24,8 @@ import { middlewares } from '@app/data/middleware';
           Choose the tech stack you want to use for your project.
         </p>
 
-      <app-checkbox [options]="options" (selectionChange)="selectedOptions = $event"></app-checkbox>
-  <div *ngIf="selectedOptions.includes('frontend')">
+      <app-checkbox [options]="tierOptions" (selectionChange)="handleTierSelection($event)"></app-checkbox>
+  <div *ngIf="selectedTiers.includes('frontend')">
       <h2 class="mt-6 text-l font-bold text-gray-900 sm:text-xl md:text-2xl">
         Frontend
         </h2>
@@ -40,7 +41,7 @@ import { middlewares } from '@app/data/middleware';
       <app-radio [options]="styling" (selectionChange)="selectedStyling = $event"></app-radio>
   </div>
 
-  <div *ngIf="selectedOptions.includes('middleware')">
+  <div *ngIf="selectedTiers.includes('middleware')">
       <h2 class="mt-6 text-l font-bold text-gray-900 sm:text-xl md:text-2xl">
         Middleware
         </h2>
@@ -51,7 +52,7 @@ import { middlewares } from '@app/data/middleware';
 
   </div>
 
-  <div *ngIf="selectedOptions.includes('backend')">
+  <div *ngIf="selectedTiers.includes('backend')">
       <h2 class="mt-6 text-l font-bold text-gray-900 sm:text-xl md:text-2xl">
         Backend
         </h2>
@@ -62,7 +63,7 @@ import { middlewares } from '@app/data/middleware';
 
   </div>
 
-  <div *ngIf="selectedOptions.includes('database')">
+  <div *ngIf="selectedTiers.includes('database')">
       <h2 class="mt-6 text-l font-bold text-gray-900 sm:text-xl md:text-2xl">
         Database
         </h2>
@@ -76,18 +77,54 @@ import { middlewares } from '@app/data/middleware';
   `,
 })
 export class TechStackComponent {
-  @Input() options: ProjectOption[] = [];
+  @Output() tierOutput = new EventEmitter<string[]>();
+  @Output() frontendFrameworkOutput = new EventEmitter<string>();
+  @Output() stylingOutput = new EventEmitter<string>();
+  @Output() middlewareOutput = new EventEmitter<string>();
+  @Output() backendOutput = new EventEmitter<string>();
+  @Output() databaseOutput = new EventEmitter<string>();
+
+  tierOptions: ProjectOption[] = tierOptions;
   frontendFrameworks: ProjectOption[] = frontendFrameworks;
   styling: ProjectOption[] = styling;
+  middlewares: ProjectOption[] = middlewares;
   backend: ProjectOption[] = backend;
   database: ProjectOption[] = database;
-  middlewares: ProjectOption[] = middlewares;
 
-  selectedOptions: string[] = [];
+  selectedTiers: string[] = [];
   selectedFrontendFramework: string = '';
   selectedStyling: string = '';
+  selectedMiddleware: string = '';
   selectedBackend: string = '';
   selectedDatabase: string = ''
-  selectedMiddleware: string = '';
 
+  handleTierSelection (selection: string[]): void {
+    this.selectedTiers = selection;
+    this.tierOutput.emit(selection);
+  }
+
+  handleFrontendFrameworkSelection (selection: string): void {
+    this.selectedFrontendFramework = selection;
+    this.frontendFrameworkOutput.emit(this.selectedFrontendFramework);
+  }
+
+  handleStylingSelection (selection: string): void {
+    this.selectedStyling = selection;
+    this.stylingOutput.emit(selection);
+  }
+
+  handleMiddlewareSelection (selection: string): void {
+    this.selectedMiddleware = selection;
+    this.middlewareOutput.emit(selection);
+  }
+
+  handleBackendSelection (selection: string): void {
+    this.selectedBackend = selection;
+    this.backendOutput.emit(selection);
+  }
+
+  handleDatabaseSelection (selection: string): void {
+    this.selectedDatabase = selection;
+    this.databaseOutput.emit(selection);
+  }
 }
