@@ -10,31 +10,31 @@ const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home page'
+    title: 'Couchtec - Home'
   },
   {
     path: 'services',
     component: ProductsComponent,
-    title: 'Services'
+    title: 'Couchtec - Services'
   },
   {
     path: 'cart',
     component: CartComponent,
-    title: 'Shopping Cart'
+    title: 'Couchtec - Cart'
   },
   {
     path: 'configure/:id',
     component: ConfigureComponent,
-    title: 'Configure'
+    title: 'Couchtec - Configure'
   },{
     path: 'dashboard',
     component: DashboardComponent,
-    title: 'Dashboard'
+    title: 'Couchtec - Dashboard'
   },
   {
     path: 'details/:id',
     component: DetailsComponent,
-    title: 'Home details'
+    title: 'Couchtec Details'
   }
 ];
 
