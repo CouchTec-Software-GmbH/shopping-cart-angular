@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
         <div class="mx-auto max-w-xl text-center">
           <h1 class="text-7xl font-extrabold sm:text-7xl">
             Welcome at
-            <strong class="font-extrabold text-red-700 sm:block">
+            <strong class="font-extrabold text-blue-700 sm:block">
               CouchTec
             </strong>
           </h1>
@@ -24,14 +24,14 @@ import { RouterModule } from '@angular/router';
 
           <div class="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              class="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium  shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+              class="block w-full rounded border-blue-600 bg-blue-600 text-white px-12 py-3 text-sm font-medium  shadow hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 sm:w-auto"
           [routerLink]="['/dashboard']"
             >
               Get Started
             </a>
 
             <a
-              class="block w-full rounded px-12 py-3 text-sm font-medium text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
+              class="block w-full rounded px-12 py-3 text-sm font-medium text-blue-600 shadow hover:text-blue-700 focus:outline-none focus:ring active:text-blue-500 sm:w-auto"
               href="#"
             >
               Learn More
