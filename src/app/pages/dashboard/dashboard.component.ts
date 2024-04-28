@@ -10,13 +10,14 @@ import { tierOptions } from '@app/data/tier-options';
 import { DeploymentComponent } from './components/deployment/deployment.component';
 import { SecurityComponent } from './components/security/security.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { ExtraComponent } from './components/extra/extra.component';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-  SecurityComponent, MonitoringComponent],
+  SecurityComponent, MonitoringComponent, ExtraComponent],
   template: `
 <section class="bg-white">
   <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -37,7 +38,7 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
 
 
         <app-project-type [options]="projectOptions" *ngIf="currentStep === 0" ></app-project-type>
-        <app-tech-stack [options]="tierOptions" *ngIf="currentStep === 1" ></app-tech-stack>
+        <app-tech-stack *ngIf="currentStep === 1" ></app-tech-stack>
         <app-deployment *ngIf="currentStep === 2" ></app-deployment>
         <app-security *ngIf="currentStep === 3" ></app-security>
         <app-monitoring *ngIf="currentStep === 4" ></app-monitoring>
@@ -53,6 +54,7 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
             </button>
 
             <button
+              *ngIf="currentStep < 6"
               class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
               (click)="handleNextStep()"
             >
@@ -70,7 +72,10 @@ export class DashboardComponent {
   projectOptions = projectOptions;
   architectureOptions = architectureOptions;
   tierOptions = tierOptions;
-  currentStep: number = 4;
+  currentStep: number = 1;
+
+  projectTypeSelection: string = '';
+  techStackSelection: string = '';
 
   handleNextStep(): void {
     this.currentStep += 1;
