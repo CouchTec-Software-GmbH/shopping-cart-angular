@@ -43,5 +43,6 @@ export class CheckboxComponent {
     }else {
       this.selectedOptions.push(selectionId);
     }
+    this.selectionChange.emit(this.selectedOptions);
   }
 }
