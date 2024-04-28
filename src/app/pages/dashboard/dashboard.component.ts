@@ -1,95 +1,81 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StepsComponent } from './components/steps/steps.component';
+import { ProjectTypeComponent } from './components/project-type/project-type.component';
+import { TechStackComponent } from './components/tech-stack/tech-stack.component';
+import { steps } from '@data/steps';
+import { projectOptions } from '@app/data/project-options';
+import { architectureOptions } from '@data/architecture-options';
+import { tierOptions } from '@app/data/tier-options';
+import { DeploymentComponent } from './components/deployment/deployment.component';
+import { SecurityComponent } from './components/security/security.component';
+import { MonitoringComponent } from './components/monitoring/monitoring.component';
 
-import { CheckboxSectionComponent } from '@pages/dashboard/components/checkbox-section/checkbox-section.component';
-import { RadioButtonSectionComponent } from '@pages/dashboard/components/radio-button-section/radio-button-section.component';
-import { AccordionCheckboxSectionComponent } from '@pages/dashboard/components/accordion-checkbox-section/accordion-checkbox-section.component';
-import { GreenFieldComponent } from '@pages/dashboard/components/greenfield/greenfield.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, CheckboxSectionComponent, RadioButtonSectionComponent, AccordionCheckboxSectionComponent, GreenFieldComponent],
+  imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
+  SecurityComponent, MonitoringComponent],
   template: `
-    <div class="mx-auto max-w-screen-xl mt-8">
-      <app-radioButtonSection [title]="'Project Type'" [options]="projectOptions" (selectionChange)="handleSelection($event)"></app-radioButtonSection>
+<section class="bg-white">
+  <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+    <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
+      <img
+        alt=""
+        src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+    </aside>
 
-  <p *ngIf="selectedOption === 'GreenFieldProject'">Green Field was selected</p>
-      <p *ngIf="selectedOption === 'GrayFieldProject'">Gray Field was selected</p>
-      <p *ngIf="selectedOption === 'InfrastructureProject'">Infra was selected</p>
-      <p *ngIf="selectedOption === 'IntegrationProject'">Integration was selected</p>
-      <p *ngIf="selectedOption === 'MigrationProject'">Migration was selected</p>
+    <main
+      class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
+    >
 
-// <app-accordionCheckboxSection *ngIf="selectedOption === 'BrownFieldProject'" [title]="'Technology Stack'" [options]="tierOptions" ></app-accordionCheckboxSection>
+      <div class="max-w-xl lg:max-w-3xl">
+      <app-steps [steps]="steps" [currentStep]="currentStep" ></app-steps>
 
-      <app-greenfield *ngIf="selectedOption === 'GreenFieldProject'"></app-greenfield>
-    </div>
+
+        <app-project-type [options]="projectOptions" *ngIf="currentStep === 0" ></app-project-type>
+        <app-tech-stack [options]="tierOptions" *ngIf="currentStep === 1" ></app-tech-stack>
+        <app-deployment *ngIf="currentStep === 2" ></app-deployment>
+        <app-security *ngIf="currentStep === 3" ></app-security>
+        <app-monitoring *ngIf="currentStep === 4" ></app-monitoring>
+        <app-extra *ngIf="currentStep === 5" ></app-extra>
+
+          <div class="col-span-6 sm:flex sm:items-center sm:gap-4 mt-5">
+            <button
+              class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+              (click)="handlePreviousStep()"
+              *ngIf="currentStep > 0"
+            >
+              Previous
+            </button>
+
+            <button
+              class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+              (click)="handleNextStep()"
+            >
+              Next
+            </button>
+          </div>
+      </div>
+    </main>
+  </div>
+</section>
   `,
 })
 export class DashboardComponent {
-  projectOptions = [
-    {
-      id: 'GreenFieldProject',
-      name: 'Green Field Project',
-      description: 'Starting from scratch.',
-      checked: true,
-    },
-    {
-      id: 'GrayFieldProject',
-      name: 'Gray Field Project',
-      description: 'Starting from a template or existing project',
-      checked: false,
-    },
-    {
-      id: 'BrownFieldProject',
-      name: 'Brown Field Project',
-      description: 'Modifying or integrating with existing systems.',
-      checked: false,
-    },
-    {
-      id: 'InfrastructureProject',
-      name: 'Infrastructure Project',
-      description: 'Focused on setting up or upgrading infrastructure.',
-      checked: false,
-    },
-    {
-      id: 'MigrationProject',
-      name: 'Migration Project',
-      description: 'Moving from one environment or technology to another.',
-      checked: false,
-    },
-    {
-      id: 'IntegrationProject',
-      name: 'Integration Project',
-      description: 'Connecting multiple systems or technologies.',
-      checked: false,
-    },
-  ];
+  steps = steps;
+  projectOptions = projectOptions;
+  architectureOptions = architectureOptions;
+  tierOptions = tierOptions;
+  currentStep: number = 4;
 
-  tierOptions = [
-    {
-      id: 'Option1',
-      name: 'Frontend',
-      description: 'Front facing user interface.',
-      checked: true,
-    },
-    {
-      id: 'Option2',
-      name: 'Frontend Middleware',
-      description: 'Connection and data orchestration hub.',
-      checked: false,
-    },
-    {
-      id: 'Option3',
-      name: 'Backend',
-      description: 'Data processing and storage core.',
-      checked: false,
-    },
-  ];
-
-  selectedOption: string = '';
-
-  handleSelection(selectionId: string): void {
-    this.selectedOption = selectionId;
+  handleNextStep(): void {
+    this.currentStep += 1;
+  }
+  handlePreviousStep(): void {
+    this.currentStep -= 1;
   }
 }
