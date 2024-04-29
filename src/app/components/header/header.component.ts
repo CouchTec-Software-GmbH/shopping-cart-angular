@@ -16,7 +16,7 @@ import { SearchService } from '@services/search.service';
           <span class="sr-only">Home</span>
           <img
             class="brand-logo h-8"
-            src="/assets/logo.svg"
+            src="/assets/logo-blue.svg"
             alt="logo"
             aria-hidden="true"
           />
@@ -79,14 +79,14 @@ import { SearchService } from '@services/search.service';
           <div class="flex items-center gap-4">
             <div class="sm:flex sm:gap-4">
               <a
-                class="block rounded-md bg-red-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-red-700"
+                class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
                 href="#"
               >
                 Login
               </a>
 
               <a
-                class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-red-600 transition hover:text-red-600/75 sm:block"
+                class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-blue-600 transition hover:text-blue-600/75 sm:block"
                 href="#"
               >
                 Register

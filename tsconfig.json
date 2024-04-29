@@ -31,6 +31,7 @@
       "@env/*": ["src/environments/*"],
       "@services/*": ["src/app/services/*"],
       "@models/*": ["src/app/models/*"],
+      "@data/*": ["src/app/data/*"],
     },
 
   },
