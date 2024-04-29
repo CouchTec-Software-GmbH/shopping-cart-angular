@@ -37,6 +37,10 @@ export class CheckboxComponent {
 
   selectedOptions: string[] = [];
 
+  constructor() {
+    this.selectionChange.emit(this.options.filter(option => option.checked).map(option => option.id));
+  }
+
   onSelectionChange(selectionId: string): void {
     if (this.selectedOptions.includes(selectionId)) {
       this.selectedOptions.splice(this.selectedOptions.indexOf(selectionId), 1);
