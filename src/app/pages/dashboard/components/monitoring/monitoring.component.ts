@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 import { RadioComponent } from '../radio/radio.component';
-import { monitoring } from '@app/data/monitoring';
+import { monitoringOptions } from '@app/data/monitoring';
 
 @Component({
   selector: 'app-monitoring',
@@ -18,18 +18,25 @@ import { monitoring } from '@app/data/monitoring';
           Choose the monitoring option you want to use for your project.
         </p>
 
-  <app-radio [options]="options" (selectionChange)="selectedOption = $event"></app-radio>
+  <app-radio [options]="options" (selectionChange)="handleSelectionChange($event)"></app-radio>
   `,
 })
 export class MonitoringComponent {
-  @Output() selectionChange = new EventEmitter<string>();
+  options: ProjectOption[] = monitoringOptions;
 
-  options: ProjectOption[] = monitoring;
+  constructor() {
+    const monitoring = localStorage.getItem('monitoring');
+    if (monitoring) {
+      this.options = this.options.map(option => {
+        option.checked = option.id === monitoring;
+        return option;
+      });
+    } else {
+      localStorage.setItem('monitoring', this.options.filter(option => option.checked).map(option => option.id)[0] || "");
+    }
+  }
 
-  selectedOption: string = '';
-
-  onSelectionChange(selectionId: string): void {
-    this.selectedOption = selectionId;
-    this.selectionChange.emit(selectionId);
+  handleSelectionChange(selectionId: string): void {
+    localStorage.setItem('monitoring', selectionId);
   }
 }

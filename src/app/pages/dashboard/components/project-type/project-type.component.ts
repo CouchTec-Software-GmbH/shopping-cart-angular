@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 import { RadioComponent } from '../radio/radio.component';
@@ -20,11 +20,21 @@ import { projectOptions } from '@app/data/project-options';
   `,
 })
 export class ProjectTypeComponent {
-  @Output() selectionChange = new EventEmitter<string>();
   options: ProjectOption[] = projectOptions;
 
+  constructor() {
+    const projectType = localStorage.getItem('projectType');
+    if (projectType) {
+      this.options = this.options.map(option => {
+        option.checked = option.id === projectType;
+        return option;
+      });
+    } else {
+      localStorage.setItem('projectType', this.options.filter(option => option.checked).map(option => option.id)[0]);
+    }
+  }
+
   onSelectionChange(selectionId: string): void {
-    this.selectionChange.emit(selectionId);
-    console.log(selectionId);
+    localStorage.setItem('projectType', selectionId);
   }
 }

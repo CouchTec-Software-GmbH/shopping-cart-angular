@@ -50,6 +50,4 @@ export class RadioComponent {
     this.selectedOption = selectionId;
     this.selectionChange.emit(selectionId);
   }
-
-
 }

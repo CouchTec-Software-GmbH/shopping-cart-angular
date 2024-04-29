@@ -3,15 +3,12 @@ import { CommonModule } from '@angular/common';
 import { StepsComponent } from './components/steps/steps.component';
 import { ProjectTypeComponent } from './components/project-type/project-type.component';
 import { TechStackComponent } from './components/tech-stack/tech-stack.component';
-import { steps } from '@data/steps';
-import { projectOptions } from '@app/data/project-options';
-import { architectureOptions } from '@data/architecture-options';
-import { tierOptions } from '@app/data/tier-options';
 import { DeploymentComponent } from './components/deployment/deployment.component';
 import { SecurityComponent } from './components/security/security.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ExtraComponent } from './components/extra/extra.component';
 import { SummaryComponent } from './components/summary/summary.component';
+import { stepsOptions } from '@app/data/steps';
 
 
 @Component({
@@ -38,41 +35,13 @@ import { SummaryComponent } from './components/summary/summary.component';
       <app-steps [steps]="steps" [currentStep]="currentStep" (stepChange)="currentStep = $event" ></app-steps>
 
 
-        <app-project-type (selectionChange)="projectTypeSelection = $event" *ngIf="currentStep === 0" ></app-project-type>
-        <app-tech-stack
-          (tierOutput)="techStackSelection = $event"
-          (frontendFrameworkOutput)="frontendFrameworkSelection = $event"
-          (stylingOutput)="stylingSelection = $event"
-          (middlewareOutput)="middlewareSelection = $event"
-          (backendOutput)="backendSelection = $event"
-          (databaseOutput)="databaseSelection = $event"
-          *ngIf="currentStep === 1" ></app-tech-stack>
-        <app-deployment
-          (providerOutput)="providerSelection = $event"
-          (containerizationOutput)="orchestrationSelection = $event"
-          (orchestrationOutput)="orchestrationSelection = $event"
-          (environmentOutput)="environmentSelection = $event"
-          *ngIf="currentStep === 2" ></app-deployment>
-        <app-security
-          (selectionChange)="securitySelection = $event" *ngIf="currentStep === 3" ></app-security>
-        <app-monitoring (selectionChange)="monitoringSelection = $event" *ngIf="currentStep === 4" ></app-monitoring>
-        <app-extra (selectionChange)="extraSelection = $event" *ngIf="currentStep === 5" ></app-extra>
-        <app-summary
-          [projectTypeSelection]="projectTypeSelection"
-          [techStackSelection]="techStackSelection"
-          [frontendFrameworkSelection]="frontendFrameworkSelection"
-          [stylingSelection]="stylingSelection"
-          [middlewareSelection]="middlewareSelection"
-          [backendSelection]="backendSelection"
-          [databaseSelection]="databaseSelection"
-          [providerSelection]="providerSelection"
-          [containerizationSelection]="containerizationSelection"
-          [orchestrationSelection]="orchestrationSelection"
-          [environmentSelection]="environmentSelection"
-          [securitySelection]="securitySelection"
-          [monitoringSelection]="monitoringSelection"
-          [extraSelection]="extraSelection"
-          *ngIf="currentStep === 6" ></app-summary>
+        <app-project-type *ngIf="currentStep === 0" ></app-project-type>
+        <app-tech-stack *ngIf="currentStep === 1" ></app-tech-stack>
+        <app-deployment *ngIf="currentStep === 2" ></app-deployment>
+        <app-security *ngIf="currentStep === 3" ></app-security>
+        <app-monitoring  *ngIf="currentStep === 4" ></app-monitoring>
+        <app-extra *ngIf="currentStep === 5" ></app-extra>
+        <app-summary *ngIf="currentStep === 6" ></app-summary>
 
           <div class="col-span-6 sm:flex sm:items-center sm:gap-4 mt-5">
             <button
@@ -98,34 +67,19 @@ import { SummaryComponent } from './components/summary/summary.component';
   `,
 })
 export class DashboardComponent {
-  steps = steps;
-  projectOptions = projectOptions;
-  architectureOptions = architectureOptions;
-  tierOptions = tierOptions;
-  currentStep: number = 6;
-
-  projectTypeSelection: string = '';
-
-  techStackSelection: string[] = [];
-  frontendFrameworkSelection: string = '';
-  stylingSelection: string = '';
-  middlewareSelection: string = '';
-  backendSelection: string = '';
-  databaseSelection: string = '';
-
-  providerSelection: string = '';
-  containerizationSelection: string = '';
-  orchestrationSelection: string = '';
-  environmentSelection: string[] = [];
-
-  securitySelection: string[] = [];
-  monitoringSelection: string = '';
-  extraSelection: string[] = [];
+  steps = stepsOptions;
+  currentStep: number = 0;
 
   handleNextStep(): void {
+    if (this.currentStep === 6) {
+      return;
+    }
     this.currentStep += 1;
   }
   handlePreviousStep(): void {
+    if (this.currentStep === 0) {
+      return;
+    }
     this.currentStep -= 1;
   }
 }

@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { security } from '@app/data/security';
+import { securityOptions } from '@app/data/security';
 
 @Component({
   selector: 'app-security',
@@ -22,14 +22,21 @@ import { security } from '@app/data/security';
   `,
 })
 export class SecurityComponent {
-  @Output() selectionChange = new EventEmitter<string[]>();
+  options: ProjectOption[] = securityOptions
 
-  options: ProjectOption[] = security;
-
-  selectedOptions: string[] = [];
+  constructor() {
+    const security = localStorage.getItem('security');
+    if (security) {
+      this.options = this.options.map(option => {
+        option.checked = security.includes(option.id);
+        return option;
+      });
+    } else {
+      localStorage.setItem('security', JSON.stringify(this.options.filter(option => option.checked).map(option => option.id)));
+    }
+  }
 
   handleSelectionChange(selectionId: string[]): void {
-    this.selectionChange.emit(selectionId);
-    this.selectedOptions = selectionId;
+    localStorage.setItem('security', JSON.stringify(selectionId));
   }
 }

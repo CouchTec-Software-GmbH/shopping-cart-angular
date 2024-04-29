@@ -42,5 +42,6 @@ export class StepsComponent {
   onStepChange(step: number): void {
     this.stepChange.emit(step);
     this.currentStep = step;
+    console.log(this.currentStep);
   }
 }
