@@ -11,22 +11,23 @@ import { DeploymentComponent } from './components/deployment/deployment.componen
 import { SecurityComponent } from './components/security/security.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ExtraComponent } from './components/extra/extra.component';
+import { SummaryComponent } from './components/summary/summary.component';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-  SecurityComponent, MonitoringComponent, ExtraComponent],
+  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent],
   template: `
 <section class="bg-white">
   <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
     <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
-      <img
-        alt=""
-        src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        class="absolute inset-0 h-full w-full object-cover"
-      />
+<div
+  class="absolute inset-0 w-full bg-auto bg-top bg-repeat-y"
+  style="background-image: url('https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')"
+></div>
+
     </aside>
 
     <main
@@ -34,15 +35,44 @@ import { ExtraComponent } from './components/extra/extra.component';
     >
 
       <div class="max-w-xl lg:max-w-3xl">
-      <app-steps [steps]="steps" [currentStep]="currentStep" ></app-steps>
+      <app-steps [steps]="steps" [currentStep]="currentStep" (stepChange)="currentStep = $event" ></app-steps>
 
 
-        <app-project-type [options]="projectOptions" *ngIf="currentStep === 0" ></app-project-type>
-        <app-tech-stack *ngIf="currentStep === 1" ></app-tech-stack>
-        <app-deployment *ngIf="currentStep === 2" ></app-deployment>
-        <app-security *ngIf="currentStep === 3" ></app-security>
-        <app-monitoring *ngIf="currentStep === 4" ></app-monitoring>
-        <app-extra *ngIf="currentStep === 5" ></app-extra>
+        <app-project-type (selectionChange)="projectTypeSelection = $event" *ngIf="currentStep === 0" ></app-project-type>
+        <app-tech-stack
+          (tierOutput)="techStackSelection = $event"
+          (frontendFrameworkOutput)="frontendFrameworkSelection = $event"
+          (stylingOutput)="stylingSelection = $event"
+          (middlewareOutput)="middlewareSelection = $event"
+          (backendOutput)="backendSelection = $event"
+          (databaseOutput)="databaseSelection = $event"
+          *ngIf="currentStep === 1" ></app-tech-stack>
+        <app-deployment
+          (providerOutput)="providerSelection = $event"
+          (containerizationOutput)="orchestrationSelection = $event"
+          (orchestrationOutput)="orchestrationSelection = $event"
+          (environmentOutput)="environmentSelection = $event"
+          *ngIf="currentStep === 2" ></app-deployment>
+        <app-security
+          (selectionChange)="securitySelection = $event" *ngIf="currentStep === 3" ></app-security>
+        <app-monitoring (selectionChange)="monitoringSelection = $event" *ngIf="currentStep === 4" ></app-monitoring>
+        <app-extra (selectionChange)="extraSelection = $event" *ngIf="currentStep === 5" ></app-extra>
+        <app-summary
+          [projectTypeSelection]="projectTypeSelection"
+          [techStackSelection]="techStackSelection"
+          [frontendFrameworkSelection]="frontendFrameworkSelection"
+          [stylingSelection]="stylingSelection"
+          [middlewareSelection]="middlewareSelection"
+          [backendSelection]="backendSelection"
+          [databaseSelection]="databaseSelection"
+          [providerSelection]="providerSelection"
+          [containerizationSelection]="containerizationSelection"
+          [orchestrationSelection]="orchestrationSelection"
+          [environmentSelection]="environmentSelection"
+          [securitySelection]="securitySelection"
+          [monitoringSelection]="monitoringSelection"
+          [extraSelection]="extraSelection"
+          *ngIf="currentStep === 6" ></app-summary>
 
           <div class="col-span-6 sm:flex sm:items-center sm:gap-4 mt-5">
             <button
@@ -72,10 +102,25 @@ export class DashboardComponent {
   projectOptions = projectOptions;
   architectureOptions = architectureOptions;
   tierOptions = tierOptions;
-  currentStep: number = 1;
+  currentStep: number = 6;
 
   projectTypeSelection: string = '';
-  techStackSelection: string = '';
+
+  techStackSelection: string[] = [];
+  frontendFrameworkSelection: string = '';
+  stylingSelection: string = '';
+  middlewareSelection: string = '';
+  backendSelection: string = '';
+  databaseSelection: string = '';
+
+  providerSelection: string = '';
+  containerizationSelection: string = '';
+  orchestrationSelection: string = '';
+  environmentSelection: string[] = [];
+
+  securitySelection: string[] = [];
+  monitoringSelection: string = '';
+  extraSelection: string[] = [];
 
   handleNextStep(): void {
     this.currentStep += 1;
