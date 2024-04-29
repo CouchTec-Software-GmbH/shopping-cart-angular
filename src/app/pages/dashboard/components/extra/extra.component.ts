@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { extra } from '@app/data/extra';
+import { extraOptions } from '@app/data/extra';
 
 @Component({
   selector: 'app-extra',
@@ -18,18 +18,25 @@ import { extra } from '@app/data/extra';
           Choose additional Features.
         </p>
 
-    <app-checkbox [options]="options" (selectionChange)="selectedOptions = $event"></app-checkbox>
+    <app-checkbox [options]="options" (selectionChange)="handleSelectionChange($event)"></app-checkbox>
   `,
 })
 export class ExtraComponent {
-  @Output() selectionChange = new EventEmitter<string[]>();
+  options: ProjectOption[] = extraOptions;
 
-  options: ProjectOption[] = extra;
+  constructor() {
+    const extra = localStorage.getItem('extra');
+    if (extra) {
+      this.options = this.options.map(option => {
+        option.checked = extra.includes(option.id);
+        return option;
+      });
+    } else {
+      localStorage.setItem('extra', this.options.filter(option => option.checked).map(option => option.id)[0] || "");
+    }
+  }
 
-  selectedOptions: string[] = [];
-
-  onSelectionChange(selectionId: string[]): void {
-    this.selectedOptions = selectionId;
-    this.selectionChange.emit(selectionId);
+  handleSelectionChange(selectionId: string[]): void {
+    localStorage.setItem('extra', JSON.stringify(selectionId));
   }
 }
