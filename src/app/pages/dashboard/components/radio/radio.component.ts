@@ -27,7 +27,8 @@ import { ProjectOption } from '@models/project-option';
         [value]="option.id"
         [id]="option.id"
         class="size-5 border-gray-300 text-blue-500"
-[checked]="option.checked"
+        [checked]="option.checked"
+        (change)="onSelectionChange(option.id)"
       />
     </label>
   </div>
@@ -40,6 +41,10 @@ export class RadioComponent {
 
   selectedOption: string = '';
   uuid: string = (Math.random() + 1).toString(36).substring(7);
+
+  constructor() {
+    this.selectionChange.emit(this.options.find(option => option.checked)?.id || '')
+  }
 
   onSelectionChange(selectionId: string): void {
     this.selectedOption = selectionId;
