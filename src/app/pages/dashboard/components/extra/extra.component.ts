@@ -22,9 +22,14 @@ import { extra } from '@app/data/extra';
   `,
 })
 export class ExtraComponent {
-  @Output() selectionChange = new EventEmitter<string>();
+  @Output() selectionChange = new EventEmitter<string[]>();
 
   options: ProjectOption[] = extra;
 
   selectedOptions: string[] = [];
+
+  onSelectionChange(selectionId: string[]): void {
+    this.selectedOptions = selectionId;
+    this.selectionChange.emit(selectionId);
+  }
 }
