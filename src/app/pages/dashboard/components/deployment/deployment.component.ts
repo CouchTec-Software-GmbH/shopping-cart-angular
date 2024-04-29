@@ -18,28 +18,31 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
         <p class="mt-4 leading-relaxed text-gray-500">
           Choose the provider.
         </p>
-        <app-radio [options]="provider" (selectionChange)="onProviderSelectionChange($event)"></app-radio>
+        <app-radio [options]="provider" (providerOutput)="handleProviderSelectionChange($event)"></app-radio>
 
 
       <p class="mt-4 leading-relaxed text-gray-500">
         Choose the containerization.
       </p>
-      <app-radio [options]="containerization" (selectionChange)="onContainerizationSelectionChange($event)"></app-radio>
+      <app-radio [options]="containerization" (containerizationOutput)="handleContainerizationSelectionChange($event)"></app-radio>
 
       <p class="mt-4 leading-relaxed text-gray-500">
         Choose the orchestration.
       </p>
-      <app-radio [options]="orchestration" (selectionChange)="onOrchestrationSelectionChange($event)"></app-radio>
+      <app-radio [options]="orchestration" (orchestrationOutput)="handleOrchestrationSelectionChange($event)"></app-radio>
 
       <p class="mt-4 leading-relaxed text-gray-500">
         Choose the environment.
       </p>
-      <app-checkbox [options]="environment" ></app-checkbox>
+      <app-checkbox [options]="environment" (environmentOutput)="handleEnvironmentSelectionChange($event)"></app-checkbox>
   `,
 })
 export class DeploymentComponent {
   @Input() options: ProjectOption[] = [];
-  @Output() selectionChange = new EventEmitter<string>();
+  @Output() providerOutput = new EventEmitter<string>();
+  @Output() containerizationOutput = new EventEmitter<string>();
+  @Output() orchestrationOutput = new EventEmitter<string>();
+  @Output() environmentOutput = new EventEmitter<string[]>();
 
   provider: ProjectOption[] = provider;
   containerization: ProjectOption[] = containerization;
@@ -51,22 +54,23 @@ export class DeploymentComponent {
   selectedOrchestration: string = '';
   selectedEnvironments: string[] = [];
 
-  onProviderSelectionChange(selectionId: string): void {
+  handleProviderSelectionChange(selectionId: string): void {
     this.selectedProvider = selectionId;
-    this.selectionChange.emit(selectionId);
+    this.providerOutput.emit(selectionId);
   }
 
-  onContainerizationSelectionChange(selectionId: string): void {
+  handleContainerizationSelectionChange(selectionId: string): void {
     this.selectedContainerization = selectionId;
-    this.selectionChange.emit(selectionId);
+    this.containerizationOutput.emit(selectionId);
   }
 
-  onOrchestrationSelectionChange(selectionId: string): void {
+  handleOrchestrationSelectionChange(selectionId: string): void {
     this.selectedOrchestration = selectionId;
-    this.selectionChange.emit(selectionId);
+    this.orchestrationOutput.emit(selectionId);
   }
 
-  onEnvironmentSelectionChange(selectionId: string[]): void {
+  handleEnvironmentSelectionChange(selectionId: string[]): void {
     this.selectedEnvironments = selectionId;
+    this.environmentOutput.emit(selectionId);
   }
 }
