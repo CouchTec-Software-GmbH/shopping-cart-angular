@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { headerOptions } from '@app/data/header';
+import { HeaderOption } from '@app/models/header-option';
 import { SearchService } from '@services/search.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   template: `
     <header class="bg-white">
       <div
@@ -30,47 +34,13 @@ import { SearchService } from '@services/search.service';
         <div class="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" class="hidden md:block">
             <ul class="flex items-center gap-6 text-sm">
-              <li>
+
+              <li *ngFor="let option of headerOptions">
                 <a
                  class="text-gray-500 transition hover:text-gray-500/75"
-          [routerLink]="['/']"
+                  [routerLink]="[option.link]"
                 >
-                  Home
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="text-gray-500 transition hover:text-gray-500/75"
-                >
-                  About
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="text-gray-500 transition hover:text-gray-500/75"
-[routerLink]="['/services']"
-                >
-                  Services
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  Products
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  Contact
+                  {{ option.title }}
                 </a>
               </li>
             </ul>
@@ -131,10 +101,14 @@ import { SearchService } from '@services/search.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  headerOptions: HeaderOption[] = headerOptions;
+
   constructor(
     private router: Router,
     private searchService: SearchService,
-  ) {}
+  ) {
+    console.log(headerOptions);
+  }
 
   onSearch(value: string): void {
     this.searchService.search(value);
