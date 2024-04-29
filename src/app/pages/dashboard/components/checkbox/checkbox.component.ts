@@ -17,7 +17,8 @@ import { ProjectOption } from '@models/project-option';
       <div class="flex items-center">
         &#8203;
         <input type="checkbox" class="size-4 rounded border-gray-300" id="option.id"
-(change)="onSelectionChange(option.id)"
+        (change)="onSelectionChange(option.id)"
+        [checked]="option.checked"
 />
       </div>
       <div>
@@ -35,15 +36,15 @@ export class CheckboxComponent {
   @Input() options: ProjectOption[] = [];
   @Output() selectionChange = new EventEmitter<string[]>();
 
-  selectedOptions: string[] = [];
-
+  selectedOptions: string[] = this.options.filter(option => option.checked).map(option => option.id);
   constructor() {
     this.selectionChange.emit(this.options.filter(option => option.checked).map(option => option.id));
+    console.log(this.options);
   }
 
   onSelectionChange(selectionId: string): void {
     if (this.selectedOptions.includes(selectionId)) {
-      this.selectedOptions.splice(this.selectedOptions.indexOf(selectionId), 1);
+      this.selectedOptions = this.selectedOptions.filter(option => option !== selectionId);
     }else {
       this.selectedOptions.push(selectionId);
     }
