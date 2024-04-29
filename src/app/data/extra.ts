@@ -1,4 +1,4 @@
-export const extra = [
+export const extraOptions = [
 {
 id: 'cdn',
 name: 'CDN',

@@ -1,4 +1,4 @@
-export const steps = [
+export const stepsOptions = [
   {
     id: 'project-type',
     name: 'Type',

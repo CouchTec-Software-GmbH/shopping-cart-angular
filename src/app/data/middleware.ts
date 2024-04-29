@@ -1,4 +1,4 @@
-export const middlewares = [
+export const middlewareOptions = [
   {
     id: 'oauth2-proxy',
     name: 'OAuth2-Proxy',

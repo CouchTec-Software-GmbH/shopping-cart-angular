@@ -1,4 +1,4 @@
-export const styling = [
+export const stylingOptions = [
   {
     id: 'css',
     name: 'CSS',

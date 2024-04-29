@@ -1,4 +1,4 @@
-export const database = [
+export const databaseOptions = [
   {
     id: 'CouchDB',
     name: 'CouchDB',

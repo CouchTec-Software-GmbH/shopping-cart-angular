@@ -1,4 +1,4 @@
-export const security = [
+export const securityOptions = [
   {
     id: 'HTTPS/SSL',
     name: 'HTTPS/SSL',

@@ -1,4 +1,4 @@
-export const monitoring = [
+export const monitoringOptions = [
   {
     id: 'prometheus',
     name: 'Prometheus',

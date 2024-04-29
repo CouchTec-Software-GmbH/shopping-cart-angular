@@ -1,4 +1,4 @@
-  export const frontendFrameworks = [
+  export const frontendFrameworkOptions = [
   {
   id: 'angular',
   name: 'Angular',

@@ -1,4 +1,4 @@
-export const provider = [
+export const providerOptions = [
   {
     id: 'AWS',
     name: 'AWS',
@@ -18,7 +18,7 @@ export const provider = [
     checked: false,
   },
 ]
-export const containerization = [
+export const containerizationOptions = [
   {
     id: 'Docker',
     name: 'Docker',
@@ -33,7 +33,7 @@ export const containerization = [
   },
 ]
 
-export const orchestration = [
+export const orchestrationOptions = [
   {
     id: 'Kubernetes',
     name: 'Kubernetes',
@@ -55,7 +55,7 @@ export const orchestration = [
 ]
 
 
-export const environment = [
+export const environmentOptions = [
   {
     id: 'dev',
     name: 'Development',
