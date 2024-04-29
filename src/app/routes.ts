@@ -5,6 +5,7 @@ import { DetailsComponent } from '@pages/details/details.component';
 import { ConfigureComponent } from '@pages/configure/configure.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routeConfig: Routes = [
   {
@@ -35,6 +36,15 @@ const routeConfig: Routes = [
     path: 'details/:id',
     component: DetailsComponent,
     title: 'Couchtec Details'
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    title: 'Couchtec - Contact'
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
