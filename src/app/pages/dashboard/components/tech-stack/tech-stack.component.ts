@@ -32,13 +32,13 @@ import { tierOptions } from '@app/data/tier-options';
         <p class="mt-4 leading-relaxed text-gray-500">
           Choose the frontend framework you want to use for your project.
         </p>
-      <app-radio [options]="frontendFrameworks" (selectionChange)="selectedFrontendFramework = $event"></app-radio>
+      <app-radio [options]="frontendFrameworks" (selectionChange)="handleFrontendFrameworkSelection($event)"></app-radio>
 
         <p class="mt-4 leading-relaxed text-gray-500">
           Choose the styling you want to use for your project.
         </p>
 
-      <app-radio [options]="styling" (selectionChange)="selectedStyling = $event"></app-radio>
+      <app-radio [options]="styling" (selectionChange)="handleStylingSelection($event)"></app-radio>
   </div>
 
   <div *ngIf="selectedTiers.includes('middleware')">
@@ -48,7 +48,7 @@ import { tierOptions } from '@app/data/tier-options';
         <p class="mt-4 leading-relaxed text-gray-500">
           Choose the middleware you want to use for your project.
         </p>
-      <app-radio [options]="middlewares" (selectionChange)="selectedMiddleware = $event"></app-radio>
+      <app-radio [options]="middlewares" (selectionChange)="handleMiddlewareSelection($event)"></app-radio>
 
   </div>
 
@@ -59,7 +59,7 @@ import { tierOptions } from '@app/data/tier-options';
         <p class="mt-4 leading-relaxed text-gray-500">
           Choose the backend language you want to use for your project.
         </p>
-      <app-radio [options]="backend" (selectionChange)="selectedBackend = $event"></app-radio>
+      <app-radio [options]="backend" (selectionChange)="handleBackendSelection($event)"></app-radio>
 
   </div>
 
@@ -70,7 +70,7 @@ import { tierOptions } from '@app/data/tier-options';
         <p class="mt-4 leading-relaxed text-gray-500">
           Choose the database you want to use for your project.
         </p>
-      <app-radio [options]="database" (selectionChange)="selectedDatabase = $event"></app-radio>
+      <app-radio [options]="database" (selectionChange)="handleDatabaseSelection($event)"></app-radio>
 
   </div>
 

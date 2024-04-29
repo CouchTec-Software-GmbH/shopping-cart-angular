@@ -18,13 +18,18 @@ import { security } from '@app/data/security';
           Choose the security options you want to use for your project.
         </p>
 
-    <app-checkbox [options]="options" (selectionChange)="selectedOptions = $event"></app-checkbox>
+    <app-checkbox [options]="options" (selectionChange)="handleSelectionChange($event)"></app-checkbox>
   `,
 })
 export class SecurityComponent {
-  @Output() selectionChange = new EventEmitter<string>();
+  @Output() selectionChange = new EventEmitter<string[]>();
 
   options: ProjectOption[] = security;
 
   selectedOptions: string[] = [];
+
+  handleSelectionChange(selectionId: string[]): void {
+    this.selectionChange.emit(selectionId);
+    this.selectedOptions = selectionId;
+  }
 }
