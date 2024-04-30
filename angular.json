@@ -44,10 +44,7 @@
                 }
               ],
               "outputHashing": "all",
-              "buildOPtimizer": true,
               "aot": true,
-              "optimization": true,
-              "extractCss": true,
             },
             "development": {
               "optimization": false,
