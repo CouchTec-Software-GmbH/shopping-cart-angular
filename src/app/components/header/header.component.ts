@@ -50,9 +50,8 @@ import { CommonModule } from '@angular/common';
             <div class="sm:flex sm:gap-4">
               <a
                 class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
-                href="#"
               >
-                Login
+                  [routerLink]="['/login']"
               </a>
 
               <a
