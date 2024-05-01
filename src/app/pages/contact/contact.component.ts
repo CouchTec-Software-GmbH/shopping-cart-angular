@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { contactOptions } from '@app/data/contact';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ProductService } from '@app/services/product.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   template: `
 <section class="bg-gray-100">
   <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -22,7 +25,7 @@ import { contactOptions } from '@app/data/contact';
       </div>
 
       <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-        <form action="#" class="space-y-4">
+        <form class="space-y-4" [formGroup]="contactForm" (submit)="submitForm()" *ngIf="!submitted">
           <div>
             <label class="sr-only" for="name">Name</label>
             <input
@@ -30,6 +33,7 @@ import { contactOptions } from '@app/data/contact';
               placeholder="Name"
               type="text"
               id="name"
+              formControlName="name"
             />
           </div>
 
@@ -41,6 +45,7 @@ import { contactOptions } from '@app/data/contact';
                 placeholder="Email address"
                 type="email"
                 id="email"
+              formControlName="email"
               />
             </div>
           </div>
@@ -54,6 +59,7 @@ import { contactOptions } from '@app/data/contact';
               placeholder="Message"
               rows="8"
               id="message"
+              formControlName="message"
             ></textarea>
           </div>
 
@@ -67,6 +73,8 @@ import { contactOptions } from '@app/data/contact';
             </button>
           </div>
         </form>
+        <h2 *ngIf="submitted" class="text-2xl font-bold text-gray-600">Thank you for your enquiry!</h2>
+        <p *ngIf="submitted" class="mt-4 text-gray-600">Please check your e-mail. </p>
       </div>
     </div>
   </div>
@@ -74,6 +82,24 @@ import { contactOptions } from '@app/data/contact';
   `,
 })
 export class ContactComponent {
-
   contactOptions = contactOptions;
+  submitted = false;
+  contactForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    message: new FormControl(''),
+  });
+  productService = inject(ProductService);
+
+
+  submitForm() {
+    console.log(this.contactForm.value);
+    this.productService.submitApplication(
+      this.contactForm.value.name ?? '',
+      this.contactForm.value.name ?? '',
+      this.contactForm.value.email ?? '',
+      this.contactForm.value.message ?? ''
+    );
+    this.submitted = true;
+  }
 }
