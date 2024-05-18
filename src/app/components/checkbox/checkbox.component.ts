@@ -39,7 +39,6 @@ export class CheckboxComponent {
   selectedOptions: string[] = this.options.filter(option => option.checked).map(option => option.id);
   constructor() {
     this.selectionChange.emit(this.options.filter(option => option.checked).map(option => option.id));
-    console.log(this.options);
   }
 
   onSelectionChange(selectionId: string): void {
