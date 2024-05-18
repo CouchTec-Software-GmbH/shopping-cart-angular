@@ -141,7 +141,6 @@ export class TechStackComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("Tech Stack to put: ", this.projectData);
     this.productService.putProject(this.uuid, this.projectData);
   }
 }
