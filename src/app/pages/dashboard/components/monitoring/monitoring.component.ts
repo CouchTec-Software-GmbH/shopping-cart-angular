@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
-import { RadioComponent } from '../radio/radio.component';
+import { RadioComponent } from '@components/radio/radio.component';
 import { monitoringOptions } from '@app/data/monitoring';
+import { SectionComponent } from '../section/section-component';
+import { ProjectData } from '@app/models/project-data';
+import { createDefaultProjectData } from '@app/utils/utils';
+import { ProductService } from '@app/services/product.service';
 
 @Component({
   selector: 'app-monitoring',
   standalone: true,
-  imports: [CommonModule, RadioComponent],
+  imports: [CommonModule, RadioComponent, SectionComponent],
   template: `
 
         <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -18,25 +22,27 @@ import { monitoringOptions } from '@app/data/monitoring';
           Choose the monitoring option you want to use for your project.
         </p>
 
-  <app-radio [options]="options" (selectionChange)="handleSelectionChange($event)"></app-radio>
+  <app-section
+    [path]="'monitoring'"
+    [options]="options"
+    [projectData]="projectData"
+    [buttonType]="'radio'">
+    [uuid]="uuid"
+    (projectDataChange)="changeProjectData($event)"
+  </app-section>
   `,
 })
-export class MonitoringComponent {
+export class MonitoringComponent implements OnDestroy {
+  productService = inject(ProductService);
+  @Input() projectData: ProjectData = createDefaultProjectData();
+  @Input() uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
   options: ProjectOption[] = monitoringOptions;
 
-  constructor() {
-    const monitoring = localStorage.getItem('monitoring');
-    if (monitoring) {
-      this.options = this.options.map(option => {
-        option.checked = option.id === monitoring;
-        return option;
-      });
-    } else {
-      localStorage.setItem('monitoring', this.options.filter(option => option.checked).map(option => option.id)[0] || "");
-    }
+  changeProjectData(event: ProjectData) {
+    this.projectData = event;
   }
 
-  handleSelectionChange(selectionId: string): void {
-    localStorage.setItem('monitoring', selectionId);
+  ngOnDestroy() {
+    this.productService.putProject(this.uuid, this.projectData);
   }
 }

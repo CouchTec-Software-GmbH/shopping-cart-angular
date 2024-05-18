@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { securityOptions } from '@app/data/security';
+import { SectionComponent } from '../section/section-component';
+import { ProjectData } from '@app/models/project-data';
+import { createDefaultProjectData } from '@app/utils/utils';
+import { ProductService } from '@app/services/product.service';
 
 @Component({
   selector: 'app-security',
   standalone: true,
-  imports: [CommonModule, CheckboxComponent],
+  imports: [CommonModule, SectionComponent],
   template: `
 
         <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -18,25 +21,27 @@ import { securityOptions } from '@app/data/security';
           Choose the security options you want to use for your project.
         </p>
 
-    <app-checkbox [options]="options" (selectionChange)="handleSelectionChange($event)"></app-checkbox>
+    <app-section
+      [path]="'security'"
+      [options]="options"
+      [projectData]="projectData"
+      [buttonType]="'checkbox'">
+      [uuid]="uuid"
+      (projectDataChange)="changeProjectData($event)"
+    </app-section>
   `,
 })
-export class SecurityComponent {
+export class SecurityComponent implements OnDestroy {
+  productService = inject(ProductService);
+  @Input() projectData: ProjectData = createDefaultProjectData();
+  @Input() uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
   options: ProjectOption[] = securityOptions
 
-  constructor() {
-    const security = localStorage.getItem('security');
-    if (security) {
-      this.options = this.options.map(option => {
-        option.checked = security.includes(option.id);
-        return option;
-      });
-    } else {
-      localStorage.setItem('security', JSON.stringify(this.options.filter(option => option.checked).map(option => option.id)));
-    }
+  changeProjectData(event: ProjectData) {
+    this.projectData = event;
   }
 
-  handleSelectionChange(selectionId: string[]): void {
-    localStorage.setItem('security', JSON.stringify(selectionId));
+  ngOnDestroy() {
+    this.productService.putProject(this.uuid, this.projectData);
   }
 }

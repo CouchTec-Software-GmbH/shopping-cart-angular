@@ -1,40 +1,42 @@
-import { Component, } from '@angular/core';
+import { Component,  Input, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
-import { RadioComponent } from '../radio/radio.component';
+import { RadioComponent } from '@components/radio/radio.component';
 import { projectOptions } from '@app/data/project-options';
+import { ProjectData } from '@app/models/project-data';
+import { createDefaultProjectData } from '@app/utils/utils';
+import { SectionComponent } from '../section/section-component';
+import { ProductService } from '@app/services/product.service';
 
 @Component({
   selector: 'app-project-type',
   standalone: true,
-  imports: [CommonModule, RadioComponent],
+  imports: [CommonModule, RadioComponent, SectionComponent, SectionComponent],
   template: `
         <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
           Start configuring your project
         </h1>
-
-        <p class="mt-4 leading-relaxed text-gray-500">
-          Choose the type of project you want to develop / expand.
-        </p>
-        <app-radio [options]="options" (selectionChange)="onSelectionChange($event)"></app-radio>
+        <app-section
+          [path]="'projectType'"
+          [options]="options"
+          [projectData]="projectData"
+          [buttonType]="'radio'">
+          [uuid]="uuid"
+          (projectDataChange)="changeProjectData($event)"
+        </app-section>
   `,
 })
-export class ProjectTypeComponent {
+export class ProjectTypeComponent implements OnDestroy {
   options: ProjectOption[] = projectOptions;
+  productService = inject(ProductService);
+  @Input() projectData: ProjectData = createDefaultProjectData();
+  @Input() uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
 
-  constructor() {
-    const projectType = localStorage.getItem('projectType');
-    if (projectType) {
-      this.options = this.options.map(option => {
-        option.checked = option.id === projectType;
-        return option;
-      });
-    } else {
-      localStorage.setItem('projectType', this.options.filter(option => option.checked).map(option => option.id)[0]);
-    }
+  changeProjectData(event: ProjectData) {
+    this.projectData = event;
   }
 
-  onSelectionChange(selectionId: string): void {
-    localStorage.setItem('projectType', selectionId);
+  ngOnDestroy() {
+    this.productService.putProject(this.uuid, this.projectData);
   }
 }

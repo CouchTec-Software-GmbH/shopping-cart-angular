@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { extraOptions } from '@app/data/extra';
+import { SectionComponent } from '../section/section-component';
+import { ProjectData } from '@app/models/project-data';
+import { createDefaultProjectData } from '@app/utils/utils';
+import { ProductService } from '@app/services/product.service';
 
 @Component({
   selector: 'app-extra',
   standalone: true,
-  imports: [CommonModule, CheckboxComponent],
+  imports: [CommonModule, SectionComponent],
   template: `
 
         <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
@@ -18,25 +21,27 @@ import { extraOptions } from '@app/data/extra';
           Choose additional Features.
         </p>
 
-    <app-checkbox [options]="options" (selectionChange)="handleSelectionChange($event)"></app-checkbox>
+    <app-section
+      [path]="'extra'"
+      [options]="options"
+      [projectData]="projectData"
+      [buttonType]="'checkbox'">
+      [uuid]="uuid"
+      (projectDataChange)="changeProjectData($event)"
+    </app-section>
   `,
 })
-export class ExtraComponent {
+export class ExtraComponent implements OnDestroy {
+  productService = inject(ProductService);
+  @Input() projectData: ProjectData = createDefaultProjectData();
+  @Input() uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
   options: ProjectOption[] = extraOptions;
 
-  constructor() {
-    const extra = localStorage.getItem('extra');
-    if (extra) {
-      this.options = this.options.map(option => {
-        option.checked = extra.includes(option.id);
-        return option;
-      });
-    } else {
-      localStorage.setItem('extra', this.options.filter(option => option.checked).map(option => option.id)[0] || "");
-    }
+  changeProjectData(event: ProjectData) {
+    this.projectData = event;
   }
 
-  handleSelectionChange(selectionId: string[]): void {
-    localStorage.setItem('extra', JSON.stringify(selectionId));
+  ngOnDestroy() {
+    this.productService.putProject(this.uuid, this.projectData);
   }
 }
