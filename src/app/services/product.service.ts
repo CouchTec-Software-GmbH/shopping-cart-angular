@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Product } from '@models/productListing';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { firstValueFrom } from 'rxjs';
+import { ProjectData } from '@models/project-data';
+import { createDefaultProjectData } from '@utils/utils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   url = 'https://couchdb-app-service.azurewebsites.net/products/';
-  apiUrl = `https://couchtec.dev.linusweigand.com/api/create-user`;
-  // apiUrl = `http://localhost/api/create-user`;
+  // apiUrl = `https://couchtec.dev.linusweigand.com/api/`;
+  apiUrl = `http://localhost/api/`;
   private httpOptions: { headers: HttpHeaders };
 
 
@@ -25,9 +28,34 @@ export class ProductService {
     };
   }
 
+  async putProject(uuid: string, body: Record<string, any>): Promise<void> {
+    try {
+      await firstValueFrom(this.http.put(`${this.apiUrl}${uuid}`, body, this.httpOptions));
+    } catch (error) {
+      // if 404 put default project data
+      if (error instanceof HttpErrorResponse && error.status === 404) {
+        await this.putProject(uuid, createDefaultProjectData());
+      }
+      console.log('Uh oh', error);
+      console.error('Error putting project: ', error);
+    }
+  }
+
+  async getProject(uuid: string): Promise<ProjectData> {
+    try {
+      const response = await firstValueFrom(this.http.get(`${this.apiUrl}${uuid}`, this.httpOptions));
+      return {...createDefaultProjectData(), ...response};
+    } catch (error) {
+      console.log("No project with that uuid found");
+      const doc = createDefaultProjectData();
+      await this.putProject(uuid, doc);
+      return doc;
+    }
+  }
+
   async getAllProducts(): Promise<Product[]> {
     try {
-      const response = await this.http.get<any>(`${this.url}_all_docs?include_docs=true`, this.httpOptions).toPromise();
+      const response = await firstValueFrom(this.http.get<any>(`${this.url}_all_docs?include_docs=true`, this.httpOptions));
 
       const productPromises = response.rows.map(async (row: any, index: number) => {
         const doc = row.doc;
@@ -54,7 +82,7 @@ export class ProductService {
   }
   async getProductById(id: string): Promise<Product | undefined> {
     try {
-      const response = await this.http.get<any>(`${this.url}${id}`, this.httpOptions).toPromise();
+      const response = await firstValueFrom(this.http.get<any>(`${this.url}${id}`, this.httpOptions));
 
       if (!response) {
         return undefined;
@@ -88,7 +116,7 @@ export class ProductService {
         enabled: true
       };
 
-      await this.http.post(this.apiUrl, userData, this.httpOptions).toPromise();
+      await firstValueFrom(this.http.post(`${this.apiUrl}/create-user`, userData, this.httpOptions));
       console.log('User created successfully');
     } catch (error) {
       console.error('Error creating user: ', error);
@@ -97,10 +125,10 @@ export class ProductService {
 
   async getAttachmentUrl(docId: string, attachmentName: string): Promise<SafeUrl> {
     try {
-      const response = await this.http.get(`${this.url}${docId}/${attachmentName}`, {
+      const response = await firstValueFrom(this.http.get(`${this.url}${docId}/${attachmentName}`, {
         headers: this.httpOptions.headers,
         responseType: 'blob'
-      }).toPromise();
+      }));
 
       if (response) {
         const objectURL = URL.createObjectURL(response);
