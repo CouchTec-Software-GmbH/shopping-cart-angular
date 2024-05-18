@@ -32,6 +32,7 @@
       "@services/*": ["src/app/services/*"],
       "@models/*": ["src/app/models/*"],
       "@data/*": ["src/app/data/*"],
+      "@utils/*": ["src/app/utils/*"],
     },
 
   },
