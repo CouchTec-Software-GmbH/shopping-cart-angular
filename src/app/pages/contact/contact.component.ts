@@ -93,7 +93,6 @@ export class ContactComponent {
 
 
   submitForm() {
-    console.log(this.contactForm.value);
     this.productService.submitApplication(
       this.contactForm.value.name ?? '',
       this.contactForm.value.name ?? '',

@@ -83,19 +83,14 @@ export class DetailsComponent {
 
   addToCart() {
     if (!this.product) {
-      console.error('No product to add');
       return;
     }
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     if (cart.includes(this.product.id)) {
-      console.log('Product is already in the cart');
-      console.log(JSON.stringify(cart));
       return;
     }
     cart.push(this.product.id);
     localStorage.setItem('cart', JSON.stringify(cart));
-    console.log('Product added to cart');
-    console.log(JSON.stringify(cart));
 
     alert(`Product added to cart: ${this.product.name}`);
   }
