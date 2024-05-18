@@ -11,14 +11,13 @@ import { backendOptions } from '@app/data/backend';
 import { databaseOptions } from '@app/data/database';
 import { ProjectData } from '@app/models/project-data';
 import { ProductService } from '@app/services/product.service';
-import { FrontendComponent } from './components/frontend-component';
 import { createDefaultProjectData } from '@app/utils/utils';
 import { SectionComponent } from '../section/section-component';
 
 @Component({
   selector: 'app-tech-stack',
   standalone: true,
-  imports: [CommonModule, CheckboxComponent, RadioComponent, FrontendComponent, SectionComponent],
+  imports: [CommonModule, CheckboxComponent, RadioComponent, SectionComponent],
   template: `
 
         <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
