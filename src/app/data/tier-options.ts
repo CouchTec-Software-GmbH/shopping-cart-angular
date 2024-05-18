@@ -1,24 +1,24 @@
   export const tierOptions = [
     {
-      id: 'frontend',
+      id: 'Frontend',
       name: 'Frontend',
       description: 'Front facing user interface.',
       checked: true,
     },
     {
-      id: 'middleware',
-      name: 'Middleware / Proxy',
+      id: 'Middleware',
+      name: 'Middleware',
       description: 'Connection and data orchestration hub.',
       checked: false,
     },
     {
-      id: 'backend',
+      id: 'Backend',
       name: 'Backend',
       description: 'Data processing and storage core.',
       checked: true,
     },
     {
-      id: 'database',
+      id: 'Database',
       name: 'Database',
       description: 'Data storage and retrieval.',
       checked: false,

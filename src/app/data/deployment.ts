@@ -12,7 +12,7 @@ export const providerOptions = [
     checked: false,
   },
   {
-    id: 'internal',
+    id: 'Internal',
     name: 'Internal',
     description: 'Internal.',
     checked: false,
@@ -57,19 +57,19 @@ export const orchestrationOptions = [
 
 export const environmentOptions = [
   {
-    id: 'dev',
+    id: 'Development',
     name: 'Development',
     description: 'Development.',
     checked: true,
   },
   {
-    id: 'staging',
+    id: 'Staging',
     name: 'Staging',
     description: 'Staging.',
     checked: false,
   },
   {
-    id: 'prod',
+    id: 'Production',
     name: 'Production',
     description: 'Production.',
     checked: false,

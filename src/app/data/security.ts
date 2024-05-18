@@ -6,7 +6,7 @@ export const securityOptions = [
     checked: true,
   },
   {
-    id: 'waf',
+    id: 'Web Application Firewall',
     name: 'Web Application Firewall',
     description: 'Web Application Firewall.',
     checked: false,

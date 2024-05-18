@@ -1,18 +1,18 @@
 export const monitoringOptions = [
   {
-    id: 'prometheus',
+    id: 'Prometheus',
     name: 'Prometheus',
     description: 'Prometheus.',
     checked: false,
   },
   {
-    id: 'grafana',
+    id: 'Grafana',
     name: 'Grafana',
     description: 'Grafana.',
     checked: false,
   },
   {
-    id: 'data-dog',
+    id: 'Data-Dog',
     name: 'Data Dog',
     description: 'Data Dog.',
     checked: false,
