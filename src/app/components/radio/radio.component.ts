@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 
@@ -38,16 +38,9 @@ import { ProjectOption } from '@models/project-option';
 export class RadioComponent {
   @Input() options: ProjectOption[] = [];
   @Output() selectionChange = new EventEmitter<string>();
-
-  selectedOption: string = '';
-  uuid: string = (Math.random() + 1).toString(36).substring(7);
-
-  constructor() {
-    this.selectionChange.emit(this.options.find(option => option.checked)?.id || '')
-  }
+  uuid: string = crypto.randomUUID();
 
   onSelectionChange(selectionId: string): void {
-    this.selectedOption = selectionId;
     this.selectionChange.emit(selectionId);
   }
 }

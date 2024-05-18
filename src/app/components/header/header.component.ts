@@ -107,7 +107,6 @@ export class HeaderComponent {
     private router: Router,
     private searchService: SearchService,
   ) {
-    console.log(headerOptions);
   }
 
   onSearch(value: string): void {
