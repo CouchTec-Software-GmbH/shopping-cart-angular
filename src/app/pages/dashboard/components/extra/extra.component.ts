@@ -1,11 +1,9 @@
-import { Component, Input, OnDestroy, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOption } from '@models/project-option';
 import { extraOptions } from '@app/data/extra';
 import { SectionComponent } from '../section/section-component';
-import { ProjectData } from '@app/models/project-data';
-import { createDefaultProjectData } from '@app/utils/utils';
-import { ProductService } from '@app/services/product.service';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'app-extra',
@@ -31,17 +29,6 @@ import { ProductService } from '@app/services/product.service';
     </app-section>
   `,
 })
-export class ExtraComponent implements OnDestroy {
-  productService = inject(ProductService);
-  @Input() projectData: ProjectData = createDefaultProjectData();
-  @Input() uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
-  options: ProjectOption[] = extraOptions;
-
-  changeProjectData(event: ProjectData) {
-    this.projectData = event;
-  }
-
-  ngOnDestroy() {
-    this.productService.putProject(this.uuid, this.projectData);
-  }
+export class ExtraComponent extends BaseComponent {
+  options: ProjectOption[] = extraOptions
 }
