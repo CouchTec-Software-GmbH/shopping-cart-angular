@@ -5,12 +5,14 @@ import { Product } from '@models/productListing';
 import { ProductService } from '@services/product.service';
 import { Subscription } from 'rxjs';
 import { SearchService } from '@services/search.service';
+import { HeaderComponent } from '@app/components/header/header.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, ProductListingComponent],
+  imports: [CommonModule, ProductListingComponent, HeaderComponent],
   template: `
+    <app-header></app-header>
     <section class="results">
       <app-product-listing
         *ngFor="let product of filteredProductList"

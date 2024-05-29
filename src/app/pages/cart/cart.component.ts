@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartListingComponent } from '@pages/cart/components/cart-listing/cart-listing.component';
 import { Product } from '@models/productListing';
 import { ProductService } from '@services/product.service';
+import { HeaderComponent } from '@app/components/header/header.component';
 
 @Component({
   selector: 'app-cart',
@@ -10,8 +11,10 @@ import { ProductService } from '@services/product.service';
   imports: [
     CommonModule,
     CartListingComponent,
+    HeaderComponent
   ],
   template: `
+    <app-header></app-header>
     <h2>Your Cart</h2>
     <section class="cart">
       <div *ngIf="cartProducts.length === 0">Your cart is empty.</div>

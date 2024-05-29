@@ -4,15 +4,18 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@services/product.service';
 import { Product } from '@models/productListing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from '@app/components/header/header.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderComponent
   ],
   template: `
+    <app-header></app-header>
     <article>
       <img class="listing-photo" [src]="product?.photo"
         alt="Exterior photo of {{product?.name}}"/>

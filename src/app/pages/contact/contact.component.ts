@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { contactOptions } from '@app/data/contact';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '@app/services/product.service';
+import { HeaderComponent } from '@app/components/header/header.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, HeaderComponent],
   template: `
+<app-header></app-header>
 <section class="bg-gray-100">
   <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">

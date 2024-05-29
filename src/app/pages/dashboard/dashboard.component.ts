@@ -15,13 +15,14 @@ import { ProductService } from '@app/services/product.service';
 import { ProjectOption } from '@app/models/project-option';
 import { projectOptions } from '@app/data/project-options';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { HeaderComponent } from '@app/components/header/header.component';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent],
+  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent],
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
