@@ -4,14 +4,20 @@ import { CartComponent } from '@pages/cart/cart.component';
 import { DetailsComponent } from '@pages/details/details.component';
 import { ConfigureComponent } from '@pages/configure/configure.component';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { ProductsComponent } from '@pages/products/products.component';
+import { ContactComponent } from '@pages/contact/contact.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Couchtec - Home'
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    title: 'Couchtec - Auth'
   },
   {
     path: 'services',
