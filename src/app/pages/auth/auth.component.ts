@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './components/signin/signin.component';
 import { SignInEmailComponent } from './components/signin-email/signin-email-component';
-import { SignUpComponent } from './signup/signup.component';
+import { SignUpComponent } from './components/signup/signup.component';
 
 @Component({
   selector: 'app-auth',
@@ -25,10 +25,12 @@ import { SignUpComponent } from './signup/signup.component';
                 <p class="text-xl">Harald Kisch</p>
             </div>
         </div>
-        <div class="w-full sm:w-1/2 flex justify-center items-center relative h-full">
+        <div class="grid sm:w-1/2">
+          <div class="place-self-center">
             <app-signin-email *ngIf="state === 'signin-email'" (signup)="switchToSignUp()"></app-signin-email>
             <app-signin *ngIf="state === 'signin'" (signinemail)="switchToSignInEmail()"></app-signin>
             <app-signup *ngIf="state === 'signup'" (signinemail)="switchToSignInEmail()"></app-signup>
+          </div>
             <a *ngIf="state !== 'signin'" class="absolute top-0 left-0 m-6 hover:bg-gray-100 rounded-md"
               (click)="switchToSignIn()">
                 <svg width="40px" height="40px" viewBox="0 0 1024 1024" fill="#000000" class="icon p-1" xmlns="http://www.w3.org/2000/svg">
