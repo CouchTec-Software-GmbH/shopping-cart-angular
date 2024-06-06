@@ -102,6 +102,23 @@ export class AuthService {
     }
   }
 
+  async reset(uuid: string, password: string): Promise<number> {
+    try {
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}reset`, { uuid, password }, this.httpOptions));
+      console.log('Response: ', response);
+      return 200;
+    } catch (error) {
+      if (error instanceof HttpErrorResponse && error.status === 404) {
+        return 404;
+      }
+      if (error instanceof HttpErrorResponse) {
+        return error.status;
+      } else {
+        return 500;
+      }
+    }
+  }
+
   async getUuids(): Promise<string[]> {
     try {
       let email = (document.cookie.split(';').find(row => row.startsWith('email')) ?? '').split('=')[1];
