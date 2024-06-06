@@ -71,6 +71,20 @@ export class AuthService {
     }
   }
 
+  async register(uuid: string): Promise<number> {
+    try {
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}register`, { uuid }, this.httpOptions));
+      console.log('Response: ', response);
+      return 200;
+    }catch (error) {
+      if (error instanceof HttpErrorResponse) {
+        return error.status;
+      } else {
+        return 500;
+      }
+    }
+  }
+
   async getUuids(): Promise<string[]> {
     try {
       let email = (document.cookie.split(';').find(row => row.startsWith('email')) ?? '').split('=')[1];
