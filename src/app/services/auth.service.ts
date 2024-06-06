@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +30,9 @@ export class AuthService {
 
   }
 
-  async signIn(email: string, password: string): Promise<number> {
+  async login(email: string, password: string): Promise<number> {
     try {
-      const response = await firstValueFrom(this.http.post(`${this.apiUrl}signin`, { email, password }, this.httpOptions));
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}login`, { email, password }, this.httpOptions));
       this.sessionToken = response.toString().trim();
       console.log('Session token: ', this.sessionToken);
       this.setSessionCookie('sessionToken', this.sessionToken);
@@ -50,13 +50,9 @@ export class AuthService {
     }
   }
 
-  async signUp(email: string, password: string): Promise<number> {
+  async preRegister(email: string, password: string, newsletter: boolean): Promise<number> {
     try {
-      const response = await firstValueFrom(this.http.post(`${this.apiUrl}signup`, { email, password }, this.httpOptions));
-      // this.sessionToken = response.toString().trim();
-      // console.log('Session token: ', this.sessionToken);
-      // this.setSessionCookie('sessionToken', this.sessionToken);
-      // this.setSessionCookie('email', email);
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}pre-register`, { email, password, newsletter }, this.httpOptions));
       console.log('Response: ', response);
       return 200;
     } catch (error) {
