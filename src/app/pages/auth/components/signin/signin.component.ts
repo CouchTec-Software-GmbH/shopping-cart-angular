@@ -55,15 +55,23 @@ import { CommonModule } from '@angular/common';
      Email
     </span>
    </button>
+
+  </div>
+<div class="relative inset-x-0 bottom-0">
+               <hr class="my-6 border-gray-300 w-full ">
+                <div class="mt-4 text-center">
+                    <p class="hover:cursor-pointer text-sm">Do not have an account? <a class="text-blue-600" (click)="signup.emit()"
+>Sign up</a></p>
+                </div>
   </div>
   `,
 })
 export class SignInComponent {
   @Output() signinemail = new EventEmitter<boolean>();
+  @Output() signup = new EventEmitter<boolean>();
 
   output() {
     this.signinemail.emit(true);
     console.log('output');
   }
-
 }
