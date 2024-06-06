@@ -82,6 +82,20 @@ import { Subscription } from 'rxjs';
     class="absolute end-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
     role="menu"
   >
+
+
+
+<div class="p-2">
+<strong class="block p-2 text-xs font-medium uppercase text-gray-400"> Projects </strong>
+      <a
+        *ngFor="let uuid of uuids"
+        class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+        role="menuitem"
+      >
+        {{uuid}}
+      </a>
+
+          </div>
   <div class="p-2" *ngIf="name !== ''">
      <button
           (click)="onSignOutClick()"
@@ -169,6 +183,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   name = '';
   authService = inject(AuthService);
   private authSubscription!: Subscription;
+  uuids: string[] = [];
 
   constructor(
     private router: Router,
@@ -176,10 +191,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.updateEmailFromCookies();
-    this.authSubscription = this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+    this.authSubscription = this.authService.isAuthenticated$.subscribe(async isAuthenticated => {
       this.updateEmailFromCookies();
+      this.uuids = await this.authService.getUuids();
+      console.log("Uuids:", this.uuids);
     });
   }
 
@@ -214,6 +231,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (document.cookie.includes('sessionToken') && document.cookie.includes('email')) {
       let email = (document.cookie.split('; ').find(row => row.startsWith('email')) ?? '').split('=')[1] ?? '';
       this.name = email.split('@')[0];
+      let len = this.name.length;
+      this.name = `${this.name.charAt(0).toUpperCase()}${this.name.slice(1,len)}`
     } else {
       this.name = '';
     }
