@@ -1,9 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './components/signin/signin.component';
 import { SignInEmailComponent } from './components/signin-email/signin-email-component';
+import { SignUpEmailComponent } from './components/signup-email/signup-email.component';
 import { SignUpComponent } from './components/signup/signup.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifiedEmailComponent } from './components/verified-email/verified-email.component';
+
 
 @Component({
   selector: 'app-auth',
@@ -12,32 +17,51 @@ import { SignUpComponent } from './components/signup/signup.component';
     RouterModule,
     CommonModule,
     SignInComponent,
-    SignInEmailComponent,
     SignUpComponent,
+    SignInEmailComponent,
+    SignUpEmailComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    VerifiedEmailComponent,
   ],
   template: `
-
 <div class="bg-gray-000">
-    <div class="flex h-screen flex-col sm:flex-row">
+    <div class="flex h-screen">
         <div class="w-full sm:w-1/2 bg-gray-800 text-white flex justify-center items-center p-10 sm:flex hidden">
             <div>
                 <h1 class="text-5xl font-bold mb-4">Think first / Then leap.</h1>
                 <p class="text-xl">Harald Kisch</p>
             </div>
         </div>
-        <div class="grid sm:w-1/2">
-          <div class="place-self-center">
-            <app-signin-email *ngIf="state === 'signin-email'" (signup)="switchToSignUp()"></app-signin-email>
-            <app-signin *ngIf="state === 'signin'" (signinemail)="switchToSignInEmail()"></app-signin>
-            <app-signup *ngIf="state === 'signup'" (signinemail)="switchToSignInEmail()"></app-signup>
-          </div>
-            <a *ngIf="state !== 'signin'" class="absolute top-0 left-0 m-6 hover:bg-gray-100 rounded-md"
+
+    <div class="sm:w-1/2 flex w-full justify-between">
+            <div class="relative top-0 left-0 m-6">
+            <a [hidden]="signup || signin"
+
               (click)="switchToSignIn()">
+                <div class="hover:bg-gray-100 rounded-md">
                 <svg width="40px" height="40px" viewBox="0 0 1024 1024" fill="#000000" class="icon p-1" xmlns="http://www.w3.org/2000/svg">
                     <path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill="" />
                 </svg>
+                </div>
             </a>
-            <a class="absolute top-0 right-0 m-6"
+    </div>
+
+        <div class="grid ">
+          <div class="place-self-center ">
+            <app-signin-email *ngIf="state === 'signin-email'" (signup)="switchToSignUp()" (resetPassword)="state = 'reset-password'"></app-signin-email>
+            <app-signin *ngIf="state === 'signin'" (signinemail)="switchToSignInEmail()"
+            (signup)="switchToSignUp()"
+            ></app-signin>
+            <app-signup-email *ngIf="state === 'signup-email'" (signin)="switchToSignIn()"></app-signup-email>
+            <app-signup *ngIf="state === 'signup'" (signin)="switchToSignIn()" (signupemail)="switchToSignUpEmail()"></app-signup>
+            <app-reset-password *ngIf="state === 'reset-password'" [code]="code"></app-reset-password>
+            <app-forgot-password *ngIf="state === 'forgot-password'" ></app-forgot-password>
+            <app-verified-email *ngIf="state === 'verified-email'" [code]="activate"> </app-verified-email>
+          </div>
+        </div>
+
+          <a class="relative top-0 right-0 m-6"
               [routerLink]="['/']">
                 <div class="hover:bg-gray-100 rounded-md">
                 <svg width="40px" height="40px" viewBox="0 0 1024 1024" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -51,27 +75,60 @@ import { SignUpComponent } from './components/signup/signup.component';
                 </svg>
                 </div>
             </a>
-
-        </div>
+      </div>
 
     </div>
 </div>
-  `,
+  `
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit{
   state = 'signin';
-  @Input() signup: boolean = false;
-  @Input() signinemail: boolean = false;
+  signup: boolean = false;
+  signin: boolean = false;
+  activate: string = "";
+  code: string = "";
 
-  switchToSignInEmail(): void {
-    this.state = 'signin-email';
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params['code']) {
+        this.state = 'reset-password';
+        this.code = params['code'];
+        this.signin = false;
+        this.signup = false;
+      } else if (params['activate']) {
+        this.state = 'verified-email';
+        this.activate = params['activate'];
+        this.signin = false;
+        this.signup = false;
+      }
+    });
   }
 
   switchToSignIn(): void {
     this.state = 'signin';
+    this.signin = true;
+    this.signup = false;
   }
 
   switchToSignUp(): void {
     this.state = 'signup';
+    this.signup = true;
+    this.signin = false;
+  }
+
+  switchToSignInEmail(): void {
+    this.state = 'signin-email';
+    this.signin = false;
+    this.signup = false;
+
+  }
+
+  switchToSignUpEmail(): void {
+    this.state = 'signup-email';
+    this.signup = false;
+    this.signin = false;
+
   }
  }
