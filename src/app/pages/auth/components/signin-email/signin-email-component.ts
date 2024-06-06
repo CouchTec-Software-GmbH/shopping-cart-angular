@@ -30,7 +30,7 @@ import { AuthService } from '@app/services/auth.service';
                       id="password"
                       type="password"
                       formControlName="password">
-                    <a class="text-xs text-blue-600 hover:text-blue-700 hover:cursor-pointer " (click)="signup.emit()">I forgot password or can't sign in</a>
+                    <a class="text-xs text-blue-600 hover:text-blue-700 hover:cursor-pointer " (click)="resetPassword.emit()">I forgot password or can't sign in</a>
                 </div>
                 <div class="mb-6">
               <input
@@ -71,6 +71,7 @@ import { AuthService } from '@app/services/auth.service';
 })
 export class SignInEmailComponent implements AfterViewInit {
   @Output() signup = new EventEmitter<boolean>();
+  @Output() resetPassword = new EventEmitter<boolean>();
   @ViewChild('alertMessage') alertMessage!: ElementRef;
   submitted = false;
   status = 0;
@@ -85,7 +86,7 @@ export class SignInEmailComponent implements AfterViewInit {
 
 
   async submitForm() {
-    this.status = await this.authService.signIn(
+    this.status = await this.authService.login(
       this.signInForm.value.email ?? '',
       this.signInForm.value.password ?? ''
     );
