@@ -64,7 +64,7 @@ import { Subscription } from 'rxjs';
   <span
     class="block rounded-full bg-white px-3 py-3 text-sm group-hover:bg-transparent"
   >
-    <div *ngIf="email === ''">
+    <div *ngIf="name === ''">
     <svg fill="currentColor" width="20px" height="20px" viewBox="0 0 128 128" id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g>
 <path d="M30,49c0,18.7,15.3,34,34,34s34-15.3,34-34S82.7,15,64,15S30,30.3,30,49z M90,49c0,14.3-11.7,26-26,26S38,63.3,38,49   s11.7-26,26-26S90,34.7,90,49z"/>
@@ -72,7 +72,7 @@ import { Subscription } from 'rxjs';
 </g>
 </svg>
 </div>
-  <p *ngIf="email !== ''" class="text-gray-500">{{ email }}</p>
+  <p *ngIf="name !== ''" class="text-gray-500">{{ name }}</p>
   </span>
 </button>
   </div>
@@ -82,7 +82,7 @@ import { Subscription } from 'rxjs';
     class="absolute end-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
     role="menu"
   >
-  <div class="p-2" *ngIf="email !== ''">
+  <div class="p-2" *ngIf="name !== ''">
      <button
           (click)="onSignOutClick()"
           class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-600 hover:bg-red-50"
@@ -103,7 +103,7 @@ import { Subscription } from 'rxjs';
         </button>
 
   </div>
-    <div class="p-2" *ngIf="email === ''">
+    <div class="p-2" *ngIf="name === ''">
         <button
           (click)="onSignInClick()"
           class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
@@ -166,7 +166,7 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   headerOptions: HeaderOption[] = headerOptions;
   accountShow = false;
-  email = '';
+  name = '';
   authService = inject(AuthService);
   private authSubscription!: Subscription;
 
@@ -212,9 +212,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private updateEmailFromCookies() {
     if (document.cookie.includes('sessionToken') && document.cookie.includes('email')) {
-      this.email = (document.cookie.split('; ').find(row => row.startsWith('email')) ?? '').split('=')[1] ?? '';
+      let email = (document.cookie.split('; ').find(row => row.startsWith('email')) ?? '').split('=')[1] ?? '';
+      this.name = email.split('@')[0];
     } else {
-      this.email = '';
+      this.name = '';
     }
   }
 }
