@@ -117,9 +117,14 @@ export class AuthService {
 
   async getUuids(): Promise<string[]> {
     try {
-      let email = (document.cookie.split(';').find(row => row.startsWith('email')) ?? '').split('=')[1];
-      const response = await firstValueFrom(this.http.get<any>(`${this.apiUrl}uuids`, this.httpOptions));
-      return response.uuids;
+
+      console.log(document.cookie.split(';'));
+      console.log(document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim());
+      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
+
+      const response = await firstValueFrom(this.http.get<any>(`${this.apiUrl}uuids/${email}`, this.httpOptions));
+      console.log("Response:", response);
+      return response;
     } catch (error) {
       console.error('Error getting uuids: ', error);
       return [];
