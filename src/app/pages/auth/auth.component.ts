@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './components/signin/signin.component';
 import { SignInEmailComponent } from './components/signin-email/signin-email-component';
@@ -7,7 +7,7 @@ import { SignUpEmailComponent } from './components/signup-email/signup-email.com
 import { SignUpComponent } from './components/signup/signup.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifiedEmailComponent } from './components/verified-email/verified-email.component';
+import { AuthService } from '@app/services/auth.service';
 
 
 @Component({
@@ -22,7 +22,6 @@ import { VerifiedEmailComponent } from './components/verified-email/verified-ema
     SignUpEmailComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    VerifiedEmailComponent,
   ],
   template: `
 <div class="bg-gray-000">
@@ -49,7 +48,7 @@ import { VerifiedEmailComponent } from './components/verified-email/verified-ema
 
         <div class="grid ">
           <div class="place-self-center ">
-            <app-signin-email *ngIf="state === 'signin-email'" (signup)="switchToSignUp()" (resetPassword)="state = 'reset-password'"></app-signin-email>
+            <app-signin-email *ngIf="state === 'signin-email'" (signup)="switchToSignUp()" (resetPassword)="state = 'forgot-password'"></app-signin-email>
             <app-signin *ngIf="state === 'signin'" (signinemail)="switchToSignInEmail()"
             (signup)="switchToSignUp()"
             ></app-signin>
@@ -57,7 +56,6 @@ import { VerifiedEmailComponent } from './components/verified-email/verified-ema
             <app-signup *ngIf="state === 'signup'" (signin)="switchToSignIn()" (signupemail)="switchToSignUpEmail()"></app-signup>
             <app-reset-password *ngIf="state === 'reset-password'" [code]="code"></app-reset-password>
             <app-forgot-password *ngIf="state === 'forgot-password'" ></app-forgot-password>
-            <app-verified-email *ngIf="state === 'verified-email'" [code]="activate"> </app-verified-email>
           </div>
         </div>
 
@@ -87,6 +85,8 @@ export class AuthComponent implements OnInit{
   signin: boolean = false;
   activate: string = "";
   code: string = "";
+  router = inject(Router);
+  authService = inject(AuthService);
 
   constructor(private route: ActivatedRoute) {}
 
@@ -98,10 +98,9 @@ export class AuthComponent implements OnInit{
         this.signin = false;
         this.signup = false;
       } else if (params['activate']) {
-        this.state = 'verified-email';
         this.activate = params['activate'];
-        this.signin = false;
-        this.signup = false;
+        this.router.navigate(['/'], { queryParams: { registerSuccess: true }});
+        this.authService.register(this.activate);
       }
     });
   }

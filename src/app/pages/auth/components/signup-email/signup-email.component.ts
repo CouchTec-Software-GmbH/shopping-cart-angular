@@ -128,7 +128,7 @@ export class SignUpEmailComponent implements AfterViewInit {
     console.log(this.status);
     this.submitted = true;
     if (this.status === 200) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/'], { queryParams: { verifyEmail: true } });
     } else
     if (this.status === 401) {
       this.errorTitle = 'Invalid password';

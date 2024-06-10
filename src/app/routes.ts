@@ -7,6 +7,7 @@ import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 import { ProductsComponent } from '@pages/products/products.component';
 import { ContactComponent } from '@pages/contact/contact.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const routeConfig: Routes = [
   {
@@ -47,6 +48,11 @@ const routeConfig: Routes = [
     path: 'contact',
     component: ContactComponent,
     title: 'Couchtec - Contact'
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    title: 'Couchtec - Settings'
   },
   {
     path: '**',

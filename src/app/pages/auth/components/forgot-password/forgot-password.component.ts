@@ -28,7 +28,7 @@ import { AuthService } from '@app/services/auth.service';
                     <button class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Send reset email</button>
                 </div>
 
-        <div role="alert" class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5" *ngIf="submitted && status !== 200">
+        <div role="alert" class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5" *ngIf="submitted && status !== 200 && errorTitle">
   <div class="flex items-center gap-2 text-yellow-600">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
       <path
@@ -70,10 +70,7 @@ export class ForgotPasswordComponent implements AfterViewInit {
     this.authService.preReset(this.resetPasswordForm.value.email).then((status) => {
       this.status = status;
       if (status === 200) {
-        this.router.navigate(['/signin']);
-      } else {
-        this.errorTitle = 'Error';
-        this.errorMessage = 'An error occurred. Please try again.';
+        this.router.navigate(['/'], { queryParams: { forgotPassword: true }});
       }
     });
   }
