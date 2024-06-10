@@ -115,15 +115,27 @@ export class AuthService {
     }
   }
 
+  async addUuid(uuid: String): Promise<number> {
+    try {
+      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
+      if (!email) {
+        return 500;
+      }
+      const response = await firstValueFrom(this.http.post<any>(`${this.apiUrl}uuids/${email}`, { uuid }, this.httpOptions));
+      return response;
+    } catch (error) {
+      return 500;
+    }
+  }
+
   async getUuids(): Promise<string[]> {
     try {
 
-      console.log(document.cookie.split(';'));
-      console.log(document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim());
       let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
-
+      if (!email) {
+        return [];
+      }
       const response = await firstValueFrom(this.http.get<any>(`${this.apiUrl}uuids/${email}`, this.httpOptions));
-      console.log("Response:", response);
       return response;
     } catch (error) {
       console.error('Error getting uuids: ', error);
