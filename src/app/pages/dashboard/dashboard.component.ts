@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef, ɵɵpureFunction7 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepsComponent } from './components/steps/steps.component';
 import { ProjectTypeComponent } from './components/project-type/project-type.component';
@@ -16,6 +16,7 @@ import { ProjectOption } from '@app/models/project-option';
 import { projectOptions } from '@app/data/project-options';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HeaderComponent } from '@app/components/header/header.component';
+import { AuthService } from '@app/services/auth.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
   SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnDestroy, OnInit {
   steps = stepsOptions;
   currentStep: number = 0;
   uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
@@ -33,16 +34,51 @@ export class DashboardComponent implements OnInit {
   productService = inject(ProductService);
   projectTypeOptions: ProjectOption[] = projectOptions;
   projectDataLoaded: boolean = false;
+  authService = inject(AuthService);
+  changeDetectorRef = inject(ChangeDetectorRef);
 
   async ngOnInit(): Promise<void> {
-    if (localStorage.getItem('uuid') === null) {
-      localStorage.setItem('uuid', this.uuid);
-    } else {
-      this.uuid = localStorage.getItem('uuid') || crypto.randomUUID();
+    this.loadUuid();
+    this.loadProjectData();
+
+    window.addEventListener('storage', this.handleStorageChange);
+  }
+
+  ngOnDestroy(): void {
+  }
+
+  handleStorageChange = (event: StorageEvent) => {
+    if(event.key === 'uuid') {
+      this.projectDataLoaded = false;
+      this.uuid = localStorage.getItem('uuid') ?? "";
+      if (!this.uuid) {
+        this.loadUuid();
+      }
+      this.loadProjectData();
     }
+  }
+
+  async loadUuid(): Promise<void> {
+    let uuid = localStorage.getItem('uuid');
+    if (uuid) {
+      this.uuid = uuid;
+      return;
+    }
+    let uuids = await this.authService.getUuids();
+    if (uuids.length > 0) {
+      this.uuid = uuids[0];
+      localStorage.setItem('uuid', this.uuid);
+      return;
+    }
+    this.uuid = crypto.randomUUID();
+  }
+
+  async loadProjectData(): Promise<void> {
     this.projectData = await this.productService.getProject(this.uuid);
     this.projectDataLoaded = true;
   }
+
+
 
   handleNextStep(): void {
     if (this.currentStep === 6) {
@@ -57,7 +93,4 @@ export class DashboardComponent implements OnInit {
     this.currentStep -= 1;
   }
 
-  async loadProjectData(): Promise<void> {
-    this.projectData = await this.productService.getProject(this.uuid);
-  }
 }
