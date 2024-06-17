@@ -5,11 +5,12 @@
 import { bootstrapApplication} from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import routeConfig from './app/routes';
 
 import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -41,8 +42,8 @@ bootstrapApplication(AppComponent,
   {
     providers: [
       provideRouter(routeConfig),
-      importProvidersFrom(HttpClientModule),
-      importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig)),
+      provideHttpClient(),
+      importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig)), provideAnimationsAsync(),
     ]
   }
 ).catch(err => console.error(err));
