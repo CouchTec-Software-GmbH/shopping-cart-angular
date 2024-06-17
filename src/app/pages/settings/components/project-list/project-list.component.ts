@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SkeletonComponent } from '@app/pages/dashboard/components/skeleton/skeleton.component';
 import { AuthService } from '@app/services/auth.service';
+import { ProjectService } from '@app/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -99,6 +100,7 @@ import { AuthService } from '@app/services/auth.service';
 export class ProjectListComponent implements OnInit {
   projects: string[] = [];
   authService = inject(AuthService);
+  projectService = inject(ProjectService);
   projects_loaded = false;
 
   constructor(private router: Router) {}
@@ -128,6 +130,14 @@ export class ProjectListComponent implements OnInit {
 
   async deleteProject(uuid: string): Promise<void> {
     await this.authService.remove_uuid(uuid);
+    this.projectService.removeUuid(uuid);
     this.reloadProjects()
+
+    window.dispatchEvent(
+      new StorageEvent('storage', {
+        key: 'uuid',
+        newValue: '',
+      }),
+    );
   }
 }
