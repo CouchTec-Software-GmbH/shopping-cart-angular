@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef, ɵɵpureFunction7 } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepsComponent } from './components/steps/steps.component';
 import { ProjectTypeComponent } from './components/project-type/project-type.component';
@@ -17,6 +17,7 @@ import { projectOptions } from '@app/data/project-options';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { AuthService } from '@app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -37,7 +38,12 @@ export class DashboardComponent implements OnDestroy, OnInit {
   authService = inject(AuthService);
   changeDetectorRef = inject(ChangeDetectorRef);
 
+  constructor(private router: Router) {}
+
   async ngOnInit(): Promise<void> {
+    if (!localStorage.getItem('uuid')) {
+      this.router.navigate(['/'], { queryParams: { newProject: true }});
+    }
     this.loadUuid();
     this.loadProjectData();
 
@@ -45,6 +51,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
+    window.removeEventListener('storage', this.handleStorageChange);
   }
 
   handleStorageChange = (event: StorageEvent) => {
