@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { ProjectData } from '@models/project-data';
 
@@ -89,4 +90,21 @@ export function get_session_token_from_cookie() {
     .find((row) => row.trim().startsWith('sessionToken'))
     ?.split('=')[1]
     .trim();
+}
+
+export function get_http_header(session_token: string) {
+  return {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session_token}`,
+    }),
+  };
+}
+
+export function get_basic_http_header() {
+  return {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+  };
 }
