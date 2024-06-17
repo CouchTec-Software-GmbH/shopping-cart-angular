@@ -1,8 +1,8 @@
-import { Injectable, Injector, inject, ɵɵpureFunction7 } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ProjectService } from './project.service';
+import { get_email_from_cookie, get_session_token_from_cookie } from '@app/utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +17,9 @@ export class AuthService {
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   private projectService: any;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private injector: Injector) {
-    const username = 'admin';
-    const password = '8RzuxhQ7';
-
+  constructor(private http: HttpClient, private injector: Injector) {
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': 'Basic ' + btoa(username + ':' + password),
         'Content-Type': 'application/json'
       })
     };
@@ -34,7 +30,6 @@ export class AuthService {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}login`, { email, password }, this.httpOptions));
       this.sessionToken = response.toString().trim();
-      console.log('Session token: ', this.sessionToken);
       this.setSessionCookie('sessionToken', this.sessionToken);
       this.setSessionCookie('email', email);
       this.isAuthenticatedSubject.next(true);
@@ -118,11 +113,12 @@ export class AuthService {
 
   async addUuid(uuid: String): Promise<number> {
     try {
-      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
-      if (!email) {
+      let session_token = get_session_token_from_cookie();
+      let email = get_email_from_cookie();
+      if (!email && !session_token) {
         return 500;
       }
-      const response = await firstValueFrom(this.http.post<any>(`${this.apiUrl}uuids/${email}`, { uuid }, this.httpOptions));
+      const response = await firstValueFrom(this.http.post<any>(`${this.apiUrl}uuids/${email}`, { uuid }, this.get_http_header(session_token ?? '')));
       return response;
     } catch (error) {
       return 500;
@@ -131,8 +127,12 @@ export class AuthService {
 
   async remove_uuid(uuid: String): Promise<number> {
     try {
-      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
-      const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}uuids/${email}/${uuid}`, this.httpOptions));
+      let session_token = get_session_token_from_cookie();
+      let email = get_email_from_cookie();
+      if (!email && !session_token) {
+        return 500;
+      }
+      const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}uuids/${email}/${uuid}`, this.get_http_header(session_token ?? '')));
       return response;
     } catch (error) {
       return 500;
@@ -141,12 +141,12 @@ export class AuthService {
 
   async getUuids(): Promise<string[]> {
     try {
-
-      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
-      if (!email) {
+      let session_token = get_session_token_from_cookie();
+      let email = get_email_from_cookie();
+      if (!email && !session_token) {
         return [];
       }
-      const response = await firstValueFrom(this.http.get<any>(`${this.apiUrl}uuids/${email}`, this.httpOptions));
+      const response = await firstValueFrom(this.http.get<any>(`${this.apiUrl}uuids/${email}`, this.get_http_header(session_token ?? '')));
       return response;
     } catch (error) {
       console.error('Error getting uuids: ', error);
@@ -156,11 +156,12 @@ export class AuthService {
 
   async deleteAccount(): Promise<number> {
     try {
-      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
-      if (!email) {
+      let session_token = get_session_token_from_cookie();
+      let email = get_email_from_cookie();
+      if (!email && session_token) {
         return 404;
       }
-      const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}user/${email}`, this.httpOptions));
+      const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}user/${email}`, this.get_http_header(session_token ?? '')));
       return response;
     } catch (error) {
       return 500;
@@ -193,6 +194,15 @@ export class AuthService {
 
   private hasSessionToken(): boolean {
     return document.cookie.includes('sessionToken');
+  }
+
+  private get_http_header(session_token: string) {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${session_token}`
+      })
+    };
   }
 
 }
