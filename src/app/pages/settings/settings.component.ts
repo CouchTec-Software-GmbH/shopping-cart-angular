@@ -4,6 +4,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
 import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { CommonModule } from '@angular/common';
+import { AccountSettingsComponent } from './components/account-settings';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     SideMenuComponent,
     ProjectListComponent,
+    AccountSettingsComponent,
     CommonModule
   ],
   template: `
@@ -25,6 +27,7 @@ import { CommonModule } from '@angular/common';
       (state)="state"
     ></app-side-menu>
     <app-project-list *ngIf="state === 'projects'"></app-project-list>
+    <app-account-settings *ngIf="state === 'account'"></app-account-settings>
     </div>
   `,
 })
