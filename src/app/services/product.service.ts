@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '@models/productListing';
-import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import {  HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { ProjectData } from '@models/project-data';
 import { createDefaultProjectData, get_http_header, get_session_token_from_cookie } from '@utils/utils';
@@ -47,18 +45,8 @@ export class ProductService {
 
   async submitApplication(firstName: string, lastName: string, email: string, text: string): Promise<void> {
     try {
-      const userData = {
-        username: email,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        enabled: true
-      };
 
-      await firstValueFrom(this.http.post(`${this.apiUrl}/create-user`, userData, this.httpOptions));
-      console.log('User created successfully');
     } catch (error) {
-      console.error('Error creating user: ', error);
     }
   }
 }
