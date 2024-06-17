@@ -12,7 +12,7 @@ import { AuthService } from '@app/services/auth.service';
     <div class="p-20">
       <a
         class="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
-        href="#"
+        (click)="onDelete()"
       >
         <span
           class="absolute inset-0 border border-red-600 group-active:border-red-500"
@@ -31,7 +31,11 @@ export class AccountSettingsComponent {
 
   constructor(private router: Router) {}
 
+  constructor(private router: Router){}
+
   async onDelete() {
+    await this.authService.deleteAccount();
+    this.authService.signOut();
     this.router.navigate(['/'], { queryParams: { deleteAccount: true }});
   }
 }
