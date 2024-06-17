@@ -1,48 +1,113 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { PopUpElementComponent } from './components/popup-element/popup-element.component';
+import { State } from './components/state.enum';
+import { CommonModule } from '@angular/common';
+import { PopUpConfig } from '@app/models/pop-up';
+import { ProjectService } from '@app/services/project.service';
+import { NewProjectPopUpComponent } from './components/new-project-popup/new-project-popup.component';
 
 @Component({
   selector: 'app-pop-up',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterModule,
+    PopUpElementComponent,
+    NewProjectPopUpComponent,
+    CommonModule,
+  ],
   template: `
-
-<div class="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8" role="alert">
-  <div class="flex items-center gap-4">
-    <span class="shrink-0 rounded-full bg-blue-400 p-2 text-white">
-      <svg
-        class="h-4 w-4"
-        fill="currentColor"
-        viewbox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
+    <ng-container *ngIf="messages[currentState] as message">
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        (onClick)="handleClick()"
       >
-        <path
-          clip-rule="evenodd"
-          d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"
-          fill-rule="evenodd"
-        />
-      </svg>
-    </span>
-
-    <p class="font-medium sm:text-lg"> {{ title }} </p>
-  </div>
-  <p class="mt-4 text-gray-500">
-    {{ message }}
-  </p>
-
-  <div class="mt-6 sm:flex sm:gap-4">
-    <a
-      (click)="onClick.emit(true)"
-      class="inline-block rounded border border-blue-500 bg-blue-500 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-500 focus:outline-none focus:ring active:text-blue-500 hover:cursor-pointer"
-    >
-      Verstanden
-    </a>
-  </div>
-</div>
+        <app-pop-up-element
+          *ngIf="message.component === 'pop-up-element'"
+          (onClick)="handleClick()"
+          [message]="message.text"
+          [title]="message.title"
+        ></app-pop-up-element>
+        <app-new-project-pop-up-element
+          *ngIf="message.component === 'input-pop-up-element'"
+          (onClick)="handleNewProject()"
+          (cancel)="handleClick()"
+          [message]="message.text"
+          [title]="message.title"
+        ></app-new-project-pop-up-element>
+      </div>
+    </ng-container>
   `,
 })
-export class PopUpComponent {
-  @Input() title = "";
-  @Input() message = "";
+export class PopUpComponent implements OnInit {
+  State = State;
+  currentState: State = State.None;
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+  projectService = inject(ProjectService);
+  @Output() popUp = new EventEmitter<boolean>();
 
-  @Output() onClick = new EventEmitter<boolean>();
+  messages: { [key: string]: PopUpConfig } = {
+    verifyEmail: {
+      component: 'pop-up-element',
+      text: 'Wir haben dir eine Bestätigunsemail geschickt. Um das Konto zu aktivieren, klicken Sie bitte auf den Aktivierungslink in Ihrer E-Mail.',
+      title: 'Bestätige deine E-Mail',
+    },
+    forgotPassword: {
+      component: 'pop-up-element',
+      text: 'Wir haben Ihnen eine Zurücksetzungsemail geschickt. Um das Password zurückzusetzen, klicken Sie bitte auf den Zurücksetzungslink in Ihrer E-Mail.',
+      title: 'Wir haben Ihnen eine E-Mail geschickt.',
+    },
+    registerSuccess: {
+      component: 'pop-up-element',
+      text: 'Sie können sich nun anmelden.',
+      title: 'Ihr Konto wurde registriert.',
+    },
+    resetSuccess: {
+      component: 'pop-up-element',
+      text: 'Sie können sich nun mit Ihrem neuen Password anmelden.',
+      title: 'Ihr Password wurde erfolgreich geändert.',
+    },
+    newProject: {
+      component: 'input-pop-up-element',
+      text: 'Wählen Sie einen Name für Ihr neues Projekt',
+      title: 'Neues Projekt',
+    },
+  };
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      Object.values(State).forEach((state) => {
+        if (params[state]) {
+          this.currentState = state;
+          this.popUp.emit(true);
+          this.removeQueryParam(state);
+        }
+      });
+    });
+  }
+
+  handleClick(): void {
+    this.currentState = State.None;
+    this.popUp.emit(false);
+    this.route.queryParams.subscribe((params) => {
+      Object.values(State).forEach((state) => {
+        if (params[state]) {
+          this.currentState = state;
+          this.popUp.emit(true);
+          this.removeQueryParam(state);
+        }
+      });
+    });
+  }
+
+  handleNewProject(): void {
+    this.handleClick();
+  }
+
+  removeQueryParam(param: string) {
+    const queryParams = { ...this.route.snapshot.queryParams };
+    delete queryParams[param];
+    this.router.navigate([], { queryParams });
+  }
 }
