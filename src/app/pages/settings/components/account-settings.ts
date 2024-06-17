@@ -13,7 +13,7 @@ import { NotificationService } from '@app/services/notification.service';
     <div class="p-20">
       <a
         class="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
-        href="#"
+        (click)="onDelete()"
       >
         <span
           class="absolute inset-0 border border-red-600 group-active:border-red-500"
@@ -31,8 +31,12 @@ export class AccountSettingsComponent {
   authService = inject(AuthService);
   notificatonService = inject(NotificationService);
 
+  constructor(private router: Router){}
+
   async onDelete() {
-    // await this.authService.deleteAccount();
+    await this.authService.deleteAccount();
+    this.authService.signOut();
+    this.router.navigate(['/']);
     this.notificatonService.showSuccess("Konto wurde erfolgreich gelöscht");
   }
 }
