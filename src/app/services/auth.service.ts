@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector, inject, ɵɵpureFunction7 } from '@angular/core';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ProjectService } from './project.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,10 @@ export class AuthService {
   private httpOptions: { headers: HttpHeaders };
   sessionToken: string = '';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasSessionToken());
-
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  private projectService: any;
 
-
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private injector: Injector) {
     const username = 'admin';
     const password = '8RzuxhQ7';
 
@@ -37,6 +37,7 @@ export class AuthService {
       console.log('Session token: ', this.sessionToken);
       this.setSessionCookie('sessionToken', this.sessionToken);
       this.setSessionCookie('email', email);
+      this.isAuthenticatedSubject.next(true);
       return 200;
     } catch (error) {
       if (error instanceof HttpErrorResponse && error.status === 401) {
@@ -128,6 +129,16 @@ export class AuthService {
     }
   }
 
+  async remove_uuid(uuid: String): Promise<number> {
+    try {
+      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
+      const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}uuids/${email}/${uuid}`, this.httpOptions));
+      return response;
+    } catch (error) {
+      return 500;
+    }
+  }
+
   async getUuids(): Promise<string[]> {
     try {
 
@@ -142,6 +153,20 @@ export class AuthService {
       return [];
     }
   }
+
+  async deleteAccount(): Promise<number> {
+    try {
+      let email = document.cookie.split(';').find(row => row.trim().startsWith('email'))?.split('=')[1].trim();
+      if (!email) {
+        return 404;
+      }
+      const response = await firstValueFrom(this.http.delete<any>(`${this.apiUrl}user/${email}`, this.httpOptions));
+      return response;
+    } catch (error) {
+      return 500;
+      }
+  }
+
   private setSessionCookie(name: string, value: string) {
     document.cookie = `${name}=${value}; path=/`;
   }
@@ -149,7 +174,14 @@ export class AuthService {
   signOut(): void {
     this.clearSessionCookies();
     this.isAuthenticatedSubject.next(false);
+    if(!this.projectService) {
+
+      this.projectService = this.injector.get(ProjectService);
+    }
+    this.projectService.clearUuids();
   }
+
+
   private clearSessionCookies() {
     this.deleteCookie('sessionToken');
     this.deleteCookie('email');
