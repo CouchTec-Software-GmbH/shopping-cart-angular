@@ -31,8 +31,6 @@ export class AccountSettingsComponent {
 
   constructor(private router: Router) {}
 
-  constructor(private router: Router){}
-
   async onDelete() {
     await this.authService.deleteAccount();
     this.authService.signOut();
