@@ -4,6 +4,7 @@ import { ProjectData } from '@models/project-data';
 export function createDefaultProjectData(): ProjectData {
   return {
     projectType: 'GreenFieldProject',
+    status: 'Nicht begonnen',
     tierOptions: [],
     techStack: {
       frontend: {
