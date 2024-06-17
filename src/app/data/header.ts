@@ -1,12 +1,7 @@
 export const headerOptions = [
 {
-  id: 'home',
-  title: 'Home',
-  link: '/',
-},
-{
   id: 'contact',
-  title: 'Contact',
+  title: 'Kontakt',
   link: '/contact',
 },
 {
