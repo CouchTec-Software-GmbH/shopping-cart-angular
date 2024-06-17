@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SkeletonComponent } from '@app/pages/dashboard/components/skeleton/skeleton.component';
 import { AuthService } from '@app/services/auth.service';
-import { NotificationService } from '@app/services/notification.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -29,10 +28,10 @@ import { NotificationService } from '@app/services/notification.service';
 })
 export class AccountSettingsComponent {
   authService = inject(AuthService);
-  notificatonService = inject(NotificationService);
+
+  constructor(private router: Router) {}
 
   async onDelete() {
-    // await this.authService.deleteAccount();
-    this.notificatonService.showSuccess("Konto wurde erfolgreich gelöscht");
+    this.router.navigate(['/'], { queryParams: { deleteAccount: true }});
   }
 }

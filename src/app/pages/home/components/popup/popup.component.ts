@@ -73,6 +73,11 @@ export class PopUpComponent implements OnInit {
       text: 'Wählen Sie einen Name für Ihr neues Projekt',
       title: 'Neues Projekt',
     },
+    deleteAccount: {
+      component: 'pop-up-element',
+      text: 'Sie haben erfolgreich Ihr Konto gelöscht',
+      title: 'Konto gelöscht',
+    },
   };
 
   ngOnInit(): void {
