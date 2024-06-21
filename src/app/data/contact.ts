@@ -1,7 +1,7 @@
 export const contactOptions = {
-  number: '+49 176 56585838',
+  number: 'info@couchtec.com',
   address: 'Auenstraße 14, 80469 München',
   email: 'info@couchtec.com',
-  text: 'CouchTec is happy to provide support for any question or request. Please do not hesitate to send us an Email. Please send us an email to the following adress. We are looking foreward to your request, enquery, wishes, critics and support tickets.'
+  text: ' CouchTec ist gerne bereit, Ihnen bei Fragen oder Wünschen zu helfen. Bitte zögern Sie nicht, uns eine Email zu schicken. Bitte senden Sie uns eine Email an die folgende Adresse. Wir freuen uns auf Ihre Anfragen, Wünsche, Kritiken und Support-Tickets. ',
 };
 
