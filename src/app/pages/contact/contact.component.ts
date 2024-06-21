@@ -53,7 +53,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
                   <label class="sr-only" for="email">Email</label>
                   <input
                     class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                    placeholder="Email address"
+                    placeholder="Email Adresse"
                     type="email"
                     id="email"
                     formControlName="email"
@@ -66,7 +66,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
 
                 <textarea
                   class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                  placeholder="Message"
+                  placeholder="Nachricht"
                   rows="8"
                   id="message"
                   formControlName="message"
@@ -78,7 +78,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
                   type="submit"
                   class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
                 >
-                  Send Enquiry
+                  Anfrage senden
                 </button>
               </div>
             </form>
