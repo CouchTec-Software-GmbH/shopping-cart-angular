@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
                   <h2
                     class="mt-6 text-center font-semibold text-gray-800 text-3xl"
                   >
-                    Customizable
+                    Anpassbar
                   </h2>
                 </div>
               </div>
@@ -72,11 +72,11 @@ import { Component } from '@angular/core';
                   </div>
                   <div class="mt-14 text-center relative z-10 space-y-2">
                     <h2 class="text-lg font-medium text-gray-900">
-                      Faster than light
+                      Rasend schnell
                     </h2>
                     <!-- Updated text color -->
                     <p class="text-gray-600">
-                      Cdn powered, blazing fast, and optimized for performance
+                      Optimiert auf Leistung und Schnelligkeit
                     </p>
                     <!-- Updated text color -->
                   </div>
@@ -107,11 +107,11 @@ import { Component } from '@angular/core';
                   </div>
                   <div class="mt-14 text-center relative z-10 space-y-2">
                     <h2 class="text-lg font-medium text-gray-900">
-                      Secure by default
+                      Sicherheit als Standard
                     </h2>
                     <!-- Updated text color -->
                     <p class="text-gray-600">
-                      With Oauth2.0, OpenID Connect, and JWT, we ensure that your data is secure and protected.
+                      Mit Oauth2.0, OpenID Connect und JWT sorgen wir dafür, dass Ihre Daten sicher und geschützt sind.
                     </p>
                     <!-- Updated text color -->
                   </div>
