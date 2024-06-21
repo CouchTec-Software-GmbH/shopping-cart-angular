@@ -45,9 +45,9 @@ const routeConfig: Routes = [
     title: 'Couchtec Details'
   },
   {
-    path: 'contact',
+    path: 'support',
     component: ContactComponent,
-    title: 'Couchtec - Contact'
+    title: 'Couchtec - Support'
   },
   {
     path: 'settings',
