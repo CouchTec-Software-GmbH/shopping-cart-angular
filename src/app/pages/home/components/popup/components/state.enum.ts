@@ -5,4 +5,5 @@ export enum State {
   RegisterSuccess = 'registerSuccess',
   ResetSuccess = 'resetSuccess',
   NewProject = 'newProject',
+  DeleteAccoutn = 'deleteAccount'
 }

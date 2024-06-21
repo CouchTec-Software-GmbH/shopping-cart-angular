@@ -22,9 +22,9 @@ const routeConfig: Routes = [
     title: 'Couchtec - Dashboard'
   },
   {
-    path: 'contact',
+    path: 'support',
     component: ContactComponent,
-    title: 'Couchtec - Contact'
+    title: 'Couchtec - Support'
   },
   {
     path: 'settings',
