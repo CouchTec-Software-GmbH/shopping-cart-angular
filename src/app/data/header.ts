@@ -1,8 +1,8 @@
 export const headerOptions = [
 {
-  id: 'contact',
-  title: 'Kontakt',
-  link: '/contact',
+  id: 'support',
+  title: 'Support',
+  link: '/support',
 },
 {
   id: 'dashboard',
