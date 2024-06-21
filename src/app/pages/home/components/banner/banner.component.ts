@@ -25,7 +25,7 @@ import { RouterModule } from '@angular/router';
           <div class="mt-8 flex flex-wrap justify-center gap-4">
             <a
               class="block w-full rounded bg-blue-600 px-12 py-3 text-sm text-white font-medium  shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-          [routerLink]="['/dashboard']"
+          [routerLink]="['/configure']"
             >
               Starten
             </a>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { SkeletonComponent } from '@app/pages/dashboard/components/skeleton/skeleton.component';
+import { SkeletonComponent } from '@app/pages/configure/components/skeleton/skeleton.component';
 import { AuthService } from '@app/services/auth.service';
 
 @Component({

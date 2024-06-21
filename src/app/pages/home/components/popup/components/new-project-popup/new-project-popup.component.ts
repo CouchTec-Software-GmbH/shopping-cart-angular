@@ -101,6 +101,6 @@ export class NewProjectPopUpComponent {
       newValue: uuid
     }));
 
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['configure']);
   }
 }

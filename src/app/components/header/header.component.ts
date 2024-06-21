@@ -83,7 +83,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       newValue: uuid
     }));
 
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['configure']);
   }
 
   onSearch(value: string): void {

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { SkeletonComponent } from '@app/pages/dashboard/components/skeleton/skeleton.component';
+import { SkeletonComponent } from '@app/pages/configure/components/skeleton/skeleton.component';
 import { AuthService } from '@app/services/auth.service';
 import { ProjectService } from '@app/services/project.service';
 
@@ -89,12 +89,12 @@ import { ProjectService } from '@app/services/project.service';
         </table>
         <p *ngIf="projects.length === 0"> Keine Projekte zu zeigen </p>
       </div>
-      <div *ngIf="!projects_loaded">
-        <app-skeleton></app-skeleton>
-      </div>
 
 
     </div>
+      <div *ngIf="!projects_loaded" class="">
+        <app-skeleton class="p-20"></app-skeleton>
+      </div>
   `,
 })
 export class ProjectListComponent implements OnInit {
@@ -119,7 +119,7 @@ export class ProjectListComponent implements OnInit {
       }),
     );
 
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['configure']);
   }
 
   async reloadProjects(): Promise<void> {
