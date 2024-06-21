@@ -1,6 +1,7 @@
 export interface ProjectData {
   projectType: string;
   status: string;
+  shortText: string;
   tierOptions: string[];
   techStack: {
     frontend: {

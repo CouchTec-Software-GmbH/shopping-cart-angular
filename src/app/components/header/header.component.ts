@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.isAuthenticated$.subscribe(async isAuthenticated => {
       if (!isAuthenticated) {
         this.name = '';
+        this.accountShow = false;
         return;
       }
       this.updateEmailFromCookies();
@@ -90,10 +91,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.searchService.search(value);
   }
 
-  onCartClick(): void {
-    this.router.navigate(['/cart']);
-  }
-
   onAccountClick(): void {
     this.accountShow = !this.accountShow;
   }
@@ -104,7 +101,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onSignOutClick(): void {
     this.authService.signOut();
-    this.accountShow = false;
   }
 
   onNewProjectClick(): void {

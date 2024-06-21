@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, AfterViewInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SkeletonComponent } from '@app/pages/configure/components/skeleton/skeleton.component';
 import { AuthService } from '@app/services/auth.service';
@@ -14,26 +14,26 @@ import { ProjectData } from '@models/project-data';
   template: `
     <div class="flex bg-beige-light h-screen">
       <div class="flex flex-col m-10 w-full space-y-4">
+        <h1 class="text-xl font-medium"> Projekt Portfolio </h1>
         <div
           class="flex px-14 items-center justify-between rounded bg-beige-dark p-4 text-gray-600"
         >
-          <p class="text-sm ">Name</p>
-          <p class="text-sm ">Status</p>
-          <p class="text-sm "></p>
-          <p class="text-sm "></p>
+          <p class="text-sm">Projektname</p>
+          <p class="text-sm">Status</p>
+          <p class="text-sm">Kurzbeschreibung</p>
+          <p class="text-sm"></p>
         </div>
 
         <details
           *ngFor="let uuid of uuids"
-          class="group [&_summary::-webkit-details-marker]:hidden"
+          class="group transition-all duration-500 ease-in-out"
         >
           <summary
-            class="flex cursor-pointer items-center justify-between gap-4 group-closed:rounded group-open:rounded-t bg-white group-open:bg-darkgreen
-            py-6 pl-4 pr-5 group-open:text-white shadow-sm group-open:border-darkgreen duration-150  "
+            class="flex cursor-pointer items-center justify-between gap-4 group-closed:rounded group-open:rounded-t bg-white group-open:bg-darkgreen py-6 pl-4 pr-5 group-open:text-white shadow-sm group-open:border-darkgreen duration-300"
           >
             <div class="flex justify-start gap-4 items-center">
               <svg
-                class="size-6 shrink-0 transition duration-300 group-open:-rotate-180 text-gray-400 group-open:text-white"
+                class="size-6 shrink-0 transition-transform duration-300 group-open:-rotate-180 text-gray-400 group-open:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -48,9 +48,8 @@ import { ProjectData } from '@models/project-data';
               </svg>
               <h2 class="font-medium text-sm">{{ uuid.split('.')[0] }}</h2>
             </div>
-            <h2 class="font-medium text-sm">Am konfigurieren</h2>
-
-            <h2 class="font-medium text-sm"></h2>
+            <h2 class="font-medium text-sm">In Bearbeitung</h2>
+            <h2 class="font-small text-xs"> {{ projects.get(uuid)?.shortText }}</h2>
             <span
               class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm"
             >
@@ -74,7 +73,6 @@ import { ProjectData } from '@models/project-data';
                   />
                 </svg>
               </button>
-
               <button
                 class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
                 title="Delete Product"
@@ -97,7 +95,7 @@ import { ProjectData } from '@models/project-data';
               </button>
             </span>
           </summary>
-          <div class="border border-darkgreen rounded-b">
+          <div class="content-wrapper border border-darkgreen rounded-b">
             <div
               class="flow-root rounded-lg border border-gray-100 py-3 shadow-sm px-10"
             >
@@ -110,7 +108,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.projectType }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -119,7 +116,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.tierOptions }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -128,7 +124,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.techStack?.frontend?.framework }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -137,7 +132,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.techStack?.frontend?.styling }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -146,7 +140,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.techStack?.middleware }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -155,7 +148,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.techStack?.backend }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -164,7 +156,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.techStack?.database }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -173,7 +164,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.deployment?.provider }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -182,7 +172,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.deployment?.containerization }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -191,7 +180,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.deployment?.orchestration }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -200,7 +188,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.deployment?.environment }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -209,7 +196,6 @@ import { ProjectData } from '@models/project-data';
                     {{ projects.get(uuid)?.security }}
                   </dd>
                 </div>
-
                 <div
                   class="grid grid-cols-1 gap-1 py-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4"
                 >
@@ -233,6 +219,21 @@ import { ProjectData } from '@models/project-data';
       </div>
     </div>
   `,
+  styles: [
+    `
+      details > summary {
+        list-style: none;
+      }
+      details > .content-wrapper {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+      }
+      details[open] > .content-wrapper {
+        max-height: 1000px; /* arbitrary value large enough for the content */
+      }
+    `,
+  ],
 })
 export class ProjectListComponent implements OnInit {
   uuids: string[] = [];
@@ -268,7 +269,6 @@ export class ProjectListComponent implements OnInit {
       let project = await this.productService.getProject(uuid);
       this.projects.set(uuid, project);
     });
-    this.projects.keys
     this.projects_loaded = true;
   }
 
