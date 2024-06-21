@@ -21,13 +21,15 @@ import { AccountSettingsComponent } from './components/account-settings';
   template: `
     <app-header></app-header>
 
-    <div class="flex ">
+    <div class="flex">
     <app-side-menu
       (stateChange)="onStateChange($event)"
       (state)="state"
     ></app-side-menu>
-    <app-project-list *ngIf="state === 'projects'"></app-project-list>
+    <div class="flex-grow">
+    <app-project-list class="max-w-full" *ngIf="state === 'projects'"></app-project-list>
     <app-account-settings *ngIf="state === 'account'"></app-account-settings>
+    </div>
     </div>
   `,
 })
