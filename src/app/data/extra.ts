@@ -2,6 +2,6 @@ export const extraOptions = [
 {
 id: 'CDN',
 name: 'CDN',
-    description: 'cdn usage',
+    description: 'cdn',
     checked: false,
 }]

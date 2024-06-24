@@ -14,7 +14,7 @@ import { ProductService } from '@app/services/product.service';
   imports: [CommonModule, RadioComponent, SectionComponent, SectionComponent],
   template: `
         <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-          Start configuring your project
+          Starten Sie Ihr Projekts zu konfigurieren
         </h1>
         <app-section
           [path]="'projectType'"

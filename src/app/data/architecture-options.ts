@@ -2,25 +2,25 @@
     {
       id: 'monolithic',
       name: 'Monolithic',
-      description: 'Single codebase and deployment unit.',
+      description: 'Eine einzige Codebasis und Einsatzeinheit',
       checked: true,
     },
     {
       id: 'microservices',
       name: 'Microservices',
-      description: 'Decomposed into smaller services.',
+      description: 'Zerlegt in kleinere Dienste.',
       checked: false,
     },
     {
       id: 'serverless',
       name: 'Serverless',
-      description: 'Functions as a service.',
+      description: 'Funktionen als Dienstleistung',
       checked: false,
     },
     {
     id: 'hybrid',
       name: 'Hybrid',
-      description: 'Combination of architectures.',
+      description: 'Kombination von Architekturen',
       checked: false,
     },
   ];

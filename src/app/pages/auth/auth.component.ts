@@ -29,8 +29,8 @@ import { AuthService } from '@app/services/auth.service';
           class="w-full sm:w-1/2 bg-gray-800 text-white flex justify-center items-center p-10 sm:flex hidden"
         >
           <div>
-            <h1 class="text-5xl font-bold mb-4">Think first / Then leap.</h1>
-            <p class="text-xl">Harald Kisch</p>
+            <h1 class="text-5xl font-bold mb-4">CouchTec</h1>
+            <p class="text-xl">Kundenportal</p>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ export function createDefaultProjectData(): ProjectData {
   return {
     projectType: 'GreenFieldProject',
     status: 'Nicht begonnen',
-    shortText: 'Short Text',
+    shortText: '',
     tierOptions: [],
     techStack: {
       frontend: {

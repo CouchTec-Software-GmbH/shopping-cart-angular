@@ -14,14 +14,23 @@ import { ProjectData } from '@models/project-data';
   template: `
     <div class="flex bg-beige-light h-screen">
       <div class="flex flex-col m-10 w-full space-y-4">
-        <h1 class="text-xl font-medium"> Projekt Portfolio </h1>
+        <h1 class="text-xl font-medium">Projekt Portfolio</h1>
         <div
-          class="flex px-14 items-center justify-between rounded bg-beige-dark p-4 text-gray-600"
+          class="grid grid-cols-4 gap-4 px-5 items-center rounded bg-beige-dark p-4 text-gray-600"
         >
-          <p class="text-sm">Projektname</p>
+          <p class="text-sm pl-10">Projektname</p>
           <p class="text-sm">Status</p>
           <p class="text-sm">Kurzbeschreibung</p>
           <p class="text-sm"></p>
+        </div>
+
+        <div
+          *ngIf="uuids === []"
+          class="grid h-screen place-content-center bg-white px-4"
+        >
+          <h1 class="uppercase tracking-widest text-gray-500">
+            404 | Not Found
+          </h1>
         </div>
 
         <details
@@ -29,7 +38,7 @@ import { ProjectData } from '@models/project-data';
           class="group transition-all duration-500 ease-in-out"
         >
           <summary
-            class="flex cursor-pointer items-center justify-between gap-4 group-closed:rounded group-open:rounded-t bg-white group-open:bg-darkgreen py-6 pl-4 pr-5 group-open:text-white shadow-sm group-open:border-darkgreen duration-300"
+            class="grid grid-cols-4 cursor-pointer items-center gap-4 group-closed:rounded group-open:rounded-t bg-white group-open:bg-darkgreen py-6 px-5 group-open:text-white shadow-sm group-open:border-darkgreen duration-300"
           >
             <div class="flex justify-start gap-4 items-center">
               <svg
@@ -49,9 +58,9 @@ import { ProjectData } from '@models/project-data';
               <h2 class="font-medium text-sm">{{ uuid.split('.')[0] }}</h2>
             </div>
             <h2 class="font-medium text-sm">In Bearbeitung</h2>
-            <h2 class="font-small text-xs"> {{ projects.get(uuid)?.shortText }}</h2>
+            <h2 class="font-medium text-sm"> {{ projects.get(uuid)?.shortText }}</h2>
             <span
-              class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm"
+              class="justify-self-end inline-flex overflow-hidden rounded-md border bg-white shadow-sm"
             >
               <button
                 class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
@@ -216,6 +225,10 @@ import { ProjectData } from '@models/project-data';
             </div>
           </div>
         </details>
+
+        <p *ngIf="uuids.length === 0" class="flex justify-center">
+          Noch keine Projekte vorhanden.
+        </p>
       </div>
     </div>
   `,
@@ -248,6 +261,7 @@ export class ProjectListComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.reloadProjects();
+    console.log("uuids: ", this.uuids);
   }
 
   openProject(uuid: string): void {

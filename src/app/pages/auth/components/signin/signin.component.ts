@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [RouterModule, CommonModule],
   template: `
     <div class="">
-      <h2 class="text-2xl font-bold text-gray-700 text-center mb-6">Sign in</h2>
+      <h2 class="text-2xl font-bold text-gray-700 text-center mb-6">Anmelden</h2>
       <button
         class="flex items-center justify-center w-full py-2 mb-4 border rounded-lg hover:bg-gray-100"
       >
@@ -38,7 +38,7 @@ import { CommonModule } from '@angular/common';
             d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
           ></path>
         </svg>
-        <span> Sign in with Google </span>
+        <span> Mit Google anmelden </span>
       </button>
       <div class="flex justify-between mb-4">
         <button
@@ -142,8 +142,8 @@ import { CommonModule } from '@angular/common';
       <hr class="my-6 border-gray-300 w-full " />
       <div class="mt-4 text-center">
         <p class="hover:cursor-pointer text-sm">
-          Do not have an account?
-          <a class="text-blue-600" (click)="signup.emit()">Sign up</a>
+          Sie haben noch kein Konto?
+          <a class="text-blue-600" (click)="signup.emit()">Registrieren</a>
         </p>
       </div>
     </div>

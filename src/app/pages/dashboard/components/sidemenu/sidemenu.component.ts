@@ -16,7 +16,7 @@ import { AuthService } from '@app/services/auth.service';
   <div>
     <div class="inline-flex size-16 items-center justify-center">
       <span class="grid size-10 place-content-center rounded-lg bg-gray-100 text-xs text-gray-500 hover:bg-gray-50 hover:text-gray-700">
-        L
+      {{ letter }}
       </span>
     </div>
 
@@ -51,7 +51,7 @@ import { AuthService } from '@app/services/auth.service';
             <span
               class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
             >
-              General
+              Allgemein
             </span>
           </a>
         </div>
@@ -83,7 +83,7 @@ import { AuthService } from '@app/services/auth.service';
               <span
                 class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
               >
-                Account
+                Konto
               </span>
             </a>
           </li>
@@ -117,7 +117,7 @@ import { AuthService } from '@app/services/auth.service';
         <span
           class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible"
         >
-          Logout
+          Ausloggen
         </span>
       </button>
     </div>

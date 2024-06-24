@@ -42,10 +42,10 @@ import { AuthService } from '@app/services/auth.service';
               <i class="bx bx-error text-3xl"> &#9888; </i>
             </div>
             <div class="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
-              <p class="font-bold">Warning!</p>
+              <p class="font-bold">Warnung!</p>
               <p class="text-sm text-gray-700 mt-1">
-                You will lose all of your data by deleting this. This action
-                cannot be undone.
+                Durch das Löschen gehen alle Ihre Daten verloren. Diese Aktion
+                kann nicht rückgängig gemacht werden.
               </p>
             </div>
           </div>
@@ -55,14 +55,14 @@ import { AuthService } from '@app/services/auth.service';
               class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-red-200 text-red-700 rounded-lg font-semibold text-sm md:ml-2 md:order-2"
               (click)="onDelete()"
             >
-              Delete
+              Löschen
             </button>
             <button
               id="confirm-cancel-btn"
               class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-gray-200 rounded-lg font-semibold text-sm mt-4 md:mt-0 md:order-1"
               (click)="show_confirm = false"
             >
-              Cancel
+              Abrechen
             </button>
           </div>
         </div>

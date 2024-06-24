@@ -2,13 +2,13 @@
   {
   id: 'Angular',
   name: 'Angular',
-  description: 'A platform for building mobile and desktop web applications.',
+  description: 'Eine Plattform für die Erstellung von mobilen und Desktop-Webanwendungen',
   checked: true,
   },
   {
   id: 'React',
   name: 'React',
-  description: 'A JavaScript library for building user interfaces.',
+  description: 'Eine JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen',
   checked: false,
   },
   ]

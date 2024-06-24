@@ -1,7 +1,7 @@
 export const stepsOptions = [
   {
     id: 'project-type',
-    name: 'Type',
+    name: 'Typ',
   },
   {
     id: 'technology-stack',
@@ -13,7 +13,7 @@ export const stepsOptions = [
   },
   {
     id: 'security',
-    name: 'Security',
+    name: 'Sicherheit',
   },
   {
     id: 'monitoring',
@@ -25,7 +25,7 @@ export const stepsOptions = [
   },
   {
     id: 'summary',
-    name: 'Summary',
+    name: 'Zusammenfassung',
   },
 ];
 

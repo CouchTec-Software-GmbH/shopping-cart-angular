@@ -8,13 +8,13 @@ export const stylingOptions = [
   {
     id: 'Sass',
     name: 'Sass',
-    description: 'Syntactically Awesome Style Sheets.',
+    description: 'Syntactically Awesome Style Sheets',
     checked: false,
   },
   {
     id: 'Less',
     name: 'Less',
-    description: 'Less is More.',
+    description: 'Weniger ist mehr.',
     checked: false,
   },
 ]

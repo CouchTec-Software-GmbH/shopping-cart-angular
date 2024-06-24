@@ -2,25 +2,25 @@
     {
       id: 'Frontend',
       name: 'Frontend',
-      description: 'Front facing user interface.',
+      description: 'Vorderseitige Benutzeroberfläche',
       checked: true,
     },
     {
       id: 'Middleware',
       name: 'Middleware',
-      description: 'Connection and data orchestration hub.',
+      description: 'Knotenpunkt für Verbindungen und Datenorchestrierung',
       checked: false,
     },
     {
       id: 'Backend',
       name: 'Backend',
-      description: 'Data processing and storage core.',
+      description: 'Kernstück der Datenverarbeitung und -speicherung',
       checked: true,
     },
     {
       id: 'Database',
       name: 'Database',
-      description: 'Data storage and retrieval.',
+      description: 'Speicherung und Abruf von Daten',
       checked: false,
     },
   ];
