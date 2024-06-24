@@ -36,7 +36,7 @@ import { AuthService } from '@app/services/auth.service';
 
         <div class="sm:w-1/2 flex w-full justify-between">
           <div class="relative top-0 left-0 m-6">
-            <a [hidden]="signup || signin" (click)="switchToSignIn()">
+            <a class="hidden">
               <div class="hover:bg-gray-100 rounded-md">
                 <svg
                   width="40px"
@@ -59,23 +59,13 @@ import { AuthService } from '@app/services/auth.service';
             <div class="place-self-center ">
               <app-signin-email
                 *ngIf="state === 'signin-email'"
-                (signup)="switchToSignUp()"
+                (signup)="switchToSignUpEmail()"
                 (resetPassword)="handleResetPassword()"
               ></app-signin-email>
 
-              <app-signin-email
-                *ngIf="state === 'signin'"
-                (signinemail)="switchToSignInEmail()"
-                (signup)="switchToSignUp()"
-              ></app-signin-email>
               <app-signup-email
                 *ngIf="state === 'signup-email'"
-                (signin)="switchToSignIn()"
-              ></app-signup-email>
-              <app-signup-email
-                *ngIf="state === 'signup'"
-                (signin)="switchToSignIn()"
-                (signupemail)="switchToSignUpEmail()"
+                (signin)="switchToSignInEmail()"
               ></app-signup-email>
               <app-reset-password
                 *ngIf="state === 'reset-password'"
@@ -126,7 +116,7 @@ import { AuthService } from '@app/services/auth.service';
   `,
 })
 export class AuthComponent implements OnInit {
-  state = 'signin';
+  state = 'signin-email';
   signup: boolean = false;
   signin: boolean = false;
   activate: string = '';
