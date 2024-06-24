@@ -15,10 +15,10 @@ import { AuthService } from '@app/services/auth.service';
   template: `
             <form class="w-full max-w-xs" [formGroup]="signInForm" (submit)="submitForm()">
                 <div class="mb-4 text-center">
-                    <h2 class="text-2xl font-bold text-gray-700">Sign in with email</h2>
+                    <h2 class="text-2xl font-bold text-gray-700">Mit Email anmelden </h2>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-sm text-gray-600" for="email">Email or Username</label>
+                    <label class="block text-sm text-gray-600" for="email">Email</label>
                     <input class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none hover:border-gray-400 focus:border-blue-500"
                       id="email"
                       type="email"
@@ -30,7 +30,7 @@ import { AuthService } from '@app/services/auth.service';
                       id="password"
                       type="password"
                       formControlName="password">
-                    <a class="text-xs text-blue-600 hover:text-blue-700 hover:cursor-pointer " (click)="resetPassword.emit()">I forgot password or can't sign in</a>
+                    <a class="text-xs text-blue-600 hover:text-blue-700 hover:cursor-pointer " (click)="resetPassword.emit()">Ich habe mein Password vergessen.</a>
                 </div>
                 <div class="mb-6">
               <input
@@ -39,10 +39,10 @@ import { AuthService } from '@app/services/auth.service';
                 name="marketing_accept"
                 class="size-4 mr-2 rounded-md border-gray-200 bg-white shadow-sm"
               />
-                    <label class="text-sm text-gray-600 " for="remember">Remember me</label>
+                    <label class="text-sm text-gray-600 " for="remember">Erinnere mich.</label>
                 </div>
                 <div>
-                    <button class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Sign in</button>
+                    <button class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Anmelden</button>
                 </div>
 
         <div role="alert" class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5" *ngIf="submitted && status !== 200">
@@ -64,7 +64,7 @@ import { AuthService } from '@app/services/auth.service';
 </div>
                <hr class="my-6 border-gray-300 w-full">
                 <div class="mt-4 text-center">
-                    <p class="hover:cursor-pointer text-sm">Do not have an account? <a class="text-blue-600" (click)="signup.emit()" >Sign up</a></p>
+                    <p class="hover:cursor-pointer text-sm">Sie haben noch kein Konto? <a class="text-blue-600" (click)="signup.emit()" >Registrieren</a></p>
                 </div>
             </form>
   `,
