@@ -108,7 +108,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSettingsClick(): void {
-    this.router.navigate(['/settings']);
+    this.router.navigate(['/dashboard']);
   }
 
   private updateEmailFromCookies() {
