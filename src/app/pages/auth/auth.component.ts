@@ -60,8 +60,9 @@ import { AuthService } from '@app/services/auth.service';
               <app-signin-email
                 *ngIf="state === 'signin-email'"
                 (signup)="switchToSignUp()"
-                (resetPassword)="state = 'forgot-password'"
+                (resetPassword)="handleResetPassword()"
               ></app-signin-email>
+
               <app-signin-email
                 *ngIf="state === 'signin'"
                 (signinemail)="switchToSignInEmail()"
@@ -172,5 +173,10 @@ export class AuthComponent implements OnInit {
     this.state = 'signup-email';
     this.signup = false;
     this.signin = false;
+  }
+
+  handleResetPassword() {
+    this.state = 'forgot-password';
+    console.log('Auth: Forgot password');
   }
 }
