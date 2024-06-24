@@ -17,11 +17,6 @@ const routeConfig: Routes = [
     title: 'Couchtec - Auth'
   },
   {
-    path: 'support',
-    component: ContactComponent,
-    title: 'Couchtec - Support'
-  },
-  {
     path: 'dashboard',
     component: DashboardComponent,
     title: 'Couchtec - Dashboard'
