@@ -62,20 +62,20 @@ import { AuthService } from '@app/services/auth.service';
                 (signup)="switchToSignUp()"
                 (resetPassword)="state = 'forgot-password'"
               ></app-signin-email>
-              <app-signin
+              <app-signin-email
                 *ngIf="state === 'signin'"
                 (signinemail)="switchToSignInEmail()"
                 (signup)="switchToSignUp()"
-              ></app-signin>
+              ></app-signin-email>
               <app-signup-email
                 *ngIf="state === 'signup-email'"
                 (signin)="switchToSignIn()"
               ></app-signup-email>
-              <app-signup
+              <app-signup-email
                 *ngIf="state === 'signup'"
                 (signin)="switchToSignIn()"
                 (signupemail)="switchToSignUpEmail()"
-              ></app-signup>
+              ></app-signup-email>
               <app-reset-password
                 *ngIf="state === 'reset-password'"
                 [code]="code"
