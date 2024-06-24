@@ -1,34 +1,34 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
-import { DetailsComponent } from './details/details.component';
-import { ConfigureComponent } from './configure/configure.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from '@pages/home/home.component';
+import { ContactComponent } from '@pages/contact/contact.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { ConfigureComponent } from './pages/configure/configure.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home page'
+    title: 'Couchtec - Home'
   },
   {
-    path: 'cart',
-    component: CartComponent,
-    title: 'Shopping Cart'
+    path: 'auth',
+    component: AuthComponent,
+    title: 'Couchtec - Auth'
   },
   {
-    path: 'configure/:id',
-    component: ConfigureComponent,
-    title: 'Configure'
-  },{
+    path: 'support',
+    component: ContactComponent,
+    title: 'Couchtec - Support'
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
-    title: 'Dashboard'
+    title: 'Couchtec - Dashboard'
   },
   {
-    path: 'details/:id',
-    component: DetailsComponent,
-    title: 'Home details'
+    path: '**',
+    redirectTo: ''
   }
 ];
 
