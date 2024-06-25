@@ -9,7 +9,7 @@ import { createDefaultProjectData, get_http_header, get_session_token_from_cooki
 })
 export class ProductService {
   // apiUrl = `https://couchtec.dev.linusweigand.com/api/`;
-  apiUrl = `http://localhost/api/`;
+  apiUrl = `http://localhost:3000/`;
 
 
   constructor(private http: HttpClient) {
