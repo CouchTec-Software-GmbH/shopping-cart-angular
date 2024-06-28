@@ -9,8 +9,8 @@ import { get_basic_http_header, get_email_from_cookie, get_http_header, get_sess
 })
 export class AuthService {
   url = 'https://couchdb-app-service.azurewebsites.net/products/';
-  // apiUrl = `https://couchtec.dev.linusweigand.com/api/`;
-  apiUrl = `http://localhost/api/`;
+  apiUrl = `/api/`;
+
   sessionToken: string = '';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasSessionToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
