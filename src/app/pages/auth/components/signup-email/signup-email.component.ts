@@ -166,7 +166,6 @@ export class SignUpEmailComponent implements AfterViewInit {
       this.signUpForm.value.password ?? '',
       this.signUpForm.value.marketing_accept ?? false,
     );
-    console.log(this.status);
     this.submitted = true;
     if (this.status === 200) {
       this.router.navigate(['/'], { queryParams: { verifyEmail: true } });

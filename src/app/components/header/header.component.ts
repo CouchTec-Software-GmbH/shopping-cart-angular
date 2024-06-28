@@ -67,11 +67,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   handleStorageChange = (event: StorageEvent) => {
-    console.log("Header storage change");
     if(event.key === 'uuid') {
-      console.log("Header uuid storage change");
       this.currentUuid = localStorage.getItem('uuid') ?? this.uuids[0];
-      console.log(this.currentUuid);
     }
   }
 

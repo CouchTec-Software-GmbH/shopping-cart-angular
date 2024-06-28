@@ -149,7 +149,6 @@ export class SignInEmailComponent implements AfterViewInit {
   }
 
   onResetPassword() {
-    console.log('forgot password');
     this.resetPassword.emit();
   }
 }

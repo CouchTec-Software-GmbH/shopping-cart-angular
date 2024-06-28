@@ -167,6 +167,5 @@ export class AuthComponent implements OnInit {
 
   handleResetPassword() {
     this.state = 'forgot-password';
-    console.log('Auth: Forgot password');
   }
 }

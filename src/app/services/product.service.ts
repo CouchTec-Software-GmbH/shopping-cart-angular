@@ -23,8 +23,6 @@ export class ProductService {
       if (error instanceof HttpErrorResponse && error.status === 404) {
         await this.putProject(uuid, createDefaultProjectData());
       }
-      console.log('Uh oh', error);
-      console.error('Error putting project: ', error);
     }
   }
 
@@ -34,7 +32,6 @@ export class ProductService {
       const response = await firstValueFrom(this.http.get(`${this.apiUrl}${uuid}`, get_http_header(session_token ?? '')));
       return {...createDefaultProjectData(), ...response};
     } catch (error) {
-      console.log("No project with that uuid found");
       const doc = createDefaultProjectData();
       await this.putProject(uuid, doc);
       return doc;
