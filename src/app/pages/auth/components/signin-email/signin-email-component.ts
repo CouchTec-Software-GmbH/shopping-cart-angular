@@ -130,15 +130,15 @@ export class SignInEmailComponent implements AfterViewInit {
     if (this.status === 200) {
       this.router.navigate(['/']);
     } else if (this.status === 401) {
-      this.errorTitle = 'Invalid password';
-      this.errorMessage =
-        "If you've forgot your password, try using the Log in with Google button";
-    } else if (this.status === 404) {
-      this.errorTitle = 'Invalid username or password';
-      this.errorMessage = '';
+      this.errorTitle = 'Ungültiges Password';
+      this.errorMessage = 'Falls Sie Ihr Password vergessen haben, versuchen Sie es zurückzusetzen';
+    } else
+    if (this.status === 404) {
+      this.errorTitle = 'Ungültiger Nutzer und Password';
+      this.errorMessage = ''
     } else {
-      this.errorTitle = 'Something went wrong';
-      this.errorMessage = 'Please try again later.';
+      this.errorTitle = 'Irgendwas ist schief gelaufen';
+      this.errorMessage = 'Bitte versuchen Sie es später erneut.';
     }
   }
 
