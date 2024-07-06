@@ -26,7 +26,7 @@ import { AuthService } from '@app/services/auth.service';
     <div class="bg-gray-000">
       <div class="flex h-screen">
         <div
-          class="w-full sm:w-1/2 bg-gray-800 text-white flex justify-center items-center p-10 sm:flex hidden"
+          class="w-full sm:w-1/2 bg-gray-800 text-white flex justify-center items-center p-10 sm:flex hidden overflow-y-auto"
         >
           <div>
             <h1 class="text-5xl font-bold mb-4">CouchTec</h1>
@@ -34,7 +34,7 @@ import { AuthService } from '@app/services/auth.service';
           </div>
         </div>
 
-        <div class="sm:w-1/2 flex w-full justify-between">
+        <div class="sm:w-1/2 flex w-full justify-between overflow-y-auto">
           <div class="relative top-0 left-0 m-6 ">
             <a class="invisible">
               <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer">
@@ -73,6 +73,7 @@ import { AuthService } from '@app/services/auth.service';
               ></app-reset-password>
               <app-forgot-password
                 *ngIf="state === 'forgot-password'"
+                (signup)="switchToSignUpEmail()"
               ></app-forgot-password>
             </div>
           </div>
