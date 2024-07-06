@@ -19,9 +19,9 @@ import { ProjectData } from '@models/project-data';
           class="grid grid-cols-4 gap-4 px-5 items-center rounded bg-beige-dark p-4 text-gray-600"
         >
           <p class="text-sm pl-10">Projektname</p>
-          <p class="md:block hidden text-sm">Status</p>
-          <p class="sm:block hidden text-sm">Kurzbeschreibung</p>
-          <p class="sm:block hidden text-sm"></p>
+          <p class="max-lg:invisible text-sm">Status</p>
+          <p class="max-md:invisible text-sm">Kurzbeschreibung</p>
+          <p class="max-sm:invisible text-sm"></p>
         </div>
 
         <div
