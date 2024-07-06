@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private uuid_subscription!: Subscription;
   uuids: string[] = [];
   currentUuid: string = "";
+  isMenuOpen = false;
 
   constructor(
     private router: Router,
@@ -82,30 +83,40 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }));
 
     this.router.navigate(['configure']);
+    this.closeMenu()
   }
 
-  onSearch(value: string): void {
-    this.searchService.search(value);
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
 
   onAccountClick(): void {
     this.accountShow = !this.accountShow;
   }
+
   onSignInClick(): void {
     this.router.navigate(['/auth']);
     this.accountShow = false;
+    this.closeMenu()
   }
 
   onSignOutClick(): void {
     this.authService.signOut();
+    this.closeMenu()
   }
 
   onNewProjectClick(): void {
     this.router.navigate(['/'], { queryParams: { newProject: true }});
+    this.closeMenu()
   }
 
   onSettingsClick(): void {
     this.router.navigate(['/dashboard']);
+    this.closeMenu()
   }
 
   private updateEmailFromCookies() {
