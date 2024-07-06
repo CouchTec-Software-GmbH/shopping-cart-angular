@@ -53,7 +53,7 @@
             <a
               *ngFor="let option of headerOptions"
               [routerLink]="[option.link]"
-              class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
+              class="rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 "
             >
               {{ option.title }}
             </a>
@@ -196,13 +196,15 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div id="mobile-menu" [ngClass]="{ 'hidden': !isMenuOpen }">
+  <div id="mobile-menu"
+class="transition-all duration-300 ease-in-out overflow-hidden sm:hidden"
+     [ngClass]="{ 'max-h-0': !isMenuOpen, 'max-h-96': isMenuOpen }">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-500 hover:bg-gray-700 hover:text-white" -->
       <a
         *ngFor="let option of headerOptions"
         [routerLink]="[option.link]"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
+        class="block rounded-md px-3 py-2 text-base  text-gray-700 hover:bg-gray-50 "
       >
         {{ option.title }}
       </a>
