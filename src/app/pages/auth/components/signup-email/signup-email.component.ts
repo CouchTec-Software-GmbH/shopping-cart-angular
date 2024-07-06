@@ -52,7 +52,7 @@ import { emailDomainValidator } from '@app/utils/utils';
       </div>
       <div class="my-4">
         <label class="block text-sm text-gray-600" for="password"
-          >Password</label
+          >Passwort</label
         >
         <input
           class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none hover:border-gray-400 focus:border-blue-500"
@@ -64,7 +64,7 @@ import { emailDomainValidator } from '@app/utils/utils';
       </div>
       <div class="mb-4">
         <label class="block text-sm text-gray-600" for="password"
-          >Password verifizieren</label
+          >Passwort verifizieren</label
         >
         <input
           class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none hover:border-gray-400 focus:border-blue-500"
@@ -169,10 +169,10 @@ export class SignUpEmailComponent implements AfterViewInit {
       this.router.navigate(['/'], { queryParams: { verifyEmail: true } });
     } else if (this.status === 401) {
       this.errorTitle = 'Ungültiges Password';
-      this.errorMessage = 'Falls Sie Ihr Password vergessen haben, versuchen Sie es zurückzusetzen';
+      this.errorMessage = 'Falls Sie Ihr Passwort vergessen haben, versuchen Sie es zurückzusetzen';
     } else
     if (this.status === 404) {
-      this.errorTitle = 'Ungültiger Nutzer und Password';
+      this.errorTitle = 'Ungültiger Nutzer und Passwort';
       this.errorMessage = ''
     } else {
       this.errorTitle = 'Irgendwas ist schief gelaufen';

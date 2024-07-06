@@ -6,7 +6,7 @@
 
         <button
           type="button"
-          class="text-gray-500 w-10 h-10 relative focus:outline-none bg-white md:hidden"
+          class="text-gray-500 w-10 h-10 relative focus:outline-none bg-white md:hidden hover:bg-gray-50"
           aria-controls="mobile-menu"
           aria-expanded="false"
           (click)="toggleMenu()"
@@ -61,14 +61,14 @@
         </div>
       </div>
       <div
-        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 max-sm:mr-3"
       >
         <div class="relative">
           <div class="inline-flex items-center overflow-hidden">
             <div class="p-2" *ngIf="name === ''">
               <button
                 (click)="onSignInClick()"
-                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
+                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 "
                 role="menuitem"
               >
                 <svg
@@ -92,7 +92,9 @@
                   </g>
                 </svg>
 
+                <p class="max-sm:hidden">
                 Anmelden
+                </p>
               </button>
             </div>
 

@@ -25,12 +25,12 @@ import { AuthService } from '@app/services/auth.service';
                       formControlName="email">
                 </div>
                 <div class="mb-4">
-                    <label class="block text-sm text-gray-600" for="password">Password</label>
+                    <label class="block text-sm text-gray-600" for="password">Passwort</label>
                     <input class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none hover:border-gray-400 focus:border-blue-500"
                       id="password"
                       type="password"
                       formControlName="password">
-                    <a class="text-xs text-blue-600 hover:text-blue-700 hover:cursor-pointer " (click)="resetPassword.emit()">Ich habe mein Password vergessen.</a>
+                    <a class="text-xs text-blue-600 hover:text-blue-700 hover:cursor-pointer " (click)="resetPassword.emit()">Ich habe mein Passwort vergessen.</a>
                 </div>
                 <div class="mb-6">
               <input
@@ -95,11 +95,11 @@ export class SignInEmailComponent implements AfterViewInit {
       this.router.navigate(['/']);
     } else
     if (this.status === 401) {
-      this.errorTitle = 'Ungültiges Password';
-      this.errorMessage = 'Falls Sie Ihr Password vergessen haben, versuchen Sie es zurückzusetzen';
+      this.errorTitle = 'Ungültiges Passwort';
+      this.errorMessage = 'Falls Sie Ihr Passwort vergessen haben, versuchen Sie es zurückzusetzen';
     } else
     if (this.status === 404) {
-      this.errorTitle = 'Ungültiger Nutzer und Password';
+      this.errorTitle = 'Ungültiger Nutzer und Passwort';
       this.errorMessage = ''
     } else {
       this.errorTitle = 'Irgendwas ist schief gelaufen';

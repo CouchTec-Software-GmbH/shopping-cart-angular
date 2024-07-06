@@ -15,7 +15,7 @@ import { AuthService } from '@app/services/auth.service';
   template: `
             <form class="w-full max-w-xs" [formGroup]="resetPasswordForm" (submit)="submitForm()">
                 <div class="mb-4 text-center">
-                    <h2 class="text-2xl font-bold text-gray-700">Reset Password</h2>
+                    <h2 class="text-2xl font-bold text-gray-700">Passwort zurücksetzen</h2>
                 </div>
                 <div class="mb-4">
                     <label class="block text-sm text-gray-600" for="email">Email </label>
@@ -25,7 +25,7 @@ import { AuthService } from '@app/services/auth.service';
                       formControlName="email">
                 </div>
                 <div>
-                    <button class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Send reset email</button>
+                    <button class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white">Email senden</button>
                 </div>
 
         <div role="alert" class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5" *ngIf="submitted && status !== 200 && errorTitle">
@@ -47,7 +47,7 @@ import { AuthService } from '@app/services/auth.service';
 </div>
                <hr class="my-6 border-gray-300 w-full">
                 <div class="mt-4 text-center">
-                    <p class="hover:cursor-pointer text-sm">Do not have an account? <a class="text-blue-600" (click)="signup.emit()" >Sign up</a></p>
+                    <p class="hover:cursor-pointer text-sm">Sie haben noch kein Konto? <a class="text-blue-600" (click)="signup.emit()" >Registrieren</a></p>
                 </div>
             </form>
   `,
