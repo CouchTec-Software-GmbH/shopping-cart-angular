@@ -35,9 +35,9 @@ import { AuthService } from '@app/services/auth.service';
         </div>
 
         <div class="sm:w-1/2 flex w-full justify-between">
-          <div class="relative top-0 left-0 m-6">
-            <a class="hidden">
-              <div class="hover:bg-gray-100 rounded-md">
+          <div class="relative top-0 left-0 m-6 ">
+            <a class="invisible">
+              <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer">
                 <svg
                   width="40px"
                   height="40px"
@@ -77,8 +77,8 @@ import { AuthService } from '@app/services/auth.service';
             </div>
           </div>
 
-          <a class="relative top-0 right-0 m-6" [routerLink]="['/']">
-            <div class="hover:bg-gray-100 rounded-md">
+          <div class="relative top-0 right-0 m-6 hover:cursor-pointer" [routerLink]="['/']">
+            <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer">
               <svg
                 width="40px"
                 height="40px"
@@ -109,7 +109,7 @@ import { AuthService } from '@app/services/auth.service';
                 <g id="Layer_1" />
               </svg>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>

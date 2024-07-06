@@ -151,11 +151,9 @@ export class SignUpEmailComponent implements AfterViewInit {
   }
 
   async submitForm() {
-    if (
-      this.signUpForm.value.password !== this.signUpForm.value.verifyPassword
-    ) {
-      this.errorTitle = 'Passwords do not match';
-      this.errorMessage = 'Please make sure your passwords match.';
+    if (this.signUpForm.value.password !== this.signUpForm.value.verifyPassword) {
+      this.errorTitle = 'Passwörter stimmen nicht überein';
+      this.errorMessage = 'Bitte stellen Sie sicher, dass die Passwörter übereinstimmen.';
       this.status = 400;
       this.submitted = true;
       return;
@@ -170,7 +168,6 @@ export class SignUpEmailComponent implements AfterViewInit {
     if (this.status === 200) {
       this.router.navigate(['/'], { queryParams: { verifyEmail: true } });
     } else if (this.status === 401) {
-
       this.errorTitle = 'Ungültiges Password';
       this.errorMessage = 'Falls Sie Ihr Password vergessen haben, versuchen Sie es zurückzusetzen';
     } else
