@@ -100,28 +100,6 @@
               </a>
             </div>
             <div class="p-2" *ngIf="name !== ''">
-              <button
-                (click)="onNewProjectClick()"
-                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
-                role="menuitem"
-              >
-                <svg
-                  width="20px"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                >
-                  <rect x="0" fill="none" width="24" height="24" />
-                  <g>
-                    <path
-                      d="M21 14v5c0 1.105-.895 2-2 2H5c-1.105 0-2-.895-2-2V5c0-1.105.895-2 2-2h5v2H5v14h14v-5h2z"
-                    />
-                    <path d="M21 7h-4V3h-2v4h-4v2h4v4h2V9h4" />
-                  </g>
-                </svg>
-                Neues Projekt
-              </button>
 
               <button
                 (click)="onSettingsClick()"
@@ -184,25 +162,19 @@
           </div>
         </div>
 
-        <button
-          class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
-        >
-          <span class="sr-only">Toggle menu</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+<button class="text-gray-500 w-10 h-10 relative focus:outline-none bg-white md:hidden"
+  (click)="toggleMenu()"
+  >
+                <span class="sr-only">Open main menu</span>
+                <div class="block w-5 absolute left-1/2 top-1/2   transform  -translate-x-1/2 -translate-y-1/2">
+                    <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                      [ngClass]="{'rotate-45': isMenuOpen,' -translate-y-1.5': !isMenuOpen }"></span>
+                    <span aria-hidden="true" class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                      [ngClass]="{'opacity-0': isMenuOpen } "></span>
+                    <span aria-hidden="true" class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                      [ngClass]="{'-rotate-45': isMenuOpen, ' translate-y-1.5': !isMenuOpen}"></span>
+                </div>
+            </button>
       </div>
     </div>
   </div>
@@ -213,5 +185,24 @@
     class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"
   ></div>
 
-  <span class="relative z-10 bg-white px-6"></span>
+  <span class="relative z-10 bg-white px-6">
+  </span>
 </span>
+
+<span class="relative flex justify-center full-h-screen justify-center bg-white"
+      [ngClass]="{ 'hidden': !false }">
+
+  <span class="absolute ">
+      <a *ngFor="let option of headerOptions"
+         [routerLink]="[option.link]"
+         (click)="closeMenu()">
+        {{ option.title }}
+      </a>
+  </span>
+
+</span>
+
+<div class="absolute inset-y-20 left-0 right-0 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                                                                                                                                                                                                                  [ngClass]="{ 'hidden': !isMenuOpen }">
+  <a href="#"  role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+</div>

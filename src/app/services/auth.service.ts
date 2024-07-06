@@ -42,7 +42,6 @@ export class AuthService {
   async preRegister(email: string, password: string, newsletter: boolean): Promise<number> {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}pre-register`, { email, password, newsletter }, get_basic_http_header()));
-      console.log('Response: ', response);
       return 200;
     } catch (error) {
       if (error instanceof HttpErrorResponse && error.status === 409) {
@@ -59,7 +58,6 @@ export class AuthService {
   async register(uuid: string): Promise<number> {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}register`, { uuid }, get_basic_http_header()));
-      console.log('Response: ', response);
       return 200;
     }catch (error) {
       if (error instanceof HttpErrorResponse) {
@@ -73,7 +71,6 @@ export class AuthService {
   async preReset(email: string): Promise<number> {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}pre-reset`, { email }, get_basic_http_header()));
-      console.log('Response: ', response);
       return 200;
     } catch (error) {
       if (error instanceof HttpErrorResponse && error.status === 404) {
@@ -90,7 +87,6 @@ export class AuthService {
   async reset(uuid: string, password: string): Promise<number> {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}reset`, { uuid, password }, get_basic_http_header()));
-      console.log('Response: ', response);
       return 200;
     } catch (error) {
       if (error instanceof HttpErrorResponse && error.status === 404) {
@@ -142,7 +138,6 @@ export class AuthService {
       const response = await firstValueFrom(this.http.get<any>(`${this.apiUrl}uuids/${email}`, get_http_header(session_token ?? '')));
       return response;
     } catch (error) {
-      console.error('Error getting uuids: ', error);
       return [];
     }
   }

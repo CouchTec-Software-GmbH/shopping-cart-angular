@@ -261,7 +261,6 @@ export class ProjectListComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.reloadProjects();
-    console.log("uuids: ", this.uuids);
   }
 
   openProject(uuid: string): void {

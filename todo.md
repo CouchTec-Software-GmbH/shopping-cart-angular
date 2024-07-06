@@ -1,3 +1,5 @@
-- Dashboard auf Deutsch
-- Neue Dashboard Seite mit Projektüberblicken
-- Altes Dashboard in configure
+- Dashboard auf Deutsch DONE
+- Neue Dashboard Seite mit Projektüberblicken DONE
+- Altes Dashboard in configure DONE
+
+

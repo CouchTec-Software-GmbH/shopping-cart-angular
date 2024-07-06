@@ -155,6 +155,5 @@ export class SignInComponent {
 
   output() {
     this.signinemail.emit(true);
-    console.log('output');
   }
 }

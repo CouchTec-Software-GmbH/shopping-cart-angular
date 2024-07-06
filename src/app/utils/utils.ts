@@ -70,7 +70,6 @@ export function emailDomainValidator(): ValidatorFn {
       !domain.split('.')[0] ||
       !domain.split('.')[1]
     ) {
-      console.log('Email invalid');
       return { invalidDomain: true };
     }
     return null;
