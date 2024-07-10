@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { headerOptions } from '@app/data/header';
 import { HeaderOption } from '@app/models/header-option';
-import { SearchService } from '@services/search.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@app/services/auth.service';
 import { Subscription } from 'rxjs';
@@ -30,7 +29,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private searchService: SearchService,
     private projectService: ProjectService
   ) {
   }

@@ -19,17 +19,23 @@
             <span
               aria-hidden="true"
               class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-              [ngClass]="{'rotate-45': isMenuOpen,' -translate-y-1.5': !isMenuOpen }"
+              [ngClass]="{
+                'rotate-45': isMenuOpen,
+                ' -translate-y-1.5': !isMenuOpen
+              }"
             ></span>
             <span
               aria-hidden="true"
               class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-              [ngClass]="{'opacity-0': isMenuOpen } "
+              [ngClass]="{ 'opacity-0': isMenuOpen }"
             ></span>
             <span
               aria-hidden="true"
               class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
-              [ngClass]="{'-rotate-45': isMenuOpen, ' translate-y-1.5': !isMenuOpen}"
+              [ngClass]="{
+                '-rotate-45': isMenuOpen,
+                ' translate-y-1.5': !isMenuOpen
+              }"
             ></span>
           </div>
         </button>
@@ -53,7 +59,7 @@
             <a
               *ngFor="let option of headerOptions"
               [routerLink]="[option.link]"
-              class="rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 "
+              class="rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
             >
               {{ option.title }}
             </a>
@@ -68,7 +74,7 @@
             <div class="p-2" *ngIf="name === ''">
               <button
                 (click)="onSignInClick()"
-                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 "
+                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
                 role="menuitem"
               >
                 <svg
@@ -92,9 +98,7 @@
                   </g>
                 </svg>
 
-                <p class="max-sm:hidden">
-                Anmelden
-                </p>
+                <p class="max-sm:hidden">Anmelden</p>
               </button>
             </div>
 
@@ -133,6 +137,28 @@
               </a>
             </div>
             <div class="p-2" *ngIf="name !== ''">
+              <button
+                (click)="onNewProjectClick()"
+                class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
+                role="menuitem"
+              >
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <rect x="0" fill="none" width="24" height="24" />
+                  <g>
+                    <path
+                      d="M21 14v5c0 1.105-.895 2-2 2H5c-1.105 0-2-.895-2-2V5c0-1.105.895-2 2-2h5v2H5v14h14v-5h2z"
+                    />
+                    <path d="M21 7h-4V3h-2v4h-4v2h4v4h2V9h4" />
+                  </g>
+                </svg>
+                Neues Projekt
+              </button>
               <button
                 (click)="onSettingsClick()"
                 class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
@@ -198,15 +224,17 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div id="mobile-menu"
-class="transition-all duration-300 ease-in-out overflow-hidden sm:hidden"
-     [ngClass]="{ 'max-h-0': !isMenuOpen, 'max-h-96': isMenuOpen }">
+  <div
+    id="mobile-menu"
+    class="transition-all duration-300 ease-in-out overflow-hidden sm:hidden"
+    [ngClass]="{ 'max-h-0': !isMenuOpen, 'max-h-96': isMenuOpen }"
+  >
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-500 hover:bg-gray-700 hover:text-white" -->
       <a
         *ngFor="let option of headerOptions"
         [routerLink]="[option.link]"
-        class="block rounded-md px-3 py-2 text-base  text-gray-700 hover:bg-gray-50 "
+        class="block rounded-md px-3 py-2 text-base text-gray-700 hover:bg-gray-50"
       >
         {{ option.title }}
       </a>
