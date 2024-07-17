@@ -8,7 +8,6 @@ import { SecurityComponent } from './components/security/security.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 import { ExtraComponent } from './components/extra/extra.component';
 import { SummaryComponent } from './components/summary/summary.component';
-import { stepsOptions } from '@app/data/steps';
 import { ProjectData } from '@app/models/project-data';
 import { createDefaultProjectData } from '@app/utils/utils';
 import { ProductService } from '@app/services/product.service';
@@ -18,29 +17,46 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { AuthService } from '@app/services/auth.service';
 import { Router } from '@angular/router';
+import { ConfigService } from '@app/services/config.service';
+import { Section } from '@app/models/section';
+import { SectionComponent } from './components/section-new/section-component';
 
 
 @Component({
   selector: 'app-configure',
   standalone: true,
   imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent],
+  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent, SectionComponent],
   templateUrl: './configure.component.html',
 })
 export class ConfigureComponent implements OnDestroy, OnInit {
-  steps = stepsOptions;
-  currentStep: number = 0;
+
+  sections: Section[] = [];
+
+  currentStep: number = 1;
   uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
+
   projectData: ProjectData = createDefaultProjectData();
-  productService = inject(ProductService);
+
   projectTypeOptions: ProjectOption[] = projectOptions;
+  productService = inject(ProductService);
   projectDataLoaded: boolean = false;
   authService = inject(AuthService);
   changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(private router: Router) {}
+  constructor(private config_service: ConfigService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
+    this.config_service.getConfig().subscribe(config => {
+      this.sections = this.config_service.getSections();
+      console.log("Sections: ", this.sections);
+      this.sections.forEach(key => {
+          key.sub_sections.forEach(sub_section => {
+            console.log(sub_section.sub_title);
+          });
+        });
+      });
+
     if (!localStorage.getItem('uuid')) {
       this.router.navigate(['/'], { queryParams: { newProject: true }});
     }
@@ -48,6 +64,7 @@ export class ConfigureComponent implements OnDestroy, OnInit {
     this.loadProjectData();
 
     window.addEventListener('storage', this.handleStorageChange);
+
   }
 
   ngOnDestroy(): void {

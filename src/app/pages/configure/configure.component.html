@@ -1,77 +1,63 @@
-
 <app-header></app-header>
 <section class="bg-white">
   <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
-    <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
-<div
-  class="absolute inset-0 w-full bg-auto bg-top bg-repeat-y"
-  style="background-image: url('https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')"
-></div>
+    <aside
+      class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6"
+    >
+      <div
+        class="absolute inset-0 w-full bg-auto bg-top bg-repeat-y"
+        style="
+          background-image: url(&quot;https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80&quot;);
+        "
+      ></div>
     </aside>
     <main
       class="flex justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6"
     >
-      <div class="max-w-xl lg:max-w-3xl">
-      <app-steps [steps]="steps" [currentStep]="currentStep" (stepChange)="currentStep = $event" ></app-steps>
+      <div class="w-full max-w-full">
+        <app-steps
+          [steps]="sections"
+          [currentStep]="currentStep"
+          (stepChange)="currentStep = $event"
+        ></app-steps>
+        <ng-container *ngIf="projectDataLoaded">
 
-      <ng-container *ngIf="projectDataLoaded;">
-        <app-project-type
-          *ngIf="currentStep === 0"
-          [projectData]="projectData">
-          [uuid]="uuid"
-        </app-project-type>
-        <app-tech-stack
-          *ngIf="currentStep === 1"
-          [projectData]="projectData" >
-          [uuid]="uuid"
-        </app-tech-stack>
-        <app-deployment
-          *ngIf="currentStep === 2"
-          [projectData]="projectData" >
-          [uuid]="uuid"
-        </app-deployment>
-        <app-security
-          *ngIf="currentStep === 3"
-          [projectData]="projectData" >
-          [uuid]="uuid"
-        </app-security>
-        <app-monitoring
-          *ngIf="currentStep === 4"
-          [projectData]="projectData" >
-          [uuid]="uuid"
-        </app-monitoring>
-        <app-extra
-          *ngIf="currentStep === 5"
-          [projectData]="projectData" >
-          [uuid]="uuid"
-        </app-extra>
-        <app-summary
-          *ngIf="currentStep === 6"
-          [projectData]="projectData" >
-          [uuid]="uuid"
-        </app-summary>
-      </ng-container>
-      <ng-container *ngIf="!projectDataLoaded" >
+          <div *ngFor="let section of sections; index as i">
+          <app-section *ngIf="i === currentStep"
+            [key] = "section.key"
+            [display_name] = "section.display_name"
+            [title] = "section.title"
+            [sub_title] = "section.sub_title"
+            [sub_sections] = "section.sub_sections"
+            >
+
+          </app-section>
+          </div>
+
+
+
+        </ng-container>
+        <ng-container *ngIf="!projectDataLoaded">
           <app-skeleton></app-skeleton>
         </ng-container>
 
-          <div class="col-span-6 sm:flex sm:items-center sm:gap-4 mt-5">
-            <button
-              class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
-              (click)="handlePreviousStep()"
-              *ngIf="currentStep > 0"
-            >
-              Zurück
-            </button>
+        <div class="col-span-6 sm:flex sm:items-center sm:gap-4 mt-5">
+          <button
+            class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+            (click)="handlePreviousStep()"
+            *ngIf="currentStep > 0"
+          >
+            Zurück
+          </button>
 
-            <button
-              *ngIf="currentStep < 6"
-              class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
-              (click)="handleNextStep()"
-            >
-              Weiter
-            </button>
-          </div>
+          <button
+            *ngIf="currentStep < 6"
+            class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+            (click)="handleNextStep()"
+          >
+            Weiter
+          </button>
+        </div>
       </div>
     </main>
   </div>

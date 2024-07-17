@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { get_http_header, get_session_token_from_cookie } from '@app/utils/utils';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { Section } from '@app/models/section';
+import { SubSection } from '@app/models/sub-section';
+import { Option } from '@app/models/option';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +12,11 @@ import { BehaviorSubject, firstValueFrom } from 'rxjs';
 export class ConfigService {
   private apiUrl = `/api/`;
   private configSubject = new BehaviorSubject<ConfigData | null>(null);
-  private sectionsMap: Map<string, Section> = new Map();
+  private sections: Section[] = [];
+  private configLoaded: Promise<void>;
 
   constructor(private http: HttpClient) {
-    this.initializeConfig();
+    this.configLoaded = this.initializeConfig();
   }
 
   async initializeConfig(): Promise<any> {
@@ -30,21 +34,28 @@ export class ConfigService {
     }
   }
 
-  private parseConfig(sections: { [key: string]: Section }): void {
-    Object.entries(sections).forEach(([key, value]) => {
-      const subSectionMap = new Map<string, SubSection>();
+  async waitForConfig(): Promise<void> {
+    return this.configLoaded;
+  }
 
-      Object.entries(value.sub_sections).forEach(([subKey, subValue]) => {
-        const optionsMap = new Map<string, Option>();
-
-        Object.entries(subValue.options as { [key: string]: Option }).forEach(([optKey, optValue]) => {
-          optionsMap.set(optKey, optValue);
-        });
-
-        subSectionMap.set(subKey, { ...subValue, options: optionsMap });
-      });
-
-      this.sectionsMap.set(key, { ...value, sub_sections: subSectionMap });
+  private parseConfig(sections: Section[]): void {
+    this.sections = sections.map(sectionObj => {
+      const [sectionKey, sectionValue] = Object.entries(sectionObj)[0];
+      return {
+        key: sectionKey,
+        ...sectionValue,
+        sub_sections: sectionValue.sub_sections.map((subSectionObj: any) => {
+          const [subSectionKey, subSectionValue] = Object.entries(subSectionObj)[0] as [string, any];
+          return {
+            key: subSectionKey,
+            ...subSectionValue,
+            options: Object.entries(subSectionValue.options).map(([optionKey, optionValue]) => ({
+              key: optionKey,
+              ...optionValue as object
+            }))
+          };
+        })
+      };
     });
   }
 
@@ -53,32 +64,50 @@ export class ConfigService {
   }
 
   getSections() {
-    return this.sectionsMap;
+    return this.sections;
   }
 
   getSection(key: string) {
-    return this.sectionsMap.get(key);
+    return this.sections.find(section => section.key === key);
   }
 
   getSubSection(section: string, sub_section: string): SubSection | undefined {
-    return this.sectionsMap.get(section)?.sub_sections.get(sub_section);
+    const foundSection = this.getSection(section);
+    return foundSection?.sub_sections.find(subSection => subSection.key === sub_section);
   }
 
-  getOptions(section: string, sub_section: string): Map<string, Option> | undefined {
-    return this.getSubSection(section, sub_section)?.options;
+  getOptions(section: string, sub_section: string): Option[] | undefined {
+    const foundSubSection = this.getSubSection(section, sub_section);
+    return foundSubSection?.options;
   }
 
   createDefaultProjectData(): any {
     const defaultData: any = {};
-    this.sectionsMap.forEach((sectionValue, sectionKey) => {
-      defaultData[sectionKey] = {};
-      sectionValue.sub_sections.forEach((subSectionValue, subSectionKey) => {
-        let button = subSectionValue.button;
-        if (button === 'radio') {
-          const firstOption = subSectionValue.options.keys().next().value;
-          defaultData[sectionKey][subSectionKey] = firstOption || '';
+    this.sections.forEach((section) => {
+      defaultData[section.key] = {};
+      section.sub_sections.forEach((subSection) => {
+        defaultData[section.key][subSection.key] = {};
+        let options: string[] = [];
+
+        let button = subSection.button;
+        if (button === 'checkbox') {
+          subSection.options.forEach(option => {
+            if(option.checked) {
+              options.push(option.key);
+            }
+          });
+        defaultData[section.key][subSection.key] = options;
         } else {
-          defaultData[sectionKey][subSectionKey] = [];
+          let found = false;
+          subSection.options.forEach(option => {
+            if(option.checked) {
+              defaultData[section.key][subSection.key] = option.key
+              found = true;
+            }
+          });
+          if (!found) {
+              defaultData[section.key][subSection.key] = ""
+          }
         }
       });
     });
@@ -87,26 +116,5 @@ export class ConfigService {
 }
 
 interface ConfigData {
-  sections: {
-    [key: string]: Section;
-  };
-}
-
-interface Section {
-  display_name: string;
-  title: string;
-  sub_title: string;
-  sub_sections: Map<string, SubSection>;
-}
-
-interface SubSection {
-  button: string;
-  title: string;
-  sub_title: string;
-  options: Map<string, Option>;
-}
-
-interface Option {
-  display_name: string;
-  factor: number;
+  sections: Section[];
 }

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Step } from '@models/step';
+import { Section } from '@app/models/section';
 
 @Component({
   selector: 'app-steps',
@@ -26,7 +26,7 @@ import { Step } from '@models/step';
                     }">
           {{ i + 1 }}
         </span>
-        <span> {{ step.name }} </span>
+        <span> {{ step.display_name }} </span>
 
       </li>
     </ol>
@@ -35,7 +35,7 @@ import { Step } from '@models/step';
   `,
 })
 export class StepsComponent {
-  @Input() steps: Step[] = [];
+  @Input() steps: Section[] = [];
   @Input() currentStep: number = 0;
   @Output() stepChange = new EventEmitter<number>();
 
