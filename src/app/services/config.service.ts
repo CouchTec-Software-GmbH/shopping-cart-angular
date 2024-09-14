@@ -25,12 +25,13 @@ export class ConfigService {
       const response = await firstValueFrom(this.http.get<ConfigData>(`${this.apiUrl}config`, get_http_header(session_token ?? "")));
 
       if(response && response.sections) {
-        this.parseConfig(response.sections);
+        this.sections = this.parseConfig(response.sections);
       }
       this.configSubject.next(response);
     } catch (error) {
       console.error('Failed to initialize config:', error);
       this.configSubject.next(null);
+
     }
   }
 
@@ -38,8 +39,8 @@ export class ConfigService {
     return this.configLoaded;
   }
 
-  private parseConfig(sections: Section[]): void {
-    this.sections = sections.map(sectionObj => {
+  private parseConfig(sections: Section[]): Section[] {
+    return sections.map(sectionObj => {
       const [sectionKey, sectionValue] = Object.entries(sectionObj)[0];
       return {
         key: sectionKey,
@@ -49,10 +50,13 @@ export class ConfigService {
           return {
             key: subSectionKey,
             ...subSectionValue,
-            options: Object.entries(subSectionValue.options).map(([optionKey, optionValue]) => ({
-              key: optionKey,
-              ...optionValue as object
-            }))
+            options: subSectionValue.options.map((optionObj: any) => {
+              const [optionKey, optionValue] = Object.entries(optionObj)[0] as [string, any];
+              return {
+                key: optionKey,
+                ...optionValue
+              }
+            })
           };
         })
       };
@@ -89,8 +93,8 @@ export class ConfigService {
         defaultData[section.key][subSection.key] = {};
         let options: string[] = [];
 
-        let button = subSection.button;
-        if (button === 'checkbox') {
+        let typ = subSection.typ;
+        if (typ === 'checkbox') {
           subSection.options.forEach(option => {
             if(option.checked) {
               options.push(option.key);

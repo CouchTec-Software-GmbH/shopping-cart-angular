@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SubSectionComponent } from '../sub-section/sub-section.component';
 import { SubSection } from '@app/models/sub-section';
+import { ProductService } from '@app/services/product.service';
 
 @Component({
   selector: 'app-section',
@@ -27,23 +28,35 @@ import { SubSection } from '@app/models/sub-section';
         [title]="sub_section.title"
         [sub_title]="sub_section.sub_title"
         [key]="sub_section.key"
+        [typ]="sub_section.typ"
+        (subSectionDataChange)="changeSubSectionData($event)"
+
       >
       </app-sub-section>
     </div>
   `,
 })
-export class SectionComponent implements OnInit {
+export class SectionComponent implements OnInit, OnDestroy {
   @Input() key: string = '';
   @Input() display_name: string = '';
   @Input() title: string = '';
   @Input() sub_title: string = '';
   @Input() sub_sections: SubSection[] = [];
+  @Input() uuid: string = localStorage.getItem("uuid") || crypto.randomUUID();
 
+  private path: string = this.key;
+
+  constructor(private productService: ProductService) { }
+
+  ngOnDestroy(): void {
+    let section = { [this.key]: {}};
+
+  }
+
+  changeSubSectionData(subsection: any) {
+  }
 
   ngOnInit(): void {
-    // console.log("section: ", this.display_name);
-    // this.sub_sections.forEach(sub_section => {
-    //   console.log(sub_section.sub_title);
-    // });
+
   }
 }

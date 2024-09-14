@@ -1,15 +1,6 @@
 import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepsComponent } from './components/steps/steps.component';
-import { ProjectTypeComponent } from './components/project-type/project-type.component';
-import { TechStackComponent } from './components/tech-stack/tech-stack.component';
-import { DeploymentComponent } from './components/deployment/deployment.component';
-import { SecurityComponent } from './components/security/security.component';
-import { MonitoringComponent } from './components/monitoring/monitoring.component';
-import { ExtraComponent } from './components/extra/extra.component';
-import { SummaryComponent } from './components/summary/summary.component';
-import { ProjectData } from '@app/models/project-data';
-import { createDefaultProjectData } from '@app/utils/utils';
 import { ProductService } from '@app/services/product.service';
 import { ProjectOption } from '@app/models/project-option';
 import { projectOptions } from '@app/data/project-options';
@@ -25,18 +16,17 @@ import { SectionComponent } from './components/section-new/section-component';
 @Component({
   selector: 'app-configure',
   standalone: true,
-  imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent, SectionComponent],
+  imports: [CommonModule, StepsComponent, SkeletonComponent, HeaderComponent, SectionComponent],
   templateUrl: './configure.component.html',
 })
 export class ConfigureComponent implements OnDestroy, OnInit {
 
   sections: Section[] = [];
 
-  currentStep: number = 1;
+  currentStep: number = 0;
   uuid: string = localStorage.getItem('uuid') || crypto.randomUUID();
 
-  projectData: ProjectData = createDefaultProjectData();
+  projectData: any = {};
 
   projectTypeOptions: ProjectOption[] = projectOptions;
   productService = inject(ProductService);
@@ -49,7 +39,7 @@ export class ConfigureComponent implements OnDestroy, OnInit {
   async ngOnInit(): Promise<void> {
     this.config_service.getConfig().subscribe(config => {
       this.sections = this.config_service.getSections();
-      console.log("Sections: ", this.sections);
+      console.log("(Not empty) Sections: ", this.sections);
       this.sections.forEach(key => {
           key.sub_sections.forEach(sub_section => {
             console.log(sub_section.sub_title);
@@ -99,6 +89,7 @@ export class ConfigureComponent implements OnDestroy, OnInit {
 
   async loadProjectData(): Promise<void> {
     this.projectData = await this.productService.getProject(this.uuid);
+    console.log("Project Data: ", this.projectData);
     this.projectDataLoaded = true;
   }
 

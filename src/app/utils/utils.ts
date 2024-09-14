@@ -1,33 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { ProjectData } from '@models/project-data';
-
-export function createDefaultProjectData(): ProjectData {
-  return {
-    projectType: 'GreenFieldProject',
-    status: 'Nicht begonnen',
-    shortText: '',
-    tierOptions: [],
-    techStack: {
-      frontend: {
-        framework: 'React',
-        styling: '',
-      },
-      middleware: '',
-      backend: '',
-      database: '',
-    },
-    deployment: {
-      provider: 'AWS',
-      containerization: 'Docker',
-      orchestration: 'Kubernetes',
-      environment: [],
-    },
-    security: [],
-    monitoring: '',
-    extra: [],
-  };
-}
 
 export function setNestedValue(obj: any, path: string, value: any): void {
   const keys = path.split('.');

@@ -1,0 +1,127 @@
+{
+  "_id": "config",
+  "_rev": "21-af2ce7a9f790102e2523d7761ad476b5",
+  "data": {
+    "basis": 4000,
+    "sections": [
+      {
+        "type": {
+          "display_name": "Oberflächen",
+          "title": "",
+          "sub_title": "Konfigurieren Sie Ihre Oberflächen.",
+          "sub_sections": [
+            {
+              "elemente": {
+                "typ": "input",
+                "title": "Anzahl an Elementen",
+                "sub_title": "Jede Oberfläche besteht aus Sektionen, welche wiederrum aus Elementen bestehen",
+                "options": [
+                  {
+                    "input_zahl": {
+                      "display_name": "Anzahl ",
+                      "factor": 1,
+                      "description": "SChieberegler 1 - 10, pro zahl beschreibung",
+                      "checked": true
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "komplexität": {
+                "typ": "slider",
+                "title": "Komplexität",
+                "sub_title": "",
+                "options": [
+                  {
+                    "0": {
+                      "display_name": "Sehr niedrig",
+                      "factor": 1,
+                      "description": "0-50 Elemente",
+                      "checked": true
+                    }
+                  },
+                  {
+                    "1": {
+                      "display_name": "Niedrig",
+                      "factor": 1,
+                      "description": "Designer & Usability",
+                      "checked": false
+                    }
+                  },
+                  {
+                    "2": {
+                      "display_name": "Mittel",
+                      "factor": 1,
+                      "description": "Dokumentation, Tests",
+                      "checked": false
+                    }
+                  },
+                  {
+                    "3": {
+                      "display_name": "Komplex",
+                      "factor": 1,
+                      "description": "Sprachwechslung, Cloud Deployment",
+                      "checked": false
+                    }
+                  },
+                  {
+                    "2": {
+                      "display_name": "Sehr komplex",
+                      "factor": 1,
+                      "description": "Ab 1000 Elementen",
+                      "checked": false
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Schnittstellen": {
+          "display_name": "SChnittstellen",
+          "title": "Schnittstellen",
+          "sub_title": "",
+          "sub_sections": [
+            {
+              "Komplexität": {
+                "typ": "checkbox",
+                "title": "Kompläxität",
+                "sub_title": "Authentification, api keys, passwörter, versch.",
+                "options": [
+                  {
+                    "production": {
+                      "display_name": "Production",
+                      "factor": 1,
+                      "description": "lol",
+                      "checked": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "env_factors": [
+      {
+        "documentation": []
+      },
+      {
+        "risk": []
+      },
+      {
+        "team": []
+      },
+      {
+        "quality": []
+      },
+      {
+        "process_maturity": []
+      }
+    ]
+  }
+}

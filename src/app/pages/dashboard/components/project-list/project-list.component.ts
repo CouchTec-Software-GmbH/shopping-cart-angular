@@ -5,7 +5,6 @@ import { SkeletonComponent } from '@app/pages/configure/components/skeleton/skel
 import { AuthService } from '@app/services/auth.service';
 import { ProductService } from '@app/services/product.service';
 import { ProjectService } from '@app/services/project.service';
-import { ProjectData } from '@models/project-data';
 
 @Component({
   selector: 'app-project-list',
@@ -250,12 +249,11 @@ import { ProjectData } from '@models/project-data';
 })
 export class ProjectListComponent implements OnInit {
   uuids: string[] = [];
-  projects: Map<String, ProjectData> = new Map();
+  projects: Map<String, any> = new Map();
   authService = inject(AuthService);
   projectService = inject(ProjectService);
   productService = inject(ProductService);
   projects_loaded = false;
-  projects_data: ProjectData[] = [];
 
   constructor(private router: Router) {}
 

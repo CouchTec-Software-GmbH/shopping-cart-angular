@@ -5,7 +5,6 @@ import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { CommonModule } from '@angular/common';
 import { AccountSettingsComponent } from './components/account-settings';
-import { ConfigService } from '@app/services/config.service';
 
 
 @Component({
@@ -37,18 +36,7 @@ import { ConfigService } from '@app/services/config.service';
 export class DashboardComponent implements OnInit {
   state: string = "general";
 
-  constructor(private configService: ConfigService) {}
-
   ngOnInit(): void {
-    this.configService.getConfig().subscribe(config => {
-      if (config) {
-        console.log('All Sections:', this.configService.getSections());
-        console.log('Typ section:', this.configService.getSection('Typ'));
-        console.log('Deployment environments:', this.configService.getSubSection('deployment', 'environments'));
-        console.log('Deployment provider options:', this.configService.getOptions('deployment', 'provider'));
-        console.log('Default config:', this.configService.createDefaultProjectData());
-      }
-    });
   }
 
   onStateChange(state: string) {
