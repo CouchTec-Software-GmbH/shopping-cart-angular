@@ -16,11 +16,9 @@ import { PopUpComponent } from './components/popup/popup.component';
     CommonModule,
   ],
   template: `
-    <div class="relative">
-      <div [class.blur]="popUpState">
-        <app-header></app-header>
+    <div class="relative ">
+      <div [class.blur]="popUpState" >
         <app-banner></app-banner>
-        <app-section></app-section>
       </div>
     </div>
     <app-pop-up (popUp)="popUpState = $event"></app-pop-up>
@@ -29,7 +27,7 @@ import { PopUpComponent } from './components/popup/popup.component';
 export class HomeComponent {
   popUpState: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef){}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   setPopUpState(state: boolean) {
     this.popUpState = state;
