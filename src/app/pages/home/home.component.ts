@@ -16,7 +16,7 @@ import { PopUpComponent } from './components/popup/popup.component';
     CommonModule,
   ],
   template: `
-    <div class="relative ">
+    <div class="relative">
       <div [class.blur]="popUpState" >
         <app-banner></app-banner>
       </div>

@@ -10,6 +10,15 @@ module.exports = {
           dark: "#ededed",
         },
       },
+      screens: {
+
+        '3sm': '300px',
+        '2sm': '400px',
+        '3xl': '2000px',
+        '4xl': '2500px',
+        '5xl': '3000px',
+        '6xl': '3500px'
+      }
     },
   },
   plugins: [],
