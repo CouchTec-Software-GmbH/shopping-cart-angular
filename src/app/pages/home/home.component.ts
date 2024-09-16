@@ -4,6 +4,8 @@ import { SectionComponent } from '@pages/home/components/section/section.compone
 import { CommonModule } from '@angular/common';
 import { PopUpComponent } from './components/popup/popup.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { SolutionComponent } from './components/solution/solution.component';
+import { SoGehtsComponent } from './components/sogehts/sogehts.component';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,8 @@ import { HeroComponent } from './components/hero/hero.component';
   imports: [
     HeroComponent,
     SectionComponent,
+    SoGehtsComponent,
+    SolutionComponent,
     HeaderComponent,
     PopUpComponent,
     CommonModule,
@@ -19,6 +23,8 @@ import { HeroComponent } from './components/hero/hero.component';
     <div class="relative">
       <div [class.blur]="popUpState" >
         <app-hero></app-hero>
+        <app-solution></app-solution>
+        <app-sogehts>        </app-sogehts>
       </div>
     </div>
     <app-pop-up (popUp)="popUpState = $event"></app-pop-up>

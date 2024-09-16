@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-hero',
+    selector: 'app-solution',
     standalone: true,
     imports: [RouterModule],
-    templateUrl: './hero.component.html'
+    templateUrl: './solution.component.html'
 })
-export class HeroComponent {
+export class SolutionComponent {
 }
