@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-banner',
+    selector: 'app-hero',
     standalone: true,
     imports: [RouterModule],
     template: `
@@ -120,5 +120,5 @@ import { RouterModule } from '@angular/router';
 </div>
      `,
 })
-export class BannerComponent {
+export class HeroComponent {
 }

@@ -1,15 +1,15 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { HeaderComponent } from '@app/components/header/header.component';
-import { BannerComponent } from '@pages/home/components/banner/banner.component';
 import { SectionComponent } from '@pages/home/components/section/section.component';
 import { CommonModule } from '@angular/common';
 import { PopUpComponent } from './components/popup/popup.component';
+import { HeroComponent } from './components/hero/hero.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    BannerComponent,
+    HeroComponent,
     SectionComponent,
     HeaderComponent,
     PopUpComponent,
@@ -18,7 +18,7 @@ import { PopUpComponent } from './components/popup/popup.component';
   template: `
     <div class="relative">
       <div [class.blur]="popUpState" >
-        <app-banner></app-banner>
+        <app-hero></app-hero>
       </div>
     </div>
     <app-pop-up (popUp)="popUpState = $event"></app-pop-up>
