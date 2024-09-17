@@ -27,6 +27,11 @@ const routeConfig: Routes = [
     title: 'Couchtec - Kontakt'
   },
   {
+    path: 'configure',
+    component: ConfigureComponent,
+    title: 'Couchtec - Projekt'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

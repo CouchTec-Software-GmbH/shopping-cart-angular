@@ -19,18 +19,7 @@ import { AccountSettingsComponent } from './components/account-settings';
     CommonModule
   ],
   template: `
-    <app-header></app-header>
-
-    <div class="flex ">
-    <app-side-menu
-      (stateChange)="onStateChange($event)"
-      (state)="state"
-    ></app-side-menu>
-    <div class="flex-grow">
-    <app-project-list class="max-w-full" *ngIf="state === 'general'"></app-project-list>
-    <app-account-settings *ngIf="state === 'account'"></app-account-settings>
-    </div>
-    </div>
+      <app-project-list></app-project-list>
   `,
 })
 export class DashboardComponent implements OnInit {
