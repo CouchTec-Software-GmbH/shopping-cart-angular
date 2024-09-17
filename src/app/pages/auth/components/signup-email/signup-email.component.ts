@@ -39,7 +39,8 @@ export class SignUpEmailComponent implements AfterViewInit {
   });
   authService = inject(AuthService);
   router = inject(Router);
-  isHideIcon = false;
+  isHideIcon = true;
+  isHideIconVerify = true;
 
   get email() {
     return this.signUpForm.get('email')!;
@@ -77,6 +78,10 @@ export class SignUpEmailComponent implements AfterViewInit {
 
   toggleHideIcon() {
     this.isHideIcon = !this.isHideIcon;
+  }
+
+  toggleHideIconVerify() {
+    this.isHideIconVerify = !this.isHideIconVerify;
   }
 
   ngAfterViewInit() {

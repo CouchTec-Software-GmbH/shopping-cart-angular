@@ -8,7 +8,8 @@
         <p class="text-[32px] font-medium text-[#333]">Konto erstellen</p>
         <div class="flex flex-row p-[2px] gap-1">
             <p class="text-[#333]">Sie haben bereits ein Konto? </p>
-            <a class="text-[#111] underline hover:cursor-pointer">Anmelden</a>
+            <a (click)="signin.emit(true)"
+                class="text-[#111] underline hover:cursor-pointer">Anmelden</a>
         </div>
     </div>
 
@@ -16,7 +17,7 @@
         <div class="flex flex-col items-start gap-1 self-stretch">
             <label for="email" class="gap-[10px] self-stretch items-center">E-Mail</label>
             <input
-                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-blue-500"
+                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
                 id="email"
                 type="email"
                 formControlName="email"
@@ -66,14 +67,16 @@
                             d="M18.6714 8.1974C18.1114 7.07735 17.3753 6.06942 16.4634 5.25339L13.4874 8.1974V8.51735C13.4874 10.6453 11.7754 12.3574 9.64739 12.3574H9.32744L7.43945 14.2453C8.14351 14.3893 8.87946 14.4853 9.59946 14.4853C13.5516 14.4853 16.9754 12.1814 18.6235 8.85322C18.7675 8.62915 18.7675 8.40524 18.6714 8.19723L18.6714 8.1974Z"
                             fill="#666666" fill-opacity="0.8" />
                     </svg>
-                    <p class="text-[18px]">Ausblenden</p>
+                    <p class="text-[18px]">{{ isHideIcon ? 'Anzeigen' :
+                        'Ausblenden' }}</p>
 
                 </div>
             </div>
             <input
-                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-blue-500"
+                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
                 id="password"
                 type="password"
+                [type]="isHideIcon? 'password' : 'text'"
                 formControlName="password"
                 required />
 
@@ -85,10 +88,10 @@
                     class="gap-[10px] self-stretch items-center">Passwort
                     verifizieren</label>
                 <div
-                    (click)="toggleHideIcon()"
+                    (click)="toggleHideIconVerify()"
                     class="flex flex-row gap-2 items-center hover:cursor-pointer">
                     <svg
-                        *ngIf="isHideIcon"
+                        *ngIf="isHideIconVerify"
                         width="25" height="25" viewBox="0 0 25 25" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_80_1874)">
@@ -104,7 +107,7 @@
                         </defs>
                     </svg>
                     <svg
-                        *ngIf="!isHideIcon"
+                        *ngIf="!isHideIconVerify"
                         width="19" height="17" viewBox="0 0 19 17" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -114,14 +117,15 @@
                             d="M18.6714 8.1974C18.1114 7.07735 17.3753 6.06942 16.4634 5.25339L13.4874 8.1974V8.51735C13.4874 10.6453 11.7754 12.3574 9.64739 12.3574H9.32744L7.43945 14.2453C8.14351 14.3893 8.87946 14.4853 9.59946 14.4853C13.5516 14.4853 16.9754 12.1814 18.6235 8.85322C18.7675 8.62915 18.7675 8.40524 18.6714 8.19723L18.6714 8.1974Z"
                             fill="#666666" fill-opacity="0.8" />
                     </svg>
-                    <p class="text-[18px]">Ausblenden</p>
+                    <p class="text-[18px]">{{ isHideIconVerify ? 'Anzeigen' :
+                        'Ausblenden' }}</p>
 
                 </div>
             </div>
             <input
-                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-blue-500"
+                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
                 id="verifypassword"
-                type="password"
+                [type]="isHideIconVerify ? 'password' : 'text'"
                 formControlName="verifypassword"
                 required />
 
@@ -132,7 +136,7 @@
                 und <a class="underline text-[#111] hover:cursor-pointer">Datenschutzrichtlinien
                 </a>zu.
             </p>
-            <div class>
+            <div>
                 <input
                     type="checkbox"
                     id="MarketingAccept"
@@ -148,15 +152,30 @@
 
     <div>
         <button
-            class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white"
-            [disabled]="signUpForm.invalid">
-            Konto erstellen
+            class="flex h-[49.5px] px-[29.5px] py-[35px] items-center gap-[13px] rounded-[150px] bg-[#11253E] hover:bg-[#22364F]">
+            <p
+                class="flex flex-col justify-center  h-[45px] text-white text-[22.5px] font-medium text-center tracking-[0.15px]">Konto
+                erstellen</p>
+            <svg width="10" height="15" viewBox="0 0 10 15" fill="none"
+                class="mt-[3px]"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M4.93934 7.74999L0 2.81065L2.12132 0.689331L9.18198 7.74999L2.12132 14.8107L0 12.6893L4.93934 7.74999Z"
+                    fill="white" />
+            </svg>
         </button>
+
+    </div>
+
+    <div class="flex flex-row p-[1px] gap-1">
+        <p class="text-[#333]">Sie haben bereits ein Konto? </p>
+        <a (click)="signin.emit(true)"
+            class="text-[#111] underline hover:cursor-pointer">Anmelden</a>
     </div>
 
     <div
         role="alert"
-        class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5"
+        class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5 w-full "
         *ngIf="submitted && status !== 200">
         <div class="flex items-center gap-2 text-yellow-600">
             <svg
@@ -175,13 +194,6 @@
 
         <p class="mt-2 text-sm text-yellow-600">
             {{ errorMessage }}
-        </p>
-    </div>
-    <hr class="my-6 border-gray-300 w-full" />
-    <div class="mt-4 text-center">
-        <p class="hover:cursor-pointer text-sm">
-            Sie haben bereits ein Konto?
-            <a class="text-blue-600" (click)="signin.emit()"> Anmelden</a>
         </p>
     </div>
 </form>

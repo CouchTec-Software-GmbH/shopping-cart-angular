@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './components/signin/signin.component';
-import { SignInEmailComponent } from './components/signin-email/signin-email-component';
 import { SignUpEmailComponent } from './components/signup-email/signup-email.component';
 import { SignUpComponent } from './components/signup/signup.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AuthService } from '@app/services/auth.service';
+import { SignInEmailComponent } from './components/signin-email/signin-email.component';
 
 @Component({
   selector: 'app-auth',
@@ -25,7 +25,7 @@ import { AuthService } from '@app/services/auth.service';
   templateUrl: './auth.component.html'
 })
 export class AuthComponent implements OnInit {
-  state = 'signup-email';
+  state = 'signin-email';
   signup: boolean = false;
   signin: boolean = false;
   activate: string = '';
