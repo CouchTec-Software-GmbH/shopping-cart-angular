@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-sogehts',
@@ -8,4 +8,13 @@ import { RouterModule } from '@angular/router';
     templateUrl: './sogehts.component.html'
 })
 export class SoGehtsComponent {
+
+    constructor(
+        private router: Router
+    ) { }
+
+    onClick() {
+        this.router.navigate(['auth']);
+        console.log("lol")
+    }
 }

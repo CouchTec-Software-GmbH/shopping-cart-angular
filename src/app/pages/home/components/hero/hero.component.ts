@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-hero',
@@ -8,4 +8,13 @@ import { RouterModule } from '@angular/router';
     templateUrl: './hero.component.html'
 })
 export class HeroComponent {
+
+    constructor(
+        private router: Router
+    ) { }
+
+    onClick() {
+        this.router.navigate(['auth']);
+        console.log("lol")
+    }
 }

@@ -1,4 +1,5 @@
-<div
+<section
+    id="home"
     class="flex flex-col w-full h-[1200px] min-h-screen bg-white overflow-x-hidden overflow-y-hidden relative">
     <div
         class="absolute w-full h-[440px] sm:h-[530px] md:h-[620px] lg:h-[700px] xl:h-[580px] 3xl:h-[700px] 5xl:h-[800px] shrink-0 bg-white bg-[url('assets/images/Rectangle.png')] bg-lightgray bg-no-repeat bg-cover bg-bottom">
@@ -8,11 +9,12 @@
         class="flex flex-row w-full justify-between items-center pt-[25.5px] px-[40px] sm:px-[80px] xl:pl-[131px] xl:pr-[145px] text-white text-xl font-semibold mix-blend-luminosity">
         <div
             class="flex  w-[185px]  relative items-center justify-center">
-            <p
+            <a
                 class="flex -mt-1 text-[27px] shrink-0 w-full h-full item-center justify-center text-white text-center [text-stroke-width:0.3px] [text-stroke-color:#FFF] text-[40.5px] font-extrabold hover:cursor-pointer
-          ">
+          "
+                href="#home">
                 couchtec
-            </p>
+            </a>
         </div>
         <div
             class="xl:flex flex-row justify-between items-center gap-[2px] xl:gap-[21px] inline-flex text-[22.5px] font-bold hidden">
@@ -28,8 +30,8 @@
             </div>
         </div>
         <button
-            class="flex flex-row inline-flex items-center gap-[15px] mt-[3px] pr-[20px] pl-[29.5px] h-[49.5px] rounded-[150px] bg-[rgba(255,255,255,0.24)] hover:bg-[rgba(255,255,255,0.34)]
-        ">
+            class="flex flex-row inline-flex items-center gap-[15px] mt-[3px] pr-[20px] pl-[29.5px] h-[49.5px] rounded-[150px] bg-[rgba(255,255,255,0.24)] hover:bg-[rgba(255,255,255,0.34)]"
+            (click)="onClick()">
             <p class="text-[22.5px] text-medium">Anmelden</p>
             <svg width="10" height="15" viewBox="0 0 10 15" fill="none"
                 class="mt-1"
@@ -110,4 +112,4 @@
         </div>
     </div>
 
-</div>
+</section>
