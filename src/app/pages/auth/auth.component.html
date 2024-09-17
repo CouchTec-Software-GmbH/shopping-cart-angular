@@ -26,22 +26,20 @@
             </div>
 
             <div class="flex flex-col shrink-0 p-6 items-center justify-center">
-                <div class="place-self-center ">
-                    <app-signin-email
-                        *ngIf="state === 'signin-email'"
-                        (signup)="switchToSignUpEmail()"
-                        (resetPassword)="handleResetPassword()"></app-signin-email>
+                <app-signin-email
+                    *ngIf="state === 'signin-email'"
+                    (signup)="switchToSignUpEmail()"
+                    (resetPassword)="handleResetPassword()"></app-signin-email>
 
-                    <app-signup-email
-                        *ngIf="state === 'signup-email'"
-                        (signin)="switchToSignInEmail()"></app-signup-email>
-                    <app-reset-password
-                        *ngIf="state === 'reset-password'"
-                        [code]="code"></app-reset-password>
-                    <app-forgot-password
-                        *ngIf="state === 'forgot-password'"
-                        (signup)="switchToSignUpEmail()"></app-forgot-password>
-                </div>
+                <app-signup-email
+                    *ngIf="state === 'signup-email'"
+                    (signin)="switchToSignInEmail()"></app-signup-email>
+                <app-reset-password
+                    *ngIf="state === 'reset-password'"
+                    [code]="code"></app-reset-password>
+                <app-forgot-password
+                    *ngIf="state === 'forgot-password'"
+                    (signup)="switchToSignUpEmail()"></app-forgot-password>
             </div>
 
             <div class="absolute top-0 right-0 m-6 hover:cursor-pointer"

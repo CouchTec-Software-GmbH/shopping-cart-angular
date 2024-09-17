@@ -304,7 +304,7 @@
     <div class="flex inline-flex items-center mt-[60px] gap-[6px] ">
         <button
             class="flex h-[49.5px] py-[35.5px] px-[29.5px] items-center gap-[13px] rounded-[150px] bg-[#01152E] hover:bg-[#22364F] "
-            (click)="onClick()">
+            (click)="handleLoginButton()">
             <p
                 class="flex flex-col justify-center h-[45px] text-white text-[22.5px] font-medium text-center tracking-[0.15px]">Projekt
                 starten</p>
@@ -316,7 +316,8 @@
                     fill="white" />
             </svg>
         </button>
-        <button class="flex h-[33px] px-[13px] items-center gap-2">
+        <button class="flex h-[33px] px-[13px] items-center gap-2"
+            (click)="handleContactButton()">
             <p
                 class="text-[#0A2540]  text-center text-[22.5px] font-medium tracking-[0.15px]
         ">Kontakt</p>

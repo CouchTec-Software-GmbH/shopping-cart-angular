@@ -13,8 +13,12 @@ export class SoGehtsComponent {
         private router: Router
     ) { }
 
-    onClick() {
+    handleLoginButton() {
         this.router.navigate(['auth']);
         console.log("lol")
+    }
+
+    handleContactButton() {
+        this.router.navigate(['kontakt'])
     }
 }

@@ -13,8 +13,10 @@ export class HeroComponent {
         private router: Router
     ) { }
 
-    onClick() {
+    handleLoginButton() {
         this.router.navigate(['auth']);
-        console.log("lol")
+    }
+    handleContactButton() {
+        this.router.navigate(['kontakt'])
     }
 }

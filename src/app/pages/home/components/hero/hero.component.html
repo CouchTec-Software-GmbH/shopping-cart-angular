@@ -26,12 +26,14 @@
             </div>
 
             <div class="flex w-[155px] h-[66px] justify-center items-center ">
-                <a class="hover:cursor-pointer">Kontakt</a>
+                <a
+                    (click)="handleContactButton()"
+                    class="hover:cursor-pointer">Kontakt</a>
             </div>
         </div>
         <button
             class="flex flex-row inline-flex items-center gap-[15px] mt-[3px] pr-[20px] pl-[29.5px] h-[49.5px] rounded-[150px] bg-[rgba(255,255,255,0.24)] hover:bg-[rgba(255,255,255,0.34)]"
-            (click)="onClick()">
+            (click)="handleLoginButton()">
             <p class="text-[22.5px] text-medium">Anmelden</p>
             <svg width="10" height="15" viewBox="0 0 10 15" fill="none"
                 class="mt-1"
@@ -63,6 +65,7 @@
         </div>
         <div class="flex inline-flex items-center mt-[60px] gap-[6px] mb-20">
             <button
+                (click)="handleLoginButton()"
                 class="flex h-[49.5px] px-[29.5px] py-[35px] items-center gap-[13px] rounded-[150px] bg-[#11253E] hover:bg-[#22364F]">
                 <p
                     class="flex flex-col justify-center  h-[45px] text-white text-[22.5px] font-medium text-center tracking-[0.15px]">Starten</p>
@@ -74,10 +77,10 @@
                         fill="white" />
                 </svg>
             </button>
-            <button class="flex h-[33px] px-[13px] items-center gap-2">
-                <p
-                    class="text-[#0A2540]  text-center text-[22.5px] font-medium tracking-[0.15px]
-        ">Kontakt</p>
+            <button class="flex h-[33px] px-[13px] items-center gap-2"
+                (click)="handleContactButton()">
+                <a
+                    class="text-[#0A2540]  text-center text-[22.5px] font-medium tracking-[0.15px]">Kontakt</a>
                 <svg width="10" height="15" viewBox="0 0 10 15" fill="none"
                     class="mt-[3px]"
                     xmlns="http://www.w3.org/2000/svg">

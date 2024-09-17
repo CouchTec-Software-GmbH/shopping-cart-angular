@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { ProjectData } from '@models/project-data';
 import { createDefaultProjectData, get_http_header, get_session_token_from_cookie } from '@utils/utils';
@@ -30,7 +30,7 @@ export class ProductService {
     try {
       let session_token = get_session_token_from_cookie();
       const response = await firstValueFrom(this.http.get(`${this.apiUrl}${uuid}`, get_http_header(session_token ?? '')));
-      return {...createDefaultProjectData(), ...response};
+      return { ...createDefaultProjectData(), ...response };
     } catch (error) {
       const doc = createDefaultProjectData();
       await this.putProject(uuid, doc);
@@ -39,7 +39,7 @@ export class ProductService {
   }
 
 
-  async submitApplication(firstName: string, lastName: string, email: string, text: string): Promise<void> {
+  async submitApplication(name: string, email: string, text: string): Promise<void> {
     try {
 
     } catch (error) {

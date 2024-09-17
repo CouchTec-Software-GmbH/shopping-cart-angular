@@ -22,6 +22,11 @@ const routeConfig: Routes = [
     title: 'Couchtec - Dashboard'
   },
   {
+    path: 'kontakt',
+    component: ContactComponent,
+    title: 'Couchtec - Kontakt'
+  },
+  {
     path: '**',
     redirectTo: ''
   }
