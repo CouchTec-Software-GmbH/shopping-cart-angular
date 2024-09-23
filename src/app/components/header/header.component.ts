@@ -14,8 +14,7 @@ import { ProjectService } from '@app/services/project.service';
   selector: 'app-header',
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   headerOptions: HeaderOption[] = headerOptions;
@@ -68,7 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   handleStorageChange = (event: StorageEvent) => {
-    if(event.key === 'uuid') {
+    if (event.key === 'uuid') {
       this.currentUuid = localStorage.getItem('uuid') ?? this.uuids[0];
     }
   }
@@ -98,8 +97,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.accountShow = !this.accountShow;
   }
 
-  onSignInClick(): void {
+  handleLoginButton(): void {
     this.router.navigate(['/auth']);
+    this.accountShow = false;
+    this.closeMenu()
+  }
+
+  handleContactButton(): void {
+    this.router.navigate(['/contact']);
     this.accountShow = false;
     this.closeMenu()
   }
@@ -110,7 +115,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNewProjectClick(): void {
-    this.router.navigate(['/'], { queryParams: { newProject: true }});
+    this.router.navigate(['/'], { queryParams: { newProject: true } });
     this.closeMenu()
   }
 
@@ -124,7 +129,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       let email = (document.cookie.split('; ').find(row => row.startsWith('email')) ?? '').split('=')[1] ?? '';
       this.name = email.split('@')[0];
       let len = this.name.length;
-      this.name = `${this.name.charAt(0).toUpperCase()}${this.name.slice(1,len)}`
+      this.name = `${this.name.charAt(0).toUpperCase()}${this.name.slice(1, len)}`
     } else {
       this.name = '';
     }

@@ -10,7 +10,7 @@
         <div
             class="flex  w-[185px]  relative items-center justify-center">
             <a
-                class="flex -mt-1 text-[27px] shrink-0 w-full h-full item-center justify-center text-white text-center [text-stroke-width:0.3px] [text-stroke-color:#FFF] text-[40.5px] font-extrabold hover:cursor-pointer
+                class="flex -mt-1 text-[16px] sm:text-[27px] shrink-0 w-full h-full item-center justify-center text-white text-center [text-stroke-width:0.3px] [text-stroke-color:#FFF] text-[40.5px] font-extrabold hover:cursor-pointer
           "
                 href="#home">
                 couchtec
@@ -66,16 +66,16 @@
     </header>
     <div
         class="flex flex-col xl:items-start items-center justify-center xl:ml-[115px] ">
-        <div class="flex flex-col">
+        <div class="flex flex-col ml-[40px] 2sm:ml-0">
             <div
-                class="flex flex-col mt-[100px] text-[20px] 3sm:text-[50px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[75px] 2xl:text-[90px] 3xl:text-[120px] 5xl:text-[145px] font-bold tracking-tighter mix-blend-luminosity inset-1"
+                class="flex flex-col mt-[100px] text-[36px]  2sm:text-[40px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[75px] 2xl:text-[90px] 3xl:text-[120px] 5xl:text-[145px] font-bold tracking-tighter mix-blend-luminosity inset-1"
                 text-center>
                 <p>Maßgeschneiderte </p>
                 <p>Webentwicklung</p>
                 <p>für Ihr Unternehmen</p>
             </div>
             <p
-                class="relative z-10 flex w-[440px] sm:w-[503px] 2xl:w-[800px] mt-[50px] md:mt-[31px] text-[#425466] font-normal text-[20px] 2xl:text-[25px] ml-1">Entwerfen
+                class="relative z-10 flex w-[380px] sm:w-[503px] 2xl:w-[800px] mt-[50px] md:mt-[31px] text-[#425466] font-normal text-[20px] 2xl:text-[25px] ml-1">Entwerfen
                 Sie
                 Ihre
                 Webanwendung mit Leichtigkeit und
@@ -131,6 +131,25 @@
                 </a>
             </div>
             <div class="p-2" *ngIf="name !== ''">
+                <button
+                    (click)="onNewProjectClick()"
+                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
+                    role="menuitem">
+                    <svg
+                        width="20px"
+                        height="20px"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor">
+                        <rect x="0" fill="none" width="24" height="24" />
+                        <g>
+                            <path
+                                d="M21 14v5c0 1.105-.895 2-2 2H5c-1.105 0-2-.895-2-2V5c0-1.105.895-2 2-2h5v2H5v14h14v-5h2z" />
+                            <path d="M21 7h-4V3h-2v4h-4v2h4v4h2V9h4" />
+                        </g>
+                    </svg>
+                    Neues Projekt
+                </button>
                 <button
                     (click)="onSettingsClick()"
                     class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"

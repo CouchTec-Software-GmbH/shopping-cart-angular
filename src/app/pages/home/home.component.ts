@@ -22,7 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CommonModule,
   ],
   template: `
-    <div class="relative">
+    <div class="relative overflow-x-hidden">
       <div [class.blur]="popUpState" >
         <app-hero></app-hero>
         <app-solution></app-solution>

@@ -17,14 +17,14 @@ import { projectOptions } from '@app/data/project-options';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { AuthService } from '@app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-configure',
   standalone: true,
-  imports: [CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-  SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent],
+  imports: [RouterModule, CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
+    SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent],
   templateUrl: './configure.component.html',
 })
 export class ConfigureComponent implements OnDestroy, OnInit {
@@ -38,11 +38,11 @@ export class ConfigureComponent implements OnDestroy, OnInit {
   authService = inject(AuthService);
   changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     if (!localStorage.getItem('uuid')) {
-      this.router.navigate(['/'], { queryParams: { newProject: true }});
+      this.router.navigate(['/'], { queryParams: { newProject: true } });
     }
     this.loadUuid();
     this.loadProjectData();
@@ -55,7 +55,7 @@ export class ConfigureComponent implements OnDestroy, OnInit {
   }
 
   handleStorageChange = (event: StorageEvent) => {
-    if(event.key === 'uuid') {
+    if (event.key === 'uuid') {
       this.projectDataLoaded = false;
       this.uuid = localStorage.getItem('uuid') ?? "";
       if (!this.uuid) {
