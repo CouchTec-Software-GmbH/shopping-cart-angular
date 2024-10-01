@@ -11,7 +11,8 @@ import { Subscription } from 'rxjs';
     selector: 'app-hero',
     standalone: true,
     imports: [RouterModule, CommonModule],
-    templateUrl: './hero.component.html'
+    templateUrl: './hero.component.html',
+    styleUrl: './hero.component.css',
 })
 export class HeroComponent {
     headerOptions: HeaderOption[] = headerOptions;
