@@ -9,6 +9,10 @@ module.exports = {
           light: "#f6f6f6",
           dark: "#ededed",
         },
+        primary: {
+          dark: "#001f33",
+          light: '#002438',
+        },
       },
       screens: {
         '5sm': '100px',
@@ -19,7 +23,33 @@ module.exports = {
         '4xl': '2500px',
         '5xl': '3000px',
         '6xl': '3500px'
-      }
+      },
+      fontFamily: {
+        brand: ["HelveticaNeue", "sans-serif"],
+      },
+      fontWeight: {
+        ultraLight: '100',
+        thin: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        bold: '700',
+        heavy: '800',
+      },
+      animation: {
+        marquee: 'marquee 35s linear infinite',
+        marquee2: 'marquee2 35s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
     },
   },
   plugins: [],
