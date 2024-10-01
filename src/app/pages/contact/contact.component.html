@@ -2,7 +2,15 @@
 <section class="bg-white">
     <div class="flex h-screen">
         <div
-            class="w-full lg:w-1/2 lg:flex hidden bg-[url('assets/images/AuthBackground.png')] bg-cover bg-center">
+            class="w-full lg:w-1/2 lg:flex relative"
+            style="background: linear-gradient(105deg, #171717 0%, rgb(0, 0, 0) 100%);">
+            <img
+                class="absolute -left-[300px] -top-[100px]"
+                src="https://framerusercontent.com/images/wUjMjJcMpzrRBSsmNEKB5l3bmA.png?scale-down-to=512">
+
+            <img
+                class="absolute -right-[60px] -bottom-[50px]"
+                src="https://framerusercontent.com/images/wUjMjJcMpzrRBSsmNEKB5l3bmA.png?scale-down-to=512">
         </div>
 
         <div
@@ -26,10 +34,12 @@
                 </a>
             </div>
 
-            <div class="flex flex-col shrink-0 p-6 items-center justify-center">
+            <div
+                class="flex flex-col shrink-0 p-6 items-center justify-center ">
                 <div
                     class="items-center justify-center ">
-                    <div class="text-[80px] font-bold text-[#333] leading-tight">
+                    <div
+                        class="text-[50px] 3xl:text-[80px] font-bold text-[#333] leading-tight">
                         <p
                             class=" text-center">
                             Entwickle deine Ideen
@@ -42,22 +52,23 @@
                     </div>
                 </div>
                 <form
-                    class="flex flex-col justify-center items-start gap-16 text-[#666] text-[16px] font-normal mt-4"
+                    class="flex flex-col justify-center items-start gap-8 3xl:gap-16 text-[#666]  3xl:text-[16px] font-normal mt-4"
                     [formGroup]="contactForm" (submit)="submitForm()">
 
-                    <div class="flex flex-col items-start gap-16 w-[800px]">
+                    <div
+                        class="flex flex-col items-start gap-12 3xl:gap-16 w-[500px] 3xl:w-[800px]">
                         <p class="text-center">Sie werden schnellstmöglich eine
                             Antwort
                             erhalten. Wir werden Ihnen im Detail erklären, wie
                             wir
                             Ihnen helfen können, Ihre Ideen auszubauen.</p>
                         <div
-                            class="flex flex-col items-start gap-1 self-stretch gap-16">
+                            class="flex flex-col items-start  self-stretch gap-8 3xl:gap-16">
                             <label
-                                class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[40px] "
+                                class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[30px] 3xl:text-[40px] "
                                 for="name">
                                 <input
-                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[40px]"
+                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[30px] 3xl:text-[40px]"
                                     type="text"
                                     id="name"
                                     placeholder="Name"
@@ -70,10 +81,10 @@
                                 </span>
                             </label>
                             <label
-                                class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[40px] "
+                                class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[30px] 3xl:text-[40px] "
                                 for="email">
                                 <input
-                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[40px]"
+                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[30px] 3xl:text-[40px]"
                                     type="email"
                                     id="email"
                                     placeholder="E-Mail"
@@ -86,10 +97,10 @@
                                 </span>
                             </label>
                             <label
-                                class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[40px] "
+                                class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[30px] 3xl:text-[40px] "
                                 for="message">
                                 <input
-                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[40px]"
+                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[30px] 3xl:text-[40px]"
                                     type="text"
                                     id="message"
                                     placeholder="Nachricht"
