@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { HeaderComponent } from '@app/components/header/header.component';
 import { SectionComponent } from '@pages/home/components/section/section.component';
 import { CommonModule } from '@angular/common';
 import { PopUpComponent } from './components/popup/popup.component';
@@ -7,15 +6,19 @@ import { HeroComponent } from './components/hero/hero.component';
 import { SolutionComponent } from './components/solution/solution.component';
 import { SoGehtsComponent } from './components/sogehts/sogehts.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ContactSection } from './components/contact-section/contact-section.component';
+import { StackSection } from './components/stack-section/stack-section.component';
+import { ShowcaseSection } from './components/showcase/showcase.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     HeroComponent,
-    SectionComponent,
-    SoGehtsComponent,
-    SolutionComponent,
+    ShowcaseSection,
+    StackSection,
+    ContactSection,
     FooterComponent,
     HeaderComponent,
     PopUpComponent,
@@ -24,10 +27,12 @@ import { FooterComponent } from './components/footer/footer.component';
   template: `
     <div class="relative overflow-x-hidden">
       <div [class.blur]="popUpState" >
+        <app-header></app-header>
         <app-hero></app-hero>
-        <app-solution></app-solution>
-        <app-sogehts>        </app-sogehts>
-        <app-footer>        </app-footer>
+        <app-showcase></app-showcase>
+        <app-stack-section></app-stack-section>
+        <app-contact-section></app-contact-section>
+        <app-footer></app-footer>
       </div>
     </div>
     <app-pop-up (popUp)="popUpState = $event"></app-pop-up>
