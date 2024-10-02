@@ -37,6 +37,7 @@ export class SignInEmailComponent implements AfterViewInit {
       this.signInForm.value.password ?? ''
     );
     this.submitted = true;
+    console.log("Status: ", this.status);
     if (this.status === 200) {
       this.router.navigate(['/']);
     } else
