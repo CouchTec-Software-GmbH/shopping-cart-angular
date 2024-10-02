@@ -1,8 +1,8 @@
 
-<section class="bg-white">
-    <div class="flex h-screen">
+<section class="bg-white h-screen overflow-hidden">
+    <div class="flex h-full">
         <div
-            class="w-full lg:w-1/2 lg:flex relative"
+            class="w-full xl:w-1/2 xl:flex relative hidden"
             style="background: linear-gradient(105deg, #171717 0%, rgb(0, 0, 0) 100%);">
             <img
                 class="absolute -left-[300px] -top-[100px]"
@@ -14,7 +14,7 @@
         </div>
 
         <div
-            class="lg:w-1/2 flex w-full justify-center overflow-y-auto relative">
+            class="xl:w-1/2 flex w-full justify-center overflow-y-auto relative">
             <div class="absolute top-0 left-0 m-6 ">
                 <a class="invisible">
                     <div
@@ -39,7 +39,7 @@
                 <div
                     class="items-center justify-center ">
                     <div
-                        class="text-[50px] 3xl:text-[80px] font-bold text-[#333] leading-tight">
+                        class="text-[40px] sm:text-[50px] 3xl:text-[80px] font-bold text-[#333] leading-tight">
                         <p
                             class=" text-center">
                             Entwickle deine Ideen
@@ -56,7 +56,7 @@
                     [formGroup]="contactForm" (submit)="submitForm()">
 
                     <div
-                        class="flex flex-col items-start gap-12 3xl:gap-16 w-[500px] 3xl:w-[800px]">
+                        class="flex flex-col items-start gap-12 3xl:gap-16 w-[200px] 2sm:w-[300px] sm:w-[500px] 3xl:w-[800px]">
                         <p class="text-center">Sie werden schnellstmöglich eine
                             Antwort
                             erhalten. Wir werden Ihnen im Detail erklären, wie
@@ -68,7 +68,7 @@
                                 class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[30px] 3xl:text-[40px] "
                                 for="name">
                                 <input
-                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[30px] 3xl:text-[40px]"
+                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[25px] 3xl:text-[40px]"
                                     type="text"
                                     id="name"
                                     placeholder="Name"
@@ -84,7 +84,7 @@
                                 class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[30px] 3xl:text-[40px] "
                                 for="email">
                                 <input
-                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[30px] 3xl:text-[40px]"
+                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[25px] 3xl:text-[40px]"
                                     type="email"
                                     id="email"
                                     placeholder="E-Mail"
@@ -100,7 +100,7 @@
                                 class="w-full relative block overflow-visible border-b border-gray-200 bg-transparent pt-3 focus-within:border-black text-[30px] 3xl:text-[40px] "
                                 for="message">
                                 <input
-                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[30px] 3xl:text-[40px]"
+                                    class=" peer w-full border-none bg-transparent p-0  placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 text-[25px] 3xl:text-[40px]"
                                     type="text"
                                     id="message"
                                     placeholder="Nachricht"
@@ -116,20 +116,15 @@
                     </div>
 
                     <div>
+
                         <button
-                            class="flex h-[49.5px] px-[29.5px] py-[35px] items-center gap-[13px] rounded-[150px] bg-[#11253E] hover:bg-[#22364F]">
-                            <p
-                                class="flex flex-col justify-center  h-[45px] text-white text-[22.5px] font-medium text-center tracking-[0.15px]">Absenden
+                            class=" bg-primary-dark hover:bg-primary-light text-white  rounded-[8px] px-[40px] py-[20px]">
+                            <p class="text-[23px] font-brand font-medium">
+                                Absenden
                             </p>
-                            <svg width="10" height="15" viewBox="0 0 10 15"
-                                fill="none"
-                                class="mt-[3px]"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.93934 7.74999L0 2.81065L2.12132 0.689331L9.18198 7.74999L2.12132 14.8107L0 12.6893L4.93934 7.74999Z"
-                                    fill="white" />
-                            </svg>
+
                         </button>
+
                     </div>
                 </form>
             </div>
