@@ -1,4 +1,5 @@
-<section class="flex font-brand w-full items-center justify-center mt-[140px]">
+<section id="stack"
+    class="flex font-brand w-full items-center justify-center mt-[140px]">
     <div class="flex flex-col w-[1250px] items-center justity-center gap-[60px]">
         <div class="flex flex-col items-center justify-center">
             <p class="font-light text-gray-500 text-[12px] uppercase">Billige
@@ -11,7 +12,7 @@
         </div>
         <div class="grid grid-cols-3 grid-rows-2 gap-6">
             <div
-                class="rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50">
+                class="stack-card">
                 <p class="text-[18px] font-medium">Programmiersprachen</p>
                 <p class="text-[15px] font-medium opacity-80 mt-4">
                     Wir beherrschen die neuesten Sprachen wie Rust,
@@ -26,7 +27,7 @@
                     --quantity: 9;
                 ">
                     <div class="list">
-                        <div class="item" style="--position: 1">
+                        <div class="item " style="--position: 1">
                             <img src="/assets/images/ts.png" alt>
                         </div>
 
@@ -52,6 +53,7 @@
 
                         <div class="item" style="--position: 7">
                             <img src="/assets/images/c.png" alt>
+
                         </div>
 
                         <div class="item" style="--position: 8">
@@ -66,7 +68,7 @@
             </div>
 
             <div
-                class="rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50">
+                class="stack-card">
                 <p class="text-[18px] font-medium">Cloud native</p>
                 <p class="text-[15px] font-medium opacity-80 mt-4">
                     Wir sind Experten in Cloud-Technologien wie AWS, Azure und
@@ -110,7 +112,7 @@
             </div>
 
             <div
-                class="rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50">
+                class="stack-card">
                 <p class="text-[18px] font-medium">Frontend Frameworks</p>
                 <p class="text-[15px] font-medium opacity-80 mt-4">
                     Mit React, Angular, Vue und anderen modernen Frameworks
@@ -150,7 +152,7 @@
             </div>
 
             <div
-                class="rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50">
+                class="stack-card">
                 <p class="text-[18px] font-medium">Datenbanken</p>
                 <p class="text-[15px] font-medium opacity-80 mt-4">
                     Wir setzen auf robuste Datenbanken wie PostgreSQL, MongoDB
@@ -191,7 +193,7 @@
             </div>
 
             <div
-                class="rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50">
+                class="stack-card">
                 <p class="text-[18px] font-medium">Platformen</p>
                 <p class="text-[15px] font-medium opacity-80 mt-4">
                     Egal ob iOS, Android oder Web – wir entwickeln
@@ -231,7 +233,7 @@
             </div>
 
             <div
-                class="rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50">
+                class="stack-card">
                 <p class="text-[18px] font-medium">Devops</p>
                 <p class="text-[15px] font-medium opacity-80 mt-4">
                     Mit modernsten DevOps-Tools wie Terraform, Jenkins und
@@ -278,6 +280,7 @@
 
         </div>
         <button
+            (click)="handleContactButton()"
             class=" bg-primary-dark hover:bg-primary-light text-white h-full rounded-[8px] px-[40px] py-[20px]">
             <p class="text-[20px] font-brand font-light">Kontakt aufnehmen</p>
         </button>

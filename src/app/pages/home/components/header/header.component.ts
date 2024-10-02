@@ -104,7 +104,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   handleContactButton(): void {
-    this.router.navigate(['/contact']);
+    this.router.navigate(['/kontakt']);
     this.accountShow = false;
     this.closeMenu()
   }

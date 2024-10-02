@@ -86,22 +86,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* This file is for your main application CSS */
-.colorful {
-  fill: radial-gradient(172.44% 67.18% at 56.93% 16.11%, #EE755C 16.67%, rgba(144, 224, 255, 0.00) 48.34%), radial-gradient(33.4% 38.49% at 56.66% 50%, #FF333D 44.79%, rgba(169, 96, 238, 0.00) 83.19%), radial-gradient(23.03% 13.73% at 6.58% 67.25%, #AFE9FF 0%, #90E0FF 41.45%, rgba(144, 224, 255, 0.00) 100%), radial-gradient(25.3% 48.59% at 19.59% 56.88%, #B8EBFF 0%, #90E0FF 60.58%, rgba(169, 96, 238, 0.00) 83.24%), radial-gradient(23.56% 17.93% at 7.65% 84.98%, #A960EE 25.96%, rgba(255, 51, 61, 0.00) 100%), radial-gradient(39.14% 40.96% at 19.29% 57.22%, rgba(144, 224, 255, 0.10) 50.74%, rgba(169, 96, 238, 0.00) 100%), radial-gradient(35.12% 24.99% at 45.83% 17.78%, #FFCB57 31.7%, rgba(238, 117, 92, 0.00) 100%), radial-gradient(62.3% 36.2% at 0% 100%, #FF333D 19.21%, rgba(183, 120, 224, 0.00) 54.54%), radial-gradient(46.35% 60.9% at 5.34% 39.33%, #FFCB57 41.18%, rgba(183, 120, 225, 0.00) 71.99%), conic-gradient(from 2deg at 22.11% 40.38%, #90E0FF 178.26553344726562deg, rgba(169, 96, 238, 0.00) 360deg), radial-gradient(67.49% 62.61% at 21.35% 32.43%, #A960EE 0%, #C788CB 100%);
-  background-blend-mode: hard-light, normal, normal, normal, normal, normal, normal, normal, normal, normal, normal;
-  /* filter: blur(18px); */
-}
-
-.linus {
-  width: calc(50% * var(--parent-height, 100px));
-  /* Adjust the fallback value as needed */
-}
 
 .slider {
   width: 80%;
   height: var(--height);
-  overflow: hidden;
+  overflow: visible;
   mask-image: linear-gradient(to right,
       transparent,
       #000 20% 80%,
@@ -133,7 +122,7 @@ body {
 }
 
 .slider .item {
-  filter: grayscale(1);
+  filter: grayscale(0.85);
 }
 
 .slider .item:hover {
@@ -148,4 +137,9 @@ body {
   to {
     left: 100%;
   }
+}
+
+.stack-card {
+  transition: background 0.5s;
+  @apply rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50;
 }

@@ -3,9 +3,10 @@
         class="flex flex-row justify-between items-center px-[220px] h-[80px] border border-solid border-gray-100">
         <div
             class="flex flex-row justify-center items-center gap-[30px] text-gray-500 ">
-            <p
-                class="text-[30px] font-bold font-brand hover:cursor-pointer text-gray-900">couchtec</p>
-            <div
+            <a href="#home"
+                class="text-[30px] font-bold font-brand hover:cursor-pointer text-gray-900">couchtec</a>
+            <a
+                href="#showcase"
                 class="flex flex-row justify-center items-center gap-[3px] hover:cursor-pointer hover:text-gray-900">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="w-[30px] h-[30px] -mt-[4px]"
@@ -16,10 +17,11 @@
                             fill="currentColor" opacity="0.6"></path><path
                             d="M 16.742 6.049 C 17.047 6.354 17.2 6.507 17.257 6.682 C 17.307 6.836 17.307 7.003 17.257 7.157 C 17.2 7.334 17.047 7.486 16.742 7.79 L 11.252 13.273 L 11.181 13.345 C 10.841 13.686 10.531 13.996 10.124 14.161 C 9.718 14.326 9.279 14.319 8.796 14.312 L 8.695 14.311 L 7.33 14.292 L 7.291 14.292 C 7.002 14.287 6.717 14.284 6.481 14.249 C 6.214 14.209 5.905 14.118 5.647 13.861 C 5.388 13.603 5.297 13.294 5.257 13.027 C 5.223 12.791 5.219 12.506 5.215 12.218 L 5.215 12.179 L 5.196 10.816 L 5.195 10.714 C 5.187 10.232 5.18 9.794 5.345 9.388 C 5.51 8.982 5.821 8.673 6.163 8.332 L 6.235 8.261 L 11.725 2.779 C 12.029 2.473 12.182 2.321 12.358 2.264 C 12.512 2.214 12.679 2.214 12.833 2.264 C 13.01 2.321 13.162 2.474 13.467 2.779 Z M 13.992 2.235 C 13.679 1.922 13.522 1.766 13.467 1.573 C 13.423 1.404 13.434 1.226 13.499 1.063 C 13.577 0.879 13.727 0.762 14.028 0.528 C 14.039 0.519 14.05 0.511 14.061 0.502 C 14.434 0.218 14.852 0 15.371 0 C 15.888 0 16.308 0.218 16.68 0.502 C 17.027 0.766 17.408 1.147 17.846 1.585 L 17.913 1.652 C 18.353 2.09 18.733 2.471 18.997 2.817 C 19.282 3.189 19.5 3.607 19.5 4.124 C 19.5 4.642 19.281 5.06 18.998 5.432 L 18.971 5.465 C 18.737 5.766 18.62 5.916 18.436 5.994 C 18.286 6.058 18.081 6.07 17.924 6.026 C 17.732 5.971 17.576 5.815 17.262 5.501 Z"
                             fill="currentColor" opacity="0.6"></path></g></svg>
-                <p class="text-[15px] font-brand font-medium">Unsere Arbeit</p>
-
-            </div>
-            <div
+                <p class="text-[15px] font-brand font-medium">Unsere
+                    Arbeit</p>
+            </a>
+            <a
+                href="#showcase"
                 class="flex flex-row justify-center items-center gap-[10px] hover:cursor-pointer hover:text-gray-900">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="w-[20px] h-[20px]"
@@ -34,8 +36,9 @@
                                     d="M 6.639 12.195 L 6.639 6.99 L 5.373 6.99 C 4.876 6.99 4.474 7.392 4.474 7.888 L 4.474 14.629 C 4.474 15.125 4.876 15.528 5.373 15.528 L 12.113 15.528 C 12.609 15.528 13.012 15.125 13.012 14.629 L 13.012 13.362 L 7.807 13.362 C 7.162 13.362 6.639 12.84 6.639 12.195 Z"
                                     fill="currentColor" opacity="0.6"></path></g></g></g></svg>
                 <p class="text-[15px] font-brand font-medium">Partner</p>
-            </div>
+            </a>
             <div
+                (click)="handleContactButton()"
                 class="flex flex-row justify-center items-center gap-[10px] hover:cursor-pointer hover:text-gray-900">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="w-[20px] h-[20px]"
@@ -43,18 +46,28 @@
                     viewBox="0 0 20 20"><path
                         d="M 14.141 0 L 5.859 0 C 2.623 0 0 2.623 0 5.859 L 0 14.141 C 0 17.377 2.623 20 5.859 20 L 14.141 20 C 17.377 20 20 17.377 20 14.141 L 20 5.859 C 20 2.623 17.377 0 14.141 0 Z M 9.235 16.836 L 9.235 11.134 L 5.434 11.134 L 10.765 3.164 L 10.765 8.866 L 14.566 8.866 Z"
                         fill="currentColor" opacity="0.6"></path></svg>
-                <p class="text-[15px] font-brand font-medium">Kontakt</p>
+                <p
+                    class="text-[15px] font-brand font-medium">Kontakt</p>
 
             </div>
         </div>
         <div class="flex flex-row gap-[30px]">
             <button
+                (click)="handleContactButton()"
                 class="flex flex-row justify-center items-center rounded-[8px] bg-primary-dark hover:bg-primary-light px-[18px] py-[10px]">
-                <p class="text-white font-light">Lass uns reden</p>
+                <p class="text-white font-light">Lass
+                    uns reden</p>
             </button>
 
-            <button>
-                <p class="font-brand font-light hover:underline">Anmelden</p>
+            <button
+                *ngIf="name ===''">
+                <a (click)="handleLoginButton()"
+                    class="font-brand font-light hover:underline">Anmelden</a>
+            </button>
+            <button
+                *ngIf="name !==''">
+                <a (click)="onAccountClick()"
+                    class="font-brand font-light hover:underline">{{ name }}</a>
             </button>
         </div>
 

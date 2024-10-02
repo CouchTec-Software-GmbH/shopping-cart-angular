@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -11,4 +11,13 @@ import { RouterModule } from '@angular/router';
     templateUrl: './contact-section.component.html'
 })
 export class ContactSection {
+
+    constructor(
+        private router: Router
+    ) {
+
+    }
+    handleContactButton() {
+        this.router.navigate(['kontakt'])
+    }
 }
