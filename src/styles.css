@@ -143,3 +143,9 @@ body {
   transition: background 0.5s;
   @apply rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50;
 }
+
+dialog::backdrop {
+  /* backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.4); */
+  background-color: salmon !important;
+}

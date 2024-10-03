@@ -1,5 +1,5 @@
 
-<section class="bg-white h-screen overflow-hidden">
+<section class="bg-white h-screen overflow-hidden relative">
     <div class="flex h-full">
         <div
             class="w-full xl:w-1/2 xl:flex relative hidden"
@@ -118,6 +118,7 @@
                     <div>
 
                         <button
+                            (click)="dialog.show()"
                             class=" bg-primary-dark hover:bg-primary-light text-white  rounded-[8px] px-[40px] py-[20px]">
                             <p class="text-[23px] font-brand font-medium">
                                 Absenden
@@ -162,4 +163,24 @@
             </div>
         </div>
     </div>
+
+    <dialog #dialog
+        class="dialog rounded-lg bg-white p-8 shadow-2xl absolute left-1/2 top-1/2"
+        style="
+        dialog::backdrop {background-color: salmon !important;}">
+        <h2 class="text-lg font-bold">Are you sure you want to do that?</h2>
+
+        <p class="mt-2 text-sm text-gray-500">
+            Doing that could have cause some issues elsewhere, are you 100% sure
+            it's OK?
+        </p>
+
+        <div class="mt-4 flex gap-2">
+            <button type="button" (click)="dialog.close()"
+                class="rounded bg-green-50 px-4 py-2 text-sm font-medium text-green-600">
+                Yes, I'm sure
+            </button>
+        </div>
+    </dialog>
+
 </section>
