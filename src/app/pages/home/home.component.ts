@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ContactSection } from './components/contact-section/contact-section.component';
 import { StackSection } from './components/stack-section/stack-section.component';
 import { ShowcaseSection } from './components/showcase/showcase.component';
+import { PartnersComponent } from './components/partners/partners.component';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { ShowcaseSection } from './components/showcase/showcase.component';
   imports: [
     HeroComponent,
     ShowcaseSection,
+    PartnersComponent,
     StackSection,
     ContactSection,
     FooterComponent,
@@ -30,6 +32,7 @@ import { ShowcaseSection } from './components/showcase/showcase.component';
         <app-header></app-header>
         <app-hero></app-hero>
         <app-showcase></app-showcase>
+        <app-partners></app-partners>
         <app-stack-section></app-stack-section>
         <app-contact-section></app-contact-section>
         <app-footer></app-footer>
