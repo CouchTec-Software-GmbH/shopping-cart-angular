@@ -1,16 +1,14 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { SectionComponent } from '@pages/home/components/section/section.component';
 import { CommonModule } from '@angular/common';
 import { PopUpComponent } from './components/popup/popup.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { SolutionComponent } from './components/solution/solution.component';
-import { SoGehtsComponent } from './components/sogehts/sogehts.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContactSection } from './components/contact-section/contact-section.component';
 import { StackSection } from './components/stack-section/stack-section.component';
 import { ShowcaseSection } from './components/showcase/showcase.component';
 import { PartnersComponent } from './components/partners/partners.component';
+import { MobileSection } from './components/mobile/mobile.component';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +17,7 @@ import { PartnersComponent } from './components/partners/partners.component';
     HeroComponent,
     ShowcaseSection,
     PartnersComponent,
+    MobileSection,
     StackSection,
     ContactSection,
     FooterComponent,
@@ -28,11 +27,12 @@ import { PartnersComponent } from './components/partners/partners.component';
   ],
   template: `
     <div class="relative overflow-x-hidden">
-      <div [class.blur]="popUpState" >
+      <div [class.blur]="popUpState">
         <app-header></app-header>
         <app-hero></app-hero>
         <app-showcase></app-showcase>
         <app-partners></app-partners>
+        <app-mobile></app-mobile>
         <app-stack-section></app-stack-section>
         <app-contact-section></app-contact-section>
         <app-footer></app-footer>

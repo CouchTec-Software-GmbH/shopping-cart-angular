@@ -57,14 +57,14 @@
 }
 
 body {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
 
 :root {
-  --primary-color: #605DC8;
-  --secondary-color: #8B89E6;
+  --primary-color: #605dc8;
+  --secondary-color: #8b89e6;
   --accent-color: #e8e7fa;
-  --shadow-color: #E8E8E8;
+  --shadow-color: #e8e8e8;
 }
 
 button.primary {
@@ -86,15 +86,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
 .slider {
   width: 80%;
   height: var(--height);
   overflow: visible;
-  mask-image: linear-gradient(to right,
-      transparent,
-      #000 20% 80%,
-      transparent);
+  mask-image: linear-gradient(to right, transparent, #000 20% 80%, transparent);
   margin-top: 40px;
 }
 
@@ -112,13 +108,17 @@ body {
   left: 100%;
   animation: autoRun 80s linear infinite;
   transition: filter 0.5s;
-  animation-delay: calc((80s / var(--quantity)) * (var(--position) - 1) - 80s) !important;
+  animation-delay: calc(
+    (80s / var(--quantity)) * (var(--position) - 1) - 80s
+  ) !important;
 }
 
 .slider[reverse="true"] .item {
-  animation: reversePlay 80s linear infinite;
+  animation: reversePlay 180s linear infinite;
   filter: grayscale(0);
-  animation-delay: calc((80s / var(--quantity)) * (var(--position) - 1) - 80s) !important;
+  animation-delay: calc(
+    (180s / var(--quantity)) * (var(--position) - 1) - 180s
+  ) !important;
 }
 
 .slider .list .item img {
@@ -177,13 +177,12 @@ dialog::backdrop {
 }
 
 .partner {
-    break-inside: avoid;
-    @apply flex flex-col  bg-white rounded-xl p-[20px] gap-2 shadow-lg gap-[25px] mb-6;
-    @apply transform transition duration-300 ease-in-out translate-y-0 hover:-translate-y-4;
-  }
-
-.partner-logo {
-    break-inside: avoid;
-    @apply flex-col bg-white rounded-xl p-[20px] gap-2 shadow-lg gap-[25px] mb-6;
+  break-inside: avoid;
+  @apply flex flex-col  bg-white rounded-xl p-[20px] gap-2 shadow-lg gap-[25px] mb-6;
+  /* @apply transform transition duration-300 ease-in-out translate-y-0 hover:-translate-y-4; */
 }
 
+.partner-logo {
+  break-inside: avoid;
+  @apply flex-col bg-white rounded-xl p-[20px] gap-2 shadow-lg gap-[25px] mb-6;
+}
