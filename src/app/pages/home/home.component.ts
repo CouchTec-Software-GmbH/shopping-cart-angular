@@ -17,7 +17,7 @@ import { MobileSection } from './components/mobile/mobile.component';
     HeroComponent,
     ShowcaseSection,
     PartnersComponent,
-    MobileSection,
+    Mobi,
     StackSection,
     ContactSection,
     FooterComponent,
