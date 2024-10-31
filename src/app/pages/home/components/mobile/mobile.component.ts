@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -11,4 +11,13 @@ import { RouterModule } from '@angular/router';
     templateUrl: './mobile.component.html'
 })
 export class MobileSection {
+
+    constructor(
+        private router: Router
+    ) {
+
+    }
+    handleContactButton() {
+        this.router.navigate(['kontakt'])
+    }
 }
