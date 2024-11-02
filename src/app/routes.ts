@@ -9,22 +9,32 @@ const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Couchtec - Home'
+    title: 'Couchtec - Home',
   },
   {
     path: 'auth',
     component: AuthComponent,
-    title: 'Couchtec - Auth'
+    title: 'Couchtec - Auth',
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    title: 'Couchtec - Dashboard'
+    title: 'Couchtec - Dashboard',
+  },
+  {
+    path: 'kontakt',
+    component: ContactComponent,
+    title: 'Couchtec - Kontakt',
+  },
+  {
+    path: 'configure',
+    component: ConfigureComponent,
+    title: 'Couchtec - Projekt',
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
 
 export default routeConfig;
