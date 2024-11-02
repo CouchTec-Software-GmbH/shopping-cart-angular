@@ -1,199 +1,255 @@
-
 <form
-    class="flex flex-col justify-center items-start gap-8 text-[#666] text-[16px] font-normal"
-    [formGroup]="signUpForm"
-    (submit)="submitForm()">
+  class="flex flex-col justify-center items-start gap-8 text-[#666] text-[16px] font-normal"
+  [formGroup]="signUpForm"
+  (submit)="submitForm()"
+>
+  <div>
+    <p class="text-[32px] font-medium text-[#333]">Konto erstellen</p>
+    <div class="flex flex-row p-[2px] gap-1">
+      <p class="text-[#333]">Sie haben bereits ein Konto?</p>
+      <a
+        (click)="signin.emit(true)"
+        class="text-[#111] underline hover:cursor-pointer"
+        >Anmelden</a
+      >
+    </div>
+  </div>
 
-    <div>
-        <p class="text-[32px] font-medium text-[#333]">Konto erstellen</p>
-        <div class="flex flex-row p-[2px] gap-1">
-            <p class="text-[#333]">Sie haben bereits ein Konto? </p>
-            <a (click)="signin.emit(true)"
-                class="text-[#111] underline hover:cursor-pointer">Anmelden</a>
+  <div class="flex flex-col items-start gap-0 w-[300px] sm:w-[473px]">
+    <div class="flex flex-col items-start gap-1 self-stretch">
+      <label for="email" class="gap-[10px] self-stretch items-center"
+        >E-Mail</label
+      >
+      <input
+        class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
+        id="email"
+        type="email"
+        formControlName="email"
+        required
+      />
+
+      <div
+        [ngClass]="{
+          invisible: !email.invalid || !(email.dirty && email.touched),
+        }"
+        class="text-red-500 text-sm mb-1"
+      >
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['invalidDomain']">
+          Please enter a valid email address.
         </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-start gap-0 self-stretch">
+      <div class="flex flex-row justify-between items-center pr-2 self-stretch">
+        <label for="password" class="gap-[10px] self-stretch items-center"
+          >Passwort</label
+        >
+        <div
+          (click)="toggleHideIcon()"
+          class="flex flex-row gap-2 items-center hover:cursor-pointer"
+        >
+          <svg
+            *ngIf="isHideIcon"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_80_1874)">
+              <path
+                d="M12.637 6.5C8.68552 6.5 5.29132 8.87401 3.78892 12.2727C3.68653 12.5043 3.68653 12.7684 3.78892 13C5.29132 16.3987 8.68552 18.7727 12.637 18.7727C16.5884 18.7727 19.9826 16.3987 21.485 13C21.5874 12.7684 21.5874 12.5043 21.485 12.2727C19.9826 8.87401 16.5884 6.5 12.637 6.5ZM12.637 16.7273C10.3788 16.7273 8.54605 14.8945 8.54605 12.6364C8.54605 10.3782 10.3788 8.54545 12.637 8.54545C14.8951 8.54545 16.7279 10.3782 16.7279 12.6364C16.7279 14.8945 14.8951 16.7273 12.637 16.7273ZM12.637 10.1818C11.2788 10.1818 10.1824 11.2782 10.1824 12.6364C10.1824 13.9945 11.2788 15.0909 12.637 15.0909C13.9951 15.0909 15.0915 13.9945 15.0915 12.6364C15.0915 11.2782 13.9951 10.1818 12.637 10.1818Z"
+                fill="#666666"
+                fill-opacity="0.8"
+              />
+            </g>
+            <defs>
+              <clippath id="clip0_80_1874">
+                <rect
+                  width="24"
+                  height="24"
+                  fill="white"
+                  transform="translate(0.636963 0.5)"
+                />
+              </clippath>
+            </defs>
+          </svg>
+          <svg
+            *ngIf="!isHideIcon"
+            width="19"
+            height="17"
+            viewBox="0 0 19 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.5194 1.38129L16.7835 0.645348C16.5755 0.437357 16.1915 0.469366 15.9515 0.757311L13.3913 3.30128C12.2392 2.80533 10.9754 2.56533 9.64731 2.56533C5.69519 2.58127 2.27141 4.88524 0.62329 8.19745C0.527263 8.40544 0.527263 8.66137 0.62329 8.83736C1.39122 10.4054 2.54329 11.7014 3.9833 12.6774L1.8873 14.8053C1.6473 15.0453 1.61529 15.4293 1.77534 15.6373L2.51128 16.3733C2.71928 16.5812 3.10326 16.5492 3.34326 16.2613L17.3912 2.2134C17.6952 1.97354 17.7272 1.58958 17.5192 1.38156L17.5194 1.38129ZM10.4953 6.21318C10.2233 6.14916 9.93534 6.0692 9.66332 6.0692C8.30327 6.0692 7.21538 7.15723 7.21538 8.51714C7.21538 8.78914 7.2794 9.07709 7.35936 9.34911L6.28724 10.4051C5.96728 9.84519 5.7913 9.22109 5.7913 8.51717C5.7913 6.38919 7.50332 4.67717 9.6313 4.67717C10.3354 4.67717 10.9593 4.85315 11.5193 5.17311L10.4953 6.21318Z"
+              fill="#666666"
+              fill-opacity="0.8"
+            />
+            <path
+              d="M18.6714 8.1974C18.1114 7.07735 17.3753 6.06942 16.4634 5.25339L13.4874 8.1974V8.51735C13.4874 10.6453 11.7754 12.3574 9.64739 12.3574H9.32744L7.43945 14.2453C8.14351 14.3893 8.87946 14.4853 9.59946 14.4853C13.5516 14.4853 16.9754 12.1814 18.6235 8.85322C18.7675 8.62915 18.7675 8.40524 18.6714 8.19723L18.6714 8.1974Z"
+              fill="#666666"
+              fill-opacity="0.8"
+            />
+          </svg>
+          <p class="text-[18px]">
+            {{ isHideIcon ? "Anzeigen" : "Ausblenden" }}
+          </p>
+        </div>
+      </div>
+      <input
+        class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
+        id="password"
+        type="password"
+        [type]="isHideIcon ? 'password' : 'text'"
+        formControlName="password"
+        required
+      />
+    </div>
+    <div class="flex flex-col items-start self-stretch">
+      <div class="flex flex-row justify-between items-center pr-2 self-stretch">
+        <label for="password" class="gap-[10px] self-stretch items-center"
+          >Passwort verifizieren</label
+        >
+        <div
+          (click)="toggleHideIconVerify()"
+          class="flex flex-row gap-2 items-center hover:cursor-pointer"
+        >
+          <svg
+            *ngIf="isHideIconVerify"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_80_1874)">
+              <path
+                d="M12.637 6.5C8.68552 6.5 5.29132 8.87401 3.78892 12.2727C3.68653 12.5043 3.68653 12.7684 3.78892 13C5.29132 16.3987 8.68552 18.7727 12.637 18.7727C16.5884 18.7727 19.9826 16.3987 21.485 13C21.5874 12.7684 21.5874 12.5043 21.485 12.2727C19.9826 8.87401 16.5884 6.5 12.637 6.5ZM12.637 16.7273C10.3788 16.7273 8.54605 14.8945 8.54605 12.6364C8.54605 10.3782 10.3788 8.54545 12.637 8.54545C14.8951 8.54545 16.7279 10.3782 16.7279 12.6364C16.7279 14.8945 14.8951 16.7273 12.637 16.7273ZM12.637 10.1818C11.2788 10.1818 10.1824 11.2782 10.1824 12.6364C10.1824 13.9945 11.2788 15.0909 12.637 15.0909C13.9951 15.0909 15.0915 13.9945 15.0915 12.6364C15.0915 11.2782 13.9951 10.1818 12.637 10.1818Z"
+                fill="#666666"
+                fill-opacity="0.8"
+              />
+            </g>
+            <defs>
+              <clippath id="clip0_80_1874">
+                <rect
+                  width="24"
+                  height="24"
+                  fill="white"
+                  transform="translate(0.636963 0.5)"
+                />
+              </clippath>
+            </defs>
+          </svg>
+          <svg
+            *ngIf="!isHideIconVerify"
+            width="19"
+            height="17"
+            viewBox="0 0 19 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.5194 1.38129L16.7835 0.645348C16.5755 0.437357 16.1915 0.469366 15.9515 0.757311L13.3913 3.30128C12.2392 2.80533 10.9754 2.56533 9.64731 2.56533C5.69519 2.58127 2.27141 4.88524 0.62329 8.19745C0.527263 8.40544 0.527263 8.66137 0.62329 8.83736C1.39122 10.4054 2.54329 11.7014 3.9833 12.6774L1.8873 14.8053C1.6473 15.0453 1.61529 15.4293 1.77534 15.6373L2.51128 16.3733C2.71928 16.5812 3.10326 16.5492 3.34326 16.2613L17.3912 2.2134C17.6952 1.97354 17.7272 1.58958 17.5192 1.38156L17.5194 1.38129ZM10.4953 6.21318C10.2233 6.14916 9.93534 6.0692 9.66332 6.0692C8.30327 6.0692 7.21538 7.15723 7.21538 8.51714C7.21538 8.78914 7.2794 9.07709 7.35936 9.34911L6.28724 10.4051C5.96728 9.84519 5.7913 9.22109 5.7913 8.51717C5.7913 6.38919 7.50332 4.67717 9.6313 4.67717C10.3354 4.67717 10.9593 4.85315 11.5193 5.17311L10.4953 6.21318Z"
+              fill="#666666"
+              fill-opacity="0.8"
+            />
+            <path
+              d="M18.6714 8.1974C18.1114 7.07735 17.3753 6.06942 16.4634 5.25339L13.4874 8.1974V8.51735C13.4874 10.6453 11.7754 12.3574 9.64739 12.3574H9.32744L7.43945 14.2453C8.14351 14.3893 8.87946 14.4853 9.59946 14.4853C13.5516 14.4853 16.9754 12.1814 18.6235 8.85322C18.7675 8.62915 18.7675 8.40524 18.6714 8.19723L18.6714 8.1974Z"
+              fill="#666666"
+              fill-opacity="0.8"
+            />
+          </svg>
+          <p class="text-[18px]">
+            {{ isHideIconVerify ? "Anzeigen" : "Ausblenden" }}
+          </p>
+        </div>
+      </div>
+      <input
+        class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
+        id="verifypassword"
+        [type]="isHideIconVerify ? 'password' : 'text'"
+        formControlName="verifyPassword"
+        required
+      />
+    </div>
+    <div class="flex flex-col gap-1 w-full pr-2 items-start">
+      <p>
+        Durch die Kontoerstellung stimmem Sie unseren
+        <a class="underline text-[#111] hover:cursor-pointer"
+          >Nutzungsbedingungen</a
+        >
+        und
+        <a class="underline text-[#111] hover:cursor-pointer"
+          >Datenschutzrichtlinien </a
+        >zu.
+      </p>
+      <div>
+        <input
+          type="checkbox"
+          id="MarketingAccept"
+          name="marketing_accept"
+          checked
+          formControlName="marketing_accept"
+          class="size-4 mr-2 rounded-md border-gray-200 bg-white shadow-sm"
+        />
+        <label for="remember"
+          >Ich möchte den Newsletter per E-Mail erhalten.</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button *ngIf="!isLoading"
+      class="bg-primary-dark hover:bg-primary-light text-white h-full rounded-[8px] px-[40px] py-[16px]"
+    >
+      <p class="text-[20px] font-brand font-light">Registieren</p>
+    </button>
+
+    <button *ngIf="isLoading" [disabled]="true"
+      class="flex items-center justify-center gap-[6px] rounded-lg text-white p-4 mt-4 bg-gray-300 h-[56px] w-[150px]">
+        <div class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s] -m-"></div>
+        <div class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+        <div class="h-2 w-2 bg-white rounded-full animate-bounce"></div>
+    </button>
+  </div>
+
+  <div class="flex flex-row p-[1px] gap-1">
+    <p class="text-[#333]">Sie haben bereits ein Konto?</p>
+    <a
+      (click)="signin.emit(true)"
+      class="text-[#111] underline hover:cursor-pointer"
+      >Anmelden</a
+    >
+  </div>
+
+  <div
+    role="alert"
+    class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 w-full"
+    *ngIf="submitted && status !== 200"
+  >
+    <div class="flex items-center gap-2 text-yellow-600">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="h-5 w-5"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+          clip-rule="evenodd"
+        />
+      </svg>
+
+      <strong class="block font-medium"> {{ errorTitle }} </strong>
     </div>
 
-    <div class="flex flex-col items-start gap-6 w-[473px]">
-        <div class="flex flex-col items-start gap-1 self-stretch">
-            <label for="email" class="gap-[10px] self-stretch items-center">E-Mail</label>
-            <input
-                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
-                id="email"
-                type="email"
-                formControlName="email"
-                required />
-
-            <div
-                [ngClass]="{'invisible': !email.invalid || !(email.dirty && email.touched)}"
-                class="text-red-500 text-sm mb-1">
-                <div *ngIf="email.errors?.['required']">Email is required.</div>
-                <div *ngIf="email.errors?.['invalidDomain']">
-                    Please enter a valid email address.
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col items-start gap-1 self-stretch">
-            <div
-                class="flex flex-row justify-between items-center pr-2 self-stretch">
-                <label for="password"
-                    class="gap-[10px] self-stretch items-center">Passwort</label>
-                <div
-                    (click)="toggleHideIcon()"
-                    class="flex flex-row gap-2 items-center hover:cursor-pointer">
-                    <svg
-                        *ngIf="isHideIcon"
-                        width="25" height="25" viewBox="0 0 25 25" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_80_1874)">
-                            <path
-                                d="M12.637 6.5C8.68552 6.5 5.29132 8.87401 3.78892 12.2727C3.68653 12.5043 3.68653 12.7684 3.78892 13C5.29132 16.3987 8.68552 18.7727 12.637 18.7727C16.5884 18.7727 19.9826 16.3987 21.485 13C21.5874 12.7684 21.5874 12.5043 21.485 12.2727C19.9826 8.87401 16.5884 6.5 12.637 6.5ZM12.637 16.7273C10.3788 16.7273 8.54605 14.8945 8.54605 12.6364C8.54605 10.3782 10.3788 8.54545 12.637 8.54545C14.8951 8.54545 16.7279 10.3782 16.7279 12.6364C16.7279 14.8945 14.8951 16.7273 12.637 16.7273ZM12.637 10.1818C11.2788 10.1818 10.1824 11.2782 10.1824 12.6364C10.1824 13.9945 11.2788 15.0909 12.637 15.0909C13.9951 15.0909 15.0915 13.9945 15.0915 12.6364C15.0915 11.2782 13.9951 10.1818 12.637 10.1818Z"
-                                fill="#666666" fill-opacity="0.8" />
-                        </g>
-                        <defs>
-                            <clippath id="clip0_80_1874">
-                                <rect width="24" height="24" fill="white"
-                                    transform="translate(0.636963 0.5)" />
-                            </clippath>
-                        </defs>
-                    </svg>
-                    <svg
-                        *ngIf="!isHideIcon"
-                        width="19" height="17" viewBox="0 0 19 17" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M17.5194 1.38129L16.7835 0.645348C16.5755 0.437357 16.1915 0.469366 15.9515 0.757311L13.3913 3.30128C12.2392 2.80533 10.9754 2.56533 9.64731 2.56533C5.69519 2.58127 2.27141 4.88524 0.62329 8.19745C0.527263 8.40544 0.527263 8.66137 0.62329 8.83736C1.39122 10.4054 2.54329 11.7014 3.9833 12.6774L1.8873 14.8053C1.6473 15.0453 1.61529 15.4293 1.77534 15.6373L2.51128 16.3733C2.71928 16.5812 3.10326 16.5492 3.34326 16.2613L17.3912 2.2134C17.6952 1.97354 17.7272 1.58958 17.5192 1.38156L17.5194 1.38129ZM10.4953 6.21318C10.2233 6.14916 9.93534 6.0692 9.66332 6.0692C8.30327 6.0692 7.21538 7.15723 7.21538 8.51714C7.21538 8.78914 7.2794 9.07709 7.35936 9.34911L6.28724 10.4051C5.96728 9.84519 5.7913 9.22109 5.7913 8.51717C5.7913 6.38919 7.50332 4.67717 9.6313 4.67717C10.3354 4.67717 10.9593 4.85315 11.5193 5.17311L10.4953 6.21318Z"
-                            fill="#666666" fill-opacity="0.8" />
-                        <path
-                            d="M18.6714 8.1974C18.1114 7.07735 17.3753 6.06942 16.4634 5.25339L13.4874 8.1974V8.51735C13.4874 10.6453 11.7754 12.3574 9.64739 12.3574H9.32744L7.43945 14.2453C8.14351 14.3893 8.87946 14.4853 9.59946 14.4853C13.5516 14.4853 16.9754 12.1814 18.6235 8.85322C18.7675 8.62915 18.7675 8.40524 18.6714 8.19723L18.6714 8.1974Z"
-                            fill="#666666" fill-opacity="0.8" />
-                    </svg>
-                    <p class="text-[18px]">{{ isHideIcon ? 'Anzeigen' :
-                        'Ausblenden' }}</p>
-
-                </div>
-            </div>
-            <input
-                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
-                id="password"
-                type="password"
-                [type]="isHideIcon? 'password' : 'text'"
-                formControlName="password"
-                required />
-
-        </div>
-        <div class="flex flex-col items-start gap-1 self-stretch">
-            <div
-                class="flex flex-row justify-between items-center pr-2 self-stretch">
-                <label for="password"
-                    class="gap-[10px] self-stretch items-center">Passwort
-                    verifizieren</label>
-                <div
-                    (click)="toggleHideIconVerify()"
-                    class="flex flex-row gap-2 items-center hover:cursor-pointer">
-                    <svg
-                        *ngIf="isHideIconVerify"
-                        width="25" height="25" viewBox="0 0 25 25" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_80_1874)">
-                            <path
-                                d="M12.637 6.5C8.68552 6.5 5.29132 8.87401 3.78892 12.2727C3.68653 12.5043 3.68653 12.7684 3.78892 13C5.29132 16.3987 8.68552 18.7727 12.637 18.7727C16.5884 18.7727 19.9826 16.3987 21.485 13C21.5874 12.7684 21.5874 12.5043 21.485 12.2727C19.9826 8.87401 16.5884 6.5 12.637 6.5ZM12.637 16.7273C10.3788 16.7273 8.54605 14.8945 8.54605 12.6364C8.54605 10.3782 10.3788 8.54545 12.637 8.54545C14.8951 8.54545 16.7279 10.3782 16.7279 12.6364C16.7279 14.8945 14.8951 16.7273 12.637 16.7273ZM12.637 10.1818C11.2788 10.1818 10.1824 11.2782 10.1824 12.6364C10.1824 13.9945 11.2788 15.0909 12.637 15.0909C13.9951 15.0909 15.0915 13.9945 15.0915 12.6364C15.0915 11.2782 13.9951 10.1818 12.637 10.1818Z"
-                                fill="#666666" fill-opacity="0.8" />
-                        </g>
-                        <defs>
-                            <clippath id="clip0_80_1874">
-                                <rect width="24" height="24" fill="white"
-                                    transform="translate(0.636963 0.5)" />
-                            </clippath>
-                        </defs>
-                    </svg>
-                    <svg
-                        *ngIf="!isHideIconVerify"
-                        width="19" height="17" viewBox="0 0 19 17" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M17.5194 1.38129L16.7835 0.645348C16.5755 0.437357 16.1915 0.469366 15.9515 0.757311L13.3913 3.30128C12.2392 2.80533 10.9754 2.56533 9.64731 2.56533C5.69519 2.58127 2.27141 4.88524 0.62329 8.19745C0.527263 8.40544 0.527263 8.66137 0.62329 8.83736C1.39122 10.4054 2.54329 11.7014 3.9833 12.6774L1.8873 14.8053C1.6473 15.0453 1.61529 15.4293 1.77534 15.6373L2.51128 16.3733C2.71928 16.5812 3.10326 16.5492 3.34326 16.2613L17.3912 2.2134C17.6952 1.97354 17.7272 1.58958 17.5192 1.38156L17.5194 1.38129ZM10.4953 6.21318C10.2233 6.14916 9.93534 6.0692 9.66332 6.0692C8.30327 6.0692 7.21538 7.15723 7.21538 8.51714C7.21538 8.78914 7.2794 9.07709 7.35936 9.34911L6.28724 10.4051C5.96728 9.84519 5.7913 9.22109 5.7913 8.51717C5.7913 6.38919 7.50332 4.67717 9.6313 4.67717C10.3354 4.67717 10.9593 4.85315 11.5193 5.17311L10.4953 6.21318Z"
-                            fill="#666666" fill-opacity="0.8" />
-                        <path
-                            d="M18.6714 8.1974C18.1114 7.07735 17.3753 6.06942 16.4634 5.25339L13.4874 8.1974V8.51735C13.4874 10.6453 11.7754 12.3574 9.64739 12.3574H9.32744L7.43945 14.2453C8.14351 14.3893 8.87946 14.4853 9.59946 14.4853C13.5516 14.4853 16.9754 12.1814 18.6235 8.85322C18.7675 8.62915 18.7675 8.40524 18.6714 8.19723L18.6714 8.1974Z"
-                            fill="#666666" fill-opacity="0.8" />
-                    </svg>
-                    <p class="text-[18px]">{{ isHideIconVerify ? 'Anzeigen' :
-                        'Ausblenden' }}</p>
-
-                </div>
-            </div>
-            <input
-                class="w-full text-[20px] h-[56px] p-[10px] border rounded-xl focus:outline-none hover:border-gray-400 focus:border-black"
-                id="verifypassword"
-                [type]="isHideIconVerify ? 'password' : 'text'"
-                formControlName="verifyPassword"
-                required />
-
-        </div>
-        <div class="flex flex-col gap-1 w-full py-2 pr-2 items-start">
-            <p> Durch die Kontoerstellung stimmem Sie unseren
-                <a class="underline text-[#111] hover:cursor-pointer">Nutzungsbedingungen</a>
-                und <a class="underline text-[#111] hover:cursor-pointer">Datenschutzrichtlinien
-                </a>zu.
-            </p>
-            <div>
-                <input
-                    type="checkbox"
-                    id="MarketingAccept"
-                    name="marketing_accept"
-                    checked
-                    formControlName="marketing_accept"
-                    class="size-4 mr-2 rounded-md border-gray-200 bg-white shadow-sm" />
-                <label for="remember">Ich möchte den Newsletter per E-Mail
-                    erhalten.</label>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <button
-            class="flex h-[49.5px] px-[29.5px] py-[35px] items-center gap-[13px] rounded-[150px] bg-[#11253E] hover:bg-[#22364F]">
-            <p
-                class="flex flex-col justify-center  h-[45px] text-white text-[22.5px] font-medium text-center tracking-[0.15px]">Konto
-                erstellen</p>
-            <svg width="10" height="15" viewBox="0 0 10 15" fill="none"
-                class="mt-[3px]"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M4.93934 7.74999L0 2.81065L2.12132 0.689331L9.18198 7.74999L2.12132 14.8107L0 12.6893L4.93934 7.74999Z"
-                    fill="white" />
-            </svg>
-        </button>
-
-    </div>
-
-    <div class="flex flex-row p-[1px] gap-1">
-        <p class="text-[#333]">Sie haben bereits ein Konto? </p>
-        <a (click)="signin.emit(true)"
-            class="text-[#111] underline hover:cursor-pointer">Anmelden</a>
-    </div>
-
-    <div
-        role="alert"
-        class="rounded border-s-4 border-yellow-500 bg-yellow-50 p-4 my-5 w-full "
-        *ngIf="submitted && status !== 200">
-        <div class="flex items-center gap-2 text-yellow-600">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="h-5 w-5">
-                <path
-                    fill-rule="evenodd"
-                    d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                    clip-rule="evenodd" />
-            </svg>
-
-            <strong class="block font-medium"> {{ errorTitle }} </strong>
-        </div>
-
-        <p class="mt-2 text-sm text-yellow-600">
-            {{ errorMessage }}
-        </p>
-    </div>
+    <p class="mt-2 text-sm text-yellow-600">
+      {{ errorMessage }}
+    </p>
+  </div>
 </form>

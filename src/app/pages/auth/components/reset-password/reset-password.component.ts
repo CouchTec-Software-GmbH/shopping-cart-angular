@@ -4,11 +4,12 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnInit,
   Output,
   ViewChild,
   inject,
 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
@@ -17,9 +18,9 @@ import { AuthService } from '@app/services/auth.service';
   selector: 'app-reset-password',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, CommonModule],
-  templateUrl: './reset-password.component.html'
+  templateUrl: './reset-password.component.html',
 })
-export class ResetPasswordComponent implements AfterViewInit {
+export class ResetPasswordComponent implements AfterViewInit, OnInit {
   @Output() signup = new EventEmitter<boolean>();
   @ViewChild('alertMessage') alertMessage!: ElementRef;
   @Input() code: string = '';
@@ -31,20 +32,41 @@ export class ResetPasswordComponent implements AfterViewInit {
     password: new FormControl(''),
     verifyPassword: new FormControl(''),
   });
-  authService = inject(AuthService);
   router = inject(Router);
   isHideIcon = true;
   isHideIconVerify = true;
 
+  private resetCode: string = "";
+  private email: string = "";
+  isLoading = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+  ){}
+
+  async ngOnInit() {
+    this.route.queryParamMap.subscribe(params => {
+      this.resetCode = decodeURIComponent(params.get('c') || '');
+      this.email = decodeURIComponent(params.get('e') || '');
+    });
+
+    if (this.email) {
+      this.authService.setEmail(this.email);
+    }
+    if (this.resetCode) {
+      this.authService.setResetCode(this.resetCode);
+    }
+  }
+
   submitForm() {
+    this.isLoading = true;
     this.submitted = true;
     this.authService
-      .reset(this.code, this.forgotPasswordForm.value.password)
+      .reset(this.forgotPasswordForm.value.password)
       .then((status) => {
-        this.status = status;
-        if (status === 200) {
-          this.router.navigate(['/'], { queryParams: { resetSuccess: true } });
-        }
+        this.isLoading = false;
+        this.router.navigate(['/']);
       });
   }
   ngAfterViewInit() {

@@ -3,6 +3,9 @@ import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ProjectService } from './project.service';
 import { get_basic_http_header, get_email_from_cookie, get_http_header, get_session_token_from_cookie } from '@app/utils/utils';
+import { BannerService } from './banner.service';
+import { BannerType } from '@app/types/BannerType';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +13,29 @@ import { get_basic_http_header, get_email_from_cookie, get_http_header, get_sess
 export class AuthService {
   url = 'https://couchdb-app-service.azurewebsites.net/products/';
   apiUrl = `/api/`;
-
   sessionToken: string = '';
+
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasSessionToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
+  private resetCodeSubject = new BehaviorSubject<string>("");
+  resetCode$ = this.resetCodeSubject.asObservable();
+
+  private verificationCodeSubject = new BehaviorSubject<string>("");
+  verificationCode$ = this.verificationCodeSubject.asObservable();
+
+  private emailSubject = new BehaviorSubject<string>("");
+  email$ = this.emailSubject.asObservable();
+
   private projectService: any;
 
-  constructor(private http: HttpClient, private injector: Injector) {
+
+  constructor(
+    private http: HttpClient,
+    private injector: Injector,
+    private bannerService: BannerService,
+    private router: Router,
+  ) {
   }
 
   async login(email: string, password: string): Promise<number> {
@@ -42,6 +61,7 @@ export class AuthService {
   async preRegister(email: string, password: string, newsletter: boolean): Promise<number> {
     try {
       const response = await firstValueFrom(this.http.post(`${this.apiUrl}pre-register`, { email, password, newsletter }, get_basic_http_header()));
+      this.bannerService.setBanner(BannerType.VerifyEmail);
       return 200;
     } catch (error) {
       if (error instanceof HttpErrorResponse && error.status === 409) {
@@ -55,11 +75,13 @@ export class AuthService {
     }
   }
 
-  async register(uuid: string): Promise<number> {
+  async register(verification_code: string, email: string): Promise<number> {
     try {
-      const response = await firstValueFrom(this.http.post(`${this.apiUrl}register`, { uuid }, get_basic_http_header()));
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}register`, { verification_code, email }, get_basic_http_header()));
+      this.bannerService.setBanner(BannerType.EmailVerified);
       return 200;
     }catch (error) {
+      this.bannerService.setBanner(BannerType.VerifyEmailExpired);
       if (error instanceof HttpErrorResponse) {
         return error.status;
       } else {
@@ -70,7 +92,8 @@ export class AuthService {
 
   async preReset(email: string): Promise<number> {
     try {
-      const response = await firstValueFrom(this.http.post(`${this.apiUrl}pre-reset`, { email }, get_basic_http_header()));
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}pre-reset-password`, { email }, get_basic_http_header()));
+      this.bannerService.setBanner(BannerType.ResetPassword)
       return 200;
     } catch (error) {
       if (error instanceof HttpErrorResponse && error.status === 404) {
@@ -84,11 +107,15 @@ export class AuthService {
     }
   }
 
-  async reset(uuid: string, password: string): Promise<number> {
+  async reset(password: string): Promise<number> {
+    let email = this.emailSubject.getValue();
+    let reset_password_token= this.resetCodeSubject.getValue();
     try {
-      const response = await firstValueFrom(this.http.post(`${this.apiUrl}reset`, { uuid, password }, get_basic_http_header()));
+      const response = await firstValueFrom(this.http.post(`${this.apiUrl}reset-password`, { email, password, reset_password_token}, get_basic_http_header()));
+      this.bannerService.setBanner(BannerType.PasswordResetted);
       return 200;
     } catch (error) {
+      this.bannerService.setBanner(BannerType.ResetPasswordExpired);
       if (error instanceof HttpErrorResponse && error.status === 404) {
         return 404;
       }
@@ -182,5 +209,17 @@ export class AuthService {
 
   private hasSessionToken(): boolean {
     return document.cookie.includes('sessionToken');
+  }
+
+  setEmail(email: string) {
+    this.emailSubject.next(email);
+  }
+
+  setVerificationCode(verification_code: string) {
+    this.verificationCodeSubject.next(verification_code);
+  }
+
+  setResetCode(reset_code: string) {
+    this.resetCodeSubject.next(reset_code);
   }
 }

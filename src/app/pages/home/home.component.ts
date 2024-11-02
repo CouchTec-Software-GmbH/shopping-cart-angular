@@ -17,7 +17,7 @@ import { MobileSection } from './components/mobile/mobile.component';
     HeroComponent,
     ShowcaseSection,
     PartnersComponent,
-    Mobi,
+    MobileSection,
     StackSection,
     ContactSection,
     FooterComponent,
@@ -44,7 +44,7 @@ import { MobileSection } from './components/mobile/mobile.component';
 export class HomeComponent {
   popUpState: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   setPopUpState(state: boolean) {
     this.popUpState = state;

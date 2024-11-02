@@ -17,12 +17,14 @@ import {
 } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
 import { emailDomainValidator } from '@app/utils/utils';
+import { BannerService } from '@app/services/banner.service';
+import { BannerType } from '@app/types/BannerType';
 
 @Component({
   selector: 'app-signup-email',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, CommonModule],
-  templateUrl: './signup-email.component.html'
+  templateUrl: './signup-email.component.html',
 })
 export class SignUpEmailComponent implements AfterViewInit {
   @Output() signin = new EventEmitter<boolean>();
@@ -42,15 +44,32 @@ export class SignUpEmailComponent implements AfterViewInit {
   isHideIcon = true;
   isHideIconVerify = true;
 
+  showPassword: boolean = false;
+  password: string = '';
+  passwordVerify: string = '';
+  showPasswordMismatchAlert: boolean = false;
+  showPasswordLengthError: boolean = false;
+  showInternalError: boolean = false;
+  isLoading = false;
+
+  constructor(
+    public bannerService: BannerService,
+  ){}
+
   get email() {
     return this.signUpForm.get('email')!;
   }
 
   async submitForm() {
-    if (this.signUpForm.value.password !== this.signUpForm.value.verifyPassword) {
+    this.isLoading = true;
+    if (
+      this.signUpForm.value.password !== this.signUpForm.value.verifyPassword
+    ) {
       this.errorTitle = 'Passwörter stimmen nicht überein';
-      this.errorMessage = 'Bitte stellen Sie sicher, dass die Passwörter übereinstimmen.';
+      this.errorMessage =
+        'Bitte stellen Sie sicher, dass die Passwörter übereinstimmen.';
       this.status = 400;
+      this.isLoading = false;
       this.submitted = true;
       return;
     }
@@ -60,20 +79,21 @@ export class SignUpEmailComponent implements AfterViewInit {
       this.signUpForm.value.password ?? '',
       this.signUpForm.value.marketing_accept ?? false,
     );
+    this.isLoading = false;
     this.submitted = true;
     if (this.status === 200) {
-      this.router.navigate(['/'], { queryParams: { verifyEmail: true } });
+      this.router.navigate(['/']);
     } else if (this.status === 401) {
       this.errorTitle = 'Ungültiges Password';
-      this.errorMessage = 'Falls Sie Ihr Passwort vergessen haben, versuchen Sie es zurückzusetzen';
-    } else
-      if (this.status === 404) {
-        this.errorTitle = 'Ungültiger Nutzer und Passwort';
-        this.errorMessage = ''
-      } else {
-        this.errorTitle = 'Irgendwas ist schief gelaufen';
-        this.errorMessage = 'Bitte versuchen Sie es später erneut.';
-      }
+      this.errorMessage =
+        'Falls Sie Ihr Passwort vergessen haben, versuchen Sie es zurückzusetzen';
+    } else if (this.status === 404) {
+      this.errorTitle = 'Ungültiger Nutzer und Passwort';
+      this.errorMessage = '';
+    } else {
+      this.errorTitle = 'Irgendwas ist schief gelaufen';
+      this.errorMessage = 'Bitte versuchen Sie es später erneut.';
+    }
   }
 
   toggleHideIcon() {

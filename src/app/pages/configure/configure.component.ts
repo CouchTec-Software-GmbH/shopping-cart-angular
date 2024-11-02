@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  inject,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepsComponent } from './components/steps/steps.component';
 import { ProjectTypeComponent } from './components/project-type/project-type.component';
@@ -15,16 +21,25 @@ import { ProductService } from '@app/services/product.service';
 import { ProjectOption } from '@app/models/project-option';
 import { projectOptions } from '@app/data/project-options';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
-import { HeaderComponent } from '@app/components/header/header.component';
 import { AuthService } from '@app/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
-
 
 @Component({
   selector: 'app-configure',
   standalone: true,
-  imports: [RouterModule, CommonModule, StepsComponent, ProjectTypeComponent, TechStackComponent, DeploymentComponent,
-    SecurityComponent, MonitoringComponent, ExtraComponent, SummaryComponent, SkeletonComponent, HeaderComponent],
+  imports: [
+    RouterModule,
+    CommonModule,
+    StepsComponent,
+    ProjectTypeComponent,
+    TechStackComponent,
+    DeploymentComponent,
+    SecurityComponent,
+    MonitoringComponent,
+    ExtraComponent,
+    SummaryComponent,
+    SkeletonComponent,
+  ],
   templateUrl: './configure.component.html',
 })
 export class ConfigureComponent implements OnDestroy, OnInit {
@@ -38,7 +53,7 @@ export class ConfigureComponent implements OnDestroy, OnInit {
   authService = inject(AuthService);
   changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     if (!localStorage.getItem('uuid')) {
@@ -57,13 +72,13 @@ export class ConfigureComponent implements OnDestroy, OnInit {
   handleStorageChange = (event: StorageEvent) => {
     if (event.key === 'uuid') {
       this.projectDataLoaded = false;
-      this.uuid = localStorage.getItem('uuid') ?? "";
+      this.uuid = localStorage.getItem('uuid') ?? '';
       if (!this.uuid) {
         this.loadUuid();
       }
       this.loadProjectData();
     }
-  }
+  };
 
   async loadUuid(): Promise<void> {
     let uuid = localStorage.getItem('uuid');
@@ -85,8 +100,6 @@ export class ConfigureComponent implements OnDestroy, OnInit {
     this.projectDataLoaded = true;
   }
 
-
-
   handleNextStep(): void {
     if (this.currentStep === 6) {
       return;
@@ -99,5 +112,4 @@ export class ConfigureComponent implements OnDestroy, OnInit {
     }
     this.currentStep -= 1;
   }
-
 }

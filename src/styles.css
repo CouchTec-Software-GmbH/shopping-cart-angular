@@ -186,3 +186,11 @@ dialog::backdrop {
   break-inside: avoid;
   @apply flex-col bg-white rounded-xl p-[20px] gap-2 shadow-lg gap-[25px] mb-6;
 }
+
+.banner {
+  @apply absolute top-0 w-full text-black p-4 flex items-center justify-center;
+}
+
+.close-button {
+  @apply absolute right-4 hover:text-[#612a1b] hover:bg-transparent;
+}

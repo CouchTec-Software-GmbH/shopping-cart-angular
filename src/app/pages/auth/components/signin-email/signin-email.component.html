@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col items-start gap-6 w-[473px]">
+  <div class="flex flex-col items-start gap-6 w-[300px] sm:w-[473px]">
     <div class="flex flex-col items-start gap-1 self-stretch">
       <label for="email" class="gap-[10px] self-stretch items-center"
         >E-Mail</label
@@ -104,10 +104,16 @@
   </div>
 
   <div>
-    <button
+    <button *ngIf="!isLoading"
       class="bg-primary-dark hover:bg-primary-light text-white h-full rounded-[8px] px-[40px] py-[16px]"
     >
       <p class="text-[20px] font-brand font-light">Anmelden</p>
+    </button>
+    <button *ngIf="isLoading" [disabled]="true"
+      class="flex items-center justify-center gap-[6px] rounded-lg text-white p-4 mt-4 bg-gray-300 h-[56px] w-[150px]">
+        <div class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s] -m-"></div>
+        <div class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+        <div class="h-2 w-2 bg-white rounded-full animate-bounce"></div>
     </button>
   </div>
 

@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -7,12 +15,8 @@ import { AuthService } from '@app/services/auth.service';
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
-  imports: [
-    RouterModule,
-    ReactiveFormsModule,
-    CommonModule,
-  ],
-  templateUrl: './forgot-password.component.html'
+  imports: [RouterModule, ReactiveFormsModule, CommonModule],
+  templateUrl: './forgot-password.component.html',
 })
 export class ForgotPasswordComponent implements AfterViewInit {
   @Output() signup = new EventEmitter<boolean>();
@@ -26,25 +30,25 @@ export class ForgotPasswordComponent implements AfterViewInit {
   });
   authService = inject(AuthService);
   router = inject(Router);
+  isLoading = false;
 
   submitForm() {
+    this.isLoading = true;
     this.submitted = true;
-    this.authService.preReset(this.resetPasswordForm.value.email).then((status) => {
-      this.status = status;
-      if (status === 200) {
-        this.router.navigate(['/'], { queryParams: { forgotPassword: true } });
-      }
-    });
+    this.authService
+      .preReset(this.resetPasswordForm.value.email)
+      .then((status) => {
+        this.isLoading = false;
+        this.status = status;
+        if (status === 200) {
+          this.router.navigate(['/']);
+        }
+      });
   }
-
-
 
   ngAfterViewInit() {
-    document.addEventListener('click', () => { this.submitted = false });
+    document.addEventListener('click', () => {
+      this.submitted = false;
+    });
   }
-
-
-
-
-
 }

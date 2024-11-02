@@ -1,32 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '@app/components/header/header.component';
 import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { CommonModule } from '@angular/common';
 import { AccountSettingsComponent } from './components/account-settings';
-
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     RouterModule,
-    HeaderComponent,
     SideMenuComponent,
     ProjectListComponent,
     AccountSettingsComponent,
-    CommonModule
+    CommonModule,
   ],
-  template: `
-      <app-project-list></app-project-list>
-  `,
+  template: ` <app-project-list></app-project-list> `,
 })
 export class DashboardComponent implements OnInit {
-  state: string = "general";
+  state: string = 'general';
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onStateChange(state: string) {
     this.state = state;

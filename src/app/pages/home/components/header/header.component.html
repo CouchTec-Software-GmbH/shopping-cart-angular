@@ -163,4 +163,104 @@
         </div>
 
     </div>
+
+
+
+<div *ngIf="banner === BannerType.VerifyEmail" class="banner bg-[#c2e4e6]">
+  <div class="flex items-center space-x-3 mr-6">
+    <div class="flex items-center space-x-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </div>
+    <span>Ein Verifizierungslink wurde an
+      <ng-container *ngIf="(bannerService.bannerEmail$ | async) as email; else fallback">
+        {{ email }}
+      </ng-container>
+      <ng-template #fallback>deine E-Mail</ng-template>
+      gesendet.</span>
+  </div>
+  <button class="close-button" (click)="this.bannerService.clearBanner()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
+
+<div *ngIf="banner === BannerType.VerifyEmailExpired" class="banner bg-[#c2e4e6]">
+  <div class="flex items-center space-x-3 mr-6">
+    <div class="flex shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+    </div>
+    <span>
+      Der Verifizierungslink für
+      <ng-container *ngIf="(bannerService.bannerEmail$ | async) as email; else fallback">
+        {{ email }}
+      </ng-container>
+      <ng-template #fallback>deine E-Mail</ng-template>
+      ist abgelaufen.
+      </span>
+  </div>
+  <button class="close-button" (click)="this.bannerService.clearBanner()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
+
+<div *ngIf="banner === BannerType.EmailVerified" class="banner bg-[#c2e4e6]">
+  <div class="flex items-center space-x-3 mr-6">
+    <div class="flex shrink-0">
+      <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <span>
+      Deine E-Mail
+      <ng-container *ngIf="(bannerService.bannerEmail$ | async) as email; else fallback">
+        {{ email }}
+      </ng-container>
+      <ng-template #fallback></ng-template>
+      wurde verifiziert.
+      </span>
+  </div>
+  <button class="close-button" (click)="this.bannerService.clearBanner()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
+
+<div *ngIf="banner === BannerType.ResetPassword" class="banner bg-[#ffd1c4]">
+  <div class="flex items-center space-x-3 mr-6">
+    <div class="flex shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </div>
+    <span>Ein Link zum Zurücksetzen deines Passworts wurde an
+      <ng-container *ngIf="(bannerService.bannerEmail$ | async) as email; else fallback">
+        {{ email }}
+      </ng-container>
+      <ng-template #fallback>deine E-Mail</ng-template>
+      gesendet.</span>
+  </div>
+  <button class="close-button text-[#b3725e]" (click)="this.bannerService.clearBanner()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
+
+<div *ngIf="banner === BannerType.PasswordResetted" class="banner  bg-[#ffd1c4]">
+  <div class="flex items-center space-x-3 mr-6">
+    <div class="text-[#b3725e] flex shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <span>
+      Passwort wurde aktualisiert.
+      </span>
+  </div>
+  <button class="close-button text-[#b3725e]" (click)="this.bannerService.clearBanner()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
+
+<div *ngIf="banner === BannerType.ResetPasswordExpired" class="banner bg-[#ffd1c4]">
+  <div class="flex items-center space-x-3 mr-6">
+    <div class="text-[#b3725e] flex shrink-0">
+      <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+    </div>
+    <span>Ihre Anfrage zum Zurücksetzen des Passworts ist bereits abgelaufen. Bitte versuchen Sie es erneut.</span>
+  </div>
+  <button class="close-button text-[#b3725e]" (click)="this.bannerService.clearBanner()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
 </header>
