@@ -55,7 +55,7 @@ export class PopUpComponent implements OnInit {
     },
     forgotPassword: {
       component: 'pop-up-element',
-      text: 'Wir haben Ihnen eine Zurücksetzungsemail geschickt. Um das Password zurückzusetzen, klicken Sie bitte auf den Zurücksetzungslink in Ihrer E-Mail.',
+      text: 'Wir haben Ihnen eine Zurücksetzungsemail geschickt. Um das Passwort zurückzusetzen, klicken Sie bitte auf den Zurücksetzungslink in Ihrer E-Mail.',
       title: 'Wir haben Ihnen eine E-Mail geschickt.',
     },
     registerSuccess: {
@@ -65,8 +65,8 @@ export class PopUpComponent implements OnInit {
     },
     resetSuccess: {
       component: 'pop-up-element',
-      text: 'Sie können sich nun mit Ihrem neuen Password anmelden.',
-      title: 'Ihr Password wurde erfolgreich geändert.',
+      text: 'Sie können sich nun mit Ihrem neuen Passwort anmelden.',
+      title: 'Ihr Passwort wurde erfolgreich geändert.',
     },
     newProject: {
       component: 'input-pop-up-element',
