@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class ContactComponent {
   contactOptions = contactOptions;
+  isLoading = false;
   submitted = false;
   contactForm: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -23,12 +24,14 @@ export class ContactComponent {
 
   constructor(private router: Router) { }
 
-  submitForm() {
-    this.productService.submitApplication(
+  async submitForm() {
+    this.isLoading = true;
+    await this.productService.submitApplication(
       this.contactForm.value.name ?? '',
       this.contactForm.value.email ?? '',
       this.contactForm.value.message ?? '',
     );
+    this.isLoading = false;
     this.submitted = true;
   }
 }

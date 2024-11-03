@@ -58,6 +58,8 @@
 
 body {
   font-family: "Be Vietnam Pro", sans-serif;
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
 }
 
 :root {
@@ -134,6 +136,7 @@ body {
 .slider .item:hover {
   filter: grayscale(0);
 }
+
 
 @keyframes reversePlay {
   from {

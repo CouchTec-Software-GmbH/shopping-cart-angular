@@ -42,9 +42,13 @@ export class ForgotPasswordComponent implements AfterViewInit {
         this.status = status;
         if (status === 200) {
           this.router.navigate(['/']);
+          return;
         }
+      this.errorTitle = 'Irgendwas ist schief gelaufen';
+      this.errorMessage = 'Bitte versuchen Sie es später erneut.';
       });
   }
+
 
   ngAfterViewInit() {
     document.addEventListener('click', () => {
