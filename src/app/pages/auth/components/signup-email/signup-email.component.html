@@ -1,5 +1,5 @@
 <form
-  class="flex flex-col justify-center items-start gap-8 text-[#666] text-[16px] font-normal"
+  class="flex flex-col justify-center items-start sm:gap-8 text-[#666] text-[16px] font-normal"
   [formGroup]="signUpForm"
   (submit)="submitForm()"
 >
@@ -175,7 +175,9 @@
         required
       />
     </div>
-    <div class="flex flex-col gap-1 w-full pr-2 items-start">
+    <div
+      class="flex flex-col gap-1 w-full pr-2 items-start text-[12px] sm:text-[16px]"
+    >
       <p>
         Durch die Kontoerstellung stimmem Sie unseren
         <a class="underline text-[#111] hover:cursor-pointer"
@@ -202,18 +204,26 @@
     </div>
   </div>
 
-  <div>
-    <button *ngIf="!isLoading"
+  <div class="mt-[4px]">
+    <button
+      *ngIf="!isLoading"
       class="bg-primary-dark hover:bg-primary-light text-white h-full rounded-[8px] px-[40px] py-[16px]"
     >
       <p class="text-[20px] font-brand font-light">Registieren</p>
     </button>
 
-    <button *ngIf="isLoading" [disabled]="true"
-      class="flex items-center justify-center gap-[6px] rounded-lg text-white p-4 mt-4 bg-gray-300 h-[56px] w-[150px]">
-        <div class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s] -m-"></div>
-        <div class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-        <div class="h-2 w-2 bg-white rounded-full animate-bounce"></div>
+    <button
+      *ngIf="isLoading"
+      [disabled]="true"
+      class="flex items-center justify-center gap-[6px] rounded-lg text-white p-4 mt-4 bg-gray-300 h-[56px] w-[150px]"
+    >
+      <div
+        class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s] -m-"
+      ></div>
+      <div
+        class="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"
+      ></div>
+      <div class="h-2 w-2 bg-white rounded-full animate-bounce"></div>
     </button>
   </div>
 

@@ -36,17 +36,17 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
   isHideIcon = true;
   isHideIconVerify = true;
 
-  private resetCode: string = "";
-  private email: string = "";
+  private resetCode: string = '';
+  private email: string = '';
   isLoading = false;
 
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
-  ){}
+  ) { }
 
   async ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       this.resetCode = decodeURIComponent(params.get('c') || '');
       this.email = decodeURIComponent(params.get('e') || '');
     });
@@ -62,10 +62,27 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
   submitForm() {
     this.isLoading = true;
     this.submitted = true;
+    let password = this.forgotPasswordForm.get('password')?.value;
+    let verifyPassword = this.forgotPasswordForm.get('verifyPassword')?.value;
+    if (password !== verifyPassword) {
+      console.log("Password: ", password);
+      console.log("VerifyPassword: ", verifyPassword);
+      this.errorTitle = 'Passwörter stimmen nicht überein';
+      this.errorMessage =
+        'Bitte stellen Sie sicher, dass die Passwörter übereinstimmen.';
+      this.isLoading = false;
+      return;
+    }
+
     this.authService
       .reset(this.forgotPasswordForm.value.password)
       .then((status) => {
         this.isLoading = false;
+        if (status === 502) {
+          this.errorTitle = 'Irgendwas ist schief gelaufen';
+          this.errorMessage = 'Bitte versuchen Sie es später erneut.';
+          return;
+        }
         this.router.navigate(['/']);
       });
   }

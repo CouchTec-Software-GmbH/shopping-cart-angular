@@ -458,4 +458,97 @@
       </svg>
     </button>
   </div>
+  <div *ngIf="banner === BannerType.EmailSent" class="banner bg-[#ffd1c4]">
+    <div class="flex items-center space-x-3 mr-6">
+      <div class="text-[#b3725e] flex shrink-0">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-check"
+        >
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </div>
+      <span>
+        Danke für Ihre Anfrage. Wir werden Ihnen schnellstmöglich
+        antworten.</span
+      >
+    </div>
+    <button
+      class="close-button text-[#b3725e]"
+      (click)="this.bannerService.clearBanner()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-x"
+      >
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+  </div>
+  <div
+    *ngIf="banner === BannerType.InternalServerError"
+    class="banner bg-[#ffd1c4]"
+  >
+    <div class="flex items-center space-x-3 mr-6">
+      <div class="text-[#b3725e] flex shrink-0">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-alert"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" x2="12" y1="8" y2="12" />
+          <line x1="12" x2="12.01" y1="16" y2="16" />
+        </svg>
+      </div>
+      <span
+        >Irgendwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.</span
+      >
+    </div>
+    <button
+      class="close-button text-[#b3725e]"
+      (click)="this.bannerService.clearBanner()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-x"
+      >
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+  </div>
+
 </header>

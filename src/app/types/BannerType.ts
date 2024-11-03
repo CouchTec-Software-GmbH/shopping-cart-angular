@@ -7,5 +7,7 @@ export enum BannerType {
   ResetPasswordExpired,
   ProfilUpdated,
   ProfilCreated,
+  EmailSent,
+  InternalServerError,
   None,
 }

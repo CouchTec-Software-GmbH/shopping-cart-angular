@@ -1,108 +1,102 @@
 <section
-    id="stack"
-    class="flex flex-col w-full items-center font-brand font-light mt-[140px] relative">
+  id="stack"
+  class="flex flex-col w-full items-center font-brand font-light mt-[140px] relative"
+>
+  <div
+    class="flex flex-col xl:w-[1250px] p-[20px] rounded-xl items-center gap-[40px] mx-[20px]"
+    style="
+      background: linear-gradient(0deg, #f5f5f5 -37%, rgb(250, 250, 250) 100%);
+    "
+  >
     <div
-        class="flex flex-col  xl:w-[1250px] p-[20px] rounded-xl items-center gap-[40px] mx-[20px]"
-        style="background: linear-gradient(0deg,#f5f5f5 -37%,rgb(250,250,250) 100%);">
-        <div
-            class="flex flex-col items-center justify-center  bg-white rounded-xl h-[180px] w-full">
-            <p class="uppercase opacity-70 text-[12px]">So starten Sie</p>
-            <p class="text-[35px] font-medium ">Starten ist leicht</p>
-            <p class="font-medium opacity-70">In 3 Schritten fertig</p>
-        </div>
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-[15px] ">
-            <div
-                class="flex flex-col  bg-white rounded-xl p-[20px] gap-2">
-                <p class="uppercase opacity-70 text-[12px]">Schritt 1</p>
-                <p class="font-medium text-[18px]">Sie buchen ein kostenloses
-                    Gespräch</p>
-                <p class="font-medium text-[15px] opacity-80">In einem ersten
-                    Gespräch
-                    erfahren wir
-                    mehr über Ihr
-                    Unternehmen und finden die beste Lösung für Ihre
-                    Anforderungen. </p>
-            </div>
-            <div
-                class="flex flex-col  bg-white rounded-xl p-[20px] gap-2">
-                <p class="uppercase opacity-70 text-[12px]">Schritt 2</p>
-                <p class="font-medium text-[18px]">Wir stellen ein Team zusammen</p>
-                <p class="font-medium text-[15px] opacity-80">Wir beauftragen
-                    ein engagiertes Team, das sich um alles
-                    kümmert, damit Sie sich auf das konzentrieren können, was
-                    Sie am besten können: Ihr Geschäft ausbauen.</p>
-            </div>
-            <div
-                class="flex flex-col  bg-white rounded-xl p-[20px] gap-2">
-                <p class="uppercase opacity-70 text-[12px]">Schritt 3</p>
-                <p class="font-medium text-[18px]">Wir liefern täglich Arbeit</p>
-                <p class="font-medium text-[15px] opacity-80">Sie erhalten
-                    regelmäßig Updates, während wir die Entwürfe
-                    liefern und sicherstellen, dass alles mit Ihren
-                    Vorstellungen übereinstimmt. Wir sind bei jedem Schritt
-                    dabei.</p>
-
-            </div>
-        </div>
-
-        <div class="flex w-full justify-center mx-[20px]">
-
-            <div
-                class="relative bg-black flex w-full h-[500px] rounded-xl items-center justify-center"
-                style="background: linear-gradient(105deg, #171717 0%, rgb(0, 0, 0) 100%);">
-                <img
-                    class="absolute -left-[300px] -top-[100px]"
-                    src="https://framerusercontent.com/images/wUjMjJcMpzrRBSsmNEKB5l3bmA.png?scale-down-to=512">
-
-                <img
-                    class="absolute -right-[60px] -bottom-[50px]"
-                    src="https://framerusercontent.com/images/wUjMjJcMpzrRBSsmNEKB5l3bmA.png?scale-down-to=512">
-
-                <div
-                    class="flex flex-col text-white items-center font-brand font-light text-[25px] sm:text-[30px] ">
-                    <p class="text-center mx-[20px]">
-                        Kontaktieren Sie uns noch heute.
-                    </p>
-                    <p class="opacity-50 text-center">Erstgespräche sind
-                        kostenlos.</p>
-                    <div class="flex flex-col mt-[20px] w-[250px] bg-red">
-                        <div
-                            class="w-full bg-white opacity-50 h-[0.5px]">
-                        </div>
-                        <div class="flex flex-row justify-between my-[15px]">
-                            <p class="uppercase text-[14px] opacity-50">Dauer</p>
-                            <p class="uppercase text-[14px] ">20-30 Minuten</p>
-                        </div>
-
-                        <div
-                            class="w-full bg-white opacity-50 h-[0.5px]">
-                        </div>
-                        <div class="flex flex-row justify-between my-[15px]">
-                            <p class="uppercase text-[14px] opacity-50">Thema</p>
-                            <p class="uppercase text-[14px] ">Erstgespräch</p>
-                        </div>
-
-                        <div
-                            class="w-full bg-white opacity-50 h-[0.5px]">
-                        </div>
-                        <div class="flex flex-row justify-between my-[15px]">
-                            <p class="uppercase text-[14px] opacity-50">Preis</p>
-                            <p class="uppercase text-[14px] ">Kostenlos</p>
-                        </div>
-
-                        <div
-                            class="w-full bg-white opacity-50 h-[0.5px]">
-                        </div>
-                        <button
-                            (click)="handleContactButton()"
-                            class=" bg-white text-black w-full mt-[40px] h-full rounded-[8px] py-[10px]">
-                            <p class="text-[20px] font-brand font-light">Gespräch
-                                mit
-                                uns</p>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      class="flex flex-col items-center justify-center bg-white rounded-xl h-[180px] w-full"
+    >
+      <p class="uppercase opacity-70 text-[12px]">So starten Sie</p>
+      <p class="text-[35px] font-medium">Starten ist leicht</p>
+      <p class="font-medium opacity-70">In 3 Schritten fertig</p>
     </div>
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-[15px]">
+      <div class="flex flex-col bg-white rounded-xl p-[20px] gap-2">
+        <p class="uppercase opacity-70 text-[12px]">Schritt 1</p>
+        <p class="font-medium text-[18px]">
+          Sie buchen ein kostenloses Gespräch
+        </p>
+        <p class="font-medium text-[15px] opacity-80">
+          In einem ersten Gespräch erfahren wir mehr über Ihr Unternehmen und
+          finden die beste Lösung für Ihre Anforderungen.
+        </p>
+      </div>
+      <div class="flex flex-col bg-white rounded-xl p-[20px] gap-2">
+        <p class="uppercase opacity-70 text-[12px]">Schritt 2</p>
+        <p class="font-medium text-[18px]">Wir stellen ein Team zusammen</p>
+        <p class="font-medium text-[15px] opacity-80">
+          Wir beauftragen ein engagiertes Team, das sich um alles kümmert, damit
+          Sie sich auf das konzentrieren können, was Sie am besten können: Ihr
+          Geschäft ausbauen.
+        </p>
+      </div>
+      <div class="flex flex-col bg-white rounded-xl p-[20px] gap-2">
+        <p class="uppercase opacity-70 text-[12px]">Schritt 3</p>
+        <p class="font-medium text-[18px]">Wir liefern täglich Arbeit</p>
+        <p class="font-medium text-[15px] opacity-80">
+          Sie erhalten regelmäßig Updates, während wir die Entwürfe liefern und
+          sicherstellen, dass alles mit Ihren Vorstellungen übereinstimmt. Wir
+          sind bei jedem Schritt dabei.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex w-full justify-center mx-[20px]">
+      <div
+        class="relative bg-black flex w-full h-[500px] rounded-xl items-center justify-center"
+        style="
+          background: linear-gradient(105deg, #171717 0%, rgb(0, 0, 0) 100%);
+        "
+      >
+        <img
+          class="absolute -left-[300px] -top-[100px]"
+          src="https://framerusercontent.com/images/wUjMjJcMpzrRBSsmNEKB5l3bmA.png?scale-down-to=512"
+        />
+
+        <img
+          class="absolute -right-[60px] -bottom-[50px]"
+          src="https://framerusercontent.com/images/wUjMjJcMpzrRBSsmNEKB5l3bmA.png?scale-down-to=512"
+        />
+
+        <div
+          class="flex flex-col text-white items-center font-brand font-light text-[25px] sm:text-[30px]"
+        >
+          <p class="text-center mx-[20px]">Kontaktieren Sie uns noch heute.</p>
+          <p class="opacity-50 text-center">Erstgespräche sind kostenlos.</p>
+          <div class="flex flex-col mt-[20px] w-[250px] bg-red">
+            <div class="w-full bg-white opacity-50 h-[0.5px]"></div>
+            <div class="flex flex-row justify-between my-[15px]">
+              <p class="uppercase text-[14px] opacity-50">Dauer</p>
+              <p class="uppercase text-[14px]">20-30 Minuten</p>
+            </div>
+
+            <div class="w-full bg-white opacity-50 h-[0.5px]"></div>
+            <div class="flex flex-row justify-between my-[15px]">
+              <p class="uppercase text-[14px] opacity-50">Thema</p>
+              <p class="uppercase text-[14px]">Erstgespräch</p>
+            </div>
+
+            <div class="w-full bg-white opacity-50 h-[0.5px]"></div>
+            <div class="flex flex-row justify-between my-[15px]">
+              <p class="uppercase text-[14px] opacity-50">Preis</p>
+              <p class="uppercase text-[14px]">Kostenlos</p>
+            </div>
+
+            <div class="w-full bg-white opacity-50 h-[0.5px]"></div>
+            <button
+            (click)="handleContactButton()"
+              class="bg-white text-black w-full mt-[40px] h-full z-10 relative rounded-[8px] py-[10px]"
+            >
+              <p class="text-[20px] font-brand font-light">Gespräch mit uns</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
