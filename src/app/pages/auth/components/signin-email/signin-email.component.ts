@@ -46,7 +46,7 @@ export class SignInEmailComponent implements AfterViewInit {
     console.log('Status: ', this.status);
     if (this.status === 200) {
       this.router.navigate(['/']);
-    } else if (this.status === 401) {
+    } else if (this.status === 403) {
       this.errorTitle = 'Ungültiges Passwort';
       this.errorMessage =
         'Falls Sie Ihr Passwort vergessen haben, versuchen Sie es zurückzusetzen';
