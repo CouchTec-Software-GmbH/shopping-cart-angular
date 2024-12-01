@@ -9,6 +9,7 @@ import { StackSection } from './components/stack-section/stack-section.component
 import { ShowcaseSection } from './components/showcase/showcase.component';
 import { PartnersComponent } from './components/partners/partners.component';
 import { MobileSection } from './components/mobile/mobile.component';
+import { ConfigureSection } from './configure/configure.component';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ import { MobileSection } from './components/mobile/mobile.component';
     FooterComponent,
     HeaderComponent,
     PopUpComponent,
+    ConfigureSection,
     CommonModule,
   ],
   template: `
@@ -31,6 +33,7 @@ import { MobileSection } from './components/mobile/mobile.component';
         <app-header></app-header>
         <app-hero></app-hero>
         <app-showcase></app-showcase>
+        <app-configure></app-configure>
         <app-partners></app-partners>
         <app-mobile></app-mobile>
         <app-stack-section></app-stack-section>
@@ -44,7 +47,7 @@ import { MobileSection } from './components/mobile/mobile.component';
 export class HomeComponent {
   popUpState: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   setPopUpState(state: boolean) {
     this.popUpState = state;
