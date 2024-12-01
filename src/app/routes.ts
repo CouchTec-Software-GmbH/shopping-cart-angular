@@ -16,21 +16,21 @@ const routeConfig: Routes = [
     component: AuthComponent,
     title: 'Couchtec - Auth',
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    title: 'Couchtec - Dashboard',
-  },
+  // {
+  //   path: 'dashboard',
+  //   component: DashboardComponent,
+  //   title: 'Couchtec - Dashboard',
+  // },
   {
     path: 'kontakt',
     component: ContactComponent,
     title: 'Couchtec - Kontakt',
   },
-  {
-    path: 'configure',
-    component: ConfigureComponent,
-    title: 'Couchtec - Projekt',
-  },
+  // {
+  //   path: 'configure',
+  //   component: ConfigureComponent,
+  //   title: 'Couchtec - Projekt',
+  // },
   {
     path: '**',
     redirectTo: '',
