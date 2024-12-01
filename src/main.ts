@@ -2,7 +2,7 @@
 *  Protractor support is deprecated in Angular.
 *  Protractor is used in this example for compatibility with Angular documentation tools.
 */
-import { bootstrapApplication} from '@angular/platform-browser';
+import { bootstrapApplication, provideClientHydration} from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
@@ -43,7 +43,7 @@ bootstrapApplication(AppComponent,
     providers: [
       provideRouter(routeConfig),
       provideHttpClient(),
-      importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig)), provideAnimationsAsync(),
+      importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig)), provideAnimationsAsync(), provideClientHydration(),
     ]
   }
 ).catch(err => console.error(err));
