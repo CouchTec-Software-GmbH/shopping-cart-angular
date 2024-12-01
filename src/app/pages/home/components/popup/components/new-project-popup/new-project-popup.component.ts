@@ -33,7 +33,7 @@ import { Router, RouterModule } from '@angular/router';
       <p class="mt-4 text-gray-500">
         {{ message }}
       </p>
-      <form [formGroup]="projectForm" (submit)="submitForm">
+      <form [formGroup]="projectForm" (submit)="(submitForm)">
         <label
           for="Name"
           class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 mt-3"
@@ -54,18 +54,18 @@ import { Router, RouterModule } from '@angular/router';
         </label>
 
         <div class="mt-6 sm:flex sm:gap-4">
-          <a
+          <div
             (click)="submitForm()"
             class="inline-block rounded border border-blue-500 bg-blue-500 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-500 focus:outline-none focus:ring active:text-blue-500 hover:cursor-pointer"
           >
             Erstellen
-          </a>
-          <a
+          </div>
+          <div
             (click)="cancel.emit()"
             class="inline-block rounded border border-white-500 bg-white-500 px-8 py-3 text-sm font-medium text-blue-600 hover:bg-transparent hover:text-blue-500 focus:outline-none focus:ring active:text-blue-500 hover:cursor-pointer"
           >
             Zurück
-          </a>
+          </div>
         </div>
       </form>
     </div>
@@ -85,7 +85,7 @@ export class NewProjectPopUpComponent {
     name: new FormControl(''),
   });
 
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
 
   submitForm() {
     let name = this.projectForm.value.name;
@@ -96,10 +96,12 @@ export class NewProjectPopUpComponent {
     this.authService.addUuid(result);
     localStorage.setItem('uuid', result);
 
-    window.dispatchEvent(new StorageEvent('storage', {
-      key: 'uuid',
-      newValue: uuid
-    }));
+    window.dispatchEvent(
+      new StorageEvent('storage', {
+        key: 'uuid',
+        newValue: uuid,
+      }),
+    );
 
     this.router.navigate(['configure']);
   }
