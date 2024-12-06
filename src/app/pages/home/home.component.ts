@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopUpComponent } from './components/popup/popup.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -23,7 +22,6 @@ import { SelectType } from './components/select-type/select-type.component';
     ContactSection,
     FooterComponent,
     HeaderComponent,
-    PopUpComponent,
     SelectType,
     CommonModule,
   ],
@@ -41,13 +39,12 @@ import { SelectType } from './components/select-type/select-type.component';
         <app-footer></app-footer>
       </div>
     </div>
-    <app-pop-up (popUp)="popUpState = $event"></app-pop-up>
   `,
 })
 export class HomeComponent {
   popUpState: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   setPopUpState(state: boolean) {
     this.popUpState = state;

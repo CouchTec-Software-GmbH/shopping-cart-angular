@@ -1,33 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { ProjectData } from '@models/project-data';
-
-export function createDefaultProjectData(): ProjectData {
-  return {
-    projectType: 'GreenFieldProject',
-    status: 'Nicht begonnen',
-    shortText: '',
-    tierOptions: [],
-    techStack: {
-      frontend: {
-        framework: 'React',
-        styling: '',
-      },
-      middleware: '',
-      backend: '',
-      database: '',
-    },
-    deployment: {
-      provider: 'AWS',
-      containerization: 'Docker',
-      orchestration: 'Kubernetes',
-      environment: [],
-    },
-    security: [],
-    monitoring: '',
-    extra: [],
-  };
-}
 
 export function setNestedValue(obj: any, path: string, value: any): void {
   const keys = path.split('.');
@@ -104,7 +76,7 @@ export function get_http_header(session_token: string) {
 export function get_basic_http_header() {
   return {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }),
   };
 }

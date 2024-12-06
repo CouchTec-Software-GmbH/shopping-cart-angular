@@ -1,9 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { headerOptions } from '@app/data/header';
-import { HeaderOption } from '@app/models/header-option';
-import { SearchService } from '@services/search.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@app/services/auth.service';
 import { Subscription } from 'rxjs';
@@ -18,7 +15,6 @@ import { BannerType } from '@app/types/BannerType';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  headerOptions: HeaderOption[] = headerOptions;
   accountShow = false;
   name = '';
 
@@ -42,7 +38,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private searchService: SearchService,
     private projectService: ProjectService,
     public bannerService: BannerService,
   ) {}
