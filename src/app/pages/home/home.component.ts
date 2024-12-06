@@ -9,7 +9,7 @@ import { StackSection } from './components/stack-section/stack-section.component
 import { ShowcaseSection } from './components/showcase/showcase.component';
 import { PartnersComponent } from './components/partners/partners.component';
 import { MobileSection } from './components/mobile/mobile.component';
-import { ConfigureSection } from './configure/configure.component';
+import { SelectType } from './components/select-type/select-type.component';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +24,7 @@ import { ConfigureSection } from './configure/configure.component';
     FooterComponent,
     HeaderComponent,
     PopUpComponent,
-    ConfigureSection,
+    SelectType,
     CommonModule,
   ],
   template: `
@@ -33,7 +33,7 @@ import { ConfigureSection } from './configure/configure.component';
         <app-header></app-header>
         <app-hero></app-hero>
         <app-showcase></app-showcase>
-        <app-configure></app-configure>
+        <app-select-type></app-select-type>
         <app-partners></app-partners>
         <app-mobile></app-mobile>
         <app-stack-section></app-stack-section>

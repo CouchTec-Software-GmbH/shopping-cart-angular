@@ -1,0 +1,54 @@
+<div class="flex flex-col justify-center items-start w-full">
+  <h1 class="w-full text-[35px] font-medium text-black text-center">
+    {{ appType }} Anwendung Schätzung
+  </h1>
+  <p class="w-full text-gray-600 font-light text-center">
+    Bitte beantworte die folgenden Fragen, damit wir die Kosten für dein
+    Softwareprodukt abschätzen können.
+  </p>
+  <button
+    type=""
+    class="flex flex-row justify-center items-center hover:bg-[#f4f4f5] pl-4 pr-5 py-3 rounded-md gap-4 mt-8"
+    (click)="backToMode.emit()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-arrow-left"
+    >
+      <path d="m12 19-7-7 7-7" />
+      <path d="M19 12H5" />
+    </svg>
+    <p class="font-medium mt-1 text-[14px] text-black">
+      Zurück zum Schätzungs Modus
+    </p>
+  </button>
+  <div class="mt-8 flex flex-row gap-1 justify-start items-center">
+    <p class="font-light text-[15px]">Anwendung:</p>
+    <p class="font-medium font-[14px]">{{ appType }}</p>
+  </div>
+  <div class="flex flex-row gap-1 justify-start items-center">
+    <p class="font-light text-[15px]">Schätzungs Modus:</p>
+    <p class="font-medium font-[14px]">{{ mode }}</p>
+  </div>
+   <app-number-input [data]="totalUsers" (selectionChange)="changeTotalUsers($event)"></app-number-input>
+   <app-number-input [data]="concurrentUsers" (selectionChange)="changeConcurrentUsers($event)"></app-number-input>
+   <app-checkbox [list]="platforms" (selectionChange)="changePlatforms($event)"></app-checkbox>
+   <app-number-input [data]="timeframe" (selectionChange)="changeTimeframe($event)"></app-number-input>
+   <app-radio [list]="design" (selectionChange)="changeDesign($event)"></app-radio>
+   <app-radio [list]="infrastructure" (selectionChange)="changeInfrastructure($event)"></app-radio>
+   <app-number-input [data]="initialStorage" (selectionChange)="changeInitialStorage($event)"></app-number-input>
+   <app-number-input [data]="newStoragePerMonth" (selectionChange)="changeNewStoragePerMonth($event)"></app-number-input>
+   <app-checkbox [list]="geography" (selectionChange)="changeGeography($event)"></app-checkbox>
+   <app-checkbox [list]="training" (selectionChange)="changeTraining($event)"></app-checkbox>
+   <app-checkbox [list]="maintenance" (selectionChange)="changeMaintenance($event)"></app-checkbox>
+   <app-checkbox [list]="auth" (selectionChange)="changeAuth($event)"></app-checkbox>
+   <app-radio [list]="encryption" (selectionChange)="changeEncryption($event)"></app-radio>
+</div>

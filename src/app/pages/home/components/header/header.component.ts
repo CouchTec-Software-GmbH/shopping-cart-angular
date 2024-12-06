@@ -36,11 +36,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private bannerSubscription!: Subscription;
   public banner: BannerType = BannerType.None;
-  private bannerEmail: string = "";
+  private bannerEmail: string = '';
   public BannerType = BannerType;
 
   constructor(
-
     private route: ActivatedRoute,
     private router: Router,
     private searchService: SearchService,
@@ -55,7 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.updateEmailFromCookies();
 
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       this.verificationCode = decodeURIComponent(params.get('vc') || '');
       this.email = decodeURIComponent(params.get('e') || '');
 
@@ -76,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
 
     this.bannerSubscription = this.bannerService.banner$.subscribe({
-        next: value => this.banner = value,
+      next: (value) => (this.banner = value),
     });
 
     this.uuid_subscription = this.projectService
@@ -97,6 +96,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
     if (this.uuid_subscription) {
       this.uuid_subscription.unsubscribe();
+    }
+    if (this.bannerSubscription) {
+      this.bannerSubscription.unsubscribe();
     }
     window.removeEventListener('storage', this.handleStorageChange);
   }
@@ -142,6 +144,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   handleContactButton(): void {
     this.router.navigate(['/kontakt']);
+    this.accountShow = false;
+    this.closeMenu();
+  }
+
+  handlePriceQuoteButton(): void {
+    this.router.navigate(['/price-quote']);
     this.accountShow = false;
     this.closeMenu();
   }

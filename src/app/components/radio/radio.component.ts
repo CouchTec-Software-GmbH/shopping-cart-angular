@@ -1,42 +1,50 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectOption } from '@models/project-option';
+import { ProjectOptionList } from '@app/models/project-option-list';
 
 @Component({
   selector: 'app-radio',
   standalone: true,
   imports: [CommonModule],
   template: `
+  <div>
+    <div class="w-full flex flex-col justify-start">
+      <h2 class="text-black font-medium text-[20px] mt-8">
+        {{ list.title }}
+      </h2>
+      <p class="font-light mt-2">
+        {{ list.description }}
+      </p>
+    </div>
 
-<fieldset class="space-y-4">
-  <legend class="sr-only">Delivery</legend>
-
-  <div *ngFor="let option of options">
-    <label
-      class="flex cursor-pointer justify-between gap-4 rounded-lg border border-gray-100 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-200 has-[:checked]:border-blue-500 has-[:checked]:ring-1 has-[:checked]:ring-blue-500"
-    >
-      <div>
-        <p class="text-gray-700">{{ option.name }}</p>
-
-        <p class="mt-1 text-gray-900"> {{ option.description }}</p>
-      </div>
-
-      <input
-        type="radio"
-        name="radio-{{uuid}}"
-        [value]="option.id"
-        [id]="option.id"
-        class="size-5 border-gray-300 text-blue-500"
-        [checked]="option.checked"
-        (change)="onSelectionChange(option.id)"
-      />
-    </label>
+    <fieldset class="flex flex-col gap-3 w-full mt-4 ml-2">
+      <legend class="sr-only">Infrastruktur</legend>
+      <label *ngFor="let option of list.options" [for]="option.id" class="flex items-center gap-4 cursor-pointer">
+        <input
+          type="radio"
+          name="radio-{{uuid}}"
+          [value]="option.id"
+          [id]="option.id"
+          [checked]="option.checked"
+          class="sr-only peer"
+          (change)="onSelectionChange(option.id)"
+        />
+        <span
+          class="block size-[10px] rounded-full bg-none ring-1 ring-black ring-offset-[3px] peer-checked:bg-black peer-checked:ring-offset-[3px]"
+        ></span>
+        <span class="text-sm text-gray-700">{{ option.name }}</span>
+      </label>
+    </fieldset>
   </div>
-</fieldset>
   `,
 })
 export class RadioComponent {
-  @Input() options: ProjectOption[] = [];
+  @Input() list: ProjectOptionList = {
+    title: "",
+    description: "",
+    options: [],
+  };
+
   @Output() selectionChange = new EventEmitter<string>();
   uuid: string = crypto.randomUUID();
 

@@ -2,8 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from '@pages/home/home.component';
 import { ContactComponent } from '@pages/contact/contact.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { ConfigureComponent } from './pages/configure/configure.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { PriceQuote } from './pages/price-quote/price-quote.component';
 
 const routeConfig: Routes = [
   {
@@ -16,21 +15,16 @@ const routeConfig: Routes = [
     component: AuthComponent,
     title: 'Couchtec - Auth',
   },
-  // {
-  //   path: 'dashboard',
-  //   component: DashboardComponent,
-  //   title: 'Couchtec - Dashboard',
-  // },
   {
     path: 'kontakt',
     component: ContactComponent,
     title: 'Couchtec - Kontakt',
   },
-  // {
-  //   path: 'configure',
-  //   component: ConfigureComponent,
-  //   title: 'Couchtec - Projekt',
-  // },
+  {
+    path: 'price-quote',
+    component: PriceQuote,
+    title: 'Couchtec - Preis Schätzung',
+  },
   {
     path: '**',
     redirectTo: '',
