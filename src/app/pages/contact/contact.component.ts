@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '@app/services/product.service';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -19,8 +19,6 @@ export class ContactComponent {
     message: new FormControl(''),
   });
   productService = inject(ProductService);
-
-  constructor(private router: Router) {}
 
   async submitForm() {
     this.isLoading = true;

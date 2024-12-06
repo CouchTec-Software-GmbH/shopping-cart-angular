@@ -33,7 +33,7 @@ export class PriceQuote
   AppTypeEnum = AppTypeEnum;
   Mode = Mode;
 
-  state = Page.Page3;
+  state = Page.AppType;
   appType = AppTypeEnum.UserFacing;
   mode = Mode.Manager;
 
