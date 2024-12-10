@@ -1,7 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectOption } from '@models/project-option';
-import { ProjectOptionList } from '@app/models/project-option-list';
 import { ProjectNumberInput } from '@app/models/project-number-input';
 
 @Component({
@@ -11,7 +9,9 @@ import { ProjectNumberInput } from '@app/models/project-number-input';
   template: `
     <div>
       <div class="w-full flex flex-col justify-start">
-        <h2 class="text-black font-medium text-[20px] mt-8">{{ data.title }}</h2>
+        <h2 class="text-black font-medium text-[20px] mt-8">
+          {{ data.title }}
+        </h2>
         <p class="font-light mt-2">
           {{ data.description }}
         </p>
@@ -30,7 +30,7 @@ import { ProjectNumberInput } from '@app/models/project-number-input';
           </button>
 
           <input
-            id="quantity-{{uuid}}"
+            id="quantity-{{ uuid }}"
             value="{{ value }}"
             (keydown)="allowOnlyNumbers($event)"
             (input)="updateMonths($event)"
@@ -67,10 +67,17 @@ export class NumberInputComponent implements OnInit {
   value: number = 1;
 
   ngOnInit(): void {
+    const value = localStorage.getItem(this.data.title);
+    if (value && !isNaN(Number(value))) {
+      this.value = Number(value);
+      this.onSelectionChange(Number(value));
+      return;
+    }
     this.value = this.data.default;
   }
 
   onSelectionChange(value: number): void {
+    localStorage.setItem(this.data.title, value.toString());
     this.selectionChange.emit(value);
   }
 
@@ -111,7 +118,7 @@ export class NumberInputComponent implements OnInit {
       value = this.data.max;
     }
     if (!this.value || this.value < this.data.min) {
-      value = this.data.min;;
+      value = this.data.min;
     }
     this.value = value;
     this.onSelectionChange(value);

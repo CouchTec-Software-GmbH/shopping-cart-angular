@@ -1,6 +1,29 @@
 import { HttpHeaders } from '@angular/common/http';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
+export type WritableKeys<T> = {
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? never : K;
+}[keyof T];
+
+export function changeProperty<T extends object, K extends WritableKeys<T>>(
+  targetObject: T,
+  property: K,
+  value: T[K]
+) {
+
+  const target = targetObject[property];
+
+  if (typeof target === 'function') {
+    (target as Function)(value);
+  } else {
+    targetObject[property] = value;
+  }
+
+  if ('updatePrice' in targetObject && typeof targetObject['updatePrice'] === 'function') {
+    (targetObject['updatePrice'] as () => void)();
+  }
+}
+
 export function setNestedValue(obj: any, path: string, value: any): void {
   const keys = path.split('.');
   let current = obj;

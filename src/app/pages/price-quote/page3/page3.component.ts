@@ -19,9 +19,7 @@ export class Page3 implements OnInit {
   @Input() mode = Mode.Manager;
   @Input() appType = AppTypeEnum.UserFacing;
 
-  constructor(
-    private priceService: PriceService
-  ) {}
+  constructor(private priceService: PriceService) {}
 
   ngOnInit(): void {
     this.priceService.updatePrice();
@@ -102,6 +100,7 @@ export class Page3 implements OnInit {
   };
 
   platforms: ProjectOptionList = {
+    id: 'platforms',
     title: 'Platformen für Graphische Oberflächen:',
     description:
       'Falls die Anwendung eine graphische Oberfläche benötigt, wähle alle nötigen Platformen aus.',
@@ -157,6 +156,7 @@ export class Page3 implements OnInit {
   };
 
   design: ProjectOptionList = {
+    id: 'design',
     title: 'Design & Benutzerfreundlichkeit:',
     description: '',
     options: [
@@ -182,6 +182,7 @@ export class Page3 implements OnInit {
   };
 
   infrastructure: ProjectOptionList = {
+    id: 'infrastructure',
     title: 'Hosting & Infrastruktur:',
     description: '',
     options: [
@@ -217,6 +218,7 @@ export class Page3 implements OnInit {
   };
 
   newStoragePerMonth: ProjectNumberInput = {
+    // id: 'newStoragePerMonth',
     title: 'Neue Datenspeicherung pro Monat:',
     description: '',
     name: 'GBs',
@@ -227,6 +229,7 @@ export class Page3 implements OnInit {
   };
 
   geography: ProjectOptionList = {
+    id: 'geography',
     title: 'Geografische Verteilung:',
     description: '',
     options: [
@@ -246,6 +249,7 @@ export class Page3 implements OnInit {
   };
 
   training: ProjectOptionList = {
+    id: 'training',
     title: 'Training & Onboarding:',
     description: '',
     options: [
@@ -259,6 +263,7 @@ export class Page3 implements OnInit {
   };
 
   maintenance: ProjectOptionList = {
+    id: 'maintenance',
     title: 'Wartung:',
     description: '',
     options: [
@@ -272,6 +277,7 @@ export class Page3 implements OnInit {
   };
 
   auth: ProjectOptionList = {
+    id: 'auth',
     title: 'Authentifizierung:',
     description:
       'Falls die Anwendung eine Anmeldung der Nutzer benötigt, wähle alle nötigen Möglichkeiten aus.',
@@ -310,6 +316,7 @@ export class Page3 implements OnInit {
   };
 
   encryption: ProjectOptionList = {
+    id: 'encryption',
     title: 'Verschlüsselung:',
     description:
       'Falls die Anwendung Verschlüsselung der Daten benötigt, wähle alle nötigen Möglichkeiten aus.',
@@ -336,6 +343,7 @@ export class Page3 implements OnInit {
   };
 
   next: ProjectOptionList = {
+    id: 'next',
     title: '',
     description: '',
     options: [

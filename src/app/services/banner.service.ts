@@ -1,4 +1,3 @@
-// banner.service.ts
 import { Injectable } from '@angular/core';
 import { BannerType } from '@app/types/BannerType';
 import { BehaviorSubject } from 'rxjs';

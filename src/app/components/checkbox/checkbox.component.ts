@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectOptionList } from '@app/models/project-option-list';
 
@@ -42,8 +42,9 @@ import { ProjectOptionList } from '@app/models/project-option-list';
     </div>
   `,
 })
-export class CheckboxComponent {
+export class CheckboxComponent implements OnInit {
   @Input() list: ProjectOptionList = {
+    id: '',
     title: '',
     description: '',
     options: [],
@@ -54,7 +55,18 @@ export class CheckboxComponent {
     .filter((option) => option.checked)
     .map((option) => option.id);
 
-  constructor() {
+  ngOnInit(): void {
+    const values = localStorage.getItem(this.list.title);
+    if (values) {
+      const array: string[] = JSON.parse(values);
+      if (array) {
+        console.log("array: ", array);
+        this.list.options.forEach((option) => {
+          console.log(`${option.id} ${array.includes(option.id)}`)
+          option.checked = array.includes(option.id);
+        });
+      }
+    }
     this.selectionChange.emit(
       this.list.options
         .filter((option) => option.checked)
@@ -70,6 +82,7 @@ export class CheckboxComponent {
     } else {
       this.selectedOptions.push(selectionId);
     }
+    localStorage.setItem(this.list.title, JSON.stringify(this.selectedOptions));
     this.selectionChange.emit(this.selectedOptions);
   }
 }

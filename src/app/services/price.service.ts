@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class PriceService {
-
   appTypePrice: Record<AppTypeEnum, number> = {
     [AppTypeEnum.Management]: 10000,
     [AppTypeEnum.UserFacing]: 4000,
@@ -17,54 +16,51 @@ export class PriceService {
   };
 
   platformPrice: Record<string, number> = {
-    ["web"]: 4000,
-    ["ios"]: 10000,
-    ["android"]: 10000,
-    ["linux"]: 4000,
-    ["macos"]: 4000,
-    ["windows"]: 4000,
-    [""]: 0,
+    ['web']: 4000,
+    ['ios']: 10000,
+    ['android']: 10000,
+    ['linux']: 4000,
+    ['macos']: 4000,
+    ['windows']: 4000,
+    ['']: 0,
   };
 
   designPrice: Record<string, number> = {
-    ["basic-design"]: 1,
-    ["good-design"]: 1.2,
-    ["existing-design"]: 1.1,
-    [""]: 1,
+    ['basic-design']: 1,
+    ['good-design']: 1.2,
+    ['existing-design']: 1.1,
+    ['']: 1,
   };
 
   infrastructurePrice: Record<string, number> = {
-    ["cloud"]: 1.1,
-    ["own-server"]: 1.5,
-    ["couchtec-server"]: 1,
-    [""]: 1,
+    ['cloud']: 1.1,
+    ['own-server']: 1.5,
+    ['couchtec-server']: 1,
+    ['']: 1,
   };
 
   maintenancePrice: Record<string, number> = {
-    ["cloud"]: 1.2,
-    ["own-server"]: 2,
-    ["couchtec-server"]: 1,
-    [""]: 1,
+    ['cloud']: 1.2,
+    ['own-server']: 2,
+    ['couchtec-server']: 1,
+    ['']: 1,
   };
 
   geopgraphyPrice: Record<string, number> = {
-    ["regions"]: 2000,
-    ["language"]: 1000,
-    [""]: 0,
+    ['regions']: 2000,
+    ['language']: 1000,
+    ['']: 0,
   };
 
   encryptionPrice: Record<string, number> = {
-    ["transit"]: 100,
-    ["rest"]: 200,
-    ["e2e"]: 900,
-    [""]: 0,
+    ['transit']: 100,
+    ['rest']: 200,
+    ['e2e']: 900,
+    ['']: 0,
   };
 
-
-
-  mobile = ["ios", "android"];
-  desktop = ["web", "linux", "windows", "macos"];
-
+  mobile = ['ios', 'android'];
+  desktop = ['web', 'linux', 'windows', 'macos'];
 
   private priceSubject = new BehaviorSubject<number>(0);
   price$ = this.priceSubject.asObservable();
@@ -77,15 +73,15 @@ export class PriceService {
   concurrentUsers: number = 1000;
   platforms: string[] = [];
   timeframe: number = 9;
-  design: string = "";
-  infrastructure: string = "";
+  design: string = '';
+  infrastructure: string = '';
   initialStorage: number = 100;
   newStoragePerMonth: number = 1;
   geography: string[] = [];
   training: string[] = [];
   maintenance: string[] = [];
   auth: string[] = [];
-  encryption: string = "";
+  encryption: string = '';
 
   updatePrice() {
     let result = 0;
@@ -103,8 +99,8 @@ export class PriceService {
         if (mobile) {
           cost /= 5;
         }
-        mobile = true
-      };
+        mobile = true;
+      }
       if (this.desktop.includes(platform)) {
         if (desktop) {
           cost /= 5;
@@ -122,33 +118,35 @@ export class PriceService {
 
     result += this.encryptionPrice[this.encryption];
 
-    for(const geographyOption of this.geography) {
+    for (const geographyOption of this.geography) {
       result += this.geopgraphyPrice[geographyOption];
     }
 
     result += result * (1 / this.timeframe);
 
-    if (this.training.includes("training")) {
+    if (this.training.includes('training')) {
       result += 1000;
     }
     this.priceSubject.next(result);
 
-    if (!this.maintenance.includes("maintenance")) {
+    if (!this.maintenance.includes('maintenance')) {
       this.monthyPriceSubject.next(0);
       return;
     }
 
-
     let monthyPrice = 0;
-    monthyPrice += this.initialStorage * 0.01 + (this.newStoragePerMonth + this.concurrentUsers) * this.maintenancePrice[this.infrastructure] * 0.01;
+    monthyPrice +=
+      this.initialStorage * 0.01 +
+      (this.newStoragePerMonth + this.concurrentUsers) *
+        this.maintenancePrice[this.infrastructure] *
+        0.01;
 
-    if (this.geography.includes("regions")) {
+    if (this.geography.includes('regions')) {
       monthyPrice *= 2;
     }
 
     if (this.auth.length > 1) {
       monthyPrice += this.totalUsers * 0.1;
-
     }
 
     this.monthyPriceSubject.next(monthyPrice);
@@ -219,10 +217,8 @@ export class PriceService {
     this.updatePrice();
   }
 
-
   setAppType(appType: AppTypeEnum) {
     this.appType = appType;
     this.updatePrice();
   }
-
 }
