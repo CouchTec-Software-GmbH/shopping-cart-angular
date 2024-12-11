@@ -60,10 +60,13 @@ export class CheckboxComponent implements OnInit {
     if (values) {
       const array: string[] = JSON.parse(values);
       if (array) {
-        console.log("array: ", array);
+        console.log('array: ', array);
         this.list.options.forEach((option) => {
-          console.log(`${option.id} ${array.includes(option.id)}`)
+          console.log(`${option.id} ${array.includes(option.id)}`);
           option.checked = array.includes(option.id);
+          if (option.checked) {
+            this.selectedOptions.push(option.id);
+          }
         });
       }
     }

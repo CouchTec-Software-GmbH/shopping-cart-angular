@@ -7,17 +7,19 @@ import { ProjectNumberInput } from '@app/models/project-number-input';
 import { CheckboxComponent } from '@app/components/checkbox/checkbox.component';
 import { AppTypeEnum } from '@app/types/AppType';
 import { PriceService } from '@app/services/price.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'page3',
   standalone: true,
-  imports: [RadioComponent, NumberInputComponent, CheckboxComponent],
+  imports: [RadioComponent, NumberInputComponent, CheckboxComponent, CommonModule],
   templateUrl: './page3.component.html',
 })
 export class Page3 implements OnInit {
   @Output() backToMode = new EventEmitter();
   @Input() mode = Mode.Manager;
   @Input() appType = AppTypeEnum.UserFacing;
+  AppTypeEnum = AppTypeEnum;
 
   constructor(private priceService: PriceService) {}
 
@@ -75,6 +77,30 @@ export class Page3 implements OnInit {
 
   changeEncryption(encryption: string) {
     this.priceService.setEncryption(encryption);
+  }
+
+  changeManagementCompliance(value: string[]) {
+    this.priceService.setManagementCompliance(value);
+  }
+
+  changeManagementIntegration(value: string[]) {
+    this.priceService.setManagementIntegration(value);
+  }
+
+  changeUserTracking(value: string[]) {
+    this.priceService.setUserTracking(value);
+  }
+
+  changeDataSourcesWithAPI(value: number) {
+    this.priceService.setDataSourcesWithAPI(value);
+  }
+
+  changeDataSourcesWithoutAPI(value: number) {
+    this.priceService.setDataSourcesWithoutAPI(value);
+  }
+
+  changeDataProcessing(value: string) {
+    this.priceService.setDataProcessing(value);
   }
 
   totalUsers: ProjectNumberInput = {
@@ -336,6 +362,120 @@ export class Page3 implements OnInit {
       {
         id: 'rest',
         name: 'Beim Speichern der Daten',
+        description: '',
+        checked: false,
+      },
+    ],
+  };
+
+  userTracking: ProjectOptionList = {
+    id: 'userTracking',
+    title: 'Nachverfolgung des Nutzerverhaltens',
+    description: '',
+    options: [
+      {
+        id: 'analysis',
+        name: 'Integrierte Analyse des Nutzungsverhaltens',
+        description: '',
+        checked: false,
+      },
+    ],
+  };
+
+
+
+  dataSourcesWithAPI: ProjectNumberInput = {
+    title: 'Daten Quellen mit API:',
+    description: '',
+    name: '',
+    min: 0,
+    max: 999,
+    step: 1,
+    default: 0,
+  };
+
+  dataSourcesWithoutAPI: ProjectNumberInput = {
+    title: 'Daten Quellen ohne API:',
+    description: '',
+    name: '',
+    min: 0,
+    max: 999,
+    step: 1,
+    default: 0,
+  };
+
+  managementIntegration: ProjectOptionList = {
+    id: 'managementIntegration',
+    title: 'Drittanbieter Integrationen:',
+    description: '',
+    options: [
+      {
+        id: 'erp',
+        name: 'ERP (SAP, Oracle)',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'crm',
+        name: 'CRM (Salesforce)',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'andereIntegration',
+        name: 'andere',
+        description: '',
+        checked: false,
+      },
+    ],
+  };
+
+  managementCompliance: ProjectOptionList = {
+    id: 'managementCompliance',
+    title: 'Compliance Anforderungen:',
+    description: '',
+    options: [
+      {
+        id: 'gdpr',
+        name: 'GDPR',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'hipaa',
+        name: 'HIPAA',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'iso',
+        name: 'ISO',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'andereCompliance',
+        name: 'Andere',
+        description: '',
+        checked: false,
+      },
+    ],
+  };
+
+  dataProcessing: ProjectOptionList = {
+    id: 'dataProcessing',
+    title: 'Datenverarbeitung',
+    description: '',
+    options: [
+      {
+        id: 'batch',
+        name: 'Batch',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'real-time',
+        name: 'Echtzeit',
         description: '',
         checked: false,
       },

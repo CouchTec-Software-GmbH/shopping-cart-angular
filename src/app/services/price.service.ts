@@ -7,11 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PriceService {
   appTypePrice: Record<AppTypeEnum, number> = {
-    [AppTypeEnum.Management]: 10000,
+    [AppTypeEnum.Management]: 5000,
     [AppTypeEnum.UserFacing]: 4000,
-    [AppTypeEnum.DataAnalytics]: 20000,
-    [AppTypeEnum.IntegrationAutomation]: 15000,
-    [AppTypeEnum.SecurityCompliance]: 50000,
+    [AppTypeEnum.DataAnalytics]: 6000,
+    [AppTypeEnum.IntegrationAutomation]: 10000,
+    [AppTypeEnum.SecurityCompliance]: 20000,
     [AppTypeEnum.Other]: 10000,
   };
 
@@ -59,6 +59,12 @@ export class PriceService {
     ['']: 0,
   };
 
+  dataProcessingPrice: Record<string, number> = {
+    ['batch']: 1,
+    ['real-time']: 2,
+    ['']: 1,
+  };
+
   mobile = ['ios', 'android'];
   desktop = ['web', 'linux', 'windows', 'macos'];
 
@@ -82,6 +88,16 @@ export class PriceService {
   maintenance: string[] = [];
   auth: string[] = [];
   encryption: string = '';
+
+
+  managementCompliance: string[] = [];
+  managementIntegration: string[] = [];
+
+  userTracking: string[] = [];
+
+  dataSourcesWithAPI: number = 0;
+  dataSourcesWithoutAPI: number = 0;
+  dataProcessing: string = '';
 
   updatePrice() {
     let result = 0;
@@ -127,6 +143,21 @@ export class PriceService {
     if (this.training.includes('training')) {
       result += 1000;
     }
+
+    if (this.appType === AppTypeEnum.Management) {
+      result += this.managementCompliance.length * 2000;
+      result += this.managementIntegration.length * 5000;
+    }
+
+    if (this.appType === AppTypeEnum.UserFacing) {
+      result += this.userTracking.length * 2000;
+    }
+
+    if (this.appType === AppTypeEnum.DataAnalytics) {
+      result += this.dataSourcesWithAPI * 200 * this.dataProcessingPrice[this.dataProcessing];
+      result += this.dataSourcesWithoutAPI * 600 * this.dataProcessingPrice[this.dataProcessing];
+    }
+
     this.priceSubject.next(result);
 
     if (!this.maintenance.includes('maintenance')) {
@@ -136,10 +167,10 @@ export class PriceService {
 
     let monthyPrice = 0;
     monthyPrice +=
-      this.initialStorage * 0.01 +
+      this.initialStorage * 0.001 +
       (this.newStoragePerMonth + this.concurrentUsers) *
-        this.maintenancePrice[this.infrastructure] *
-        0.01;
+      this.maintenancePrice[this.infrastructure] *
+      0.01;
 
     if (this.geography.includes('regions')) {
       monthyPrice *= 2;
@@ -214,6 +245,36 @@ export class PriceService {
 
   setEncryption(encryption: string) {
     this.encryption = encryption;
+    this.updatePrice();
+  }
+
+  setManagementIntegration(value: string[]) {
+    this.managementIntegration = value;
+    this.updatePrice();
+  }
+
+  setManagementCompliance(compliance: string[]) {
+    this.managementCompliance = compliance;
+    this.updatePrice();
+  }
+
+  setUserTracking(value: string[]) {
+    this.userTracking = value;
+    this.updatePrice();
+  }
+
+  setDataSourcesWithAPI(value: number) {
+    this.dataSourcesWithAPI = value;
+    this.updatePrice();
+  }
+
+  setDataSourcesWithoutAPI(value: number) {
+    this.dataSourcesWithoutAPI = value;
+    this.updatePrice();
+  }
+
+  setDataProcessing(value: string) {
+    this.dataProcessing = value;
     this.updatePrice();
   }
 
