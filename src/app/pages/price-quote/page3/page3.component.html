@@ -40,50 +40,105 @@
   </div>
 
   <ng-container *ngIf="appType === AppTypeEnum.DataAnalytics">
-   <app-number-input [data]="dataSourcesWithAPI" (selectionChange)="changeDataSourcesWithAPI($event)"></app-number-input>
-   <app-number-input [data]="dataSourcesWithoutAPI" (selectionChange)="changeDataSourcesWithoutAPI($event)"></app-number-input>
-   <app-radio [list]="dataProcessing" (selectionChange)="changeDataProcessing($event)"></app-radio>
+    <app-number-input
+      [data]="dataSourcesWithAPI"
+      (selectionChange)="changeDataSourcesWithAPI($event)"
+    ></app-number-input>
+    <app-number-input
+      [data]="dataSourcesWithoutAPI"
+      (selectionChange)="changeDataSourcesWithoutAPI($event)"
+    ></app-number-input>
+    <app-radio
+      [list]="dataProcessing"
+      (selectionChange)="changeDataProcessing($event)"
+    ></app-radio>
   </ng-container>
 
   <ng-container *ngIf="appType === AppTypeEnum.Management">
-   <app-checkbox [list]="managementCompliance" (selectionChange)="changeManagementCompliance($event)"></app-checkbox>
-   <app-checkbox [list]="managementIntegration" (selectionChange)="changeManagementIntegration($event)"></app-checkbox>
+    <app-checkbox
+      [list]="managementCompliance"
+      (selectionChange)="changeManagementCompliance($event)"
+    ></app-checkbox>
+    <app-checkbox
+      [list]="managementIntegration"
+      (selectionChange)="changeManagementIntegration($event)"
+    ></app-checkbox>
   </ng-container>
 
   <ng-container *ngIf="appType !== AppTypeEnum.DataAnalytics">
-   <app-number-input [data]="totalUsers" (selectionChange)="changeTotalUsers($event)"></app-number-input>
+    <app-number-input
+      [data]="totalUsers"
+      (selectionChange)="changeTotalUsers($event)"
+    ></app-number-input>
   </ng-container>
 
   <ng-container *ngIf="appType === AppTypeEnum.UserFacing">
-    <app-number-input [data]="concurrentUsers" (selectionChange)="changeConcurrentUsers($event)"></app-number-input>
+    <app-number-input
+      [data]="concurrentUsers"
+      (selectionChange)="changeConcurrentUsers($event)"
+    ></app-number-input>
   </ng-container>
 
-   <app-checkbox [list]="platforms" (selectionChange)="changePlatforms($event)"></app-checkbox>
-   <app-number-input [data]="timeframe" (selectionChange)="changeTimeframe($event)"></app-number-input>
+  <app-checkbox
+    [list]="platforms"
+    (selectionChange)="changePlatforms($event)"
+  ></app-checkbox>
+  <app-number-input
+    [data]="timeframe"
+    (selectionChange)="changeTimeframe($event)"
+  ></app-number-input>
 
   <ng-container *ngIf="appType === AppTypeEnum.UserFacing">
-   <app-radio [list]="design" (selectionChange)="changeDesign($event)"></app-radio>
+    <app-radio
+      [list]="design"
+      (selectionChange)="changeDesign($event)"
+    ></app-radio>
   </ng-container>
 
-   <app-radio [list]="infrastructure" (selectionChange)="changeInfrastructure($event)"></app-radio>
-   <app-checkbox [list]="maintenance" (selectionChange)="changeMaintenance($event)"></app-checkbox>
-   <app-number-input [data]="initialStorage" (selectionChange)="changeInitialStorage($event)"></app-number-input>
-   <app-number-input [data]="newStoragePerMonth" (selectionChange)="changeNewStoragePerMonth($event)"></app-number-input>
+  <app-radio
+    [list]="infrastructure"
+    (selectionChange)="changeInfrastructure($event)"
+  ></app-radio>
+  <app-checkbox
+    [list]="maintenance"
+    (selectionChange)="changeMaintenance($event)"
+  ></app-checkbox>
+  <app-number-input
+    [data]="initialStorage"
+    (selectionChange)="changeInitialStorage($event)"
+  ></app-number-input>
+  <app-number-input
+    [data]="newStoragePerMonth"
+    (selectionChange)="changeNewStoragePerMonth($event)"
+  ></app-number-input>
 
   <ng-container *ngIf="appType !== AppTypeEnum.Management">
-   <app-checkbox [list]="geography" (selectionChange)="changeGeography($event)"></app-checkbox>
+    <app-checkbox
+      [list]="geography"
+      (selectionChange)="changeGeography($event)"
+    ></app-checkbox>
   </ng-container>
 
   <ng-container *ngIf="appType !== AppTypeEnum.UserFacing">
-   <app-checkbox [list]="training" (selectionChange)="changeTraining($event)"></app-checkbox>
+    <app-checkbox
+      [list]="training"
+      (selectionChange)="changeTraining($event)"
+    ></app-checkbox>
   </ng-container>
 
   <ng-container *ngIf="appType === AppTypeEnum.UserFacing">
-   <app-checkbox [list]="userTracking" (selectionChange)="changeUserTracking($event)"></app-checkbox>
+    <app-checkbox
+      [list]="userTracking"
+      (selectionChange)="changeUserTracking($event)"
+    ></app-checkbox>
   </ng-container>
 
-
-
-   <app-checkbox [list]="auth" (selectionChange)="changeAuth($event)"></app-checkbox>
-   <app-radio [list]="encryption" (selectionChange)="changeEncryption($event)"></app-radio>
+  <app-checkbox
+    [list]="auth"
+    (selectionChange)="changeAuth($event)"
+  ></app-checkbox>
+  <app-radio
+    [list]="encryption"
+    (selectionChange)="changeEncryption($event)"
+  ></app-radio>
 </div>

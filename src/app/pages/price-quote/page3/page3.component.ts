@@ -104,7 +104,7 @@ export class Page3 implements OnInit {
   }
 
   totalUsers: ProjectNumberInput = {
-    title: 'Anzahl der Nutzer:',
+    title: 'Nutzer pro Monat:',
     description:
       'Um den Skalierungsaufwand abzuschätzen, müssen wir wissen wie viele Nutzer die Applikation nutzen.',
     name: 'Nutzer',
@@ -115,7 +115,7 @@ export class Page3 implements OnInit {
   };
 
   concurrentUsers: ProjectNumberInput = {
-    title: 'Anzahl der gleichzeitigen Nutzer:',
+    title: 'Anzahl gleichzeitig aktiver Nutzer:',
     description:
       'Um den Skalierungsaufwand abzuschätzen, müssen wir wissen wie viele Nutzer die Applikation gleichzeitig nutzen.',
     name: 'Nutzer',
@@ -133,7 +133,13 @@ export class Page3 implements OnInit {
     options: [
       {
         id: 'web',
-        name: 'Web',
+        name: 'Web: Nicht Responsive (keine Mobile Anwendung)',
+        description: '',
+        checked: false,
+      },
+      {
+        id: 'webResponsive',
+        name: 'Web: Responsive',
         description: '',
         checked: false,
       },
@@ -146,24 +152,6 @@ export class Page3 implements OnInit {
       {
         id: 'android',
         name: 'Mobile: Android',
-        description: '',
-        checked: false,
-      },
-      {
-        id: 'linux',
-        name: 'Desktop: Linux',
-        description: '',
-        checked: false,
-      },
-      {
-        id: 'macos',
-        name: 'Desktop: MacOS',
-        description: '',
-        checked: false,
-      },
-      {
-        id: 'windows',
-        name: 'Desktop: Windows',
         description: '',
         checked: false,
       },
