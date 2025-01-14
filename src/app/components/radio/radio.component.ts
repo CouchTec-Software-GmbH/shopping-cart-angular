@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectOptionList } from '@app/models/project-option-list';
+import { BoxType, ProjectOptionList } from '@app/models/project-option-list';
 
 @Component({
   selector: 'app-radio',
@@ -47,6 +47,7 @@ export class RadioComponent implements OnInit {
     id: '',
     title: '',
     description: '',
+    boxType: BoxType.Radio,
     options: [],
   };
 

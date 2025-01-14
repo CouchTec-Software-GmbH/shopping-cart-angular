@@ -1,8 +1,9 @@
 import { ProjectNumberInput } from '@app/models/project-number-input';
-import { ProjectOptionList } from '@app/models/project-option-list';
+import { BoxType, ProjectOptionList } from '@app/models/project-option-list';
 
 
 export const totalUsers: ProjectNumberInput = {
+  id: 'totalUsers',
   title: 'Nutzer pro Monat:',
   description:
     'Um den Skalierungsaufwand abzuschätzen, müssen wir wissen wie viele Nutzer die Applikation nutzen.',
@@ -14,6 +15,7 @@ export const totalUsers: ProjectNumberInput = {
 };
 
 export const concurrentUsers: ProjectNumberInput = {
+  id: 'concurrentUsers',
   title: 'Anzahl gleichzeitig aktiver Nutzer:',
   description:
     'Um den Skalierungsaufwand abzuschätzen, müssen wir wissen wie viele Nutzer die Applikation gleichzeitig nutzen.',
@@ -29,6 +31,7 @@ export const platforms: ProjectOptionList = {
   title: 'Platformen für Graphische Oberflächen:',
   description:
     'Falls die Anwendung eine graphische Oberfläche benötigt, wähle alle nötigen Platformen aus.',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'web',
@@ -58,6 +61,7 @@ export const platforms: ProjectOptionList = {
 };
 
 export const timeframe: ProjectNumberInput = {
+  id: 'timeframe',
   title: 'Zeitraum:',
   description:
     'Um die Teamgröße abschätzen zu können, müssen wir den Zeitraum kennen, das dem Projekt zusteht.',
@@ -69,6 +73,7 @@ export const timeframe: ProjectNumberInput = {
 };
 
 export const pages: ProjectNumberInput = {
+  id: 'pages',
   title: 'Anzahl an Seiten:',
   description:
     'Wie viele Seiten wird es geben? Beispiele: Kontaktformular, Anmeldeformular, Inhaltsseite.',
@@ -83,6 +88,7 @@ export const design: ProjectOptionList = {
   id: 'design',
   title: 'Design & Benutzerfreundlichkeit:',
   description: '',
+  boxType: BoxType.Radio,
   options: [
     {
       id: 'basic-design',
@@ -109,6 +115,7 @@ export const infrastructure: ProjectOptionList = {
   id: 'infrastructure',
   title: 'Hosting & Infrastruktur:',
   description: '',
+  boxType: BoxType.Radio,
   options: [
     {
       id: 'cloud',
@@ -135,6 +142,7 @@ export const assets: ProjectOptionList = {
   id: 'assets',
   title: 'Assets (Fotos, Videos, Ikons):',
   description: '',
+  boxType: BoxType.Radio,
   options: [
     {
       id: 'own-assets',
@@ -158,6 +166,7 @@ export const assets: ProjectOptionList = {
 }
 
 export const initialStorage: ProjectNumberInput = {
+  id: 'initialStorage',
   title: 'Initiale Speicherlast:',
   description: '',
   name: 'GBs',
@@ -168,7 +177,7 @@ export const initialStorage: ProjectNumberInput = {
 };
 
 export const newStoragePerMonth: ProjectNumberInput = {
-  // id: 'newStoragePerMonth',
+  id: 'initialStoragePerMonth',
   title: 'Neue Datenspeicherung pro Monat:',
   description: '',
   name: 'GBs',
@@ -182,6 +191,7 @@ export const geography: ProjectOptionList = {
   id: 'geography',
   title: 'Geografische Verteilung:',
   description: '',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'regions',
@@ -202,6 +212,7 @@ export const training: ProjectOptionList = {
   id: 'training',
   title: 'Training & Onboarding:',
   description: '',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'training',
@@ -216,6 +227,7 @@ export const maintenance: ProjectOptionList = {
   id: 'maintenance',
   title: 'Wartung:',
   description: '',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'maintenance',
@@ -231,6 +243,7 @@ export const auth: ProjectOptionList = {
   title: 'Authentifizierung:',
   description:
     'Falls die Anwendung eine Anmeldung der Nutzer benötigt, wähle alle nötigen Möglichkeiten aus.',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'oauth',
@@ -270,6 +283,7 @@ export const encryption: ProjectOptionList = {
   title: 'Verschlüsselung:',
   description:
     'Falls die Anwendung Verschlüsselung der Daten benötigt, wähle alle nötigen Möglichkeiten aus.',
+  boxType: BoxType.Radio,
   options: [
     {
       id: 'e2e',
@@ -296,6 +310,7 @@ export const userTracking: ProjectOptionList = {
   id: 'userTracking',
   title: 'Nachverfolgung des Nutzerverhaltens',
   description: '',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'analysis',
@@ -307,6 +322,7 @@ export const userTracking: ProjectOptionList = {
 };
 
 export const dataSourcesWithAPI: ProjectNumberInput = {
+  id: 'dataSourcesWithAPI',
   title: 'Daten Quellen mit API:',
   description: '',
   name: '',
@@ -317,6 +333,7 @@ export const dataSourcesWithAPI: ProjectNumberInput = {
 };
 
 export const dataSourcesWithoutAPI: ProjectNumberInput = {
+  id: 'dataSourcesWithoutAPI',
   title: 'Daten Quellen ohne API:',
   description: '',
   name: '',
@@ -330,6 +347,7 @@ export const managementIntegration: ProjectOptionList = {
   id: 'managementIntegration',
   title: 'Drittanbieter Integrationen:',
   description: '',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'erp',
@@ -356,6 +374,7 @@ export const managementCompliance: ProjectOptionList = {
   id: 'managementCompliance',
   title: 'Compliance Anforderungen:',
   description: '',
+  boxType: BoxType.Checkbox,
   options: [
     {
       id: 'gdpr',
@@ -388,6 +407,7 @@ export const dataProcessing: ProjectOptionList = {
   id: 'dataProcessing',
   title: 'Datenverarbeitung',
   description: '',
+  boxType: BoxType.Radio,
   options: [
     {
       id: 'batch',
@@ -408,6 +428,7 @@ export const next: ProjectOptionList = {
   id: 'next',
   title: '',
   description: '',
+  boxType: BoxType.Radio,
   options: [
     {
       id: '',

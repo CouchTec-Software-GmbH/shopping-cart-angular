@@ -1,13 +1,12 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectOptionList } from '@app/models/project-option-list';
+import { BoxType, ProjectOptionList } from '@app/models/project-option-list';
 
 @Component({
   selector: 'app-checkbox',
   standalone: true,
   imports: [CommonModule],
   template: `
-
     <div>
       <div class="w-full flex flex-col justify-start mb-4">
         <h2 class="text-black font-medium text-[20px] mt-8">
@@ -21,18 +20,19 @@ import { ProjectOptionList } from '@app/models/project-option-list';
       <fieldset>
         <legend class="sr-only">{{ list.title }}</legend>
         <div class="space-y-2">
-
           <label
-          *ngFor="let option of list.options"
-          [for]="option.id" class="flex cursor-pointer items-start gap-4">
+            *ngFor="let option of list.options"
+            [for]="option.id"
+            class="flex cursor-pointer items-start gap-4"
+          >
             <div class="flex items-center">
               &#8203;
               <input
-              type="checkbox"
-              class="size-4 rounded border-gray-300 custom-checkbox"
-              [id]="option.id"
-              [checked]="option.checked"
-              (change)="onSelectionChange(option.id)"
+                type="checkbox"
+                class="size-4 rounded border-gray-300 custom-checkbox"
+                [id]="option.id"
+                [checked]="option.checked"
+                (change)="onSelectionChange(option.id)"
               />
             </div>
 
@@ -40,10 +40,8 @@ import { ProjectOptionList } from '@app/models/project-option-list';
               <span class="text-sm text-gray-700"> {{ option.name }}</span>
             </div>
           </label>
-
-         </div>
+        </div>
       </fieldset>
-
     </div>
   `,
 })
@@ -52,6 +50,7 @@ export class CheckboxComponent implements OnInit {
     id: '',
     title: '',
     description: '',
+    boxType: BoxType.Checkbox,
     options: [],
   };
   @Output() selectionChange = new EventEmitter<string[]>();

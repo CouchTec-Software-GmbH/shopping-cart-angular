@@ -35,106 +35,34 @@
     <p class="font-medium font-[14px]">{{ appType }}</p>
   </div>
 
-  <ng-container *ngIf="appType === AppTypeEnum.DataAnalytics">
-    <app-number-input
-      [data]="dataSourcesWithAPI"
-      (selectionChange)="this.priceService.setDataSourcesWithAPI($event)"
-    ></app-number-input>
-    <app-number-input
-      [data]="dataSourcesWithoutAPI"
-      (selectionChange)="this.priceService.setDataSourcesWithoutAPI($event)"
-    ></app-number-input>
-    <app-radio
-      [list]="dataProcessing"
-      (selectionChange)="this.priceService.setDataProcessing($event)"
-    ></app-radio>
+  <ng-container *ngFor="let component of appConfigComponents">
+    <ng-container [ngSwitch]="getComponentType(component)">
+
+      <ng-container *ngSwitchCase="'number-input'">
+        <app-number-input
+          *ngIf="isProjectNumberInput(component)"
+          [data]="component"
+          (selectionChange)="handleSelectionChange(component.id, $event)"
+        ></app-number-input>
+      </ng-container>
+      <!-- Checkbox -->
+      <ng-container *ngSwitchCase="'checkbox'">
+        <app-checkbox
+          *ngIf="isProjectOptionList(component)"
+          [list]="component"
+          (selectionChange)="handleSelectionChange(component.id, $event)"
+        ></app-checkbox>
+      </ng-container>
+
+      <!-- Radio -->
+      <ng-container *ngSwitchCase="'radio'">
+        <app-radio
+          *ngIf="isProjectOptionList(component)"
+          [list]="component"
+          (selectionChange)="handleSelectionChange(component.id, $event)"
+        ></app-radio>
+      </ng-container>
+
+    </ng-container>
   </ng-container>
-
-  <ng-container *ngIf="appType === AppTypeEnum.Management">
-    <app-checkbox
-      [list]="managementCompliance"
-      (selectionChange)="this.priceService.setManagementCompliance($event)"
-    ></app-checkbox>
-    <app-checkbox
-      [list]="managementIntegration"
-      (selectionChange)="this.priceService.setManagementIntegration($event)"
-    ></app-checkbox>
-  </ng-container>
-
-  <ng-container *ngIf="appType !== AppTypeEnum.DataAnalytics">
-    <app-number-input
-      [data]="totalUsers"
-      (selectionChange)="this.priceService.setTotalUsers($event)"
-    ></app-number-input>
-  </ng-container>
-
-  <ng-container *ngIf="appType === AppTypeEnum.Website">
-    <app-number-input
-      [data]="concurrentUsers"
-      (selectionChange)="this.priceService.setConcurrentUsers($event)"
-    ></app-number-input>
-  </ng-container>
-
-  <app-checkbox
-    [list]="platforms"
-    (selectionChange)="this.priceService.setPlatforms($event)"
-  ></app-checkbox>
-  <app-number-input
-    [data]="timeframe"
-    (selectionChange)="this.priceService.setTimeframe($event)"
-  ></app-number-input>
-
-  <ng-container *ngIf="appType === AppTypeEnum.Website">
-    <app-radio
-      [list]="design"
-      (selectionChange)="this.priceService.setDesign($event)"
-    ></app-radio>
-  </ng-container>
-
-  <app-radio
-    [list]="infrastructure"
-    (selectionChange)="this.priceService.setInfrastructure($event)"
-  ></app-radio>
-  <app-checkbox
-    [list]="maintenance"
-    (selectionChange)="this.priceService.setMaintenance($event)"
-  ></app-checkbox>
-  <app-number-input
-    [data]="initialStorage"
-    (selectionChange)="this.priceService.setInitialStorage($event)"
-  ></app-number-input>
-  <app-number-input
-    [data]="newStoragePerMonth"
-    (selectionChange)="this.priceService.setNewStoragePerMonth($event)"
-  ></app-number-input>
-
-  <ng-container *ngIf="appType !== AppTypeEnum.Management">
-    <app-checkbox
-      [list]="geography"
-      (selectionChange)="this.priceService.setGeography($event)"
-    ></app-checkbox>
-  </ng-container>
-
-  <ng-container *ngIf="appType !== AppTypeEnum.Website">
-    <app-checkbox
-      [list]="training"
-      (selectionChange)="this.priceService.setTraining($event)"
-    ></app-checkbox>
-  </ng-container>
-
-  <ng-container *ngIf="appType === AppTypeEnum.Website">
-    <app-checkbox
-      [list]="userTracking"
-      (selectionChange)="this.priceService.setUserTracking($event)"
-    ></app-checkbox>
-  </ng-container>
-
-  <app-checkbox
-    [list]="auth"
-    (selectionChange)="this.priceService.setAuth($event)"
-  ></app-checkbox>
-  <app-radio
-    [list]="encryption"
-    (selectionChange)="this.priceService.setEncryption($event)"
-  ></app-radio>
 </div>

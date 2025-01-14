@@ -53,6 +53,7 @@ import { ProjectNumberInput } from '@app/models/project-number-input';
 })
 export class NumberInputComponent implements OnInit {
   @Input() data: ProjectNumberInput = {
+    id: '',
     title: '',
     description: '',
     name: '',
