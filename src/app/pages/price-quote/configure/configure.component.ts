@@ -10,6 +10,7 @@ import { ProjectNumberInput } from '@app/models/project-number-input';
 import { appTypeToConfigureComponents } from '@app/data/configure/appTypeToComponentData';
 import { PriceQuoteService } from '@app/services/priceQuote.service';
 import { Subscription } from 'rxjs';
+import { timeframe, totalUsers } from '@app/data/configure/componentData';
 
 @Component({
   selector: 'configure',
@@ -26,23 +27,23 @@ export class Configure implements OnInit, OnDestroy {
   @Output() backToAppType = new EventEmitter();
   @Input() appType = AppTypeEnum.Website;
   AppTypeEnum = AppTypeEnum;
+  BoxType = BoxType;
 
   appConfigComponents: (ProjectOptionList | ProjectNumberInput)[] = [];
   appTypeSubscription!: Subscription;
 
   constructor(public priceService: PriceService, private priceQuoteService: PriceQuoteService) { }
 
-
   ngOnInit(): void {
     this.appTypeSubscription = this.priceQuoteService.appType$.subscribe({
-      next: (value) => (this.appType = value),
+      next: (value) =>
+        {
+          this.appType = value;
+        },
     });
-
 
     this.priceService.updatePrice();
     this.appConfigComponents = appTypeToConfigureComponents[this.appType] || [];
-
-    console.log("Inside Configure Component. AppType: ", this.appType);
   }
 
   ngOnDestroy(): void {

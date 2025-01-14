@@ -7,12 +7,12 @@ import { Page, PriceQuoteService } from '@app/services/priceQuote.service';
 import { AppTypeEnum } from '@app/types/AppType';
 
 @Component({
-  selector: 'app-type',
+  selector: 'app-type-component',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './app-type.component.html',
 })
-export class AppType {
+export class AppTypeComponent {
   AppTypeEnum = AppTypeEnum;
   AppTypeData = AppTypeData;
 

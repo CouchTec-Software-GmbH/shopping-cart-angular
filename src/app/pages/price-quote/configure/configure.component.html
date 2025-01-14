@@ -38,7 +38,7 @@
   <ng-container *ngFor="let component of appConfigComponents">
     <ng-container [ngSwitch]="getComponentType(component)">
 
-      <ng-container *ngSwitchCase="'number-input'">
+      <ng-container *ngSwitchCase="BoxType.NumberInput">
         <app-number-input
           *ngIf="isProjectNumberInput(component)"
           [data]="component"
@@ -46,7 +46,7 @@
         ></app-number-input>
       </ng-container>
       <!-- Checkbox -->
-      <ng-container *ngSwitchCase="'checkbox'">
+      <ng-container *ngSwitchCase="BoxType.Checkbox">
         <app-checkbox
           *ngIf="isProjectOptionList(component)"
           [list]="component"
@@ -55,7 +55,7 @@
       </ng-container>
 
       <!-- Radio -->
-      <ng-container *ngSwitchCase="'radio'">
+      <ng-container *ngSwitchCase="BoxType.Radio">
         <app-radio
           *ngIf="isProjectOptionList(component)"
           [list]="component"

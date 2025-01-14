@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class PriceService {
   appTypePrice: Record<AppTypeEnum, number> = {
     [AppTypeEnum.ECommerce]: 2000,
-    [AppTypeEnum.Website]: 1000,
+    [AppTypeEnum.Website]: 0,
     [AppTypeEnum.DataAnalytics]: 6000,
     [AppTypeEnum.ContentPlatform]: 4000,
     [AppTypeEnum.Management]: 10000,
@@ -16,23 +16,23 @@ export class PriceService {
   };
 
   platformPrice: Record<string, number> = {
-    ['web']: 1000,
-    ['webResponsive']: 2000,
-    ['ios']: 10000,
-    ['android']: 10000,
+    ['web']: 600,
+    ['webResponsive']: 800,
+    ['ios']: 5000,
+    ['android']: 5000,
     ['']: 0,
   };
 
   designPrice: Record<string, number> = {
     ['basic-design']: 1,
-    ['good-design']: 1.2,
+    ['good-design']: 1.8,
     ['existing-design']: 1.1,
     ['']: 1,
   };
 
   infrastructurePrice: Record<string, number> = {
     ['cloud']: 1.1,
-    ['own-server']: 1.5,
+    ['own-server']: 1.2,
     ['couchtec-server']: 1,
     ['']: 1,
   };
@@ -44,9 +44,16 @@ export class PriceService {
     ['']: 1,
   };
 
+  assetPrice: Record<string, number> = {
+    ['own-assets']: 0,
+    ['new-assets-trad']: 1500,
+    ['new-assets-ki']: 200,
+    ['']: 0,
+  };
+
   geopgraphyPrice: Record<string, number> = {
-    ['regions']: 2000,
-    ['language']: 1000,
+    ['regions']: 200,
+    ['language']: 100,
     ['']: 0,
   };
 
@@ -75,6 +82,8 @@ export class PriceService {
   appType: AppTypeEnum = AppTypeEnum.Website;
   totalUsers: number = 1000;
   concurrentUsers: number = 1000;
+  pages: number = 1;
+  assets: string = '';
   platforms: string[] = [];
   timeframe: number = 9;
   design: string = '';
@@ -122,11 +131,13 @@ export class PriceService {
       }
       ui_cost += cost;
     }
-    result += ui_cost * this.designPrice[this.design];
+    ui_cost *= this.designPrice[this.design]
+    ui_cost += ui_cost * this.pages / 10;
+    result += ui_cost;
 
     if (this.auth.length > 0) {
-      result += (this.auth.length - 1) * 200;
-      result += 1000;
+      result += (this.auth.length - 1) * 100;
+      result += 400;
     }
 
     result += this.encryptionPrice[this.encryption];
@@ -135,7 +146,8 @@ export class PriceService {
       result += this.geopgraphyPrice[geographyOption];
     }
 
-    result += result * (1 / this.timeframe);
+    result += result * (1 / (this.timeframe * 4));
+    result += this.assetPrice[this.assets];
 
     if (this.training.includes('training')) {
       result += 1000;
@@ -179,7 +191,7 @@ export class PriceService {
       monthyPrice *= 2;
     }
 
-    if (this.auth.length > 1) {
+    if (this.auth.length > 0) {
       monthyPrice += this.totalUsers * 0.1;
     }
 
@@ -211,6 +223,11 @@ export class PriceService {
     this.updatePrice();
   }
 
+  setAssets(assets: string) {
+    this.assets = assets;
+    this.updatePrice();
+  }
+
   setInfrastructure(infrastructure: string) {
     this.infrastructure = infrastructure;
     this.updatePrice();
@@ -223,6 +240,11 @@ export class PriceService {
 
   setNewStoragePerMonth(newStoragePerMonth: number) {
     this.newStoragePerMonth = newStoragePerMonth;
+    this.updatePrice();
+  }
+
+  setPages(pages: number) {
+    this.pages = pages;
     this.updatePrice();
   }
 

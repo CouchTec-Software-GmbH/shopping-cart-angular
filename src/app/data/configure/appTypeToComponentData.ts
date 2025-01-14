@@ -18,7 +18,7 @@ export const appTypeToConfigureComponents: Record<
   AppTypeEnum,
   (ProjectOptionList | ProjectNumberInput)[]
 > = {
-  [AppTypeEnum.ECommerce]: [],
+  [AppTypeEnum.ECommerce]: [timeframe],
   [AppTypeEnum.Website]: [
     timeframe,
     platforms,
@@ -31,8 +31,8 @@ export const appTypeToConfigureComponents: Record<
     maintenance,
     userTracking,
   ],
-  [AppTypeEnum.DataAnalytics]: [],
-  [AppTypeEnum.ContentPlatform]: [],
-  [AppTypeEnum.Management]: [],
-  [AppTypeEnum.Digitalisierung]: [],
+  [AppTypeEnum.DataAnalytics]: [timeframe],
+  [AppTypeEnum.ContentPlatform]: [timeframe],
+  [AppTypeEnum.Management]: [timeframe],
+  [AppTypeEnum.Digitalisierung]: [timeframe],
 };
