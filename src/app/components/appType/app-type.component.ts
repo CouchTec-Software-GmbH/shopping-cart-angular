@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AppTypeData } from '@app/data/appTypeData';
 import { NavigationService } from '@app/services/navigation.service';
 import { PriceService } from '@app/services/price.service';
+import { Page, PriceQuoteService } from '@app/services/priceQuote.service';
 import { AppTypeEnum } from '@app/types/AppType';
 
 @Component({
@@ -18,14 +19,13 @@ export class AppType {
   constructor(
     private priceService: PriceService,
     private navigationService: NavigationService,
+    public priceQuoteService: PriceQuoteService,
   ) { }
 
-  setAppType(appType: AppTypeEnum) {
-    this.priceService.setAppType(appType);
-  }
-
   handleClick(appType: AppTypeEnum) {
-    this.setAppType(appType);
+    this.priceService.setAppType(appType);
+    this.priceQuoteService.setAppType(appType);
+    this.priceQuoteService.setPage(Page.Configure);
     this.navigationService.navigateToPriceQuote();
   }
 }

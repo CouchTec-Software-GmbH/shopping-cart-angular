@@ -8,10 +8,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PriceQuoteService {
   private pageSubject = new BehaviorSubject<Page>(Page.AppType);
-  page$ = this.pageSubject.asObservable();
+  public page$ = this.pageSubject.asObservable();
 
   private appTypeSubject = new BehaviorSubject<AppTypeEnum>(AppTypeEnum.Website);
-  appType$ = this.appTypeSubject.asObservable();
+  public appType$ = this.appTypeSubject.asObservable();
+
+  public setAppType(appType: AppTypeEnum) {
+    this.appTypeSubject.next(appType);
+  }
+
+  public setPage(page: Page) {
+    this.pageSubject.next(page)
+  }
 }
 
 export enum Page {
