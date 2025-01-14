@@ -56,6 +56,18 @@
   padding: 0;
 }
 
+html,
+body,
+main {
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+}
+
+body {
+  position: relative;
+}
+
 body {
   font-family: "Be Vietnam Pro", sans-serif;
   -webkit-overflow-scrolling: touch;
@@ -137,7 +149,6 @@ body {
   filter: grayscale(0);
 }
 
-
 @keyframes reversePlay {
   from {
     left: 90%;
@@ -161,6 +172,11 @@ body {
 .stack-card {
   transition: background 0.5s;
   @apply rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50;
+}
+
+.type-card {
+  transition: background 0.5s;
+  @apply rounded-xl border border-dashed border-stone-300 p-6 hover:bg-white bg-gray-50 hover:cursor-pointer;
 }
 
 dialog::backdrop {
@@ -196,4 +212,13 @@ dialog::backdrop {
 
 .close-button {
   @apply absolute right-4 hover:text-[#612a1b] hover:bg-transparent;
+}
+
+.custom-checkbox:checked {
+  background-color: black;
+  border-color: black;
+}
+
+.custom-checkbox {
+  accent-color: black;
 }

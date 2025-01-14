@@ -1,32 +1,27 @@
 import { HttpHeaders } from '@angular/common/http';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { ProjectData } from '@models/project-data';
 
-export function createDefaultProjectData(): ProjectData {
-  return {
-    projectType: 'GreenFieldProject',
-    status: 'Nicht begonnen',
-    shortText: '',
-    tierOptions: [],
-    techStack: {
-      frontend: {
-        framework: 'React',
-        styling: '',
-      },
-      middleware: '',
-      backend: '',
-      database: '',
-    },
-    deployment: {
-      provider: 'AWS',
-      containerization: 'Docker',
-      orchestration: 'Kubernetes',
-      environment: [],
-    },
-    security: [],
-    monitoring: '',
-    extra: [],
-  };
+export type WritableKeys<T> = {
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? never : K;
+}[keyof T];
+
+export function changeProperty<T extends object, K extends WritableKeys<T>>(
+  targetObject: T,
+  property: K,
+  value: T[K]
+) {
+
+  const target = targetObject[property];
+
+  if (typeof target === 'function') {
+    (target as Function)(value);
+  } else {
+    targetObject[property] = value;
+  }
+
+  if ('updatePrice' in targetObject && typeof targetObject['updatePrice'] === 'function') {
+    (targetObject['updatePrice'] as () => void)();
+  }
 }
 
 export function setNestedValue(obj: any, path: string, value: any): void {
@@ -104,7 +99,7 @@ export function get_http_header(session_token: string) {
 export function get_basic_http_header() {
   return {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }),
   };
 }

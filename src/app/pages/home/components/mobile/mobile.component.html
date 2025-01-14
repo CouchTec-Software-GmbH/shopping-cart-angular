@@ -2,9 +2,9 @@
   <div class="container px-4 py-12 mx-auto">
     <div class="flex flex-col md:flex-row items-center gap-8">
       <img
-        alt="Rewards app interface showing loyalty card and merchant list"
+        alt="Mobile First Software Entwicklung App Appentwicklung IOS Android Handy Handyapp Handyappentwicklung"
         class="w-full h-[600px]"
-        src="/assets/images/showcase/iphones.png"
+        src="/assets/images/showcase/iphones.avif"
         [style.objectFit]="'contain'"
       />
 
@@ -27,7 +27,7 @@
             <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
             <path d="M12 18h.01" />
           </svg>
-          <span>Mobile-First Entwicklung</span>
+          <span class="font-medium">Mobile-First Entwicklung</span>
         </div>
         <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl">
           Wir entwickeln Mobile-First
@@ -41,7 +41,7 @@
         </p>
         <div class="flex flex-col gap-3 min-[400px]:flex-row">
           <button
-            (click)="handleContactButton()"
+            (click)="navigationService.navigateToContact()"
             class="bg-primary-dark hover:bg-primary-light text-white h-full rounded-[8px] px-[40px] py-[20px]"
           >
             <p class="text-[20px] font-brand font-light">Kontakt aufnehmen</p>

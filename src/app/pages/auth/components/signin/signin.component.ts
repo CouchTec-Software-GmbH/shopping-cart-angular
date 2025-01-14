@@ -141,10 +141,10 @@ import { CommonModule } from '@angular/common';
     <div class="relative inset-x-0 bottom-0">
       <hr class="my-6 border-gray-300 w-full " />
       <div class="mt-4 text-center">
-        <p class="hover:cursor-pointer text-sm">
+        <div class="hover:cursor-pointer text-sm">
           Sie haben noch kein Konto?
-          <a class="text-blue-600" (click)="signup.emit()">Registrieren</a>
-        </p>
+          <div class="text-blue-600" (click)="signup.emit()">Registrieren</div>
+        </div>
       </div>
     </div>
   `,

@@ -1,16 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { ProjectData } from '@models/project-data';
-import {
-  createDefaultProjectData,
-  get_basic_http_header,
-  get_http_header,
-  get_session_token_from_cookie,
-} from '@utils/utils';
+import { get_basic_http_header } from '@utils/utils';
 import { BannerService } from './banner.service';
 import { BannerType } from '@app/types/BannerType';
-import { Router } from '@angular/router';
+import { RoutesEnum, routes } from '@app/data/routes';
+import { NavigationService } from './navigation.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,43 +16,8 @@ export class ProductService {
   constructor(
     private http: HttpClient,
     private bannerService: BannerService,
-    private router: Router
+    private navigationService: NavigationService,
   ) { }
-
-  async putProject(uuid: string, body: Record<string, any>): Promise<void> {
-    try {
-      let session_token = get_session_token_from_cookie();
-      await firstValueFrom(
-        this.http.put(
-          `${this.apiUrl}${uuid}`,
-          body,
-          get_http_header(session_token ?? ''),
-        ),
-      );
-    } catch (error) {
-      // if 404 put default project data
-      if (error instanceof HttpErrorResponse && error.status === 404) {
-        await this.putProject(uuid, createDefaultProjectData());
-      }
-    }
-  }
-
-  async getProject(uuid: string): Promise<ProjectData> {
-    try {
-      let session_token = get_session_token_from_cookie();
-      const response = await firstValueFrom(
-        this.http.get(
-          `${this.apiUrl}${uuid}`,
-          get_http_header(session_token ?? ''),
-        ),
-      );
-      return { ...createDefaultProjectData(), ...response };
-    } catch (error) {
-      const doc = createDefaultProjectData();
-      await this.putProject(uuid, doc);
-      return doc;
-    }
-  }
 
   async submitApplication(
     name: string,
@@ -71,11 +31,11 @@ export class ProductService {
       );
       console.log('Kontaktformular eingereicht.');
       this.bannerService.setBanner(BannerType.EmailSent);
-      this.router.navigate(['/']);
+      this.navigationService.navigateToHome();
       return response;
     } catch (error) {
       this.bannerService.setBanner(BannerType.InternalServerError);
-      this.router.navigate(['/']);
+      this.navigationService.navigateToHome();
     }
   }
 }

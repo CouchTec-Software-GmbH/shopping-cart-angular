@@ -1,24 +1,21 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { headerOptions } from '@app/data/header';
-import { HeaderOption } from '@app/models/header-option';
-import { SearchService } from '@services/search.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { ProjectService } from '@app/services/project.service';
 import { BannerService } from '@app/services/banner.service';
 import { BannerType } from '@app/types/BannerType';
+import { RoutesEnum, routes } from '@app/data/routes';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  headerOptions: HeaderOption[] = headerOptions;
   accountShow = false;
   name = '';
 
@@ -36,17 +33,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private bannerSubscription!: Subscription;
   public banner: BannerType = BannerType.None;
-  private bannerEmail: string = "";
+  private bannerEmail: string = '';
   public BannerType = BannerType;
 
   constructor(
-
     private route: ActivatedRoute,
-    private router: Router,
-    private searchService: SearchService,
+    public navigationService: NavigationService,
     private projectService: ProjectService,
     public bannerService: BannerService,
-  ) {}
+  ) { }
 
   getBannerEmail(): string {
     return this.bannerEmail || 'deine E-Mail';
@@ -55,7 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.updateEmailFromCookies();
 
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       this.verificationCode = decodeURIComponent(params.get('vc') || '');
       this.email = decodeURIComponent(params.get('e') || '');
 
@@ -76,7 +71,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
 
     this.bannerSubscription = this.bannerService.banner$.subscribe({
-        next: value => this.banner = value,
+      next: (value) => (this.banner = value),
     });
 
     this.uuid_subscription = this.projectService
@@ -98,6 +93,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.uuid_subscription) {
       this.uuid_subscription.unsubscribe();
     }
+    if (this.bannerSubscription) {
+      this.bannerSubscription.unsubscribe();
+    }
     window.removeEventListener('storage', this.handleStorageChange);
   }
 
@@ -118,7 +116,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }),
     );
 
-    this.router.navigate(['configure']);
+    // this.router.navigate(['configure']);
     this.closeMenu();
   }
 
@@ -135,13 +133,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   handleLoginButton(): void {
-    this.router.navigate(['/auth']);
+    this.navigationService.navigateToAuth();
     this.accountShow = false;
     this.closeMenu();
   }
 
   handleContactButton(): void {
-    this.router.navigate(['/kontakt']);
+    this.navigationService.navigateToContact();
+    this.accountShow = false;
+    this.closeMenu();
+  }
+
+  handlePriceQuoteButton(): void {
+    this.navigationService.navigateToPriceQuote();
     this.accountShow = false;
     this.closeMenu();
   }
@@ -152,12 +156,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNewProjectClick(): void {
-    this.router.navigate(['/'], { queryParams: { newProject: true } });
+    this.navigationService.navigateToHome(
+      { newProject: true }
+    );
     this.closeMenu();
   }
 
   onSettingsClick(): void {
-    this.router.navigate(['/dashboard']);
+    this.navigationService.navigateToDashboard();
     this.closeMenu();
   }
 

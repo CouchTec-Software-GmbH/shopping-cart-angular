@@ -7,10 +7,10 @@
     <p class="text-[32px] font-medium text-[#333]">Konto erstellen</p>
     <div class="flex flex-row p-[2px] gap-1">
       <p class="text-[#333]">Sie haben bereits ein Konto?</p>
-      <a
+      <div
         (click)="signin.emit(true)"
         class="text-[#111] underline hover:cursor-pointer"
-        >Anmelden</a
+        >Anmelden</div
       >
     </div>
   </div>
@@ -178,16 +178,15 @@
     <div
       class="flex flex-col gap-1 w-full pr-2 items-start text-[12px] sm:text-[16px]"
     >
-      <p>
+      <div>
         Durch die Kontoerstellung stimmem Sie unseren
-        <a class="underline text-[#111] hover:cursor-pointer"
-          >Nutzungsbedingungen</a
+        <div class="underline text-[#111] hover:cursor-pointer"
+          >Nutzungsbedingungen</div
         >
         und
-        <a class="underline text-[#111] hover:cursor-pointer"
-          >Datenschutzrichtlinien </a
-        >zu.
-      </p>
+        <div class="underline text-[#111] hover:cursor-pointer"
+          >Datenschutzrichtlinien </div>zu.
+      </div>
       <div>
         <input
           type="checkbox"
@@ -229,10 +228,10 @@
 
   <div class="flex flex-row p-[1px] gap-1">
     <p class="text-[#333]">Sie haben bereits ein Konto?</p>
-    <a
+    <div
       (click)="signin.emit(true)"
       class="text-[#111] underline hover:cursor-pointer"
-      >Anmelden</a
+      >Anmelden</div
     >
   </div>
 

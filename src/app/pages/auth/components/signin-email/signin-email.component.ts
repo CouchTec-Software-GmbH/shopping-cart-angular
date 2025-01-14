@@ -7,15 +7,16 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
+import { RoutesEnum, routes } from '@app/data/routes';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-signin-email',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './signin-email.component.html',
 })
 export class SignInEmailComponent implements AfterViewInit {
@@ -31,9 +32,10 @@ export class SignInEmailComponent implements AfterViewInit {
     password: new FormControl(''),
   });
   authService = inject(AuthService);
-  router = inject(Router);
   isHideIcon = true;
   isLoading = false;
+
+  constructor(private navigationService: NavigationService) {}
 
   async submitForm() {
     this.isLoading = true;
@@ -45,8 +47,8 @@ export class SignInEmailComponent implements AfterViewInit {
     this.submitted = true;
     console.log('Status: ', this.status);
     if (this.status === 200) {
-      this.router.navigate(['/']);
-    } else if (this.status === 401) {
+      this.navigationService.navigateToHome();
+    } else if (this.status === 403) {
       this.errorTitle = 'Ungültiges Passwort';
       this.errorMessage =
         'Falls Sie Ihr Passwort vergessen haben, versuchen Sie es zurückzusetzen';

@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopUpComponent } from './components/popup/popup.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,6 +8,7 @@ import { StackSection } from './components/stack-section/stack-section.component
 import { ShowcaseSection } from './components/showcase/showcase.component';
 import { PartnersComponent } from './components/partners/partners.component';
 import { MobileSection } from './components/mobile/mobile.component';
+import { SelectType } from './components/select-type/select-type.component';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,7 @@ import { MobileSection } from './components/mobile/mobile.component';
     ContactSection,
     FooterComponent,
     HeaderComponent,
-    PopUpComponent,
+    SelectType,
     CommonModule,
   ],
   template: `
@@ -31,6 +31,7 @@ import { MobileSection } from './components/mobile/mobile.component';
         <app-header></app-header>
         <app-hero></app-hero>
         <app-showcase></app-showcase>
+        <app-select-type></app-select-type>
         <app-partners></app-partners>
         <app-mobile></app-mobile>
         <app-stack-section></app-stack-section>
@@ -38,7 +39,6 @@ import { MobileSection } from './components/mobile/mobile.component';
         <app-footer></app-footer>
       </div>
     </div>
-    <app-pop-up (popUp)="popUpState = $event"></app-pop-up>
   `,
 })
 export class HomeComponent {

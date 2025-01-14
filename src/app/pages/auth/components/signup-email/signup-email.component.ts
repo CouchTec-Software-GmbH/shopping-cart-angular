@@ -7,7 +7,6 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -18,12 +17,13 @@ import {
 import { AuthService } from '@app/services/auth.service';
 import { emailDomainValidator } from '@app/utils/utils';
 import { BannerService } from '@app/services/banner.service';
-import { BannerType } from '@app/types/BannerType';
+import { RoutesEnum, routes } from '@app/data/routes';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-signup-email',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './signup-email.component.html',
 })
 export class SignUpEmailComponent implements AfterViewInit {
@@ -40,7 +40,6 @@ export class SignUpEmailComponent implements AfterViewInit {
     marketing_accept: new FormControl(true),
   });
   authService = inject(AuthService);
-  router = inject(Router);
   isHideIcon = true;
   isHideIconVerify = true;
 
@@ -52,9 +51,7 @@ export class SignUpEmailComponent implements AfterViewInit {
   showInternalError: boolean = false;
   isLoading = false;
 
-  constructor(
-    public bannerService: BannerService,
-  ){}
+  constructor(public bannerService: BannerService, private navigationService: NavigationService) { }
 
   get email() {
     return this.signUpForm.get('email')!;
@@ -82,7 +79,7 @@ export class SignUpEmailComponent implements AfterViewInit {
     this.isLoading = false;
     this.submitted = true;
     if (this.status === 200) {
-      this.router.navigate(['/']);
+      this.navigationService.navigateToHome();
     } else if (this.status === 401) {
       this.errorTitle = 'Ungültiges Password';
       this.errorMessage =

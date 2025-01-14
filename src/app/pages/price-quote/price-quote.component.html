@@ -1,0 +1,34 @@
+<div class="flex flex-col gap-0">
+  <app-header class="flex-none mb-[80px]"></app-header>
+
+  <section class="flex flex-grow justify-center items-center w-full">
+    <div
+      class="w-full max-w-[1400px] rounded-lg border border-solid border-gray-300 m-8 pt-8 pb-8 px-12 justify-center items-center flex flex-col font-brand font-light text-[16px] text-gray-600"
+    >
+      <app-type
+        *ngIf="page === Page.AppType"
+        (next)="selectAppType($event)"
+      ></app-type>
+
+      <configure
+        *ngIf="page === Page.Configure"
+        (backToAppType)="switchPage(Page.AppType)"
+        [appType]="appType"
+        class="w-full"
+      ></configure>
+    </div>
+  </section>
+
+  <div *ngIf="page === Page.Configure" class="bg-white shadow-md gap-2 z-20 fixed bottom-[10px] right-[40px] rounded-lg border border-solid border-gray-300 m-8 py-[20px] pb-0 px-8 justify-start items-start flex flex-col font-brand font-light text-[16px] text-gray-600">
+  <h1 class="text-[25px] font-medium text-black text-center">
+    Preis Schätzung:
+  </h1>
+    <p class="p-2 w-full text-right font-medium text-[30px]">{{ price | number:'1.2-2' }} €</p>
+
+    <h1 *ngIf="monthlyPrice > 0" class=" -mt-2 text-[25px] font-medium text-black text-center">
+     Wartungskosten pro Monat:
+  </h1>
+  <p *ngIf="monthlyPrice > 0" class="px-2 pb-4 w-full text-right font-medium text-[30px]">{{ monthlyPrice | number:'1.2-2' }} €</p>
+  </div>
+
+</div>
