@@ -9,15 +9,17 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
+import { RoutesEnum, routes } from '@app/data/routes';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './reset-password.component.html',
 })
 export class ResetPasswordComponent implements AfterViewInit, OnInit {
@@ -32,7 +34,6 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
     password: new FormControl(''),
     verifyPassword: new FormControl(''),
   });
-  router = inject(Router);
   isHideIcon = true;
   isHideIconVerify = true;
 
@@ -43,6 +44,7 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
+    private navigationService: NavigationService,
   ) { }
 
   async ngOnInit() {
@@ -65,8 +67,8 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
     let password = this.forgotPasswordForm.get('password')?.value;
     let verifyPassword = this.forgotPasswordForm.get('verifyPassword')?.value;
     if (password !== verifyPassword) {
-      console.log("Password: ", password);
-      console.log("VerifyPassword: ", verifyPassword);
+      console.log('Password: ', password);
+      console.log('VerifyPassword: ', verifyPassword);
       this.errorTitle = 'Passwörter stimmen nicht überein';
       this.errorMessage =
         'Bitte stellen Sie sicher, dass die Passwörter übereinstimmen.';
@@ -83,7 +85,7 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
           this.errorMessage = 'Bitte versuchen Sie es später erneut.';
           return;
         }
-        this.router.navigate(['/']);
+        this.navigationService.navigateToHome();
       });
   }
   ngAfterViewInit() {

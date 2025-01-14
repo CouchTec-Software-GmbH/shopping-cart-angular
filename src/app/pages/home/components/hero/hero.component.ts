@@ -1,17 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [],
   templateUrl: './hero.component.html',
 })
 export class HeroComponent {
-  constructor(private router: Router) {}
-
-  handleContactButton(): void {
-    this.router.navigate(['/kontakt']);
-  }
+  constructor(public navigationService: NavigationService) { }
 }

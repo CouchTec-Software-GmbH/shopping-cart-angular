@@ -1,0 +1,117 @@
+<div
+  class="-mt-10 grid grid-cols-1 grid-rows-6 md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 gap-6 mx-[20px]"
+>
+  <div class="type-card" (click)="handleClick(AppTypeEnum.ECommerce)">
+    <img
+      class="w-8 h-8"
+      src="/assets/ECommerce.avif"
+      alt="Management Software Entwicklung München"
+    />
+    <p class="text-[22px] font-medium opacity-90 mt-2">
+      {{ AppTypeData.ecommerce.title }}
+    </p>
+    <p class="text-[15px] font-light opacity-70 mt-2">
+      {{ AppTypeData.ecommerce.description }}
+    </p>
+    <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
+      <li *ngFor="let example of AppTypeData.ecommerce.examples">
+        {{ example }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="type-card" (click)="handleClick(AppTypeEnum.Website)">
+    <img
+      class="w-8 h-8"
+      src="/assets/Website.avif"
+      alt="Kunden orientierte Software Entwicklung München"
+    />
+    <p class="text-[22px] font-medium opacity-90 mt-2">
+      {{ AppTypeData.website.title }}
+    </p>
+    <p class="text-[15px] font-light opacity-70 mt-2">
+      {{ AppTypeData.website.description }}
+    </p>
+    <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
+      <li *ngFor="let example of AppTypeData.website.examples">
+        {{ example }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="type-card" (click)="handleClick(AppTypeEnum.DataAnalytics)">
+    <img
+      class="w-8 h-8"
+      src="/assets/Daten.avif"
+      alt="Daten Analyse und Verarbeitung Software Entwicklung München"
+    />
+    <p class="text-[22px] font-medium opacity-90 mt-2">
+      {{ AppTypeData.dataAnalytics.title }}
+    </p>
+    <p class="text-[15px] font-light opacity-70 mt-2">
+      {{ AppTypeData.dataAnalytics.description }}
+    </p>
+    <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
+      <li *ngFor="let example of AppTypeData.dataAnalytics.examples">
+        {{ example }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="type-card" (click)="handleClick(AppTypeEnum.ContentPlatform)">
+    <img
+      class="w-8 h-8"
+      src="/assets/Management.avif"
+      alt="Sichere Software Entwicklung München"
+    />
+    <p class="text-[22px] font-medium opacity-90 mt-2">
+      {{ AppTypeData.contentPlatform.title }}
+    </p>
+    <p class="text-[15px] font-light opacity-70 mt-2">
+      {{ AppTypeData.contentPlatform.description }}
+    </p>
+    <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
+      <li *ngFor="let example of AppTypeData.contentPlatform.examples">
+        {{ example }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="type-card" (click)="handleClick(AppTypeEnum.Management)">
+    <img
+      class="w-8 h-8"
+      src="/assets/ContentPlatform.avif"
+      alt="Branchenspezifische Software Entwicklung München"
+    />
+    <p class="text-[22px] font-medium opacity-90 mt-2">
+      {{ AppTypeData.management.title }}
+    </p>
+    <p class="text-[15px] font-light opacity-70 mt-2">
+      {{ AppTypeData.management.description }}
+    </p>
+    <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
+      <li *ngFor="let example of AppTypeData.management.examples">
+        {{ example }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="type-card" (click)="handleClick(AppTypeEnum.Digitalisierung)">
+    <img
+      class="w-8 h-8"
+      src="/assets/Digitalisierung.avif"
+      alt="Anpassbare Software Entwicklung München"
+    />
+    <p class="text-[22px] font-medium opacity-90 mt-2">
+      {{ AppTypeData.digitalisierung.title }}
+    </p>
+    <p class="text-[15px] font-light opacity-70 mt-2">
+      {{ AppTypeData.digitalisierung.description }}
+    </p>
+    <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
+      <li *ngFor="let example of AppTypeData.digitalisierung.examples">
+        {{ example }}
+      </li>
+    </ul>
+  </div>
+</div>

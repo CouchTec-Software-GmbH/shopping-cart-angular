@@ -6,28 +6,20 @@
       class="w-full max-w-[1400px] rounded-lg border border-solid border-gray-300 m-8 pt-8 pb-8 px-12 justify-center items-center flex flex-col font-brand font-light text-[16px] text-gray-600"
     >
       <app-type
-        *ngIf="state === Page.AppType"
+        *ngIf="page === Page.AppType"
         (next)="selectAppType($event)"
       ></app-type>
 
-      <configure-mode
-        *ngIf="state === Page.Mode"
-        (backToAppType)="state = Page.AppType"
+      <configure
+        *ngIf="page === Page.Configure"
+        (backToAppType)="page = Page.AppType"
         [appType]="appType"
-        (next)="selectMode($event)"
-      ></configure-mode>
-
-      <page3
-        *ngIf="state === Page.Page3"
-        (backToMode)="state = Page.Mode"
-        [appType]="appType"
-        [mode]="mode"
         class="w-full"
-      ></page3>
+      ></configure>
     </div>
   </section>
 
-  <div *ngIf="state === Page.Page3" class="bg-white shadow-md gap-2 z-20 fixed bottom-[10px] right-[40px] rounded-lg border border-solid border-gray-300 m-8 py-[20px] pb-0 px-8 justify-start items-start flex flex-col font-brand font-light text-[16px] text-gray-600">
+  <div *ngIf="page === Page.Configure" class="bg-white shadow-md gap-2 z-20 fixed bottom-[10px] right-[40px] rounded-lg border border-solid border-gray-300 m-8 py-[20px] pb-0 px-8 justify-start items-start flex flex-col font-brand font-light text-[16px] text-gray-600">
   <h1 class="text-[25px] font-medium text-black text-center">
     Preis Schätzung:
   </h1>

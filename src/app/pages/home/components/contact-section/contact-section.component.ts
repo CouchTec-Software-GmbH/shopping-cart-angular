@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-contact-section',
   standalone: true,
-  imports: [RouterModule],
+  imports: [],
   templateUrl: './contact-section.component.html',
 })
 export class ContactSection {
-  constructor(private router: Router) { }
-    handleContactButton() {
-        this.router.navigate(['kontakt'])
-    }
+  constructor(public navigationService: NavigationService) { }
 }

@@ -7,12 +7,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PriceService {
   appTypePrice: Record<AppTypeEnum, number> = {
-    [AppTypeEnum.Management]: 2000,
-    [AppTypeEnum.UserFacing]: 1000,
+    [AppTypeEnum.ECommerce]: 2000,
+    [AppTypeEnum.Website]: 1000,
     [AppTypeEnum.DataAnalytics]: 6000,
-    [AppTypeEnum.IntegrationAutomation]: 4000,
-    [AppTypeEnum.SecurityCompliance]: 10000,
-    [AppTypeEnum.Other]: 4000,
+    [AppTypeEnum.ContentPlatform]: 4000,
+    [AppTypeEnum.Management]: 10000,
+    [AppTypeEnum.Digitalisierung]: 4000,
   };
 
   platformPrice: Record<string, number> = {
@@ -72,7 +72,7 @@ export class PriceService {
   private monthyPriceSubject = new BehaviorSubject<number>(0);
   monthyPrice$ = this.monthyPriceSubject.asObservable();
 
-  appType: AppTypeEnum = AppTypeEnum.UserFacing;
+  appType: AppTypeEnum = AppTypeEnum.Website;
   totalUsers: number = 1000;
   concurrentUsers: number = 1000;
   platforms: string[] = [];
@@ -146,7 +146,7 @@ export class PriceService {
       result += this.managementIntegration.length * 5000;
     }
 
-    if (this.appType === AppTypeEnum.UserFacing) {
+    if (this.appType === AppTypeEnum.Website) {
       result += this.userTracking.length * 2000;
     }
 
@@ -221,7 +221,7 @@ export class PriceService {
     this.updatePrice();
   }
 
-  setnewStoragePerMonth(newStoragePerMonth: number) {
+  setNewStoragePerMonth(newStoragePerMonth: number) {
     this.newStoragePerMonth = newStoragePerMonth;
     this.updatePrice();
   }

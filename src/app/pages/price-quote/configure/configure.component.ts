@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Mode } from '../price-quote.component';
 import { RadioComponent } from '@app/components/radio/radio.component';
 import { ProjectOptionList } from '@app/models/project-option-list';
 import { NumberInputComponent } from '@app/components/number-input/number-input.component';
@@ -10,97 +9,25 @@ import { PriceService } from '@app/services/price.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'page3',
+  selector: 'configure',
   standalone: true,
-  imports: [RadioComponent, NumberInputComponent, CheckboxComponent, CommonModule],
-  templateUrl: './page3.component.html',
+  imports: [
+    RadioComponent,
+    NumberInputComponent,
+    CheckboxComponent,
+    CommonModule,
+  ],
+  templateUrl: './configure.component.html',
 })
-export class Page3 implements OnInit {
-  @Output() backToMode = new EventEmitter();
-  @Input() mode = Mode.Manager;
-  @Input() appType = AppTypeEnum.UserFacing;
+export class Configure implements OnInit {
+  @Output() backToAppType = new EventEmitter();
+  @Input() appType = AppTypeEnum.Website;
   AppTypeEnum = AppTypeEnum;
 
-  constructor(private priceService: PriceService) {}
+  constructor(public priceService: PriceService) { }
 
   ngOnInit(): void {
     this.priceService.updatePrice();
-  }
-
-  changeTotalUsers(value: number) {
-    this.priceService.setTotalUsers(value);
-  }
-
-  changeConcurrentUsers(value: number) {
-    this.priceService.setConcurrentUsers(value);
-  }
-
-  changePlatforms(platforms: string[]) {
-    this.priceService.setPlatforms(platforms);
-  }
-
-  changeTimeframe(timeframe: number) {
-    this.priceService.setTimeframe(timeframe);
-  }
-
-  changeDesign(design: string) {
-    this.priceService.setDesign(design);
-  }
-
-  changeInfrastructure(infrastructure: string) {
-    this.priceService.setInfrastructure(infrastructure);
-  }
-
-  changeInitialStorage(initialStorage: number) {
-    this.priceService.setInitialStorage(initialStorage);
-  }
-
-  changeNewStoragePerMonth(newStoragePerMonth: number) {
-    this.priceService.setnewStoragePerMonth(newStoragePerMonth);
-  }
-
-  changeGeography(geography: string[]) {
-    this.priceService.setGeography(geography);
-  }
-
-  changeTraining(training: string[]) {
-    this.priceService.setTraining(training);
-  }
-
-  changeMaintenance(maintenance: string[]) {
-    this.priceService.setMaintenance(maintenance);
-  }
-
-  changeAuth(auth: string[]) {
-    this.priceService.setAuth(auth);
-  }
-
-  changeEncryption(encryption: string) {
-    this.priceService.setEncryption(encryption);
-  }
-
-  changeManagementCompliance(value: string[]) {
-    this.priceService.setManagementCompliance(value);
-  }
-
-  changeManagementIntegration(value: string[]) {
-    this.priceService.setManagementIntegration(value);
-  }
-
-  changeUserTracking(value: string[]) {
-    this.priceService.setUserTracking(value);
-  }
-
-  changeDataSourcesWithAPI(value: number) {
-    this.priceService.setDataSourcesWithAPI(value);
-  }
-
-  changeDataSourcesWithoutAPI(value: number) {
-    this.priceService.setDataSourcesWithoutAPI(value);
-  }
-
-  changeDataProcessing(value: string) {
-    this.priceService.setDataProcessing(value);
   }
 
   totalUsers: ProjectNumberInput = {
@@ -369,8 +296,6 @@ export class Page3 implements OnInit {
       },
     ],
   };
-
-
 
   dataSourcesWithAPI: ProjectNumberInput = {
     title: 'Daten Quellen mit API:',

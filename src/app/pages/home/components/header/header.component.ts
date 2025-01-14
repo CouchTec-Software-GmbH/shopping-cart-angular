@@ -1,17 +1,18 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@app/services/auth.service';
 import { Subscription } from 'rxjs';
 import { ProjectService } from '@app/services/project.service';
 import { BannerService } from '@app/services/banner.service';
 import { BannerType } from '@app/types/BannerType';
+import { RoutesEnum, routes } from '@app/data/routes';
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
@@ -37,10 +38,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    public navigationService: NavigationService,
     private projectService: ProjectService,
     public bannerService: BannerService,
-  ) {}
+  ) { }
 
   getBannerEmail(): string {
     return this.bannerEmail || 'deine E-Mail';
@@ -115,7 +116,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }),
     );
 
-    this.router.navigate(['configure']);
+    // this.router.navigate(['configure']);
     this.closeMenu();
   }
 
@@ -132,19 +133,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   handleLoginButton(): void {
-    this.router.navigate(['/auth']);
+    this.navigationService.navigateToAuth();
     this.accountShow = false;
     this.closeMenu();
   }
 
   handleContactButton(): void {
-    this.router.navigate(['/kontakt']);
+    this.navigationService.navigateToContact();
     this.accountShow = false;
     this.closeMenu();
   }
 
   handlePriceQuoteButton(): void {
-    this.router.navigate(['/price-quote']);
+    this.navigationService.navigateToPriceQuote();
     this.accountShow = false;
     this.closeMenu();
   }
@@ -155,12 +156,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNewProjectClick(): void {
-    this.router.navigate(['/'], { queryParams: { newProject: true } });
+    this.navigationService.navigateToHome(
+      { newProject: true }
+    );
     this.closeMenu();
   }
 
   onSettingsClick(): void {
-    this.router.navigate(['/dashboard']);
+    this.navigationService.navigateToDashboard();
     this.closeMenu();
   }
 

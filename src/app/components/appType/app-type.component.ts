@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppTypeData } from '@app/data/appTypeData';
+import { NavigationService } from '@app/services/navigation.service';
 import { PriceService } from '@app/services/price.service';
 import { AppTypeEnum } from '@app/types/AppType';
 
@@ -11,18 +12,20 @@ import { AppTypeEnum } from '@app/types/AppType';
   templateUrl: './app-type.component.html',
 })
 export class AppType {
-  @Output() next = new EventEmitter<AppTypeEnum>();
   AppTypeEnum = AppTypeEnum;
   AppTypeData = AppTypeData;
 
-  constructor(private priceService: PriceService) { }
+  constructor(
+    private priceService: PriceService,
+    private navigationService: NavigationService,
+  ) { }
 
   setAppType(appType: AppTypeEnum) {
     this.priceService.setAppType(appType);
   }
 
   handleClick(appType: AppTypeEnum) {
-    this.priceService.setAppType(appType);
-    this.next.emit(appType);
+    this.setAppType(appType);
+    this.navigationService.navigateToPriceQuote();
   }
 }

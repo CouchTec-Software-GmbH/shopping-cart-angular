@@ -26,8 +26,8 @@
           <li class="relative items-center gap-2">
             <p class="font-medium">Projektanforderungen erfassen:</p>
             <span>
-              Beschreibe den Zweck und die Kernfunktionalitäten deines
-              Projekts.</span
+              Wähle Zweck und die Kernfunktionalitäten deines Projektes
+              aus.</span
             >
           </li>
           <li class="relative items-center gap-2">
@@ -63,38 +63,36 @@
     <div
       class="-mt-10 grid grid-cols-1 grid-rows-6 md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 gap-6 mx-[20px]"
     >
-      <div class="type-card" (click)="handleClick(AppTypeEnum.Management)">
+      <div class="type-card" (click)="handleClick(AppTypeEnum.ECommerce)">
         <img
           class="w-8 h-8"
-          src="/assets/Management.avif"
+          src="/assets/ECommerce.avif"
           alt="Management Software Entwicklung München"
         />
-        <p class="text-[22px] font-medium opacity-90 mt-2">Management</p>
+        <p class="text-[22px] font-medium opacity-90 mt-2">{{ AppTypeData.ecommerce.title }}</p>
         <p class="text-[15px] font-light opacity-70 mt-2">
-          Unterstützung von Geschäftsvorgängen, Planung und
-          Ressourcenmanagement.
+          {{ AppTypeData.ecommerce.description }}
         </p>
         <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
-          <li>Portfolio Management</li>
-          <li>Personal & Kunden Verwaltung</li>
-          <li>Betriebs- und Prozess-Management</li>
+          <li *ngFor="let example of AppTypeData.ecommerce.examples"> {{ example}}</li>
         </ul>
       </div>
 
-      <div class="type-card" (click)="handleClick(AppTypeEnum.UserFacing)">
+      <div class="type-card" (click)="handleClick(AppTypeEnum.Website)">
         <img
           class="w-8 h-8"
-          src="/assets/Kunden.avif"
+          src="/assets/Website.avif"
           alt="Kunden orientierte Software Entwicklung München"
         />
-        <p class="text-[22px] font-medium opacity-90 mt-2">Kundeninteraktion</p>
+        <p class="text-[22px] font-medium opacity-90 mt-2">
+          {{ AppTypeData.website.title }}
+        </p>
         <p class="text-[15px] font-light opacity-70 mt-2">
-          Verbessert kundenorientierte Dienstleistungen, Engagement und Support.
+          {{ AppTypeData.website.description }}
         </p>
         <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
-          <li>Webshop, Webseite</li>
-          <li>Customer Relationship Management (CRM)</li>
-          <li>Content Management System (CMS)</li>
+
+          <li *ngFor="let example of AppTypeData.website.examples"> {{ example }}</li>
         </ul>
       </div>
 
@@ -104,79 +102,72 @@
           src="/assets/Daten.avif"
           alt="Daten Analyse und Verarbeitung Software Entwicklung München"
         />
-        <p class="text-[22px] font-medium opacity-90 mt-2">Daten und Analyse</p>
+        <p class="text-[22px] font-medium opacity-90 mt-2">
+          {{ AppTypeData.dataAnalytics.title }}
+        </p>
         <p class="text-[15px] font-light opacity-70 mt-2">
-          Bietet Einblicke, Entscheidungshilfen und datengestützte Strategien.
+          {{ AppTypeData.dataAnalytics.description }}
         </p>
         <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
-          <li>Analyse und Reporting</li>
-          <li>Business Intelligence und Data Warehousing</li>
-          <li>Branchenspezifische Analysen</li>
+          <li *ngFor="let example of AppTypeData.dataAnalytics.examples"> {{ example }}</li>
         </ul>
       </div>
 
       <div
         class="type-card"
-        (click)="handleClick(AppTypeEnum.SecurityCompliance)"
+        (click)="handleClick(AppTypeEnum.ContentPlatform)"
       >
         <img
           class="w-8 h-8"
-          src="/assets/Sicherheit.avif"
+          src="/assets/Management.avif"
           alt="Sichere Software Entwicklung München"
         />
         <p class="text-[22px] font-medium opacity-90 mt-2">
-          Sicherheit und Compliance
+            {{ AppTypeData.contentPlatform.title }}
         </p>
         <p class="text-[15px] font-light opacity-70 mt-2">
-          Schützt Geschäftsabläufe und Daten und gewährleistet die Einhaltung
-          gesetzlicher Vorschriften
+          {{ AppTypeData.contentPlatform.description }}
         </p>
         <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
-          <li>Compliance-Management-Lösungen</li>
-          <li>Datensicherheit und Disaster Recovery</li>
-          <li>Cybersecurity-Tools: CIS, SIEM</li>
+          <li *ngFor="let example of AppTypeData.contentPlatform.examples"> {{ example }}</li>
         </ul>
       </div>
 
-      <div class="type-card" (click)="handleClick(AppTypeEnum.Other)">
+      <div class="type-card" (click)="handleClick(AppTypeEnum.Management)">
         <img
           class="w-8 h-8"
-          src="/assets/Branchen.avif"
+          src="/assets/ContentPlatform.avif"
           alt="Branchenspezifische Software Entwicklung München"
         />
         <p class="text-[22px] font-medium opacity-90 mt-2">
-          Branchenspezifisch
+            {{ AppTypeData.management.title }}
         </p>
         <p class="text-[15px] font-light opacity-70 mt-2">
-          Erfüllt einzigartige Arbeitsabläufe oder branchenspezifische
-          Anforderungen durch maßgeschneiderte oder spezialisierte Lösungen.
+            {{ AppTypeData.management.description }}
         </p>
         <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
-          <li>API-Management und interne Tools</li>
-          <li>Branchenspezifische Software</li>
+          <li *ngFor="let example of AppTypeData.management.examples"> {{ example }}</li>
         </ul>
       </div>
 
       <div
         class="type-card"
-        (click)="handleClick(AppTypeEnum.IntegrationAutomation)"
+        (click)="handleClick(AppTypeEnum.Digitalisierung)"
       >
         <img
           class="w-8 h-8"
-          src="/assets/Anpassung.avif"
+          src="/assets/Digitalisierung.avif"
           alt="Anpassbare Software Entwicklung München"
         />
         <p class="text-[22px] font-medium opacity-90 mt-2">
-          Integration und Digitalisierung
+            {{ AppTypeData.digitalisierung.title }}
         </p>
         <p class="text-[15px] font-light opacity-70 mt-2">
-          Verbessert Prozesseffizienz durch Automatisierung und nahtlose
-          Integration in bestehende Systeme.
+
+            {{ AppTypeData.digitalisierung.description }}
         </p>
         <ul class="text-[15px] font-light opacity-70 mt-2 list-disc pl-4 mt-4">
-          <li>Transparenz, Migration, Testautomatisierung</li>
-          <li>Automatisierte Workflows zur Fehlerreduktion</li>
-          <li>Einführung neuer Software</li>
+          <li *ngFor="let example of AppTypeData.digitalisierung.examples"> {{ example }}</li>
         </ul>
       </div>
     </div>

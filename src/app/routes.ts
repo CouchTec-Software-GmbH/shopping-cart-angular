@@ -3,31 +3,32 @@ import { HomeComponent } from '@pages/home/home.component';
 import { ContactComponent } from '@pages/contact/contact.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PriceQuote } from './pages/price-quote/price-quote.component';
+import { RoutesEnum, routes } from './data/routes';
 
 const routeConfig: Routes = [
   {
-    path: '',
+    path: routes[RoutesEnum.Home].url,
     component: HomeComponent,
-    title: 'Couchtec - Home',
+    title: routes[RoutesEnum.Home].title,
   },
   {
-    path: 'auth',
+    path: routes[RoutesEnum.Auth].url,
     component: AuthComponent,
-    title: 'Couchtec - Auth',
+    title: routes[RoutesEnum.Auth].title,
   },
   {
-    path: 'kontakt',
+    path: routes[RoutesEnum.Contact].url,
     component: ContactComponent,
-    title: 'Couchtec - Kontakt',
+    title: routes[RoutesEnum.Contact].title,
   },
   {
-    path: 'price-quote',
+    path: routes[RoutesEnum.PriceQuote].url,
     component: PriceQuote,
-    title: 'Couchtec - Preis Schätzung',
+    title: routes[RoutesEnum.PriceQuote].title,
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: routes[RoutesEnum.Home].url,
   },
 ];
 

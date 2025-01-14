@@ -1,23 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-
+import { NavigationService } from '@app/services/navigation.service';
 
 @Component({
-    selector: 'app-mobile',
-    standalone: true,
-    imports: [
-        RouterModule,
-    ],
-    templateUrl: './mobile.component.html'
+  selector: 'app-mobile',
+  standalone: true,
+  imports: [],
+  templateUrl: './mobile.component.html',
 })
 export class MobileSection {
-
-    constructor(
-        private router: Router
-    ) {
-
-    }
-    handleContactButton() {
-        this.router.navigate(['kontakt'])
-    }
+  constructor(public navigationService: NavigationService) { }
 }

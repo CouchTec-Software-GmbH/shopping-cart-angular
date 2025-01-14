@@ -1,8 +1,8 @@
 export enum AppTypeEnum {
-  Management = 'Management',
-  UserFacing = 'Kundeninteraktion',
+  ECommerce = 'E-Commerce',
+  Website = 'Geschäfts-Webseite',
   DataAnalytics = 'Daten und Analyse',
-  SecurityCompliance = 'Sicherheit und Compliance',
-  IntegrationAutomation = 'Integration und Automation',
-  Other = 'Branchenspezifisch',
+  ContentPlatform = 'Content Platform',
+  Management = 'Management',
+  Digitalisierung = 'Digitalisierung',
 }

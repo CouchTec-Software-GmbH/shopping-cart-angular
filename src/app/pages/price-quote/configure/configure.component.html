@@ -9,7 +9,7 @@
   <button
     type=""
     class="flex flex-row justify-center items-center hover:bg-[#f4f4f5] pl-4 pr-5 py-3 rounded-md gap-4 mt-8"
-    (click)="backToMode.emit()"
+    (click)="backToAppType.emit()"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -34,111 +34,107 @@
     <p class="font-light text-[15px]">Anwendung:</p>
     <p class="font-medium font-[14px]">{{ appType }}</p>
   </div>
-  <div class="flex flex-rw gap-1 justify-start items-center">
-    <p class="font-light text-[15px]">Schätzungs Modus:</p>
-    <p class="font-medium font-[14px]">{{ mode }}</p>
-  </div>
 
   <ng-container *ngIf="appType === AppTypeEnum.DataAnalytics">
     <app-number-input
       [data]="dataSourcesWithAPI"
-      (selectionChange)="changeDataSourcesWithAPI($event)"
+      (selectionChange)="this.priceService.setDataSourcesWithAPI($event)"
     ></app-number-input>
     <app-number-input
       [data]="dataSourcesWithoutAPI"
-      (selectionChange)="changeDataSourcesWithoutAPI($event)"
+      (selectionChange)="this.priceService.setDataSourcesWithoutAPI($event)"
     ></app-number-input>
     <app-radio
       [list]="dataProcessing"
-      (selectionChange)="changeDataProcessing($event)"
+      (selectionChange)="this.priceService.setDataProcessing($event)"
     ></app-radio>
   </ng-container>
 
   <ng-container *ngIf="appType === AppTypeEnum.Management">
     <app-checkbox
       [list]="managementCompliance"
-      (selectionChange)="changeManagementCompliance($event)"
+      (selectionChange)="this.priceService.setManagementCompliance($event)"
     ></app-checkbox>
     <app-checkbox
       [list]="managementIntegration"
-      (selectionChange)="changeManagementIntegration($event)"
+      (selectionChange)="this.priceService.setManagementIntegration($event)"
     ></app-checkbox>
   </ng-container>
 
   <ng-container *ngIf="appType !== AppTypeEnum.DataAnalytics">
     <app-number-input
       [data]="totalUsers"
-      (selectionChange)="changeTotalUsers($event)"
+      (selectionChange)="this.priceService.setTotalUsers($event)"
     ></app-number-input>
   </ng-container>
 
-  <ng-container *ngIf="appType === AppTypeEnum.UserFacing">
+  <ng-container *ngIf="appType === AppTypeEnum.Website">
     <app-number-input
       [data]="concurrentUsers"
-      (selectionChange)="changeConcurrentUsers($event)"
+      (selectionChange)="this.priceService.setConcurrentUsers($event)"
     ></app-number-input>
   </ng-container>
 
   <app-checkbox
     [list]="platforms"
-    (selectionChange)="changePlatforms($event)"
+    (selectionChange)="this.priceService.setPlatforms($event)"
   ></app-checkbox>
   <app-number-input
     [data]="timeframe"
-    (selectionChange)="changeTimeframe($event)"
+    (selectionChange)="this.priceService.setTimeframe($event)"
   ></app-number-input>
 
-  <ng-container *ngIf="appType === AppTypeEnum.UserFacing">
+  <ng-container *ngIf="appType === AppTypeEnum.Website">
     <app-radio
       [list]="design"
-      (selectionChange)="changeDesign($event)"
+      (selectionChange)="this.priceService.setDesign($event)"
     ></app-radio>
   </ng-container>
 
   <app-radio
     [list]="infrastructure"
-    (selectionChange)="changeInfrastructure($event)"
+    (selectionChange)="this.priceService.setInfrastructure($event)"
   ></app-radio>
   <app-checkbox
     [list]="maintenance"
-    (selectionChange)="changeMaintenance($event)"
+    (selectionChange)="this.priceService.setMaintenance($event)"
   ></app-checkbox>
   <app-number-input
     [data]="initialStorage"
-    (selectionChange)="changeInitialStorage($event)"
+    (selectionChange)="this.priceService.setInitialStorage($event)"
   ></app-number-input>
   <app-number-input
     [data]="newStoragePerMonth"
-    (selectionChange)="changeNewStoragePerMonth($event)"
+    (selectionChange)="this.priceService.setNewStoragePerMonth($event)"
   ></app-number-input>
 
   <ng-container *ngIf="appType !== AppTypeEnum.Management">
     <app-checkbox
       [list]="geography"
-      (selectionChange)="changeGeography($event)"
+      (selectionChange)="this.priceService.setGeography($event)"
     ></app-checkbox>
   </ng-container>
 
-  <ng-container *ngIf="appType !== AppTypeEnum.UserFacing">
+  <ng-container *ngIf="appType !== AppTypeEnum.Website">
     <app-checkbox
       [list]="training"
-      (selectionChange)="changeTraining($event)"
+      (selectionChange)="this.priceService.setTraining($event)"
     ></app-checkbox>
   </ng-container>
 
-  <ng-container *ngIf="appType === AppTypeEnum.UserFacing">
+  <ng-container *ngIf="appType === AppTypeEnum.Website">
     <app-checkbox
       [list]="userTracking"
-      (selectionChange)="changeUserTracking($event)"
+      (selectionChange)="this.priceService.setUserTracking($event)"
     ></app-checkbox>
   </ng-container>
 
   <app-checkbox
     [list]="auth"
-    (selectionChange)="changeAuth($event)"
+    (selectionChange)="this.priceService.setAuth($event)"
   ></app-checkbox>
   <app-radio
     [list]="encryption"
-    (selectionChange)="changeEncryption($event)"
+    (selectionChange)="this.priceService.setEncryption($event)"
   ></app-radio>
 </div>
