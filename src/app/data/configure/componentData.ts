@@ -43,7 +43,7 @@ export const platforms: ProjectOptionList = {
       id: 'webResponsive',
       name: 'Web: Responsive',
       description: '',
-      checked: false,
+      checked: true,
     },
     {
       id: 'ios',
@@ -68,7 +68,7 @@ export const timeframe: ProjectNumberInput = {
   name: 'Monate',
   min: 1,
   max: 120,
-  default: 9,
+  default: 3,
   step: 1,
 };
 
@@ -133,7 +133,7 @@ export const infrastructure: ProjectOptionList = {
       id: 'couchtec-server',
       name: 'couchtec Server',
       description: '',
-      checked: false,
+      checked: true,
     },
   ],
 };
