@@ -68,7 +68,8 @@ export class NumberInputComponent implements OnInit {
   value: number = 1;
 
   ngOnInit(): void {
-    const value = localStorage.getItem(this.data.title);
+    // const value = localStorage.getItem(this.data.title);
+    const value = undefined;
     if (value && !isNaN(Number(value))) {
       this.value = Number(value);
       this.onSelectionChange(Number(value));
