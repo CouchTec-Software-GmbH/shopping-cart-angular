@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-0">
+<div class="flex flex-col gap-0 lg:mb-0 ">
   <app-header class="flex-none mb-[80px]"></app-header>
 
   <section class="flex flex-grow justify-center items-center w-full">
@@ -19,16 +19,21 @@
     </div>
   </section>
 
-  <div *ngIf="page === Page.Configure" class="bg-white shadow-md gap-2 z-20 fixed bottom-[10px] right-[40px] rounded-lg border border-solid border-gray-300 m-8 py-[20px] pb-0 px-8 justify-start items-start flex flex-col font-brand font-light text-[16px] text-gray-600">
-  <h1 class="text-[25px] font-medium text-black text-center">
+  <div *ngIf="page === Page.Configure" class="py-2 flex flex-grow flex-col w-full lg:w-auto bg-white shadow-lg lg:gap-2 z-20 fixed lg:bottom-[10px] bottom-0 lg:right-[40px] lg:rounded-lg border border-solid border-gray-300 lg:m-8 lg:py-[20px] pb-0 px-8 justify-center lg:justify-start items-center font-brand font-light text-[16px] text-gray-600">
+
+    <div class="flex flex-row items-center w-full lg:justify-start justify-between gap-4">
+  <h1 class="lg:text-[22px] text-[16px] font-medium text-black text-left lg:w-full whitespace-nowrap">
     Preis Schätzung:
   </h1>
-    <p class="p-2 w-full text-right font-medium text-[30px]">{{ price | number:'1.2-2' }} €</p>
+    <p class="p-2 whitespace-nowrap lg:w-full text-right font-medium lg:text-[28px] text-[18px] -mr-2 lg:mr-0">{{ price | number:'1.2-2' }} €</p>
 
-    <h1 *ngIf="monthlyPrice > 0" class=" -mt-2 text-[25px] font-medium text-black text-center">
-     Wartungskosten pro Monat:
-  </h1>
-  <p *ngIf="monthlyPrice > 0" class="px-2 pb-4 w-full text-right font-medium text-[30px]">{{ monthlyPrice | number:'1.2-2' }} €</p>
+    </div>
+    <div class="flex flex-row items-center w-full gap-4">
+      <h1 *ngIf="monthlyPrice > 0" class="whitespace-nowrap flex flex-grow lg:-mt-2 lg:text-[22px] text-[16px] font-medium text-black text-center w-full">
+        Wartungskosten pro Monat:
+      </h1>
+      <p *ngIf="monthlyPrice > 0" class="lg:pb-3 whitespace-nowrap text-right font-medium lg:text-[28px] text-[18px]">{{ monthlyPrice | number:'1.2-2' }} €</p>
+    </div>
   </div>
 
 </div>

@@ -16,8 +16,8 @@ export class PriceService {
   };
 
   platformPrice: Record<string, number> = {
-    ['web']: 600,
-    ['webResponsive']: 800,
+    ['web']: 800,
+    ['webResponsive']: 1000,
     ['ios']: 5000,
     ['android']: 5000,
     ['']: 0,
