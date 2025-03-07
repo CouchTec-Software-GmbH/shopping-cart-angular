@@ -4,6 +4,7 @@ import { ContactComponent } from '@pages/contact/contact.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PriceQuote } from './pages/price-quote/price-quote.component';
 import { RoutesEnum, routes } from './data/routes';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 const routeConfig: Routes = [
   {
@@ -25,6 +26,11 @@ const routeConfig: Routes = [
     path: routes[RoutesEnum.PriceQuote].url,
     component: PriceQuote,
     title: routes[RoutesEnum.PriceQuote].title,
+  },
+  {
+    path: routes[RoutesEnum.Calendar].url,
+    component: CalendarComponent,
+    title: routes[RoutesEnum.Calendar].title,
   },
   {
     path: '**',

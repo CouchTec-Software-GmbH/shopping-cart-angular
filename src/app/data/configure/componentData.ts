@@ -1,7 +1,6 @@
 import { ProjectNumberInput } from '@app/models/project-number-input';
 import { BoxType, ProjectOptionList } from '@app/models/project-option-list';
 
-
 export const totalUsers: ProjectNumberInput = {
   id: 'totalUsers',
   title: 'Nutzer pro Monat:',
@@ -162,8 +161,8 @@ export const assets: ProjectOptionList = {
       description: '',
       checked: false,
     },
-  ]
-}
+  ],
+};
 
 export const initialStorage: ProjectNumberInput = {
   id: 'initialStorage',
@@ -418,6 +417,117 @@ export const dataProcessing: ProjectOptionList = {
     {
       id: 'real-time',
       name: 'Echtzeit',
+      description: '',
+      checked: false,
+    },
+  ],
+};
+
+export const support: ProjectOptionList = {
+  id: 'support',
+  title: 'Kundensupport Interface',
+  description: '',
+  boxType: BoxType.Checkbox,
+  options: [
+    {
+      id: 'chatbot',
+      name: 'Integrierter KI Chatbot',
+      description: 'Trainiert auf häufige Fragen & Lösungen',
+      checked: false,
+    },
+    {
+      id: 'chat',
+      name: 'Chat Interface',
+      description: '',
+      checked: false,
+    },
+  ],
+};
+
+export const ecommerceFeatures: ProjectOptionList = {
+  id: 'ecommerceFeatures',
+  title: 'ecommerceFeatures',
+  description: '',
+  boxType: BoxType.Checkbox,
+  options: [
+    {
+      id: 'search',
+      name: 'Suchleiste',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'filtering',
+      name: 'Filter: Kategorie, Preis, Bewertungen',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'recommendations',
+      name: 'Personalisierte Empfehlungen',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'orderTracking',
+      name: 'Order Tracking mit E-Mail Benachrichtigungen',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'membership',
+      name: 'Abonnement & Membership Angebote',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'coupon',
+      name: 'Coupon Code Integration',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'gamification',
+      name: 'Erweiterte Loyalitätsprogramme & Spielifizierung',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'dynamicPrices',
+      name: 'Dynamische Preis Modelle',
+      description: '',
+      checked: false,
+    },
+  ],
+};
+
+export const paymentGateway: ProjectOptionList = {
+  id: 'paymentGateway',
+  title: 'Zahlungs Gateway',
+  description: '',
+  boxType: BoxType.Checkbox,
+  options: [
+    {
+      id: 'stripe',
+      name: 'Stripe',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'paypal',
+      name: 'Paypal',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'crypto',
+      name: 'Kryptowährungen',
+      description: '',
+      checked: false,
+    },
+    {
+      id: 'Andere',
+      name: 'other',
       description: '',
       checked: false,
     },

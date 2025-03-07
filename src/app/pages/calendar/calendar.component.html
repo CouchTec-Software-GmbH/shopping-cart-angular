@@ -1,0 +1,124 @@
+
+<div class="flex min-h-screen items-center justify-center bg-gray-100 p-5">
+  <div class="bg-white rounded-lg shadow-md max-w-[560px] w-full p-6">
+    <!-- Header (Month + Year) -->
+    <div class="flex justify-between items-center mb-5 pb-2.5 border-b border-gray-200">
+      <div class="flex items-baseline text-lg font-normal gap-2">
+        <!-- Dynamically show month + year -->
+        <span class="text-black font-[500]">{{ monthNames[month] }}</span>
+        <span class="text-gray-500">{{ year }}</span>
+      </div>
+      <div class="flex gap-2">
+        <!-- Prev arrow -->
+        <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer" (click)="prevMonth()">
+          <svg
+            width="25px"
+            height="25px"
+            viewBox="0 0 1024 1024"
+            fill="#a7acb5"
+            class="icon p-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z"
+              fill
+            />
+          </svg>
+        </div>
+        <!-- Next arrow -->
+        <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer" (click)="nextMonth()">
+          <svg
+            width="25px"
+            height="25px"
+            viewBox="0 0 1024 1024"
+            fill="#a7acb5"
+            class="icon p-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m383.19486,850.6c-8.67176,8 -22.07356,7.2 -29.95697,-1.6s-7.09507,-22.4 1.57668,-30.4l305.08811,-280c7.88341,-7.2 7.88341,-17.6 0,-24.8l-305.08811,-270.4c-8.67176,-8 -9.4601,-21.6 -2.36502,-30.4c7.88341,-8.8 21.28522,-9.6 29.95697,-2.4l305.08811,271.2c26.80361,24 27.59195,64 0.78834,88.8l-305.08811,280z"
+              fill
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekdays -->
+    <div class="grid grid-cols-7 text-center font-[400] text-sm mb-5 pb-5 border-b border-gray-200">
+      <div>SO</div>
+      <div>MO</div>
+      <div>DI</div>
+      <div>MI</div>
+      <div>DO</div>
+      <div>FR</div>
+      <div>SA</div>
+    </div>
+
+    <!-- Days grid -->
+    <div class="grid grid-cols-7 gap-1 mb-10 text-sm">
+      <!-- Render each "cell" in the calendar -->
+      <ng-container *ngFor="let day of daysInCalendar">
+        <div
+          class="flex items-center justify-center relative rounded-md aspect-square min-w-[35px] sm:min-w-[50px] md:min-w-[70px]"
+          [ngClass]="{
+            'bg-gray-800 text-white': day.isSelected,
+            'bg-gray-200': day.dayNumber && isDayBookable(day.dayNumber) && !day.isSelected,
+            'hover:cursor-pointer border-2 border-transparent hover:border-black': day.dayNumber && isDayBookable(day.dayNumber)
+          }"
+          (click)="onDayClick(day)"
+        >
+          <!-- If dayNumber is null, it's just a placeholder. Otherwise show the day -->
+          <ng-container *ngIf="day.dayNumber !== null">
+            {{ day.dayNumber }}
+            <!-- Dot for "today" highlight -->
+            <span
+              *ngIf="day.isToday"
+              class="absolute bottom-1 sm:bottom-3 w-[5px] h-[5px] bg-black rounded-full"
+            ></span>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Footer -->
+    <div>
+      <div class="flex justify-between items-center mb-5">
+        <!-- Display dynamic weekday + day number -->
+        <div class="flex flex-row gap-2 justify-center items-center">
+          <div class="text-lg font-[500]">{{ selectedDayOfWeek }}</div>
+          <div class="text-md">{{ selectedDay }}</div>
+        </div>
+
+        <!-- 12h / 24h Toggle -->
+        <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+          <button
+            class="px-4 py-2 text-base bg-white hover:bg-gray-100 cursor-pointer"
+            [ngClass]="{'bg-gray-200': timeFormat12}"
+            (click)="timeFormat12 = true"
+          >
+            12 Std
+          </button>
+          <button
+            class="px-4 py-2 text-base bg-white hover:bg-gray-100 cursor-pointer"
+            [ngClass]="{'bg-gray-200': !timeFormat12}"
+            (click)="timeFormat12 = false"
+          >
+            24 Std
+          </button>
+        </div>
+      </div>
+
+      <!-- Times for the selected day -->
+      <div *ngIf="selectedDay && isDayBookable(selectedDay)" class="flex flex-col gap-2 mb-5 justify-center">
+        <button
+          *ngFor="let t of getTimesForDay(selectedDay) || []"
+          class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100"
+          (click)="onTimeClick(t)"
+        >
+          {{ formatTime(t) }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
