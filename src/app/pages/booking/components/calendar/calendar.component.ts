@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -17,11 +17,14 @@ interface CalendarDay {
   templateUrl: './calendar.component.html',
 })
 export class CalendarComponent implements OnInit {
+
+  @Output() selectTime = new EventEmitter<{time: string, day: number | null, month: number, year: number}>();
+
   // The calendar starts on the current system month/year
   month: number;
   year: number;
 
-  // For highlighting "today"
+  // "Today" reference (used to highlight today's date and generate future bookable days)
   todayDay: number;
   todayMonth: number;
   todayYear: number;
@@ -45,17 +48,31 @@ export class CalendarComponent implements OnInit {
     'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
   ];
 
-  // Weekday labels (getDay() => 0: Sunday, 1: Monday, ...)
+  // Weekday labels (getDay() => 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat)
   weekdays = ['SO', 'MO', 'DI', 'MI', 'DO', 'FR', 'SA'];
 
   constructor() {
-    // Capture today's real date
+    // -------------------------------------------------------------------
+    // By default, use the real current date:
     const now = new Date();
-    this.month = now.getMonth();          // 0..11
-    this.year = now.getFullYear();        // e.g. 2025
-    this.todayDay = now.getDate();        // 1..31
-    this.todayMonth = now.getMonth();     // 0..11
+    this.month = now.getMonth();    // 0..11
+    this.year = now.getFullYear();  // e.g. 2025
+
+    this.todayDay = now.getDate();  // 1..31
+    this.todayMonth = now.getMonth();
     this.todayYear = now.getFullYear();
+
+    // -------------------------------------------------------------------
+    // If you want to test a specific "today," just uncomment and adjust:
+    // this.todayDay = 10;       // e.g. to see bookable days for day=10
+    // this.todayMonth = 2;      // (Remember month is 0-based, so 2=March)
+    // this.todayYear = 2025;    // Some test year
+    // -------------------------------------------------------------------
+
+    // Optionally, we can also adjust the calendar to start on the same month/year as "today"
+    // (in case you changed `todayMonth` or `todayYear`)
+    // this.month = this.todayMonth;
+    // this.year  = this.todayYear;
   }
 
   ngOnInit() {
@@ -68,7 +85,8 @@ export class CalendarComponent implements OnInit {
 
   /**
    * Finds exactly four future weekdays (Mon=1, Tue=2, Thu=4, Fri=5)
-   * starting tomorrow and stores them in bookableDatesMap with:
+   * starting tomorrow (based on `this.todayDay/Month/Year`) and stores
+   * them in bookableDatesMap with:
    *   1st day => ["16:00"]
    *   2nd day => ["16:30"]
    *   3rd day => ["16:00", "17:00"]
@@ -78,12 +96,15 @@ export class CalendarComponent implements OnInit {
     // Clear any old data
     this.bookableDatesMap = {};
 
-    const now = new Date();
-    // Start from tomorrow
-    const candidate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    // Build a "base" Date from the class's today fields
+    // Then set "candidate" to be tomorrow from that date
+    const baseDate = new Date(this.todayYear, this.todayMonth, this.todayDay);
+    const candidate = new Date(this.todayYear, this.todayMonth, this.todayDay + 1);
 
     // Allowed weekdays: Monday=1, Tuesday=2, Thursday=4, Friday=5
     const allowedWeekdays = [1, 2, 4, 5];
+
+    // Hard-coded times for each of the 4 future days
     const timeSlots = [
       ['16:00'],          // for the 1st bookable day
       ['16:30'],          // for the 2nd bookable day
@@ -92,7 +113,7 @@ export class CalendarComponent implements OnInit {
     ];
 
     let found = 0;
-    // Keep incrementing day until we've found 4 valid days
+    // Keep incrementing "candidate" until we've found 4 valid days
     while (found < 4) {
       const dayOfWeek = candidate.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
       if (allowedWeekdays.includes(dayOfWeek)) {
@@ -118,7 +139,7 @@ export class CalendarComponent implements OnInit {
   get daysInCalendar(): CalendarDay[] {
     const days: CalendarDay[] = [];
 
-    // 1) Empty slots before the 1st day
+    // 1) Empty slots before the 1st day of this month
     const firstOfMonth = new Date(this.year, this.month, 1);
     const firstDayOfWeek = firstOfMonth.getDay(); // 0=Sun,1=Mon,2=Tue...
     for (let i = 0; i < firstDayOfWeek; i++) {
@@ -177,13 +198,17 @@ export class CalendarComponent implements OnInit {
   get selectedDayOfWeek(): string {
     if (!this.selectedDay) return '';
     const date = new Date(this.year, this.month, this.selectedDay);
-    const weekdayIndex = date.getDay(); // 0=Sunday,...
+    const weekdayIndex = date.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
     return this.weekdays[weekdayIndex];
   }
 
   /** User clicked a time button */
   onTimeClick(time: string) {
     this.selectedTime = time;
+    const day = this.selectedDay;
+    const month = this.month;
+    const year = this.year;
+    this.selectTime.emit({ time, day, month, year });
   }
 
   /** Convert a "16:00" string to 12h or 24h format. */
@@ -222,12 +247,14 @@ export class CalendarComponent implements OnInit {
     this.selectFirstBookableDay();
   }
 
-  /** Pick the first bookable day (if any) in the current month, and choose its first time. */
+  /**
+   * Pick the first bookable day (if any) in the current month,
+   * and choose its first time slot.
+   */
   private selectFirstBookableDay(): void {
     const firstBookable = this.daysInCalendar.find(d => d.isBookable);
     if (firstBookable?.dayNumber) {
       this.selectedDay = firstBookable.dayNumber;
-
       const isoDate = this.toIsoDate(this.year, this.month, firstBookable.dayNumber);
       const times = this.bookableDatesMap[isoDate] || [];
       this.selectedTime = times.length ? times[0] : null;
@@ -245,11 +272,17 @@ export class CalendarComponent implements OnInit {
     return `${year}-${mm}-${dd}`;
   }
 
+  /**
+   * Returns `true` if the day is in `bookableDatesMap`.
+   */
   isDayBookable(dayNumber: number): boolean {
     const isoDate = this.toIsoDate(this.year, this.month, dayNumber);
     return !!this.bookableDatesMap[isoDate];
   }
 
+  /**
+   * Returns the times for a specific day, if it is in `bookableDatesMap`.
+   */
   getTimesForDay(dayNumber: number): string[] {
     const isoDate = this.toIsoDate(this.year, this.month, dayNumber);
     return this.bookableDatesMap[isoDate] || [];

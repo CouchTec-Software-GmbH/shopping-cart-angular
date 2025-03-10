@@ -1,8 +1,9 @@
-
-<div class="flex min-h-screen items-center justify-center bg-gray-100 p-5">
+<div class="flex min-h-screen items-center justify-center p-5">
   <div class="bg-white rounded-lg shadow-md max-w-[560px] w-full p-6">
     <!-- Header (Month + Year) -->
-    <div class="flex justify-between items-center mb-5 pb-2.5 border-b border-gray-200">
+    <div
+      class="flex justify-between items-center mb-5 pb-2.5 border-b border-gray-200"
+    >
       <div class="flex items-baseline text-lg font-normal gap-2">
         <!-- Dynamically show month + year -->
         <span class="text-black font-[500]">{{ monthNames[month] }}</span>
@@ -10,7 +11,10 @@
       </div>
       <div class="flex gap-2">
         <!-- Prev arrow -->
-        <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer" (click)="prevMonth()">
+        <div
+          class="hover:bg-gray-100 rounded-md hover:cursor-pointer"
+          (click)="prevMonth()"
+        >
           <svg
             width="25px"
             height="25px"
@@ -26,7 +30,10 @@
           </svg>
         </div>
         <!-- Next arrow -->
-        <div class="hover:bg-gray-100 rounded-md hover:cursor-pointer" (click)="nextMonth()">
+        <div
+          class="hover:bg-gray-100 rounded-md hover:cursor-pointer"
+          (click)="nextMonth()"
+        >
           <svg
             width="25px"
             height="25px"
@@ -45,7 +52,9 @@
     </div>
 
     <!-- Weekdays -->
-    <div class="grid grid-cols-7 text-center font-[400] text-sm mb-5 pb-5 border-b border-gray-200">
+    <div
+      class="grid grid-cols-7 text-center font-[400] text-sm mb-1 pb-5 border-b border-gray-200"
+    >
       <div>SO</div>
       <div>MO</div>
       <div>DI</div>
@@ -56,15 +65,17 @@
     </div>
 
     <!-- Days grid -->
-    <div class="grid grid-cols-7 gap-1 mb-10 text-sm">
+    <div class="grid grid-cols-7 gap-1 mb-4 text-sm">
       <!-- Render each "cell" in the calendar -->
       <ng-container *ngFor="let day of daysInCalendar">
         <div
           class="flex items-center justify-center relative rounded-md aspect-square min-w-[35px] sm:min-w-[50px] md:min-w-[70px]"
           [ngClass]="{
             'bg-gray-800 text-white': day.isSelected,
-            'bg-gray-200': day.dayNumber && isDayBookable(day.dayNumber) && !day.isSelected,
-            'hover:cursor-pointer border-2 border-transparent hover:border-black': day.dayNumber && isDayBookable(day.dayNumber)
+            'bg-gray-200':
+              day.dayNumber && isDayBookable(day.dayNumber) && !day.isSelected,
+            'hover:cursor-pointer border-2 border-transparent hover:border-black':
+              day.dayNumber && isDayBookable(day.dayNumber),
           }"
           (click)="onDayClick(day)"
         >
@@ -74,7 +85,7 @@
             <!-- Dot for "today" highlight -->
             <span
               *ngIf="day.isToday"
-              class="absolute bottom-1 sm:bottom-3 w-[5px] h-[5px] bg-black rounded-full"
+              class="absolute sm:bottom-3 bottom-1 w-[5px] h-[5px] bg-black rounded-full"
             ></span>
           </ng-container>
         </div>
@@ -83,7 +94,7 @@
 
     <!-- Footer -->
     <div>
-      <div class="flex justify-between items-center mb-5">
+      <div class="flex justify-between items-center mb-4 ">
         <!-- Display dynamic weekday + day number -->
         <div class="flex flex-row gap-2 justify-center items-center">
           <div class="text-lg font-[500]">{{ selectedDayOfWeek }}</div>
@@ -94,14 +105,14 @@
         <div class="flex border border-gray-300 rounded-lg overflow-hidden">
           <button
             class="px-4 py-2 text-base bg-white hover:bg-gray-100 cursor-pointer"
-            [ngClass]="{'bg-gray-200': timeFormat12}"
+            [ngClass]="{ 'bg-gray-200': timeFormat12 }"
             (click)="timeFormat12 = true"
           >
             12 Std
           </button>
           <button
             class="px-4 py-2 text-base bg-white hover:bg-gray-100 cursor-pointer"
-            [ngClass]="{'bg-gray-200': !timeFormat12}"
+            [ngClass]="{ 'bg-gray-200': !timeFormat12 }"
             (click)="timeFormat12 = false"
           >
             24 Std
@@ -110,7 +121,10 @@
       </div>
 
       <!-- Times for the selected day -->
-      <div *ngIf="selectedDay && isDayBookable(selectedDay)" class="flex flex-col gap-2 mb-5 justify-center">
+      <div
+        *ngIf="selectedDay && isDayBookable(selectedDay)"
+        class="flex flex-col gap-2 mb-5 justify-center"
+      >
         <button
           *ngFor="let t of getTimesForDay(selectedDay) || []"
           class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100"
