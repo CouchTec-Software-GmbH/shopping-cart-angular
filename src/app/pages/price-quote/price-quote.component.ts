@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { HeaderComponent } from '../home/components/header/header.component';
 import { ConfigureMode } from './mode/configure-mode.component';
 import { CommonModule } from '@angular/common';
@@ -33,7 +33,6 @@ export class PriceQuote implements OnInit, OnDestroy {
   constructor(
     public priceService: PriceService,
     private PriceQuoteService: PriceQuoteService,
-    private renderer: Renderer2,
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -76,8 +75,5 @@ export class PriceQuote implements OnInit, OnDestroy {
 
   switchPage(page: Page) {
     this.page = page;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.renderer.setProperty(document.documentElement, 'scrollTop', 0);  // For most browsers
-    this.renderer.setProperty(document.body, 'scrollTop', 0);
   }
 }

@@ -57,11 +57,33 @@
 }
 
 html,
-body,
-main {
+body {
+  overflow-y: hidden !important;
+  height: 100% !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+*:focus {
+  outline: none !important;
+  scroll-behavior: auto !important;
+}
+
+body {
+  position: fixed;
+  width: 100%;
   height: 100%;
-  margin: 0;
-  overflow: auto;
+  overflow: hidden;
+}
+
+*:focus {
+  scroll-behavior: auto !important;
+}
+
+main {
+  height: 100vh !important;
+  overflow-y: auto !important;
+  position: relative !important;
 }
 
 body {

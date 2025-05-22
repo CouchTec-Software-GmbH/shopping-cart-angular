@@ -60,7 +60,8 @@ export class CheckboxComponent implements OnInit {
     .map((option) => option.id);
 
   ngOnInit(): void {
-    const values = localStorage.getItem(this.list.title);
+    // const values = localStorage.getItem(this.list.title);
+    const values = undefined;
     if (values) {
       const array: string[] = JSON.parse(values);
       if (array) {
@@ -79,17 +80,29 @@ export class CheckboxComponent implements OnInit {
         .filter((option) => option.checked)
         .map((option) => option.id),
     );
+
+    console.log('name: ', this.list.title);
+    console.log('list: ', this.list);
   }
 
   onSelectionChange(selectionId: string): void {
-    if (this.selectedOptions.includes(selectionId)) {
-      this.selectedOptions = this.selectedOptions.filter(
-        (option) => option !== selectionId,
+    const option = this.list.options.find((opt) => opt.id === selectionId);
+    if (option) {
+      option.checked = !option.checked;
+
+      if (option.checked) {
+        this.selectedOptions.push(selectionId);
+      } else {
+        this.selectedOptions = this.selectedOptions.filter(
+          (id) => id !== selectionId,
+        );
+      }
+      localStorage.setItem(
+        this.list.title,
+        JSON.stringify(this.selectedOptions),
       );
-    } else {
-      this.selectedOptions.push(selectionId);
+
+      this.selectionChange.emit(this.selectedOptions);
     }
-    localStorage.setItem(this.list.title, JSON.stringify(this.selectedOptions));
-    this.selectionChange.emit(this.selectedOptions);
   }
 }

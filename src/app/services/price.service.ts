@@ -16,8 +16,8 @@ export class PriceService {
   };
 
   platformPrice: Record<string, number> = {
-    ['web']: 600,
-    ['webResponsive']: 800,
+    ['web']: 800,
+    ['webResponsive']: 1000,
     ['ios']: 5000,
     ['android']: 5000,
     ['']: 0,
@@ -95,6 +95,9 @@ export class PriceService {
   maintenance: string[] = [];
   auth: string[] = [];
   encryption: string = '';
+  support: string[] = [];
+  ecommerceFeatures: string[] = [];
+  paymentGateway: string[] = [];
 
   managementCompliance: string[] = [];
   managementIntegration: string[] = [];
@@ -105,13 +108,145 @@ export class PriceService {
   dataSourcesWithoutAPI: number = 0;
   dataProcessing: string = '';
 
+
+  getDataProcessingPrice(result: number) {
+    return result *= this.dataProcessingPrice[this.dataProcessing];
+  }
+
+
   updatePrice() {
+    switch (this.appType) {
+      case AppTypeEnum.Website:
+        this.updateWebsitePrice();
+        break;
+      case AppTypeEnum.ECommerce:
+        this.updateECommercePrice();
+        break;
+      case AppTypeEnum.DataAnalytics:
+        this.updateDataAnalyticsPrice();
+        break;
+      case AppTypeEnum.ContentPlatform:
+        this.updateContentPlatformPrice();
+        break;
+      case AppTypeEnum.Management:
+        this.updateManagementPrice();
+        break;
+      case AppTypeEnum.Digitalisierung:
+        this.updateDigitalisierungPrice();
+        break;
+    }
+  }
+
+  updateECommercePrice() {
     let result = 0;
-    result += this.appTypePrice[this.appType];
+    result += this.appTypePrice[AppTypeEnum.ECommerce];
     result += this.totalUsers * 0.001;
     result += this.concurrentUsers * 0.01;
     result *= this.infrastructurePrice[this.infrastructure];
+    result += this.support.length * 800;
+    result += this.getUiCost();
+    result += this.getAuthCost();
+    result += this.encryptionPrice[this.encryption];
+    result += this.getGeographyCost();
+    result += this.getTimeframeCost(result);
+    result += this.assetPrice[this.assets];
+    result += this.getUserTrackingCost();
+    result += this.getEcommercePrices();
+    result += this.getAPICost();
+    this.priceSubject.next(result);
+    this.getMaintenanceCost();
+  }
+  updateWebsitePrice() {
+    let result = 0;
+    result += this.appTypePrice[AppTypeEnum.Website];
+    result += this.totalUsers * 0.001;
+    result += this.concurrentUsers * 0.01;
+    result *= this.infrastructurePrice[this.infrastructure];
+    result += this.getUiCost();
+    result += this.getAuthCost();
+    result += this.encryptionPrice[this.encryption];
+    result += this.getGeographyCost();
+    result += this.getTimeframeCost(result);
+    result += this.assetPrice[this.assets];
+    result += this.getUserTrackingCost();
+    this.priceSubject.next(result);
+    this.getMaintenanceCost();
+  }
 
+  updateDataAnalyticsPrice() {
+    let result = 0;
+    result += this.appTypePrice[AppTypeEnum.DataAnalytics];
+    result *= this.infrastructurePrice[this.infrastructure];
+    result += this.encryptionPrice[this.encryption];
+    result += this.getTimeframeCost(result);
+    result += this.getAPICost();
+    result = this.getDataProcessingPrice(result);
+    this.priceSubject.next(result);
+    this.getMaintenanceCost();
+  }
+
+  updateDigitalisierungPrice() {
+    let result = 0;
+    result += this.appTypePrice[AppTypeEnum.Digitalisierung];
+    result += this.totalUsers * 0.001;
+    result += this.concurrentUsers * 0.01;
+    result *= this.infrastructurePrice[this.infrastructure];
+    result += this.support.length * 800;
+    result += this.getUiCost();
+    result += this.getAuthCost();
+    result += this.encryptionPrice[this.encryption];
+    result += this.getGeographyCost();
+    result += this.getTimeframeCost(result);
+    result += this.assetPrice[this.assets];
+    result += this.getUserTrackingCost();
+    result += this.getAPICost();
+    this.priceSubject.next(result);
+    this.getMaintenanceCost();
+  }
+
+  updateManagementPrice() {
+    let result = 0;
+    result += this.appTypePrice[AppTypeEnum.Management];
+    result += this.totalUsers * 0.001;
+    result += this.concurrentUsers * 0.01;
+    result *= this.infrastructurePrice[this.infrastructure];
+    result += this.support.length * 800;
+    result += this.getUiCost();
+    result += this.getAuthCost();
+    result += this.encryptionPrice[this.encryption];
+    result += this.getGeographyCost();
+    result += this.getTimeframeCost(result);
+    result += this.assetPrice[this.assets];
+    result += this.getUserTrackingCost();
+    result += this.getAPICost();
+    this.priceSubject.next(result);
+    this.getMaintenanceCost();
+  }
+
+  updateContentPlatformPrice() {
+    let result = 0;
+    result += this.appTypePrice[AppTypeEnum.ContentPlatform];
+    result += this.totalUsers * 0.001;
+    result += this.concurrentUsers * 0.01;
+    result *= this.infrastructurePrice[this.infrastructure];
+    result += this.support.length * 800;
+    result += this.getUiCost();
+    result += this.getAuthCost();
+    result += this.encryptionPrice[this.encryption];
+    result += this.getGeographyCost();
+    result += this.getTimeframeCost(result);
+    result += this.assetPrice[this.assets];
+    result += this.getUserTrackingCost();
+    result += this.getAPICost();
+    this.priceSubject.next(result);
+    this.getMaintenanceCost();
+  }
+
+
+
+
+
+  getUiCost() {
     let mobile = false;
     let desktop = false;
     let ui_cost = 0;
@@ -131,55 +266,65 @@ export class PriceService {
       }
       ui_cost += cost;
     }
-    ui_cost *= this.designPrice[this.design]
-    ui_cost += ui_cost * this.pages / 10;
-    result += ui_cost;
+    ui_cost *= this.designPrice[this.design];
+    ui_cost += (ui_cost * this.pages) / 10;
+    return ui_cost;
+  }
 
+  getEcommercePrices() {
+    let result = 0;
+    result += this.ecommerceFeatures.length * 200;
+    result += this.paymentGateway.length * 100;
+    return result;
+  }
+
+  getAuthCost() {
+    let result = 0;
     if (this.auth.length > 0) {
       result += (this.auth.length - 1) * 100;
       result += 400;
     }
+    return result;
+  }
 
-    result += this.encryptionPrice[this.encryption];
+  getTimeframeCost(result: number) {
+    return result * (1 / (this.timeframe * 4));
+  }
 
+  getGeographyCost() {
+    let result = 0;
     for (const geographyOption of this.geography) {
       result += this.geopgraphyPrice[geographyOption];
     }
+    return result;
+  }
 
-    result += result * (1 / (this.timeframe * 4));
-    result += this.assetPrice[this.assets];
-
+  getTrainingCost() {
+    let result = 0;
     if (this.training.includes('training')) {
       result += 1000;
     }
+    return result;
+  }
 
-    if (this.appType === AppTypeEnum.Management) {
-      result += this.managementCompliance.length * 2000;
-      result += this.managementIntegration.length * 5000;
-    }
+  getComplianceCost() {
+    return this.managementCompliance.length * 2000;
+  }
 
-    if (this.appType === AppTypeEnum.Website) {
-      result += this.userTracking.length * 2000;
-    }
+  getIntegrationCost() {
+    return this.managementIntegration.length * 5000;
+  }
 
-    if (this.appType === AppTypeEnum.DataAnalytics) {
-      result +=
-        this.dataSourcesWithAPI *
-        200 *
-        this.dataProcessingPrice[this.dataProcessing];
-      result +=
-        this.dataSourcesWithoutAPI *
-        600 *
-        this.dataProcessingPrice[this.dataProcessing];
-    }
+  getUserTrackingCost() {
+    return this.userTracking.length * 2000;
+  }
 
-    this.priceSubject.next(result);
-
+  getMaintenanceCost() {
+    let result = 0;
     if (!this.maintenance.includes('maintenance')) {
       this.monthyPriceSubject.next(0);
       return;
     }
-
     let monthyPrice = 0;
     monthyPrice +=
       this.initialStorage * 0.001 +
@@ -196,6 +341,20 @@ export class PriceService {
     }
 
     this.monthyPriceSubject.next(monthyPrice);
+  }
+
+  getAPICost() {
+    let result = 0;
+    result +=
+      this.dataSourcesWithAPI *
+      200 *
+      this.dataProcessingPrice[this.dataProcessing];
+    result +=
+      this.dataSourcesWithoutAPI *
+      600 *
+      this.dataProcessingPrice[this.dataProcessing];
+
+    return result;
   }
 
   setTotalUsers(totalUsers: number) {
@@ -305,6 +464,21 @@ export class PriceService {
 
   setAppType(appType: AppTypeEnum) {
     this.appType = appType;
+    this.updatePrice();
+  }
+
+  setSupport(value: string[]) {
+    this.support = value;
+    this.updatePrice();
+  }
+
+  setEcommerceFeatures(value: string[]) {
+    this.ecommerceFeatures = value;
+    this.updatePrice();
+  }
+
+  setPaymentGateway(value: string[]) {
+    this.paymentGateway = value;
     this.updatePrice();
   }
 }

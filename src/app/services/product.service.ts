@@ -17,15 +17,27 @@ export class ProductService {
     private http: HttpClient,
     private bannerService: BannerService,
     private navigationService: NavigationService,
-  ) { }
+  ) {}
 
   async submitApplication(
     name: string,
     email: string,
     text: string,
+    time: string,
+    day: number,
+    month: number,
+    year: number,
   ): Promise<any> {
     try {
-      let body = { name: name, email: email, message: text };
+      let body = {
+        name: name,
+        email: email,
+        message: text,
+        time: time,
+        day: day,
+        month: month,
+        year: year,
+      };
       const response = await firstValueFrom(
         this.http.post(`${this.apiUrl}contact`, body, get_basic_http_header()),
       );

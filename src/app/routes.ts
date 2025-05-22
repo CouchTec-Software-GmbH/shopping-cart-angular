@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '@pages/home/home.component';
-import { ContactComponent } from '@pages/contact/contact.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PriceQuote } from './pages/price-quote/price-quote.component';
 import { RoutesEnum, routes } from './data/routes';
+import { BookingComponent } from './pages/booking/booking.component';
 
 const routeConfig: Routes = [
   {
@@ -18,7 +18,7 @@ const routeConfig: Routes = [
   },
   {
     path: routes[RoutesEnum.Contact].url,
-    component: ContactComponent,
+    component: BookingComponent,
     title: routes[RoutesEnum.Contact].title,
   },
   {

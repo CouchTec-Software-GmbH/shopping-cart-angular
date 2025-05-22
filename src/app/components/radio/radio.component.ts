@@ -31,10 +31,13 @@ import { BoxType, ProjectOptionList } from '@app/models/project-option-list';
             [id]="option.id"
             [checked]="option.checked"
             class="sr-only peer"
-            (change)="onSelectionChange(option.id)"
+            (mousedown)="stopScroll($event)"
+            (focus)="stopScroll($event)"
+            (click)="onSelectionChange(option.id)"
           />
+
           <span
-            class="block size-[10px] rounded-full bg-none ring-1 ring-black ring-offset-[3px] peer-checked:bg-black peer-checked:ring-offset-[3px]"
+            class="block min-w-3 min-h-3 w-3 h-3 rounded-full bg-none ring-1 ring-black ring-offset-[3px] peer-checked:bg-black peer-checked:ring-offset-[3px]"
           ></span>
           <span class="text-sm text-gray-700">{{ option.name }}</span>
         </label>
@@ -55,7 +58,8 @@ export class RadioComponent implements OnInit {
   uuid: string = crypto.randomUUID();
 
   ngOnInit(): void {
-    const value = localStorage.getItem(this.list.title);
+    // const value = localStorage.getItem(this.list.title);
+    const value = undefined;
     if (value) {
       this.list.options.forEach(option => {
         option.checked = option.id === value
@@ -68,4 +72,20 @@ export class RadioComponent implements OnInit {
     localStorage.setItem(this.list.title, selectionId);
     this.selectionChange.emit(selectionId);
   }
+  handleFocus(event: FocusEvent): void {
+
+  event.preventDefault();
+    const target = event.target as HTMLElement;
+    target.blur();
+
+    target.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  preventScroll(event: MouseEvent): void {
+    event.preventDefault();
+  }
+
+stopScroll(event: Event): void {
+  event.preventDefault();
+  event.stopPropagation();  // Stop event bubbling
+}
 }
