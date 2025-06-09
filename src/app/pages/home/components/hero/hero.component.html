@@ -26,10 +26,10 @@
       <p class="text-[20px] font-brand font-light">Gespräch mit uns</p>
     </button>
 
-    <button>
-      <a href="#showcase" class="text-[20px] font-brand font-light"
-        >Unsere Arbeit</a
+    <button
+      (click)="navigationService.navigateToSuccessStories()"
       >
+      <a class="hover:underline text-[20px] font-brand font-light">Unsere Arbeit</a>
     </button>
   </div>
 </section>

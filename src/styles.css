@@ -51,6 +51,11 @@
   font-style: normal;
 }
 
+html,
+body {
+  scroll-behavior: auto !important;
+}
+
 * {
   margin: 0;
   padding: 0;

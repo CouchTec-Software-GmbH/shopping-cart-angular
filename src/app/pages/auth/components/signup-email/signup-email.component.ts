@@ -51,7 +51,10 @@ export class SignUpEmailComponent implements AfterViewInit {
   showInternalError: boolean = false;
   isLoading = false;
 
-  constructor(public bannerService: BannerService, private navigationService: NavigationService) { }
+  constructor(
+    public bannerService: BannerService,
+    private navigationService: NavigationService,
+  ) {}
 
   get email() {
     return this.signUpForm.get('email')!;
@@ -74,7 +77,6 @@ export class SignUpEmailComponent implements AfterViewInit {
     this.status = await this.authService.preRegister(
       this.signUpForm.value.email ?? '',
       this.signUpForm.value.password ?? '',
-      this.signUpForm.value.marketing_accept ?? false,
     );
     this.isLoading = false;
     this.submitted = true;

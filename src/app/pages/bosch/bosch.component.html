@@ -1,0 +1,621 @@
+<div class="flex flex-col min-h-screen">
+  <app-header></app-header>
+  <section  class="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden mt-16 lg:mt-0">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-red-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="flex flex-col items-center space-y-8 text-center">
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
+            Enterprise-Fallstudie
+          </div>
+          <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-white via-blue-200 to-red-200 bg-clip-text text-transparent">
+            Bosch Editorial Planner
+          </h1>
+          <p class="mx-auto max-w-[800px] text-gray-300 text-lg md:text-xl leading-relaxed">
+            Entwicklung von Markenkonsistenz für einen weltweit führenden Anbieter von Technologie und Dienstleistungen durch intelligentes Digital-Asset-Management.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button
+             (click)="navigationsService.navigateToSuccessStories()"
+            class="bg-white text-black hover:bg-gray-100 font-semibold py-3 px-6 rounded-md text-lg inline-flex items-center justify-center">
+            Weitere Projekte ansehen <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+           <button
+             (click)="navigationsService.navigateToContact()"
+            class="border-white/30 text-white hover:bg-white/10 border py-3 px-6 rounded-md text-lg">
+            Unser Team kontaktieren
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-8 border-t border-white/20">
+          <div class="text-center">
+            <div class="text-2xl md:text-3xl font-bold text-blue-300">10K+</div>
+            <div class="text-gray-400 text-sm">Verwaltete Assets</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl md:text-3xl font-bold text-red-300">50+</div>
+            <div class="text-gray-400 text-sm">Globale Teams</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl md:text-3xl font-bold text-blue-300">75%</div>
+            <div class="text-gray-400 text-sm">Zeitersparnis</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl md:text-3xl font-bold text-red-300">99,9%</div>
+            <div class="text-gray-400 text-sm">Verfügbarkeit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-white relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white"></div>
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-red-100 text-blue-700 rounded-full px-4 py-2 text-sm font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              Enterprise-Fallstudie
+            </div>
+            <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Einen globalen Marktführer stärken
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Für eine weltbekannte Marke wie Bosch ist es von größter Bedeutung, eine einheitliche und starke Stimme auf einem riesigen globalen Markt zu wahren. Wir haben mit Bosch zusammengearbeitet, um den Bosch Editorial Planner zu entwerfen und zu entwickeln, eine hochentwickelte Plattform, die als zentrales Nervensystem für ihre globalen Marketing- und Kommunikationsmaterialien dient.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span class="font-semibold">Globale Reichweite</span>
+              </div>
+              <p class="text-gray-600 text-sm">Einheitliche Markenstimme in allen Märkten</p>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                <span class="font-semibold">Intelligente Plattform</span>
+              </div>
+              <p class="text-gray-600 text-sm">Intelligentes System zur Verwaltung von Assets</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
+          <div class="aspect-video overflow-hidden rounded-2xl border-2 border-white bg-gray-100 shadow-2xl relative">
+
+            <img src="/assets/images/showcase/showcase1.avif" alt="Bosch Editorial Planner Überblick" class="object-cover absolute inset-0 w-full h-full" />
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-red-50 via-gray-50 to-red-50 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-10 left-10 w-20 h-20 border-2 border-red-200 rounded-lg rotate-12 opacity-30"></div>
+      <div class="absolute bottom-20 right-20 w-16 h-16 border-2 border-blue-200 rounded-lg -rotate-12 opacity-30"></div>
+      <div class="absolute top-1/2 left-1/4 w-24 h-24 border-2 border-red-200 rounded-full opacity-20"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 rounded-full px-4 py-2 text-sm font-medium mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Die Herausforderung
+          </div>
+          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl mb-6 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+            Globale Komplexität meistern
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <div class="border-0 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+            <div class="p-6 text-center">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-xl font-bold text-red-600">1K+</span>
+              </div>
+              <h3 class="font-semibold mb-2">Digitale Assets</h3>
+              <p class="text-gray-600 text-sm">Tausende von Dateien in verschiedenen Formaten und Regionen</p>
+            </div>
+          </div>
+
+          <div class="border-0 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+            <div class="p-6 text-center">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-blue-600"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <h3 class="font-semibold mb-2">Globale Skalierung</h3>
+              <p class="text-gray-600 text-sm">Teams in verschiedenen Regionen und Zeitzonen</p>
+            </div>
+          </div>
+
+          <div class="border-0 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+            <div class="p-6 text-center">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+              </div>
+              <h3 class="font-semibold mb-2">Markenintegrität</h3>
+              <p class="text-gray-600 text-sm">Gewährleistung einer konsistenten, markenkonformen Botschaft</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-xl">
+          <p class="text-gray-700 text-lg leading-relaxed text-center">
+            In einem Unternehmen mit der Größe und Reichweite von Bosch stellt die Verwaltung von Tausenden von digitalen Assets – von Produktfotografie und Designdateien bis hin zu Marketingbroschüren und Kampagnenmaterialien – eine bedeutende Herausforderung dar.
+            <span class="font-semibold text-red-600">
+              Sicherzustellen, dass jedes Team in jeder Region die korrekte, markenkonforme und aktuellste Version eines Assets verwendet, ist entscheidend für die Wahrung der Markenintegrität.
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-blue-50 via-gray-50 to-blue-50 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 right-20 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl"></div>
+      <div class="absolute bottom-20 left-20 w-40 h-40 bg-red-200/30 rounded-full blur-2xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl text-center">
+        <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-2 text-sm font-medium mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          Unsere Lösung
+        </div>
+        <h2 class="text-4xl font-bold tracking-tighter md:text-5xl mb-8 bg-gradient-to-r from-blue-600 via-red-600 to-blue-600 bg-clip-text text-transparent">
+          Ein zentraler Hub für Markenexzellenz
+        </h2>
+
+        <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/50 shadow-2xl mb-12">
+          <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-8">
+            Wir haben eine maßgeschneiderte
+            <span class="font-semibold text-blue-600">
+              Digital Asset Management (DAM) und Content-Planungsplattform
+            </span>
+            entwickelt, die speziell auf den Bosch-Workflow zugeschnitten ist. Der Bosch Editorial Planner ist mehr als nur eine digitale Bibliothek; er ist ein strategisches Werkzeug, das Klarheit, Kontrolle und Konsistenz liefert.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-left space-y-4">
+              <h3 class="text-xl font-bold text-gray-900">Was wir entwickelt haben</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                  <span class="text-gray-700">Intelligentes Filtersystem</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                  <span class="text-gray-700">Kampagnenmanagement-Tools</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                  <span class="text-gray-700">Steuerung der Markenkonsistenz</span>
+                </li>
+              </ul>
+            </div>
+            <div class="text-left space-y-4">
+              <h3 class="text-xl font-bold text-gray-900">Die Auswirkungen</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+                  <span class="text-gray-700">75% weniger Suchzeit</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+                  <span class="text-gray-700">100% Markenkonsistenz</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+                  <span class="text-gray-700">Globale Team-Kollaboration</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50 opacity-50"></div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold tracking-tighter md:text-4xl mb-4">
+          Leistungsstarke Funktionen, die Ergebnisse liefern
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Jedes Feature wurde sorgfältig entwickelt, um reale Herausforderungen zu lösen und Teams zu befähigen, effizienter zu arbeiten.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:gap-12">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+              01. Intelligente Filterung
+            </div>
+            <h3 class="text-2xl font-bold">Intelligente Asset-Filterung</h3>
+            <p class="text-gray-600 text-lg">
+              Gehen Sie über einfache Schlüsselwortsuchen hinaus. Filtern Sie Ergebnisse nach übergeordneten strategischen Kriterien wie "Kommunikationsziel", "Corporate Design-Phase" und "Lebenszyklus", um das perfekte Asset für Ihre Markenstrategie zu finden.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Strategische Filterung</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Markenausrichtung</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Schnelles Finden</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="bg-gradient-to-br from-blue-500 to-red-600 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                  <div class="h-2 bg-white/30 rounded flex-1"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 bg-white/70 rounded-full"></div>
+                  <div class="h-2 bg-white/50 rounded flex-1"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 bg-white/50 rounded-full"></div>
+                  <div class="h-2 bg-white/30 rounded flex-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="relative md:order-1">
+            <div class="bg-gradient-to-br from-red-500 to-blue-600 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div class="space-y-4">
+                <div class="flex gap-2">
+                  <div class="w-16 h-12 bg-white/20 rounded"></div>
+                  <div class="w-16 h-12 bg-white/30 rounded"></div>
+                  <div class="w-16 h-12 bg-white/20 rounded"></div>
+                </div>
+                <div class="h-1 bg-white/40 rounded w-3/4"></div>
+                <div class="h-1 bg-white/30 rounded w-1/2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4 md:order-2">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              02. Kampagnen-Hub
+            </div>
+            <h3 class="text-2xl font-bold">Nahtloses Kampagnen-Management</h3>
+            <p class="text-gray-600 text-lg">
+              Die integrierte Kampagnenfunktion ermöglicht es Managern, Sammlungen von Assets für bestimmte Initiativen zu kuratieren und fördert die nahtlose Zusammenarbeit zwischen globalen und lokalen Teams für eine kohärente Umsetzung.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Asset-Sammlungen</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Globale Kollaboration</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kampagnen-Steuerung</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+              03. Markenhüter
+            </div>
+            <h3 class="text-2xl font-bold">Unerbittliche Markenkonsistenz</h3>
+            <p class="text-gray-600 text-lg">
+              Eine einzige, vertrauenswürdige Quelle für alle genehmigten Inhalte eliminiert das Risiko der Verwendung veralteter oder nicht markenkonformer Materialien und schützt so wertvolles Markenkapital in jedem Markt und an jedem Touchpoint.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Markenschutz</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Versionskontrolle</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Globale Standards</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="bg-gradient-to-br from-red-500 to-blue-600 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div class="space-y-4">
+                <div class="flex justify-center">
+                  <div class="w-16 h-16 bg-white/30 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="h-2 bg-white/40 rounded mx-auto w-3/4 mb-2"></div>
+                  <div class="h-2 bg-white/30 rounded mx-auto w-1/2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="relative md:order-1">
+            <div class="bg-gradient-to-br from-blue-500 to-red-600 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div class="space-y-4">
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="h-8 bg-white/20 rounded"></div>
+                  <div class="h-8 bg-white/30 rounded"></div>
+                  <div class="h-8 bg-white/20 rounded"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="h-6 bg-white/25 rounded"></div>
+                  <div class="h-6 bg-white/35 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4 md:order-2">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              04. Benutzererfahrung
+            </div>
+            <h3 class="text-2xl font-bold">Intuitives, nutzerzentriertes Design</h3>
+            <p class="text-gray-600 text-lg">
+              Leistung bedeutet nichts ohne Benutzerfreundlichkeit. Unsere saubere, personalisierte und hochintuitive Benutzeroberfläche fördert die Akzeptanz und wird zum unangefochtenen Zentrum für alle Content-Aktivitäten.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Intuitive Oberfläche</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Einfache Akzeptanz</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Minimaler Schulungsaufwand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-2">
+          <div class="text-3xl font-bold text-blue-600">10K+</div>
+          <div class="text-gray-600">Verwaltete Assets</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl font-bold text-red-600">50+</div>
+          <div class="text-gray-600">Globale Teams</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl font-bold text-blue-600">99,9%</div>
+          <div class="text-gray-600">Verfügbarkeit</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl font-bold text-red-600">75%</div>
+          <div class="text-gray-600">Zeitersparnis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-blue-50 via-gray-50 to-red-50 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-blue-200/30 rounded-full blur-xl"></div>
+      <div class="absolute bottom-10 right-10 w-32 h-32 bg-red-200/30 rounded-full blur-xl"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gray-200/20 rounded-full blur-2xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="relative order-2 lg:order-1">
+          <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
+          <div class="aspect-video overflow-hidden rounded-2xl border-2 border-white bg-gray-100 shadow-2xl relative">
+            <img src="/assets/images/bosch/office.jpg" alt="Team bespricht das Bosch-Projekt" class="object-cover absolute inset-0 w-full h-full" />
+          </div>
+        </div>
+
+        <div class="space-y-8 order-1 lg:order-2">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-2 text-sm font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.74"/></svg>
+              Unser Prozess
+            </div>
+            <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">
+              Kollaborativer Ansatz
+            </h2>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Unser Team arbeitete eng mit den Stakeholdern von Bosch zusammen, um ihre einzigartigen Herausforderungen und Anforderungen zu verstehen. Durch kollaborative Workshops und iterative Design-Sitzungen entwickelten wir eine Lösung, die perfekt auf ihren globalen Workflow und ihre Markenstandards abgestimmt war.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Dieser partnerschaftliche Ansatz stellte sicher, dass die endgültige Plattform nicht nur die technischen Spezifikationen erfüllte, sondern auch die realen Bedürfnisse der Marketingteams in verschiedenen Regionen und Abteilungen berücksichtigte.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div class="border-0 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+              <div class="p-4">
+                <div class="text-2xl font-bold text-blue-600 mb-1">12</div>
+                <div class="text-sm text-gray-600">Workshop-Sitzungen</div>
+              </div>
+            </div>
+            <div class="border-0 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+              <div class="p-4">
+                <div class="text-2xl font-bold text-red-600 mb-1">25+</div>
+                <div class="text-sm text-gray-600">Beteiligte Stakeholder</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="w-full py-12 md:py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-red-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+  </div>
+
+  <div class="container mx-auto px-4 md:px-6 relative z-10">
+    <div class="mx-auto max-w-4xl space-y-8 text-center">
+      <div class="space-y-4">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          Live-Demo
+        </div>
+        <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-white via-blue-200 to-red-200 bg-clip-text text-transparent">
+          Sehen Sie es in Aktion
+        </h2>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+          Sehen Sie, wie der Bosch Editorial Planner den Prozess des Hochladens und Verwaltens digitaler Assets mit intelligenter Automatisierung und intuitiven Arbeitsabläufen vereinfacht.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-12 mx-auto max-w-5xl">
+      <div class="relative">
+        <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/30 to-red-500/30 rounded-3xl blur-xl"></div>
+        <div class="aspect-video overflow-hidden rounded-2xl border-2 border-white/20 bg-black shadow-2xl relative">
+          <video class="w-full h-full object-cover" src="/assets/videos/bosch/upload.mov" autoplay loop muted playsinline controls>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="w-full py-12 md:py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-red-50 opacity-50"></div>
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div class="absolute top-20 right-20 w-32 h-32 bg-blue-200/20 rounded-full blur-2xl animate-pulse"></div>
+      <div class="absolute bottom-20 left-20 w-40 h-40 bg-red-200/20 rounded-full blur-2xl animate-pulse delay-500"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl space-y-12 text-center">
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 rounded-full px-4 py-2 text-sm font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+            Ergebnisse & Auswirkungen
+          </div>
+          <h2 class="text-4xl font-bold tracking-thighter md:text-5xl bg-gradient-to-r from-blue-600 via-red-600 to-blue-600 bg-clip-text text-transparent">
+            Strategie durch Technologie vorantreiben
+          </h2>
+          <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            Der Bosch Editorial Planner ist ein Beweis für unsere Fähigkeit, komplexe Unternehmensherausforderungen in elegante, leistungsstarke und benutzerfreundliche Lösungen zu übersetzen. Durch die Umgestaltung ihres Content-Workflows haben wir Bosch mit einem entscheidenden Werkzeug ausgestattet, um ihre Marke nicht nur präzise zu managen, sondern auch ihr "Technik fürs Leben"-Versprechen an jedem Kundenkontaktpunkt zu stärken.
+          </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="border-0 shadow-xl bg-gradient-to-br from-blue-50 to-blue-100 hover:shadow-2xl transition-shadow duration-300 rounded-xl">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+              </div>
+              <h3 class="text-3xl font-bold text-blue-600 mb-2">100%</h3>
+              <p class="text-gray-700 font-medium">Markenkonsistenz über globale Märkte hinweg</p>
+            </div>
+          </div>
+
+          <div class="border-0 shadow-xl bg-gradient-to-br from-red-50 to-red-100 hover:shadow-2xl transition-shadow duration-300 rounded-xl">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+              </div>
+              <h3 class="text-3xl font-bold text-red-600 mb-2">75%</h3>
+              <p class="text-gray-700 font-medium">Reduzierung der Zeit für die Suche nach Assets</p>
+            </div>
+          </div>
+
+          <div class="border-0 shadow-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-2xl transition-shadow duration-300 sm:col-span-2 lg:col-span-1 rounded-xl">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.74"/></svg>
+              </div>
+              <h3 class="text-3xl font-bold text-gray-600 mb-2">50+</h3>
+              <p class="text-gray-700 font-medium">Globale Teams nutzen die Plattform täglich</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Wichtige Leistungsindikatoren (KPIs)</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-blue-600">↑ 300%</div>
+              <div class="text-gray-600 text-sm">Geschwindigkeit der Asset-Findung</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-red-600">↓ 85%</div>
+              <div class="text-gray-600 text-sm">Markeninkonsistenzen</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-blue-600">↑ 200%</div>
+              <div class="text-gray-600 text-sm">Team-Kollaboration</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-red-600">↑ 150%</div>
+              <div class="text-gray-600 text-sm">Kampagneneffizienz</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-red-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl space-y-8 text-center">
+        <div class="space-y-6">
+          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-white via-blue-200 to-red-200 bg-clip-text text-transparent">
+            Bereit, Ihr Digital-Asset-Management zu transformieren?
+          </h2>
+          <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Lassen Sie uns besprechen, wie wir eine maßgeschneiderte Lösung für die einzigartigen Bedürfnisse Ihres Unternehmens entwickeln und Ihnen helfen können, den gleichen Erfolg wie Bosch zu erzielen.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-6 pt-4">
+          <button
+             (click)="navigationsService.navigateToContact()"
+            class="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-md text-lg inline-flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.74"/></svg>
+            Unser Team kontaktieren
+          </button>
+          <button
+             (click)="navigationsService.navigateToSuccessStories()"
+            class="bg-transparent border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-md text-lg border inline-flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Weitere Fallstudien ansehen
+          </button>
+        </div>
+
+        <div class="pt-12 border-t border-white/20">
+          <p class="text-gray-400 text-sm mb-6">Vertraut von Branchenführern weltweit</p>
+          <div class="flex justify-center items-center gap-8 opacity-60">
+            <div class="text-2xl font-bold">BOSCH</div>
+            <div class="w-px h-8 bg-white/20"></div>
+            <div class="text-lg">Führendes Technologieunternehmen</div>
+            <div class="w-px h-8 bg-white/20"></div>
+            <div class="text-lg">Globale Präsenz</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>

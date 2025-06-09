@@ -41,7 +41,6 @@ export class BookingComponent {
     this.month = event.month;
     this.year = event.year;
 
-    console.log(event.time);
     this.state = BookingState.Details;
   }
 }

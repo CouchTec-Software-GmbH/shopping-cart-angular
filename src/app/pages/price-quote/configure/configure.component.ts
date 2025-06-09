@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { RadioComponent } from '@app/components/radio/radio.component';
 import { NumberInputComponent } from '@app/components/number-input/number-input.component';
 import { CheckboxComponent } from '@app/components/checkbox/checkbox.component';
@@ -32,14 +39,16 @@ export class Configure implements OnInit, OnDestroy {
   appConfigComponents: (ProjectOptionList | ProjectNumberInput)[] = [];
   appTypeSubscription!: Subscription;
 
-  constructor(public priceService: PriceService, private priceQuoteService: PriceQuoteService) { }
+  constructor(
+    public priceService: PriceService,
+    private priceQuoteService: PriceQuoteService,
+  ) {}
 
   ngOnInit(): void {
     this.appTypeSubscription = this.priceQuoteService.appType$.subscribe({
-      next: (value) =>
-        {
-          this.appType = value;
-        },
+      next: (value) => {
+        this.appType = value;
+      },
     });
 
     this.priceService.updatePrice();
@@ -56,7 +65,6 @@ export class Configure implements OnInit, OnDestroy {
     }
     return BoxType.NumberInput;
   }
-
 
   handleSelectionChange(fieldId: string | undefined, value: any): void {
     if (!fieldId) {
@@ -76,14 +84,18 @@ export class Configure implements OnInit, OnDestroy {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  isOptionList(component: ProjectOptionList | ProjectNumberInput): component is ProjectOptionList {
+  isOptionList(
+    component: ProjectOptionList | ProjectNumberInput,
+  ): component is ProjectOptionList {
     return (component as ProjectOptionList).options !== undefined;
   }
 
   isProjectOptionList(component: any): component is ProjectOptionList {
     return 'options' in component;
   }
-  isProjectNumberInput(component: ProjectOptionList | ProjectNumberInput): component is ProjectNumberInput {
+  isProjectNumberInput(
+    component: ProjectOptionList | ProjectNumberInput,
+  ): component is ProjectNumberInput {
     return 'min' in component && 'max' in component && 'step' in component;
   }
 }

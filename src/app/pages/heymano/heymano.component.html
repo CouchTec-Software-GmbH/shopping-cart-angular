@@ -1,0 +1,572 @@
+<div class="flex flex-col min-h-screen">
+  <section class="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-red-500/5 to-red-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="flex flex-col items-center space-y-8 text-center">
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+            Startup-Projekt
+          </div>
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent pb-1">
+            HeyMano
+          </h1>
+          <p class="mx-auto max-w-[800px] text-gray-300 text-lg md:text-xl leading-relaxed">
+            Ein Marktplatz, der Kunden mit qualifizierten Handwerkern verbindet. Entwickelt mit Next.js, Rust und PostgreSQL. Derzeit in der Testphase.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="bg-white text-black hover:bg-gray-100 font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
+            Weitere Projekte ansehen <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button class="border-white/30 text-white hover:bg-white/10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-11 px-8">
+            Unser Team kontaktieren
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-8 border-t border-white/20">
+          <div class="text-center">
+            <div class="text-lg md:text-xl font-bold text-red-300">Next.js</div>
+            <div class="text-gray-400 text-sm">Frontend</div>
+          </div>
+          <div class="text-center">
+            <div class="text-lg md:text-xl font-bold text-red-300">Rust</div>
+            <div class="text-gray-400 text-sm">Backend</div>
+          </div>
+          <div class="text-center">
+            <div class="text-lg md:text-xl font-bold text-red-300">PostgreSQL</div>
+            <div class="text-gray-400 text-sm">Datenbank</div>
+          </div>
+          <div class="text-center">
+            <div class="text-lg md:text-xl font-bold text-red-300">Google Cloud</div>
+            <div class="text-gray-400 text-sm">Infrastruktur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-white relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white"></div>
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-red-100 to-red-100 text-red-700 rounded-full px-4 py-2 text-sm font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+              Marktplatz-Plattform
+            </div>
+            <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Kunden und Handwerker zusammenbringen
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              HeyMano ist eine Marktplatz-Plattform, die Kunden mit qualifizierten Handwerkern in ihrer Nähe verbindet. Mit einem von Airbnb inspirierten Design können Benutzer Handwerkerprofile durchsuchen, ihre Arbeiten ansehen und direkt über unsere Plattform Kontakt aufnehmen.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                <span class="font-semibold">Intelligente Suche</span>
+              </div>
+              <p class="text-gray-600 text-sm">Filtern nach Gewerk, Standort und Fähigkeiten</p>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+                <span class="font-semibold">Kartenansicht</span>
+              </div>
+              <p class="text-gray-600 text-sm">Finden Sie Handwerker in Ihrer Nähe auf der Karte</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
+          <div class="aspect-video overflow-hidden rounded-2xl border-2 border-white bg-gray-100 shadow-2xl relative">
+            <img
+              src="assets/images/heymano/list-view.png"
+              alt="HeyMano Plattform-Übersicht"
+              class="object-cover absolute w-full h-full"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-red-50 via-gray-50 to-red-50 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-10 left-10 w-20 h-20 border-2 border-red-200 rounded-lg rotate-12 opacity-30"></div>
+      <div class="absolute bottom-20 right-20 w-16 h-16 border-2 border-red-200 rounded-lg -rotate-12 opacity-30"></div>
+      <div class="absolute top-1/2 left-1/4 w-24 h-24 border-2 border-red-200 rounded-full opacity-20"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 rounded-full px-4 py-2 text-sm font-medium mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+            Das Problem
+          </div>
+          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl mb-6 bg-gradient-to-r from-red-600 to-gray-600 bg-clip-text text-transparent">
+            Qualifizierte Handwerker zu finden ist schwer
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <div class="p-6 text-center">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+              </div>
+              <h3 class="font-semibold mb-2">Entdeckungsproblem</h3>
+              <p class="text-gray-600 text-sm">Schwierigkeit, qualifizierte Handwerker in Ihrer Nähe zu finden</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <div class="p-6 text-center">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+              </div>
+              <h3 class="font-semibold mb-2">Vertrauensprobleme</h3>
+              <p class="text-gray-600 text-sm">Keine Möglichkeit, Fähigkeiten und frühere Arbeiten zu überprüfen</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <div class="p-6 text-center">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+              </div>
+              <h3 class="font-semibold mb-2">Standortbarrieren</h3>
+              <p class="text-gray-600 text-sm">Schwierig, Handwerker in der Nähe zu finden</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-xl">
+          <p class="text-gray-700 text-lg leading-relaxed text-center">
+            Kunden haben Schwierigkeiten, zuverlässige Handwerker in ihrer Umgebung zu finden, während qualifizierte Handwerker Schwierigkeiten haben, ihre Arbeit zu präsentieren und potenzielle Kunden zu erreichen.
+            <span class="font-semibold text-red-600">
+              Es gab keine zentralisierte Plattform, die beide Seiten dieses Problems effektiv löste.
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 right-20 w-32 h-32 bg-red-200/30 rounded-full blur-2xl"></div>
+      <div class="absolute bottom-20 left-20 w-40 h-40 bg-red-200/30 rounded-full blur-2xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl text-center">
+        <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 rounded-full px-4 py-2 text-sm font-medium mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+          Unsere Lösung
+        </div>
+        <h2 class="text-4xl font-bold tracking-tighter md:text-5xl mb-8 bg-gradient-to-r from-red-600 via-gray-600 to-red-600 bg-clip-text text-transparent">
+          Eine moderne Marktplatz-Plattform
+        </h2>
+
+        <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/50 shadow-2xl mb-12">
+          <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-8">
+            Wir haben HeyMano als eine
+            <span class="font-semibold text-red-600">umfassende Marktplatz-Plattform</span> entwickelt, die Kunden mit qualifizierten Handwerkern verbindet. Mit einem von Airbnb inspirierten Design erleichtert die Plattform das Entdecken, Bewerten und Kontaktieren von Handwerkern in Ihrer Nähe.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-left space-y-4">
+              <h3 class="text-xl font-bold text-gray-900">Plattform-Funktionen</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                  <span class="text-gray-700">Erweiterte Suche und Filterung</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+                  <span class="text-gray-700">Interaktive Kartenansicht</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <span class="text-gray-700">Detaillierte Handwerkerprofile</span>
+                </li>
+              </ul>
+            </div>
+            <div class="text-left space-y-4">
+              <h3 class="text-xl font-bold text-gray-900">Technischer Stack</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+                  <span class="text-gray-700">Next.js Frontend</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                  <span class="text-gray-700">Rust Backend mit PostgreSQL</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                  <span class="text-gray-700">Google Cloud Bereitstellung</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-white relative overflow-hidden">
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold tracking-tighter md:text-4xl mb-4">Plattformfunktionen & Implementierung</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Von Grund auf mit modernen Technologien und benutzerzentriertem Design entwickelt
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:gap-12">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              01. Suche & Entdeckung
+            </div>
+            <h3 class="text-2xl font-bold">Sucherlebnis im Airbnb-Stil</h3>
+            <p class="text-gray-600 text-lg">
+              Eine große Suchleiste auf der Startseite ermöglicht es den Benutzern, Handwerker nach Standort, Handwerksart und spezifischen Fähigkeiten zu finden. Die erweiterte Filterung umfasst den Standortradius, das Erfahrungsniveau und spezialisierte Dienstleistungen wie Kücheneinbau oder Türreparatur.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Standortsuche</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Fähigkeitenfilter</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Radiussteuerung</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-video overflow-hidden rounded-2xl border-2 border-red-100 bg-gray-100 shadow-2xl relative">
+              <img
+                src="assets/images/heymano/search.png"
+                alt="Demo der Suchfunktionalität"
+                class="object-cover absolute w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="relative md:order-1">
+            <div class="aspect-video overflow-hidden rounded-2xl border-2 border-red-100 bg-gray-100 shadow-2xl relative">
+              <img
+                src="assets/images/heymano/map-view.png"
+                alt="Vergleich von Listen- und Kartenansicht"
+                class="object-cover absolute w-full h-full"
+              />
+            </div>
+          </div>
+          <div class="space-y-4 md:order-2">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              02. Doppeltes Ansichtssystem
+            </div>
+            <h3 class="text-2xl font-bold">Listenansicht & Interaktive Karte</h3>
+            <p class="text-gray-600 text-lg">
+              Benutzer können zwischen einer traditionellen Listenansicht, die Handwerkerprofile anzeigt, und einer interaktiven Kartenansicht, die die Standorte der Handwerker geografisch darstellt, wechseln. Beide Ansichten behalten dieselben Such- und Filterfunktionen bei.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Listenansicht</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kartenintegration</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Geolokalisierung</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              03. Detaillierte Profile
+            </div>
+            <h3 class="text-2xl font-bold">Umfassende Handwerkerinformationen</h3>
+            <p class="text-gray-600 text-lg">
+              Jedes Profil enthält Name, Unternehmensform, Handwerksspezialisierung, Standort, Berufserfahrung, besondere Fähigkeiten (Türen, Küchen usw.), Beschreibung, Portfoliobilder und Kontaktinformationen einschließlich Website, Instagram, E-Mail und Telefon.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Portfoliobilder</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Kontaktinformationen</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Fähigkeiten & Erfahrung</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-video overflow-hidden rounded-2xl border-2 border-red-100 bg-gray-100 shadow-2xl relative">
+              <img
+                src="assets/images/heymano/details.png"
+                alt="Handwerker-Profilseite"
+                class="object-cover absolute w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="relative md:order-1">
+            <div class="aspect-video overflow-hidden rounded-2xl border-2 border-red-100 bg-gray-100 shadow-2xl relative">
+              <img
+                src="assets/images/heymano/auth.png"
+                alt="Oberfläche zur Profilerstellung"
+                class="object-cover absolute w-full h-full"
+              />
+            </div>
+          </div>
+          <div class="space-y-4 md:order-2">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+              04. Handwerker-Registrierung
+            </div>
+            <h3 class="text-2xl font-bold">Benutzerdefinierte Authentifizierung & Profileinrichtung</h3>
+            <p class="text-gray-600 text-lg">
+              Handwerker können sich über unser maßgeschneidertes Authentifizierungssystem registrieren und detaillierte Profile erstellen. Der Profilerstellungsprozess leitet sie durch die Eingabe ihrer Informationen, Fähigkeiten, Portfoliobilder und Kontaktdaten, um eine umfassende Präsenz auf der Plattform zu schaffen.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Benutzerdefinierte Authentifizierung</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Profil-Ersteller</span>
+              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Bildupload</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold mb-8">Plattform-Rundgang</h3>
+        <div class="aspect-video overflow-hidden rounded-2xl border-2 border-red-100 bg-black shadow-2xl relative max-w-4xl mx-auto">
+          <video class="w-full h-full object-cover" src="/assets/videos/heymano/demo.mp4" autoplay loop muted playsinline controls>
+            Dein Browser unterstützt das Video-Tag nicht.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-red-50 via-gray-50 to-red-50 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-red-200/30 rounded-full blur-xl"></div>
+      <div class="absolute bottom-10 right-10 w-32 h-32 bg-red-200/30 rounded-full blur-xl"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gray-200/20 rounded-full blur-2xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="relative order-2 lg:order-1">
+          <div class="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
+          <div class="aspect-video overflow-hidden rounded-2xl border-2 border-white bg-gray-100 shadow-2xl relative">
+            <img
+              src="assets/images/bosch/office.jpg"
+              alt="Entwicklungsprozess und Teamarbeit"
+              class="object-cover absolute w-full h-full"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-8 order-1 lg:order-2">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 rounded-full px-4 py-2 text-sm font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+              Entwicklung
+            </div>
+            <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-red-600 to-gray-600 bg-clip-text text-transparent">
+              Von Grund auf neu entwickelt
+            </h2>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Wir haben die gesamte Plattform von Grund auf implementiert und uns für moderne Technologien entschieden, die die beste Leistung und Skalierbarkeit bieten. Das Frontend verwendet Next.js für serverseitiges Rendering und eine optimale Benutzererfahrung.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Das Backend ist mit Rust für hohe Leistung und Sicherheit erstellt und mit einer PostgreSQL-Datenbank verbunden. Wir haben eine benutzerdefinierte Authentifizierung implementiert, um die volle Kontrolle über die Benutzerverwaltung und Sicherheit zu behalten.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+              <div class="p-4">
+                <div class="text-lg font-bold text-red-600 mb-1">Full Stack</div>
+                <div class="text-sm text-gray-600">End-to-End-Entwicklung</div>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+              <div class="p-4">
+                <div class="text-lg font-bold text-red-600 mb-1">Benutzerdefinierte Auth</div>
+                <div class="text-sm text-gray-600">Von Grund auf neu erstellt</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-red-50 opacity-50"></div>
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div class="absolute top-20 right-20 w-32 h-32 bg-red-200/20 rounded-full blur-2xl animate-pulse"></div>
+      <div class="absolute bottom-20 left-20 w-40 h-40 bg-red-200/20 rounded-full blur-2xl animate-pulse delay-500"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl space-y-12 text-center">
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 rounded-full px-4 py-2 text-sm font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+            Technische Implementierung
+          </div>
+          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-red-600 via-gray-600 to-red-600 bg-clip-text text-transparent">
+            Moderner Tech-Stack
+          </h2>
+          <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            Entwickelt mit Blick auf Leistung, Skalierbarkeit und Entwicklererfahrung. Jede Technologieentscheidung wurde getroffen, um sicherzustellen, dass die Plattform mit unserer Benutzerbasis wachsen kann.
+          </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-xl bg-gradient-to-br from-red-50 to-red-100 hover:shadow-2xl transition-shadow duration-300">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-red-600 mb-2">Next.js</h3>
+              <p class="text-gray-700 font-medium">Frontend-Framework mit SSR</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-2xl transition-shadow duration-300">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-600 mb-2">Rust</h3>
+              <p class="text-gray-700 font-medium">Hochleistungs-Backend</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-xl bg-gradient-to-br from-red-50 to-red-100 hover:shadow-2xl transition-shadow duration-300">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-red-600 mb-2">PostgreSQL</h3>
+              <p class="text-gray-700 font-medium">Zuverlässige Datenbank</p>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-2xl transition-shadow duration-300">
+            <div class="p-8 text-center">
+              <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-600 mb-2">Google Cloud</h3>
+              <p class="text-gray-700 font-medium">Skalierbare Infrastruktur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Bereitstellungsarchitektur</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="text-lg font-bold text-red-600">Cloud Run</div>
+              <div class="text-gray-600 text-sm">Containerisierte Anwendungsbereitstellung</div>
+            </div>
+            <div class="text-center">
+              <div class="text-lg font-bold text-red-600">SQL Proxy</div>
+              <div class="text-gray-600 text-sm">Sichere Datenbankverbindungen</div>
+            </div>
+            <div class="text-center">
+              <div class="text-lg font-bold text-red-600">Managed SQL</div>
+              <div class="text-gray-600 text-sm">Vollständig verwaltete PostgreSQL-Instanz</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-12 md:py-24 bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="mx-auto max-w-4xl space-y-8 text-center">
+        <div class="space-y-6">
+          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent">
+            Probieren Sie HeyMano noch heute aus
+          </h2>
+          <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Derzeit in der Testphase. Treten Sie unserer Plattform als Handwerker bei oder beginnen Sie mit der Suche nach qualifizierten Fachleuten in Ihrer Nähe.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 pt-4">
+          <button class="bg-white text-black hover:bg-gray-100 font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
+            Unser Team kontaktieren
+          </button>
+          <button class="bg-transparent border-white/30 text-white hover:bg-white/10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border h-11 px-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Weitere Fallstudien ansehen
+          </button>
+          <button class="bg-white text-black hover:bg-gray-100 font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
+            Live-Plattform ansehen
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <div class="pt-12 border-t border-white/20">
+          <p class="text-gray-400 text-sm mb-6">Plattformstatus</p>
+          <div class="flex justify-center items-center gap-8 opacity-60">
+            <div class="text-lg">🚧 Testphase</div>
+            <div class="w-px h-8 bg-white/20"></div>
+            <div class="text-lg">🔧 Aktive Entwicklung</div>
+            <div class="w-px h-8 bg-white/20"></div>
+            <div class="text-lg">📈 Wachsende Benutzerbasis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="w-full py-8 bg-gray-900 text-gray-300 border-t border-gray-800">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div class="text-center md:text-left">
+          <p class="text-sm">© 2025 HeyMano. Alle Rechte vorbehalten.</p>
+          <p class="text-xs text-gray-500 mt-1">Kunden mit qualifizierten Handwerkern verbinden</p>
+        </div>
+        <div class="flex space-x-6">
+          <a routerLink="#" class="text-sm hover:text-white transition-colors">
+            Datenschutzrichtlinie
+          </a>
+          <a routerLink="#" class="text-sm hover:text-white transition-colors">
+            Nutzungsbedingungen
+          </a>
+          <a routerLink="#" class="text-sm hover:text-white transition-colors">
+            Kontaktieren Sie uns
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

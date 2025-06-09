@@ -45,7 +45,6 @@ export class SignInEmailComponent implements AfterViewInit {
     );
     this.isLoading = false;
     this.submitted = true;
-    console.log('Status: ', this.status);
     if (this.status === 200) {
       this.navigationService.navigateToHome();
     } else if (this.status === 403) {

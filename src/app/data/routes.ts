@@ -10,10 +10,16 @@ export enum RoutesEnum {
   PriceQuote,
   Dashboard,
   Booking,
+  Bosch,
+  HeyMano,
+  SuccessStories,
 }
 
 export const routes: Record<RoutesEnum, Route> = {
-  [RoutesEnum.Home]: { url: '', title: 'Individuelle Softwarelösungen für Unternehmen | couchtec' },
+  [RoutesEnum.Home]: {
+    url: '',
+    title: 'Individuelle Softwarelösungen für Unternehmen | couchtec',
+  },
   [RoutesEnum.Auth]: { url: 'auth', title: 'Auth - couchtec' },
   [RoutesEnum.Contact]: { url: 'kontakt', title: 'Kontakt - couchtec' },
   [RoutesEnum.PriceQuote]: {
@@ -22,4 +28,7 @@ export const routes: Record<RoutesEnum, Route> = {
   },
   [RoutesEnum.Dashboard]: { url: 'dashboard', title: 'Dashboard - couchtec' },
   [RoutesEnum.Booking]: { url: 'buchen', title: 'couchtec' },
+  [RoutesEnum.Bosch]: { url: 'bosch', title: 'couchtec' },
+  [RoutesEnum.HeyMano]: { url: 'heymano', title: 'couchtec' },
+  [RoutesEnum.SuccessStories]: { url: 'success-stories', title: 'couchtec' },
 };

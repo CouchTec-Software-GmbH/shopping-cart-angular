@@ -65,9 +65,7 @@ export class CheckboxComponent implements OnInit {
     if (values) {
       const array: string[] = JSON.parse(values);
       if (array) {
-        console.log('array: ', array);
         this.list.options.forEach((option) => {
-          console.log(`${option.id} ${array.includes(option.id)}`);
           option.checked = array.includes(option.id);
           if (option.checked) {
             this.selectedOptions.push(option.id);
@@ -80,9 +78,6 @@ export class CheckboxComponent implements OnInit {
         .filter((option) => option.checked)
         .map((option) => option.id),
     );
-
-    console.log('name: ', this.list.title);
-    console.log('list: ', this.list);
   }
 
   onSelectionChange(selectionId: string): void {

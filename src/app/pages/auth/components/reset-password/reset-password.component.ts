@@ -45,7 +45,7 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private navigationService: NavigationService,
-  ) { }
+  ) {}
 
   async ngOnInit() {
     this.route.queryParamMap.subscribe((params) => {
@@ -67,8 +67,6 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
     let password = this.forgotPasswordForm.get('password')?.value;
     let verifyPassword = this.forgotPasswordForm.get('verifyPassword')?.value;
     if (password !== verifyPassword) {
-      console.log('Password: ', password);
-      console.log('VerifyPassword: ', verifyPassword);
       this.errorTitle = 'Passwörter stimmen nicht überein';
       this.errorMessage =
         'Bitte stellen Sie sicher, dass die Passwörter übereinstimmen.';

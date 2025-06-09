@@ -9,6 +9,7 @@ import { ShowcaseSection } from './components/showcase/showcase.component';
 import { PartnersComponent } from './components/partners/partners.component';
 import { MobileSection } from './components/mobile/mobile.component';
 import { SelectType } from './components/select-type/select-type.component';
+import { FeatureSection } from './components/feature-section/feature-section.component';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ import { SelectType } from './components/select-type/select-type.component';
     ContactSection,
     FooterComponent,
     HeaderComponent,
+    FeatureSection,
     SelectType,
     CommonModule,
   ],
@@ -31,6 +33,7 @@ import { SelectType } from './components/select-type/select-type.component';
         <app-header></app-header>
         <app-hero></app-hero>
         <app-showcase></app-showcase>
+        <app-feature-section></app-feature-section>
         <app-select-type></app-select-type>
         <app-partners></app-partners>
         <app-mobile></app-mobile>

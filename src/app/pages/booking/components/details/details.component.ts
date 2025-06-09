@@ -30,10 +30,6 @@ export class DetailsComponent {
   async submitForm() {
     this.isLoading = true;
 
-    console.log(this.time);
-    console.log(this.day);
-    console.log(this.month);
-    console.log(this.year);
     await this.productService.submitApplication(
       this.contactForm.value.name ?? '',
       this.contactForm.value.email ?? '',

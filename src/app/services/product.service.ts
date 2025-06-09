@@ -41,7 +41,6 @@ export class ProductService {
       const response = await firstValueFrom(
         this.http.post(`${this.apiUrl}contact`, body, get_basic_http_header()),
       );
-      console.log('Kontaktformular eingereicht.');
       this.bannerService.setBanner(BannerType.EmailSent);
       this.navigationService.navigateToHome();
       return response;
