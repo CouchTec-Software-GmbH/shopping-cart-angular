@@ -1,4 +1,4 @@
-<div class="flex flex-col min-h-screen">
+<div class="flex flex-col min-h-screen ">
   <app-header></app-header>
   <section class="mt-16 lg:mt-0 w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 text-white relative overflow-hidden">
     <div class="absolute inset-0">
@@ -14,7 +14,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
             Startup-Projekt
           </div>
-          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent pb-1">
+          <h1 class="font-brand text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent pb-1">
             HeyMano
           </h1>
           <p class="mx-auto max-w-[800px] text-gray-300 text-lg md:text-xl leading-relaxed">
@@ -25,12 +25,12 @@
         <div class="flex flex-col sm:flex-row gap-4">
           <button
              (click)="navigationsService.navigateToSuccessStories()"
-            class="bg-white text-black hover:bg-gray-100 font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
-            Weitere Projekte ansehen <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            class="font-brand bg-white text-black hover:bg-gray-100 font-light sm:font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
+            Weitere Projekte ansehen <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 mb-[2px] h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
           <button
              (click)="navigationsService.navigateToContact()"
-            class="border-white/30 text-white hover:bg-white/10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-11 px-8">
+            class="font-brand border-white/30 text-white hover:bg-white/10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-11 px-8">
             Unser Team kontaktieren
           </button>
         </div>
@@ -57,7 +57,7 @@
     </div>
   </section>
 
-  <section class="w-full py-12 md:py-24 bg-white relative">
+  <section class="w-full py-12 md:py-24 bg-white relative -ml-4 sm:ml-0">
     <div class="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white"></div>
     <div class="container mx-auto px-4 md:px-6 relative z-10">
       <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
@@ -67,7 +67,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
               Marktplatz-Plattform
             </div>
-            <h2 class="pb-1 text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            <h2 class="font-brand pb-1 text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
               Kunden und Handwerker zusammenbringen
             </h2>
             <p class="text-gray-600 text-lg leading-relaxed">
@@ -75,18 +75,18 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-2 gap-6">
+          <div class="grid grid-cols-2 gap-6 -ml-2 -mr-6 sm:ml-0 sm:mr-0">
             <div class="space-y-2">
               <div class="flex items-center gap-2 text-red-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
-                <span class="font-semibold">Intelligente Suche</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-1 w-5 h-5"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                <span class="sm:text-lg text-sm font-brand font-semibold ">Intelligente Suche</span>
               </div>
               <p class="text-gray-600 text-sm">Filtern nach Gewerk, Standort und Fähigkeiten</p>
             </div>
             <div class="space-y-2">
               <div class="flex items-center gap-2 text-red-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
-                <span class="font-semibold">Kartenansicht</span>
+                <span class="sm:text-lg text-sm font-brand font-semibold">Kartenansicht</span>
               </div>
               <p class="text-gray-600 text-sm">Finden Sie Handwerker in Ihrer Nähe auf der Karte</p>
             </div>
@@ -121,7 +121,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
             Das Problem
           </div>
-          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl mb-6 bg-gradient-to-r from-red-600 to-gray-600 bg-clip-text text-transparent">
+          <h2 class="font-brand text-4xl font-bold tracking-tighter md:text-5xl mb-6 bg-gradient-to-r from-red-600 to-gray-600 bg-clip-text text-transparent">
             Qualifizierte Handwerker zu finden ist schwer
           </h2>
         </div>
@@ -132,7 +132,7 @@
               <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
               </div>
-              <h3 class="font-semibold mb-2">Entdeckungsproblem</h3>
+              <h3 class="font-brand font-semibold mb-2">Entdeckungsproblem</h3>
               <p class="text-gray-600 text-sm">Schwierigkeit, qualifizierte Handwerker in Ihrer Nähe zu finden</p>
             </div>
           </div>
@@ -142,7 +142,7 @@
               <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
               </div>
-              <h3 class="font-semibold mb-2">Vertrauensprobleme</h3>
+              <h3 class="font-brand font-semibold mb-2">Vertrauensprobleme</h3>
               <p class="text-gray-600 text-sm">Keine Möglichkeit, Fähigkeiten und frühere Arbeiten zu überprüfen</p>
             </div>
           </div>
@@ -152,16 +152,16 @@
               <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-600"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
               </div>
-              <h3 class="font-semibold mb-2">Standortbarrieren</h3>
+              <h3 class="font-brand font-semibold mb-2">Standortbarrieren</h3>
               <p class="text-gray-600 text-sm">Schwierig, Handwerker in der Nähe zu finden</p>
             </div>
           </div>
         </div>
 
         <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-xl">
-          <p class="text-gray-700 text-lg leading-relaxed text-center">
+          <p class="text-gray-700 sm:text-lg text-sm leading-relaxed text-center">
             Kunden haben Schwierigkeiten, zuverlässige Handwerker in ihrer Umgebung zu finden, während qualifizierte Handwerker Schwierigkeiten haben, ihre Arbeit zu präsentieren und potenzielle Kunden zu erreichen.
-            <span class="font-semibold text-red-600">
+            <span class="font-brand font-semibold text-red-600">
               Es gab keine zentralisierte Plattform, die beide Seiten dieses Problems effektiv löste.
             </span>
           </p>
@@ -182,19 +182,19 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
           Unsere Lösung
         </div>
-        <h2 class="text-4xl font-bold tracking-tighter md:text-5xl mb-8 bg-gradient-to-r from-red-600 via-gray-600 to-red-600 bg-clip-text text-transparent">
+        <h2 class="text-4xl font-brand font-bold tracking-thighter md:text-5xl mb-8 bg-gradient-to-r from-red-600 via-gray-600 to-red-600 bg-clip-text text-transparent">
           Eine moderne Marktplatz-Plattform
         </h2>
 
         <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/50 shadow-2xl mb-12">
-          <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-8">
+          <p class="text-gray-700 sm:text-lg text-sm md:text-xl leading-relaxed mb-8">
             Wir haben HeyMano als eine
-            <span class="font-semibold text-red-600">umfassende Marktplatz-Plattform</span> entwickelt, die Kunden mit qualifizierten Handwerkern verbindet. Mit einem von Airbnb inspirierten Design erleichtert die Plattform das Entdecken, Bewerten und Kontaktieren von Handwerkern in Ihrer Nähe.
+            <span class="font-brand font-semibold text-red-600">umfassende Marktplatz-Plattform</span> entwickelt, die Kunden mit qualifizierten Handwerkern verbindet. Mit einem von Airbnb inspirierten Design erleichtert die Plattform das Entdecken, Bewerten und Kontaktieren von Handwerkern in Ihrer Nähe.
           </p>
 
           <div class="grid md:grid-cols-2 gap-8">
             <div class="text-left space-y-4">
-              <h3 class="text-xl font-bold text-gray-900">Plattform-Funktionen</h3>
+              <h3 class="font-brand sm:text-xl text-lg font-bold text-gray-900">Plattform-Funktionen</h3>
               <ul class="space-y-3">
                 <li class="flex items-start gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
@@ -211,7 +211,7 @@
               </ul>
             </div>
             <div class="text-left space-y-4">
-              <h3 class="text-xl font-bold text-gray-900">Technischer Stack</h3>
+              <h3 class="font-brand sm:text-xl text-lg font-bold text-gray-900">Technischer Stack</h3>
               <ul class="space-y-3">
                 <li class="flex items-start gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
@@ -237,7 +237,7 @@
 
     <div class="container mx-auto px-4 md:px-6 relative z-10">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold tracking-tighter md:text-4xl mb-4">Plattformfunktionen & Implementierung</h2>
+        <h2 class="font-brand text-3xl font-bold tracking-tight md:text-4xl mb-4">Plattformfunktionen & Implementierung</h2>
         <p class="text-gray-600 max-w-2xl mx-auto">
           Von Grund auf mit modernen Technologien und benutzerzentriertem Design entwickelt
         </p>
@@ -250,7 +250,7 @@
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
               01. Suche & Entdeckung
             </div>
-            <h3 class="text-2xl font-bold">Sucherlebnis im Airbnb-Stil</h3>
+            <h3 class="font-brand text-2xl font-bold">Sucherlebnis im Airbnb-Stil</h3>
             <p class="text-gray-600 text-lg">
               Eine große Suchleiste auf der Startseite ermöglicht es den Benutzern, Handwerker nach Standort, Handwerksart und spezifischen Fähigkeiten zu finden. Die erweiterte Filterung umfasst den Standortradius, das Erfahrungsniveau und spezialisierte Dienstleistungen wie Kücheneinbau oder Türreparatur.
             </p>
@@ -286,7 +286,7 @@
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
               02. Doppeltes Ansichtssystem
             </div>
-            <h3 class="text-2xl font-bold">Listenansicht & Interaktive Karte</h3>
+            <h3 class="text-2xl font-bold font-brand">Listenansicht & Interaktive Karte</h3>
             <p class="text-gray-600 text-lg">
               Benutzer können zwischen einer traditionellen Listenansicht, die Handwerkerprofile anzeigt, und einer interaktiven Kartenansicht, die die Standorte der Handwerker geografisch darstellt, wechseln. Beide Ansichten behalten dieselben Such- und Filterfunktionen bei.
             </p>
@@ -304,7 +304,7 @@
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
               03. Detaillierte Profile
             </div>
-            <h3 class="text-2xl font-bold">Umfassende Handwerkerinformationen</h3>
+            <h3 class="text-2xl font-bold font-brand">Umfassende Handwerkerinformationen</h3>
             <p class="text-gray-600 text-lg">
               Jedes Profil enthält Name, Unternehmensform, Handwerksspezialisierung, Standort, Berufserfahrung, besondere Fähigkeiten (Türen, Küchen usw.), Beschreibung, Portfoliobilder und Kontaktinformationen einschließlich Website, Instagram, E-Mail und Telefon.
             </p>
@@ -340,7 +340,7 @@
               <span class="w-2 h-2 bg-red-500 rounded-full"></span>
               04. Handwerker-Registrierung
             </div>
-            <h3 class="text-2xl font-bold">Benutzerdefinierte Authentifizierung & Profileinrichtung</h3>
+            <h3 class="text-2xl font-bold font-brand">Benutzerdefinierte Authentifizierung & Profileinrichtung</h3>
             <p class="text-gray-600 text-lg">
               Handwerker können sich über unser maßgeschneidertes Authentifizierungssystem registrieren und detaillierte Profile erstellen. Der Profilerstellungsprozess leitet sie durch die Eingabe ihrer Informationen, Fähigkeiten, Portfoliobilder und Kontaktdaten, um eine umfassende Präsenz auf der Plattform zu schaffen.
             </p>
@@ -354,7 +354,7 @@
       </div>
 
       <div class="mt-16 text-center">
-        <h3 class="text-2xl font-bold mb-8">Plattform-Rundgang</h3>
+        <h3 class="text-2xl font-bold mb-8 font-brand">Plattform-Rundgang</h3>
         <div class="aspect-video overflow-hidden rounded-2xl border-2 border-red-100 bg-black shadow-2xl relative max-w-4xl mx-auto">
           <video class="w-full h-full object-cover" src="/assets/videos/heymano/demo.mp4" autoplay loop muted playsinline controls>
             Dein Browser unterstützt das Video-Tag nicht.
@@ -390,7 +390,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
               Entwicklung
             </div>
-            <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-red-600 to-gray-600 bg-clip-text text-transparent">
+            <h2 class="font-brand text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-red-600 to-gray-600 bg-clip-text text-transparent">
               Von Grund auf neu entwickelt
             </h2>
           </div>
@@ -407,13 +407,13 @@
           <div class="grid grid-cols-2 gap-6">
             <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <div class="p-4">
-                <div class="text-lg font-bold text-red-600 mb-1">Full Stack</div>
+                <div class="text-lg font-bold text-red-600 mb-1 font-brand">Full Stack</div>
                 <div class="text-sm text-gray-600">End-to-End-Entwicklung</div>
               </div>
             </div>
             <div class="rounded-lg border bg-card text-card-foreground border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <div class="p-4">
-                <div class="text-lg font-bold text-red-600 mb-1">Benutzerdefinierte Auth</div>
+                <div class="text-lg font-bold text-red-600 mb-1 font-brand">Benutzer-definierte Auth</div>
                 <div class="text-sm text-gray-600">Von Grund auf neu erstellt</div>
               </div>
             </div>
@@ -437,7 +437,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
             Technische Implementierung
           </div>
-          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-red-600 via-gray-600 to-red-600 bg-clip-text text-transparent">
+          <h2 class="font-brand text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-red-600 via-gray-600 to-red-600 bg-clip-text text-transparent">
             Moderner Tech-Stack
           </h2>
           <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -488,18 +488,18 @@
         </div>
 
         <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">Bereitstellungsarchitektur</h3>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Bereitstellungs-architektur</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="text-center">
-              <div class="text-lg font-bold text-red-600">Cloud Run</div>
+              <div class="font-brand text-lg font-bold text-red-600">Cloud Run</div>
               <div class="text-gray-600 text-sm">Containerisierte Anwendungsbereitstellung</div>
             </div>
             <div class="text-center">
-              <div class="text-lg font-bold text-red-600">SQL Proxy</div>
+              <div class="font-brand text-lg font-bold text-red-600">SQL Proxy</div>
               <div class="text-gray-600 text-sm">Sichere Datenbankverbindungen</div>
             </div>
             <div class="text-center">
-              <div class="text-lg font-bold text-red-600">Managed SQL</div>
+              <div class="font-brand text-lg font-bold text-red-600">Managed SQL</div>
               <div class="text-gray-600 text-sm">Vollständig verwaltete PostgreSQL-Instanz</div>
             </div>
           </div>
@@ -517,7 +517,7 @@
     <div class="container mx-auto px-4 md:px-6 relative z-10">
       <div class="mx-auto max-w-4xl space-y-8 text-center">
         <div class="space-y-6">
-          <h2 class="text-4xl font-bold tracking-tighter md:text-5xl bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent">
+          <h2 class="font-brand pb-1 text-4xl font-bold tracking-tight md:text-5xl bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent">
             Probieren Sie HeyMano noch heute aus
           </h2>
           <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
@@ -525,17 +525,19 @@
           </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 pt-4">
+        <div class="font-brand flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 pt-4">
           <button
              (click)="navigationsService.navigateToContact()"
-            class="bg-white text-black hover:bg-gray-100 font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
+            class="font-brand bg-white text-black hover:bg-gray-100 font-semibold inline-flex items-center justify-center rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8">
             Unser Team kontaktieren
           </button>
           <button
              (click)="navigationsService.navigateToSuccessStories()"
-            class="bg-transparent border-white/30 text-white hover:bg-white/10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border h-11 px-8">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            class="font-brand bg-transparent border-white/30 text-white hover:bg-white/10 inline-flex items-center justify-center rounded-md
+            text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+            focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border h-11 sm:px-8 px-6">
             Weitere Fallstudien ansehen
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
     <a
       href="https://heymano.com"
@@ -549,11 +551,11 @@
 
         <div class="pt-12 border-t border-white/20">
           <p class="text-gray-400 text-sm mb-6">Plattformstatus</p>
-          <div class="flex justify-center items-center gap-8 opacity-60">
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-8 opacity-60">
             <div class="text-lg"> Testphase</div>
-            <div class="w-px h-8 bg-white/20"></div>
+            <div class="sm:w-px sm:h-8 w-8 h-px bg-white/20"></div>
             <div class="text-lg">Aktive Entwicklung</div>
-            <div class="w-px h-8 bg-white/20"></div>
+            <div class="sm:w-px sm:h-8 w-8 h-px bg-white/20"></div>
             <div class="text-lg">Wachsende Benutzerbasis</div>
           </div>
         </div>
