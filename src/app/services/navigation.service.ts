@@ -6,13 +6,12 @@ import { RoutesEnum, routes } from '@app/data/routes';
   providedIn: 'root',
 })
 export class NavigationService {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   navigateTo(route: RoutesEnum, params?: any, fragment?: string) {
     const url = routes[route].url;
     this.router.navigate([url], { queryParams: params, fragment: fragment });
   }
-
 
   navigateToAuth(params?: any) {
     this.navigateTo(RoutesEnum.Auth, params);
@@ -44,5 +43,17 @@ export class NavigationService {
 
   navigateToDashboard(params?: any) {
     this.navigateTo(RoutesEnum.Dashboard, params);
+  }
+
+  navigateToImpressum(params?: any) {
+    this.navigateTo(RoutesEnum.Impressum, params);
+  }
+
+  navigateToAGB(params?: any) {
+    this.navigateTo(RoutesEnum.AGB, params);
+  }
+
+  navigateToDatenschutz(params?: any) {
+    this.navigateTo(RoutesEnum.Datenschutz, params);
   }
 }

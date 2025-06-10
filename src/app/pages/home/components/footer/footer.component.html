@@ -10,19 +10,19 @@
       class="absolute top-4 sm:right-0 sm:left-auto sm:top-auto flex flex-row text-right gap-[12px] opacity-70"
     >
       <a
-        href="https://couchtec.com/imprint"
+      (click)="navigationService.navigateToImpressum()"
         class="hover:cursor-pointer hover:underline"
       >
         Impressum
       </a>
       <a
-        href="https://couchtec.com/gtc"
+      (click)="navigationService.navigateToAGB()"
         class="hover:cursor-pointer hover:underline"
       >
         AGB
       </a>
       <a
-        href="https://couchtec.com/privacy"
+      (click)="navigationService.navigateToDatenschutz()"
         class="hover:cursor-pointer hover:underline"
       >
         Datenschutz

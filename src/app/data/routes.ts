@@ -13,6 +13,9 @@ export enum RoutesEnum {
   Bosch,
   HeyMano,
   SuccessStories,
+  Impressum,
+  AGB,
+  Datenschutz,
 }
 
 export const routes: Record<RoutesEnum, Route> = {
@@ -31,4 +34,7 @@ export const routes: Record<RoutesEnum, Route> = {
   [RoutesEnum.Bosch]: { url: 'bosch', title: 'couchtec' },
   [RoutesEnum.HeyMano]: { url: 'heymano', title: 'couchtec' },
   [RoutesEnum.SuccessStories]: { url: 'success-stories', title: 'couchtec' },
+  [RoutesEnum.Impressum]: { url: 'impressum', title: 'couchtec' },
+  [RoutesEnum.Datenschutz]: { url: 'datenschutz', title: 'couchtec' },
+  [RoutesEnum.AGB]: { url: 'agb', title: 'couchtec' },
 };

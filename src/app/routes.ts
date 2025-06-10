@@ -7,6 +7,9 @@ import { BookingComponent } from './pages/booking/booking.component';
 import { BoschComponent } from './pages/bosch/bosch.component';
 import { SuccessStoriesComponent } from './pages/success-stories/success-stories.component';
 import { HeyManoComponent } from './pages/heymano/heymano.component';
+import { ImpressumComponent } from './pages/legal/impressum/impressum.component';
+import { PrivacyPolicyComponent } from './pages/legal/datenschutz/datenschutz.component';
+import { TermsAndConditionsComponent } from './pages/legal/agb/agb.component';
 
 const routeConfig: Routes = [
   {
@@ -38,6 +41,21 @@ const routeConfig: Routes = [
     path: routes[RoutesEnum.HeyMano].url,
     component: HeyManoComponent,
     title: routes[RoutesEnum.HeyMano].title,
+  },
+  {
+    path: routes[RoutesEnum.Impressum].url,
+    component: ImpressumComponent,
+    title: routes[RoutesEnum.Impressum].title,
+  },
+  {
+    path: routes[RoutesEnum.Datenschutz].url,
+    component: PrivacyPolicyComponent,
+    title: routes[RoutesEnum.Datenschutz].title,
+  },
+  {
+    path: routes[RoutesEnum.AGB].url,
+    component: TermsAndConditionsComponent,
+    title: routes[RoutesEnum.AGB].title,
   },
   {
     path: routes[RoutesEnum.SuccessStories].url,
