@@ -144,6 +144,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.closeMenu();
   }
 
+  handleWorkButton(): void {
+    this.navigationService.navigateToSuccessStories();
+    this.accountShow = false;
+    this.closeMenu();
+  }
+
   handlePriceQuoteButton(): void {
     this.navigationService.navigateToPriceQuote();
     this.accountShow = false;
@@ -156,9 +162,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNewProjectClick(): void {
-    this.navigationService.navigateToHome(
-      { newProject: true }
-    );
+    this.navigationService.navigateToHome({ newProject: true });
     this.closeMenu();
   }
 
