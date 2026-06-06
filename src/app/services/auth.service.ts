@@ -240,6 +240,7 @@ export class AuthService {
   }
 
   private setSessionCookie(name: string, value: string) {
+    if (typeof document === 'undefined') return;
     document.cookie = `${name}=${value}; path=/`;
   }
 
@@ -258,10 +259,12 @@ export class AuthService {
   }
 
   private deleteCookie(name: string) {
+    if (typeof document === 'undefined') return;
     document.cookie = `${name}=; Max-Age=0; path=/;`;
   }
 
   private hasSessionToken(): boolean {
+    if (typeof document === 'undefined') return false;
     return document.cookie.includes('sessionToken');
   }
 

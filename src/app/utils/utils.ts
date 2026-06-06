@@ -72,6 +72,7 @@ export function emailDomainValidator(): ValidatorFn {
 }
 
 export function get_email_from_cookie() {
+  if (typeof document === 'undefined') return undefined;
   return document.cookie
     .split(';')
     .find((row) => row.trim().startsWith('email'))
@@ -80,6 +81,7 @@ export function get_email_from_cookie() {
 }
 
 export function get_session_token_from_cookie() {
+  if (typeof document === 'undefined') return undefined;
   return document.cookie
     .split(';')
     .find((row) => row.trim().startsWith('sessionToken'))

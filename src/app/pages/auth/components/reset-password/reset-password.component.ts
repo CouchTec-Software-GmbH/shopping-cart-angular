@@ -87,6 +87,7 @@ export class ResetPasswordComponent implements AfterViewInit, OnInit {
       });
   }
   ngAfterViewInit() {
+    if (typeof document === 'undefined') return;
     document.addEventListener('click', () => {
       this.submitted = false;
     });

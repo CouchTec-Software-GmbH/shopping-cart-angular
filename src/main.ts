@@ -1,22 +1,12 @@
-/*
- *  Protractor support is deprecated in Angular.
- *  Protractor is used in this example for compatibility with Angular documentation tools.
- */
-import {
-  bootstrapApplication,
-  provideClientHydration,
-} from '@angular/platform-browser';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { mergeApplicationConfig, importProvidersFrom } from '@angular/core';
 import { AppComponent } from './app/app.component';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom } from '@angular/core';
-import routeConfig from './app/routes';
+import { appConfig } from './app/app.config';
 
 import {
   NgcCookieConsentModule,
   NgcCookieConsentConfig,
 } from 'ngx-cookieconsent';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -44,14 +34,13 @@ const cookieConfig: NgcCookieConsentConfig = {
   },
 };
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(
-      routeConfig,
-    ),
-    provideHttpClient(),
-    importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig)),
-    provideAnimationsAsync(),
-    provideClientHydration(),
-  ],
-}).catch((err) => console.error(err));
+// Browser bootstrap = the shared appConfig + the cookie-consent popup, which is
+// a browser-only UI library and therefore stays out of the server config.
+bootstrapApplication(
+  AppComponent,
+  mergeApplicationConfig(appConfig, {
+    providers: [
+      importProvidersFrom(NgcCookieConsentModule.forRoot(cookieConfig)),
+    ],
+  }),
+).catch((err) => console.error(err));

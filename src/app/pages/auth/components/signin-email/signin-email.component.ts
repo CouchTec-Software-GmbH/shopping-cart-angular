@@ -61,6 +61,7 @@ export class SignInEmailComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if (typeof document === 'undefined') return;
     document.addEventListener('click', () => {
       this.submitted = false;
     });

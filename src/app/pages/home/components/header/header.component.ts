@@ -83,7 +83,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
       });
 
-    window.addEventListener('storage', this.handleStorageChange);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('storage', this.handleStorageChange);
+    }
   }
 
   ngOnDestroy(): void {
@@ -96,7 +98,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.bannerSubscription) {
       this.bannerSubscription.unsubscribe();
     }
-    window.removeEventListener('storage', this.handleStorageChange);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('storage', this.handleStorageChange);
+    }
   }
 
   handleStorageChange = (event: StorageEvent) => {
@@ -172,6 +176,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private updateEmailFromCookies() {
+    if (typeof document === 'undefined') {
+      this.name = '';
+      return;
+    }
     if (
       document.cookie.includes('sessionToken') &&
       document.cookie.includes('email')
